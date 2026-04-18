@@ -1,0 +1,2232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAT Prep — Eriana & Liah</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --yellow: #FFD93D;
+  --yellow-soft: #FFE876;
+  --yellow-dim: #B89A1A;
+  --pink: #FF6B9D;
+  --pink-soft: #FF8FB8;
+  --pink-dim: #B34870;
+  --green: #4ECDC4;
+  --red: #FF6B6B;
+
+  --bg: #0F0F13;
+  --bg2: #17171E;
+  --bg3: #1E1E28;
+  --bg4: #26263300;
+  --surface: #1E1E28;
+  --surface2: #26263A;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.14);
+  --text: #F0EFF8;
+  --text2: #A09DB8;
+  --text3: #6B698A;
+  --shadow: rgba(0,0,0,0.4);
+}
+[data-theme="light"] {
+  --bg: #F7F6FF;
+  --bg2: #EEEDF7;
+  --bg3: #E4E3F0;
+  --surface: #FFFFFF;
+  --surface2: #F0EFF8;
+  --border: rgba(0,0,0,0.08);
+  --border2: rgba(0,0,0,0.14);
+  --text: #1A1828;
+  --text2: #5A5878;
+  --text3: #9896B0;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+
+/* ── SCREENS ── */
+.screen { display: none; min-height: 100vh; }
+.screen.active { display: block; }
+
+/* ── PROFILE SCREEN ── */
+#profileScreen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+#profileScreen.active { display: flex; }
+
+.profile-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+.orb1 { width: 400px; height: 400px; background: var(--yellow); top: -100px; right: -100px; }
+.orb2 { width: 300px; height: 300px; background: var(--pink); bottom: -50px; left: -80px; }
+
+.profile-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 2.5rem;
+}
+.profile-logo span { color: var(--yellow); }
+
+.profile-hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.profile-hero h1 {
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.profile-hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.profile-hero p {
+  color: var(--text2);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.profile-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: 1.5rem;
+}
+
+.profile-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.profile-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.profile-card:hover::before { opacity: 0.05; }
+.profile-card:hover { border-color: var(--yellow); transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow); }
+
+.profile-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.avatar-y { background: linear-gradient(135deg, var(--yellow), #FFA500); color: #1A1000; }
+.avatar-p { background: linear-gradient(135deg, var(--pink), #C44080); color: #fff; }
+.avatar-g { background: linear-gradient(135deg, var(--green), #2A9D8F); color: #fff; }
+
+.profile-info { flex: 1; position: relative; z-index: 1; }
+.profile-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+.profile-meta { font-size: 0.78rem; color: var(--text2); margin-top: 2px; }
+
+.profile-streak {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--yellow);
+  position: relative; z-index: 1;
+}
+
+.add-profile-btn {
+  width: 100%; max-width: 360px;
+  background: transparent;
+  border: 1.5px dashed var(--border2);
+  border-radius: 16px;
+  padding: 1rem;
+  color: var(--text2);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+}
+.add-profile-btn:hover { border-color: var(--pink); color: var(--pink); }
+
+/* New profile form */
+.new-profile-form {
+  width: 100%; max-width: 360px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: none;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+.new-profile-form.open { display: flex; }
+.new-profile-form input {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.new-profile-form input:focus { border-color: var(--yellow); }
+.new-profile-form input::placeholder { color: var(--text3); }
+.form-row { display: flex; gap: 0.5rem; }
+.btn-cancel {
+  flex: 1; padding: 0.75rem;
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  color: var(--text2);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-cancel:hover { border-color: var(--text2); }
+.btn-create {
+  flex: 2; padding: 0.75rem;
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  border: none;
+  border-radius: 10px;
+  color: #1A1000;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-create:hover { opacity: 0.9; }
+
+/* ── THEME TOGGLE ── */
+.theme-toggle-topbar {
+  background: transparent;
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--text2);
+  transition: all 0.2s;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.theme-toggle-topbar:hover { border-color: var(--yellow); }
+.theme-toggle-old-DISABLED {
+  position: fixed; top: 1rem; right: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 50px;
+  padding: 0.4rem 0.75rem;
+  display: flex; align-items: center; gap: 0.4rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--text2);
+  z-index: 1000;
+  transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.theme-toggle:hover { border-color: var(--yellow); color: var(--yellow); }
+
+/* ── MAIN APP ── */
+#appScreen {
+  display: none;
+  flex-direction: column;
+  min-height: 100vh;
+}
+#appScreen.active { display: flex; }
+
+/* Top bar */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1.25rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+[data-theme="light"] .topbar { background: var(--bg); }
+
+.topbar-back {
+  background: transparent; border: none;
+  color: var(--text2); font-size: 1.1rem;
+  cursor: pointer; padding: 0.25rem;
+  display: none; align-items: center;
+}
+.topbar-back.visible { display: flex; }
+
+.topbar-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 1rem;
+  flex: 1;
+}
+.topbar-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 0.75rem;
+  cursor: pointer;
+}
+
+/* ── PAGE VIEWS ── */
+.page { display: none; flex: 1; overflow-y: auto; padding-bottom: 5rem; }
+.page.active { display: block; }
+
+/* ── HOME PAGE ── */
+.home-hero {
+  padding: 1.5rem 1.25rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.home-hero::after {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, var(--yellow) 0%, transparent 70%);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.greeting { font-size: 0.85rem; color: var(--text2); margin-bottom: 0.25rem; }
+.greeting-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+.greeting-name span {
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.test-countdown {
+  margin: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.countdown-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--yellow)22, var(--pink)22);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; flex-shrink: 0;
+}
+.countdown-label { font-size: 0.75rem; color: var(--text2); margin-bottom: 2px; }
+.countdown-value { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+.countdown-days {
+  margin-left: auto;
+  text-align: center;
+}
+.days-num {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.days-label { font-size: 0.7rem; color: var(--text2); }
+
+/* Stats row */
+.stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0.625rem;
+  margin: 0 1.25rem 1.25rem;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.875rem 0.75rem;
+  text-align: center;
+}
+.stat-val {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1.4rem;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-val.yellow { color: var(--yellow); }
+.stat-val.pink { color: var(--pink); }
+.stat-val.green { color: var(--green); }
+.stat-lbl { font-size: 0.7rem; color: var(--text2); }
+
+/* Section heading */
+.section-heading {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.8rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text3);
+  padding: 0 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Module cards */
+.module-list {
+  display: flex; flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.module-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.module-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px var(--shadow); }
+.module-card:active { transform: scale(0.98); }
+
+.module-card .card-accent {
+  position: absolute; top: 0; left: 0;
+  width: 4px; height: 100%;
+  border-radius: 18px 0 0 18px;
+}
+.accent-yellow { background: linear-gradient(180deg, var(--yellow), var(--yellow-dim)); }
+.accent-pink { background: linear-gradient(180deg, var(--pink), var(--pink-dim)); }
+.accent-green { background: linear-gradient(180deg, var(--green), #2A9D8F); }
+.accent-purple { background: linear-gradient(180deg, #9B7FFA, #6B4FCA); }
+
+.module-top { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 0.75rem; }
+.module-icon {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.icon-y { background: var(--yellow)22; }
+.icon-p { background: var(--pink)22; }
+.icon-g { background: var(--green)22; }
+.icon-v { background: #9B7FFA22; }
+
+.module-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.975rem; }
+.module-sub { font-size: 0.75rem; color: var(--text2); margin-top: 2px; }
+.module-badge {
+  margin-left: auto;
+  font-size: 0.7rem; font-weight: 600;
+  padding: 3px 8px; border-radius: 20px;
+}
+.badge-new { background: var(--pink)22; color: var(--pink); }
+.badge-done { background: var(--green)22; color: var(--green); }
+.badge-pct { background: var(--yellow)22; color: var(--yellow-dim); }
+[data-theme="light"] .badge-pct { color: #8B6500; }
+
+.progress-bar-wrap {
+  background: var(--bg2);
+  border-radius: 99px;
+  height: 5px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--yellow), var(--pink));
+  transition: width 0.6s ease;
+}
+.module-meta {
+  display: flex; justify-content: space-between;
+  font-size: 0.72rem; color: var(--text3);
+  margin-top: 6px;
+}
+
+/* ── BOTTOM NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  display: flex;
+  z-index: 100;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.nav-item {
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 0.65rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  gap: 3px;
+  border: none; background: transparent;
+}
+.nav-icon { font-size: 1.2rem; transition: transform 0.15s; }
+.nav-label { font-size: 0.65rem; color: var(--text3); transition: color 0.15s; font-family: 'DM Sans', sans-serif; }
+.nav-item.active .nav-icon { transform: scale(1.15); }
+.nav-item.active .nav-label { color: var(--yellow); font-weight: 600; }
+.nav-item:hover .nav-label { color: var(--text2); }
+
+/* ── MODULE DETAIL PAGE ── */
+.module-hero {
+  padding: 1.5rem 1.25rem 1rem;
+  position: relative; overflow: hidden;
+}
+.module-hero-icon {
+  font-size: 2.5rem; margin-bottom: 0.75rem;
+}
+.module-hero-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1.5rem;
+  margin-bottom: 0.375rem;
+}
+.module-hero-desc {
+  font-size: 0.875rem; color: var(--text2);
+  line-height: 1.6; max-width: 340px;
+}
+
+.lesson-list {
+  padding: 0 1.25rem;
+  display: flex; flex-direction: column; gap: 0.625rem;
+  margin-bottom: 1.5rem;
+}
+.lesson-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  display: flex; align-items: center; gap: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lesson-item:hover { border-color: var(--border2); transform: translateX(4px); }
+.lesson-num {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  background: var(--bg2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.8rem;
+  color: var(--text2);
+  flex-shrink: 0;
+}
+.lesson-num.done { background: var(--green)22; color: var(--green); }
+.lesson-num.active-lesson { background: var(--yellow)22; color: var(--yellow-dim); }
+[data-theme="light"] .lesson-num.active-lesson { color: #8B6500; }
+.lesson-info { flex: 1; }
+.lesson-title { font-weight: 500; font-size: 0.9rem; }
+.lesson-sub { font-size: 0.75rem; color: var(--text2); margin-top: 2px; }
+.lesson-arrow { color: var(--text3); font-size: 0.8rem; }
+
+/* ── LESSON VIEW ── */
+.lesson-content {
+  padding: 1.25rem;
+  max-width: 680px;
+}
+.lesson-tag {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 20px;
+  background: var(--yellow)22; color: var(--yellow-dim);
+  margin-bottom: 0.875rem;
+}
+[data-theme="light"] .lesson-tag { color: #8B6500; }
+.lesson-title-big {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1.4rem;
+  line-height: 1.2; margin-bottom: 0.75rem;
+}
+
+.lesson-body { font-size: 0.9rem; line-height: 1.75; color: var(--text); }
+.lesson-body p { margin-bottom: 1rem; }
+.lesson-body h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 1rem;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--yellow);
+}
+[data-theme="light"] .lesson-body h3 { color: var(--yellow-dim); }
+.lesson-body .highlight-box {
+  background: var(--surface2);
+  border-left: 3px solid var(--yellow);
+  border-radius: 0 12px 12px 0;
+  padding: 0.875rem 1rem;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
+.lesson-body .example-box {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.lesson-body .example-box .ex-label {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--pink); margin-bottom: 0.5rem;
+}
+.lesson-body ul, .lesson-body ol {
+  padding-left: 1.25rem; margin-bottom: 1rem;
+}
+.lesson-body li { margin-bottom: 0.4rem; }
+.lesson-body .formula {
+  font-family: 'DM Sans', monospace;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-size: 1rem; font-weight: 500;
+  color: var(--yellow);
+  margin: 0.75rem 0;
+}
+[data-theme="light"] .formula { color: var(--yellow-dim); }
+.lesson-body .tip-box {
+  background: var(--pink)11;
+  border: 1px solid var(--pink)33;
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
+.tip-box .tip-label {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--pink); margin-bottom: 0.4rem;
+}
+
+.lesson-nav-btns {
+  display: flex; gap: 0.75rem;
+  padding: 1rem 1.25rem 1.5rem;
+}
+.btn-lesson-prev, .btn-lesson-next {
+  flex: 1; padding: 0.875rem;
+  border-radius: 12px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.9rem;
+  cursor: pointer; transition: all 0.2s;
+  border: none;
+}
+.btn-lesson-prev {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  color: var(--text2);
+}
+.btn-lesson-prev:hover { border-color: var(--text2); }
+.btn-lesson-next {
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  color: #1A1000;
+}
+.btn-lesson-next:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ── QUIZ VIEW ── */
+.quiz-header {
+  padding: 1rem 1.25rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.quiz-progress-wrap {
+  flex: 1;
+  background: var(--bg2); border-radius: 99px; height: 6px; overflow: hidden;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--yellow), var(--pink));
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+.quiz-counter { font-size: 0.8rem; color: var(--text2); white-space: nowrap; }
+
+.quiz-body { padding: 0.5rem 1.25rem 1rem; }
+.quiz-qnum {
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text3); margin-bottom: 0.875rem;
+}
+.quiz-question {
+  font-size: 1rem; line-height: 1.65;
+  margin-bottom: 1.25rem; font-weight: 400;
+}
+.quiz-passage {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-left: 3px solid var(--yellow);
+  border-radius: 0 12px 12px 0;
+  padding: 0.875rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.7; color: var(--text2);
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+
+.quiz-options {
+  display: flex; flex-direction: column; gap: 0.625rem;
+}
+.quiz-option {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  display: flex; align-items: center; gap: 0.875rem;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-size: 0.9rem; line-height: 1.5;
+}
+.quiz-option:hover:not(.answered) { border-color: var(--yellow); background: var(--yellow)08; }
+.quiz-option.correct { border-color: var(--green); background: var(--green)11; }
+.quiz-option.wrong { border-color: var(--red); background: var(--red)11; }
+.quiz-option.answered { cursor: default; }
+
+.option-letter {
+  width: 30px; height: 30px;
+  border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.8rem;
+  background: var(--bg2); color: var(--text2);
+  transition: all 0.18s;
+}
+.quiz-option:hover:not(.answered) .option-letter { background: var(--yellow)22; color: var(--yellow-dim); }
+[data-theme="light"] .quiz-option:hover:not(.answered) .option-letter { color: #8B6500; }
+.quiz-option.correct .option-letter { background: var(--green)22; color: var(--green); }
+.quiz-option.wrong .option-letter { background: var(--red)22; color: var(--red); }
+
+.quiz-explanation {
+  margin-top: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+.quiz-explanation.show { display: block; }
+.explanation-header {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+.explanation-header.correct { color: var(--green); }
+.explanation-header.wrong { color: var(--red); }
+
+.btn-next-q {
+  width: 100%; margin-top: 1rem;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  border: none; border-radius: 12px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.95rem;
+  color: #1A1000; cursor: pointer;
+  transition: opacity 0.2s;
+  display: none;
+}
+.btn-next-q.show { display: block; }
+.btn-next-q:hover { opacity: 0.9; }
+
+/* Quiz results */
+.quiz-results {
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+.results-score {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 4rem;
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.results-label { font-size: 0.875rem; color: var(--text2); margin-bottom: 1.5rem; }
+.results-msg {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.results-sub { font-size: 0.875rem; color: var(--text2); line-height: 1.6; margin-bottom: 2rem; }
+.results-btns { display: flex; gap: 0.75rem; }
+.btn-retry, .btn-continue {
+  flex: 1; padding: 0.9rem;
+  border-radius: 12px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.9rem;
+  cursor: pointer; transition: all 0.2s; border: none;
+}
+.btn-retry { background: var(--surface); border: 1px solid var(--border2); color: var(--text2); }
+.btn-retry:hover { border-color: var(--text2); }
+.btn-continue { background: linear-gradient(135deg, var(--yellow), var(--pink)); color: #1A1000; }
+.btn-continue:hover { opacity: 0.9; }
+
+/* ── PROGRESS PAGE ── */
+.progress-page { padding: 1.25rem; }
+.progress-page h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1.3rem;
+  margin-bottom: 1.25rem;
+}
+.score-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 18px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.score-card-header {
+  display: flex; align-items: center;
+  gap: 0.75rem; margin-bottom: 1rem;
+}
+.score-card-icon { font-size: 1.4rem; }
+.score-card-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; }
+.score-card-pct {
+  margin-left: auto;
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 1.4rem; color: var(--yellow);
+}
+[data-theme="light"] .score-card-pct { color: var(--yellow-dim); }
+.score-bar-wrap { background: var(--bg2); border-radius: 99px; height: 8px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--yellow), var(--pink)); }
+
+.projected-score {
+  background: linear-gradient(135deg, var(--yellow)15, var(--pink)15);
+  border: 1px solid var(--yellow)33;
+  border-radius: 18px;
+  padding: 1.25rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.projected-label { font-size: 0.75rem; color: var(--text2); margin-bottom: 0.25rem; }
+.projected-num {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 3rem;
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1;
+}
+.projected-sub { font-size: 0.75rem; color: var(--text2); margin-top: 0.25rem; }
+
+/* ── STRATEGY PAGE ── */
+.strategy-page { padding: 1.25rem; }
+.strategy-page h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1.3rem;
+  margin-bottom: 1.25rem;
+}
+.strategy-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.strategy-card:hover { border-color: var(--border2); }
+.strat-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0; }
+.strat-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.strat-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; flex: 1; }
+.strat-toggle { color: var(--text3); transition: transform 0.2s; font-size: 0.8rem; }
+.strat-toggle.open { transform: rotate(180deg); }
+.strat-body {
+  font-size: 0.875rem; line-height: 1.65;
+  color: var(--text2); padding-top: 0.875rem;
+  display: none;
+}
+.strat-body.open { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { animation: fadeIn 0.35s ease forwards; }
+
+/* Utility */
+.mt-1 { margin-top: 0.5rem; }
+.divider { height: 1px; background: var(--border); margin: 1rem 0; }
+</style>
+</head>
+<body>
+
+
+
+<!-- ═══ PROFILE SCREEN ═══ -->
+<div id="profileScreen" class="screen active">
+  <button class="theme-toggle-topbar" onclick="toggleTheme()" id="themeBtnProfile" style="position:absolute;top:1rem;right:1rem;z-index:10;">🌙</button>
+  <div class="profile-bg-orb orb1"></div>
+  <div class="profile-bg-orb orb2"></div>
+
+  <div class="profile-logo">SAT <span>Prep</span></div>
+
+  <div class="profile-hero">
+    <h1>Ready to<br><em>Ace the SAT?</em></h1>
+    <p>Your personal tutor — lessons, practice,<br>and strategy all in one place.</p>
+  </div>
+
+  <div class="profile-cards" id="profileCards"></div>
+
+  <button class="add-profile-btn" onclick="showNewProfileForm()">
+    <span style="font-size:1.1rem">＋</span> Add Profile
+  </button>
+
+  <div class="new-profile-form" id="newProfileForm">
+    <input type="text" id="newProfileName" placeholder="Enter your name..." maxlength="20" />
+    <div class="form-row">
+      <button class="btn-cancel" onclick="hideNewProfileForm()">Cancel</button>
+      <button class="btn-create" onclick="createProfile()">Let's Go →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ APP SCREEN ═══ -->
+<div id="appScreen" class="screen">
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <button class="topbar-back" id="topbarBack" onclick="goBack()">← </button>
+    <div class="topbar-title" id="topbarTitle">
+      <span style="color:var(--yellow)">SAT</span> Prep
+    </div>
+    <button class="theme-toggle-topbar" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <div class="topbar-avatar" id="topbarAvatar" onclick="switchProfile()"></div>
+  </div>
+
+  <!-- ── HOME PAGE ── -->
+  <div class="page active" id="homePage">
+    <div class="home-hero">
+      <div class="greeting">Welcome back,</div>
+      <div class="greeting-name"><span id="heroName">Student</span> 👋</div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="test-countdown">
+      <div class="countdown-icon">📅</div>
+      <div>
+        <div class="countdown-label">Next SAT Date</div>
+        <div class="countdown-value" id="nextTestDate">June 6, 2025</div>
+      </div>
+      <div class="countdown-days">
+        <div class="days-num" id="daysCount">—</div>
+        <div class="days-label">days left</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-val yellow" id="statStreak">0</div>
+        <div class="stat-lbl">Day Streak 🔥</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val pink" id="statCompleted">0%</div>
+        <div class="stat-lbl">Complete</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val green" id="statScore">—</div>
+        <div class="stat-lbl">Est. Score</div>
+      </div>
+    </div>
+
+    <div class="section-heading">Your Modules</div>
+
+    <div class="module-list">
+      <!-- Strategy -->
+      <div class="module-card fade-in" onclick="openModule('strategy')" style="animation-delay:0.05s">
+        <div class="card-accent accent-yellow"></div>
+        <div class="module-top">
+          <div class="module-icon icon-y">🧭</div>
+          <div>
+            <div class="module-title">Test Strategy</div>
+            <div class="module-sub">How the Digital SAT works & how to win it</div>
+          </div>
+          <div class="module-badge badge-new" id="badge-strategy">Start</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="prog-strategy" style="width:0%"></div>
+        </div>
+        <div class="module-meta">
+          <span>4 lessons · 1 quiz</span>
+          <span id="meta-strategy">0 / 4 done</span>
+        </div>
+      </div>
+
+      <!-- Reading & Writing -->
+      <div class="module-card fade-in" onclick="openModule('reading')" style="animation-delay:0.1s">
+        <div class="card-accent accent-pink"></div>
+        <div class="module-top">
+          <div class="module-icon icon-p">📖</div>
+          <div>
+            <div class="module-title">Reading & Writing</div>
+            <div class="module-sub">Comprehension, vocabulary, evidence</div>
+          </div>
+          <div class="module-badge badge-new" id="badge-reading">Start</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="prog-reading" style="width:0%"></div>
+        </div>
+        <div class="module-meta">
+          <span>8 lessons · 4 quizzes</span>
+          <span id="meta-reading">0 / 8 done</span>
+        </div>
+      </div>
+
+      <!-- Writing & Language -->
+      <div class="module-card fade-in" onclick="openModule('writing')" style="animation-delay:0.15s">
+        <div class="card-accent accent-pink"></div>
+        <div class="module-top">
+          <div class="module-icon icon-p">✍️</div>
+          <div>
+            <div class="module-title">Writing & Language</div>
+            <div class="module-sub">Grammar, punctuation, sentence structure</div>
+          </div>
+          <div class="module-badge badge-new" id="badge-writing">Start</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="prog-writing" style="width:0%"></div>
+        </div>
+        <div class="module-meta">
+          <span>8 lessons · 4 quizzes</span>
+          <span id="meta-writing">0 / 8 done</span>
+        </div>
+      </div>
+
+      <!-- Math -->
+      <div class="module-card fade-in" onclick="openModule('math')" style="animation-delay:0.2s">
+        <div class="card-accent accent-yellow"></div>
+        <div class="module-top">
+          <div class="module-icon icon-y">🔢</div>
+          <div>
+            <div class="module-title">Math — Algebra</div>
+            <div class="module-sub">Linear equations, systems, word problems</div>
+          </div>
+          <div class="module-badge badge-new" id="badge-math">Start</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="prog-math" style="width:0%"></div>
+        </div>
+        <div class="module-meta">
+          <span>6 lessons · 3 quizzes</span>
+          <span id="meta-math">0 / 6 done</span>
+        </div>
+      </div>
+
+      <!-- Advanced Math -->
+      <div class="module-card fade-in" onclick="openModule('advmath')" style="animation-delay:0.25s">
+        <div class="card-accent accent-yellow"></div>
+        <div class="module-top">
+          <div class="module-icon icon-y">📐</div>
+          <div>
+            <div class="module-title">Math — Advanced</div>
+            <div class="module-sub">Quadratics, functions, exponentials</div>
+          </div>
+          <div class="module-badge badge-new" id="badge-advmath">Start</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="prog-advmath" style="width:0%"></div>
+        </div>
+        <div class="module-meta">
+          <span>6 lessons · 3 quizzes</span>
+          <span id="meta-advmath">0 / 6 done</span>
+        </div>
+      </div>
+
+      <!-- Data & Stats -->
+      <div class="module-card fade-in" onclick="openModule('data')" style="animation-delay:0.3s">
+        <div class="card-accent accent-green"></div>
+        <div class="module-top">
+          <div class="module-icon icon-g">📊</div>
+          <div>
+            <div class="module-title">Math — Data & Stats</div>
+            <div class="module-sub">Ratios, percentages, statistics, graphs</div>
+          </div>
+          <div class="module-badge badge-new" id="badge-data">Start</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="prog-data" style="width:0%"></div>
+        </div>
+        <div class="module-meta">
+          <span>5 lessons · 2 quizzes</span>
+          <span id="meta-data">0 / 5 done</span>
+        </div>
+      </div>
+
+      <!-- Geometry -->
+      <div class="module-card fade-in" onclick="openModule('geometry')" style="animation-delay:0.35s">
+        <div class="card-accent accent-green"></div>
+        <div class="module-top">
+          <div class="module-icon icon-g">📏</div>
+          <div>
+            <div class="module-title">Math — Geometry & Trig</div>
+            <div class="module-sub">Shapes, angles, triangles, SOHCAHTOA</div>
+          </div>
+          <div class="module-badge badge-new" id="badge-geometry">Start</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="prog-geometry" style="width:0%"></div>
+        </div>
+        <div class="module-meta">
+          <span>5 lessons · 2 quizzes</span>
+          <span id="meta-geometry">0 / 5 done</span>
+        </div>
+      </div>
+
+      <!-- Practice Test -->
+      <div class="module-card fade-in" onclick="openModule('practice')" style="animation-delay:0.4s">
+        <div class="card-accent accent-purple"></div>
+        <div class="module-top">
+          <div class="module-icon icon-v">🎯</div>
+          <div>
+            <div class="module-title">Full Practice Test</div>
+            <div class="module-sub">Timed · Adaptive-style · Score analysis</div>
+          </div>
+          <div class="module-badge badge-new" id="badge-practice">Try It</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="prog-practice" style="width:0%"></div>
+        </div>
+        <div class="module-meta">
+          <span>98 questions · ~2h 15m</span>
+          <span id="meta-practice">Not attempted</span>
+        </div>
+      </div>
+    </div>
+  </div><!-- end homePage -->
+
+  <!-- ── MODULE DETAIL PAGE ── -->
+  <div class="page" id="modulePage">
+    <div class="module-hero" id="moduleHeroArea"></div>
+    <div class="section-heading">Lessons</div>
+    <div class="lesson-list" id="lessonListArea"></div>
+  </div>
+
+  <!-- ── LESSON PAGE ── -->
+  <div class="page" id="lessonPage">
+    <div class="lesson-content" id="lessonContentArea"></div>
+    <div class="lesson-nav-btns">
+      <button class="btn-lesson-prev" id="btnLessonPrev" onclick="lessonNav(-1)">← Previous</button>
+      <button class="btn-lesson-next" id="btnLessonNext" onclick="lessonNav(1)">Next →</button>
+    </div>
+  </div>
+
+  <!-- ── QUIZ PAGE ── -->
+  <div class="page" id="quizPage">
+    <div class="quiz-header">
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div>
+      </div>
+      <div class="quiz-counter" id="quizCounter">1 / 10</div>
+    </div>
+    <div class="quiz-body" id="quizBodyArea"></div>
+  </div>
+
+  <!-- ── PROGRESS PAGE ── -->
+  <div class="page" id="progressPage">
+    <div class="progress-page">
+      <h2>Your Progress</h2>
+      <div class="projected-score">
+        <div class="projected-label">Estimated SAT Score</div>
+        <div class="projected-num" id="projectedScore">—</div>
+        <div class="projected-sub">Based on your quiz performance</div>
+      </div>
+      <div id="progressCards"></div>
+    </div>
+  </div>
+
+  <!-- ── STRATEGY PAGE ── -->
+  <div class="page" id="strategyTipsPage">
+    <div class="strategy-page">
+      <h2>Test Strategy 🧭</h2>
+      <div id="strategyCards"></div>
+    </div>
+  </div>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" id="nav-home" onclick="showPage('homePage','nav-home')">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label">Home</span>
+    </button>
+    <button class="nav-item" id="nav-progress" onclick="showPage('progressPage','nav-progress')">
+      <span class="nav-icon">📈</span>
+      <span class="nav-label">Progress</span>
+    </button>
+    <button class="nav-item" id="nav-tips" onclick="showPage('strategyTipsPage','nav-tips')">
+      <span class="nav-icon">💡</span>
+      <span class="nav-label">Strategy</span>
+    </button>
+  </nav>
+
+</div><!-- end appScreen -->
+
+<script>
+// ════════════════════════════════════
+//  DATA
+// ════════════════════════════════════
+const SAT_DATES = [
+  { label: 'June 6, 2025', date: new Date('2025-06-06') },
+  { label: 'August 15, 2025', date: new Date('2025-08-15') }
+];
+
+const MODULES = {
+  strategy: {
+    title: 'Test Strategy', icon: '🧭', accent: 'accent-yellow',
+    desc: 'Understand the Digital SAT format, the adaptive scoring system, and the proven strategies that separate a 1200 from a 1400.',
+    lessons: [
+      { title: 'The Digital SAT — What Actually Changed', sub: 'Format, timing, and what it means for you' },
+      { title: 'How Adaptive Scoring Works', sub: 'Why Module 1 is the most important thing you will take' },
+      { title: 'Pacing & Time Management', sub: 'Seconds-per-question targets by section' },
+      { title: 'The No-Penalty Guessing Rule', sub: 'Why you should never leave a blank answer' }
+    ]
+  },
+  reading: {
+    title: 'Reading & Writing', icon: '📖', accent: 'accent-pink',
+    desc: 'Master the 4 Reading & Writing skill categories. Short passages, one question each — learn to read fast and find evidence quickly.',
+    lessons: [
+      { title: 'Information & Ideas — Main Idea', sub: 'Find the central claim in any passage' },
+      { title: 'Information & Ideas — Evidence', sub: 'Citing textual support the SAT way' },
+      { title: 'Craft & Structure — Vocabulary in Context', sub: 'Word meaning without a dictionary' },
+      { title: 'Craft & Structure — Text Analysis', sub: 'Author\'s purpose, tone, and argument' },
+      { title: 'Craft & Structure — Cross-Text Connections', sub: 'Comparing two short passages' },
+      { title: 'Expression of Ideas — Word Choice & Tone', sub: 'Precision, concision, and style' },
+      { title: 'Expression of Ideas — Transitions & Flow', sub: 'Adding, removing, and reordering sentences' },
+      { title: 'Data Interpretation in Reading', sub: 'When a graph or table joins the passage' }
+    ]
+  },
+  writing: {
+    title: 'Writing & Language', icon: '✍️', accent: 'accent-pink',
+    desc: 'Grammar and punctuation rules that the SAT tests every single time. Learn the patterns and you\'ll recognize the answers fast.',
+    lessons: [
+      { title: 'Subject-Verb Agreement', sub: 'The #1 most tested grammar rule' },
+      { title: 'Pronoun Agreement & Case', sub: 'Who vs. whom, they vs. them' },
+      { title: 'Verb Tense & Mood', sub: 'Keeping tenses consistent in a passage' },
+      { title: 'Comma Rules — The Complete Guide', sub: 'When to use them and when NOT to' },
+      { title: 'Semicolons, Colons & Dashes', sub: 'The punctuation the SAT loves to test' },
+      { title: 'Sentence Fragments & Run-Ons', sub: 'Fix the most common writing errors' },
+      { title: 'Parallel Structure', sub: 'Lists that balance and sentences that sing' },
+      { title: 'Modifiers & Apostrophes', sub: 'Misplaced modifiers and its vs. it\'s' }
+    ]
+  },
+  math: {
+    title: 'Math — Algebra', icon: '🔢', accent: 'accent-yellow',
+    desc: 'Algebra is the biggest category on the SAT Math section (~35% of all questions). Master this and you\'ve won half the battle.',
+    lessons: [
+      { title: 'Linear Equations — One Variable', sub: 'Solving for x with real-world context' },
+      { title: 'Linear Equations — Two Variables', sub: 'Slope, intercepts, and what they mean' },
+      { title: 'Systems of Equations', sub: 'Substitution and elimination methods' },
+      { title: 'Linear Inequalities', sub: 'Solving and graphing on a number line' },
+      { title: 'Word Problems — Building Equations', sub: 'Translating English into algebra' },
+      { title: 'Ratios, Rates & Proportions', sub: 'The practical math you use every day' }
+    ]
+  },
+  advmath: {
+    title: 'Math — Advanced', icon: '📐', accent: 'accent-yellow',
+    desc: 'Quadratics, functions, and exponentials — the Advanced Math questions that unlock 650+ on the Math section.',
+    lessons: [
+      { title: 'Quadratic Equations — Factoring', sub: 'Find the roots without a formula' },
+      { title: 'Quadratic Equations — The Formula', sub: 'When factoring won\'t work' },
+      { title: 'Functions — What They Really Are', sub: 'f(x) notation, domain, and range' },
+      { title: 'Exponential Growth & Decay', sub: 'Real-world models on the SAT' },
+      { title: 'Polynomials & Rational Expressions', sub: 'Simplifying and operating' },
+      { title: 'Absolute Value & Nonlinear Equations', sub: 'New to the Digital SAT' }
+    ]
+  },
+  data: {
+    title: 'Math — Data & Stats', icon: '📊', accent: 'accent-green',
+    desc: 'Data & Statistics makes up about 15% of Math. Read graphs confidently, understand statistical concepts, and nail the percent problems.',
+    lessons: [
+      { title: 'Percentages & Percent Change', sub: 'Tips, discounts, growth rates' },
+      { title: 'Mean, Median, Mode & Range', sub: 'What each one tells you — and when the SAT tricks you' },
+      { title: 'Reading Charts, Tables & Graphs', sub: 'Extract the right info fast' },
+      { title: 'Scatterplots & Lines of Best Fit', sub: 'Interpret trends and make predictions' },
+      { title: 'Probability & Data Sampling', sub: 'Basic probability and survey analysis' }
+    ]
+  },
+  geometry: {
+    title: 'Math — Geometry & Trig', icon: '📏', accent: 'accent-green',
+    desc: 'Geometry and Trig is about 15% of Math. The SAT gives you a reference sheet — we\'ll teach you how to actually use it.',
+    lessons: [
+      { title: 'Lines, Angles & Triangles', sub: 'The foundational geometry rules' },
+      { title: 'Area, Perimeter & Volume', sub: 'Using the SAT reference formulas' },
+      { title: 'The Pythagorean Theorem', sub: 'Right triangles in every context' },
+      { title: 'Circles — Area, Circumference & Arcs', sub: 'Central angles and arc length' },
+      { title: 'Trigonometry — SOHCAHTOA', sub: 'Sine, cosine, tangent made simple' }
+    ]
+  },
+  practice: {
+    title: 'Full Practice Test', icon: '🎯', accent: 'accent-purple',
+    desc: 'A full-length timed practice test in Digital SAT format. 98 questions. Two sections. Score analysis when you\'re done.',
+    lessons: [
+      { title: 'Reading & Writing — Module 1', sub: '27 questions · 32 minutes' },
+      { title: 'Reading & Writing — Module 2', sub: '27 questions · 32 minutes' },
+      { title: 'Math — Module 1', sub: '22 questions · 35 minutes' },
+      { title: 'Math — Module 2', sub: '22 questions · 35 minutes' }
+    ]
+  }
+};
+
+const LESSON_CONTENT = {
+  strategy_0: {
+    tag: 'Test Strategy',
+    title: 'The Digital SAT — What Actually Changed',
+    body: `
+      <p>If you've heard adults talk about the SAT, they're probably thinking of the old version — three hours, long reading passages, no calculator on half the math. Good news: <strong>that test no longer exists.</strong></p>
+
+      <h3>The New Format at a Glance</h3>
+      <p>The Digital SAT launched in March 2024 and is now the only SAT given anywhere in the world. You take it on a laptop or tablet using an app called <strong>Bluebook</strong>. Here's what the test actually looks like:</p>
+
+      <div class="highlight-box">
+        <strong>Total time:</strong> ~2 hours 14 minutes (plus a 10-minute break)<br>
+        <strong>Total questions:</strong> 98<br>
+        <strong>Two sections:</strong> Reading & Writing | Math<br>
+        <strong>Each section has two modules</strong> — and Module 2 adapts to you
+      </div>
+
+      <h3>Reading & Writing Section</h3>
+      <p>This section has <strong>54 questions</strong> across two 32-minute modules. The biggest change from the old test: passages are now <strong>short</strong> — just 25 to 150 words — and each passage has exactly one question. You don't have to read a 700-word essay anymore. You read a short excerpt, answer one focused question, and move on.</p>
+
+      <h3>Math Section</h3>
+      <p>The Math section has <strong>44 questions</strong> across two 35-minute modules. Here's a change you'll love: <strong>you can use a calculator for all of it</strong>. The Bluebook app includes a free Desmos graphing calculator, which is one of the most powerful tools available. We'll teach you how to use it strategically.</p>
+
+      <h3>No Essay. No Separate Writing Section.</h3>
+      <p>The old SAT had a separate Writing section and an optional Essay. Both are gone. Grammar and writing rules are now tested inside the Reading & Writing section as shorter questions.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">💡 Key Takeaway</div>
+        The Digital SAT is shorter, more focused, and in many ways more fair than the old version. A student who understands the format and practices the right skills can make significant score gains in a matter of weeks.
+      </div>
+    `
+  },
+  strategy_1: {
+    tag: 'Test Strategy',
+    title: 'How Adaptive Scoring Works — and Why It Changes Everything',
+    body: `
+      <p>This is the most important thing to understand about the Digital SAT, and most students don't know it. The test <strong>adapts to you</strong> in real time — and that changes your strategy completely.</p>
+
+      <h3>Section-Level Adaptive Testing</h3>
+      <p>Each section (Reading & Writing, Math) has two modules. Module 1 contains a mix of easy, medium, and hard questions. Based on how you perform in Module 1, the test decides which version of Module 2 to give you:</p>
+
+      <div class="example-box">
+        <div class="ex-label">How it works</div>
+        <strong>Do well in Module 1 →</strong> You get the harder Module 2<br><br>
+        <strong>Struggle in Module 1 →</strong> You get the easier Module 2<br><br>
+        <strong>The harder Module 2 has a higher score ceiling.</strong> Students who get the easier Module 2 cannot reach the top score range, no matter how perfectly they answer those easier questions.
+      </div>
+
+      <h3>What This Means For You</h3>
+      <p>Module 1 is the most important part of the test. It's the gatekeeper. You need to treat Module 1 with full focus and intention — not as a warmup, but as the main event.</p>
+
+      <h3>Scoring Is Weighted by Difficulty</h3>
+      <p>Questions in the harder Module 2 are worth more toward your final score than questions in the easier Module 2. So there's a double benefit to performing well in Module 1: you get harder questions AND those harder questions are worth more.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">💡 Strategy</div>
+        Don't rush Module 1. It's worth spending an extra 10-15 seconds per question to be confident. A handful of wrong answers in Module 1 can route you to the lower-difficulty Module 2 — capping your potential score before Module 2 even starts.
+      </div>
+
+      <h3>Score Range</h3>
+      <p>The SAT is scored from <strong>400 to 1600</strong>. Each section (Reading & Writing, Math) scores from 200 to 800. Your PSAT score of <strong>1000</strong> translates directly — your starting target for June 6th is 1100+, with 1200+ as the reach goal for August 15th. Completely achievable.</p>
+    `
+  },
+  strategy_2: {
+    tag: 'Test Strategy',
+    title: 'Pacing & Time Management',
+    body: `
+      <p>Running out of time is one of the most preventable score killers on the SAT. Let's fix that right now with a simple system.</p>
+
+      <h3>Your Time Budget</h3>
+      <div class="highlight-box">
+        <strong>Reading & Writing:</strong> 32 minutes × 2 modules = 27 questions each<br>
+        → <strong>~71 seconds per question</strong><br><br>
+        <strong>Math:</strong> 35 minutes for 22 questions<br>
+        → <strong>~95 seconds per question</strong>
+      </div>
+
+      <h3>The Two-Pass Strategy</h3>
+      <p>Don't grind on a hard question and let easy ones slip by. Use a two-pass approach:</p>
+      <ul>
+        <li><strong>Pass 1 — Answer what you know.</strong> Move through the module at pace. If a question takes more than 90 seconds, mark it for review and come back.</li>
+        <li><strong>Pass 2 — Return to marked questions.</strong> Use your remaining time on the tough ones. Now you can think more carefully without the clock pressure.</li>
+      </ul>
+
+      <h3>Reading & Writing — Read the Question First</h3>
+      <p>On every Reading & Writing question, read the question <strong>before</strong> reading the passage. This tells you what to look for. You're not reading for general understanding — you're reading to answer one specific question. This alone can save you 15-20 seconds per question.</p>
+
+      <h3>Math — Estimate Before Calculating</h3>
+      <p>Before solving, ask yourself: "Does an approximate answer eliminate any choices?" Often two or three answer choices are obviously wrong (negative when the answer should be positive, way too large, etc.). Eliminating wrong answers takes seconds and protects you from careless errors.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">💡 The Checkpoint Rule</div>
+        At the halfway point of each module, you should have used roughly half the time. If you're behind, speed up slightly. If you're ahead, slow down and double-check your work. This one habit prevents most timing disasters.
+      </div>
+    `
+  },
+  strategy_3: {
+    tag: 'Test Strategy',
+    title: 'The No-Penalty Guessing Rule',
+    body: `
+      <p>This is one of the most underutilized advantages on the Digital SAT, and it's simple: <strong>there is no penalty for wrong answers.</strong></p>
+
+      <h3>What This Means Practically</h3>
+      <p>On the old SAT, a wrong answer deducted a quarter point. Students learned to skip questions they weren't sure about. That rule is completely gone.</p>
+
+      <div class="highlight-box">
+        <strong>Blank answer = 0 points</strong><br>
+        <strong>Wrong answer = 0 points</strong><br>
+        <strong>Right answer = full points</strong><br><br>
+        There is mathematically zero reason to ever leave a question blank.
+      </div>
+
+      <h3>When You Have No Idea</h3>
+      <p>If you're completely stumped, don't think — just pick C (or any letter you choose consistently). The SAT answers are randomly distributed, so no letter is "safer" than another. But picking the same letter every time you truly don't know gives you a ~25% hit rate on your guesses, which is free points.</p>
+
+      <h3>When You Can Eliminate Some Choices</h3>
+      <p>If you can eliminate even one wrong answer, your odds jump from 25% to 33%. Eliminate two, and you're at 50-50. <strong>Always try to eliminate before guessing.</strong></p>
+
+      <div class="example-box">
+        <div class="ex-label">Real Math</div>
+        Say you have 5 questions you can't figure out. If you leave them blank: <strong>+0 points</strong>. If you guess randomly on all 5: statistically <strong>+1.25 points on average</strong>. Over a full test, strategic guessing can add 5-10 points to your score. That's real.
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">💡 Rule to Live By</div>
+        When time is running out, don't leave anything blank. Fill in an answer for every remaining question — even if you have to guess on all of them. You cannot lose points. You can only gain them.
+      </div>
+    `
+  },
+  reading_0: {
+    tag: 'Reading & Writing',
+    title: 'Information & Ideas — Finding the Main Idea',
+    body: `
+      <p>The SAT's Reading & Writing section tests four skill categories. The first — and most common — is <strong>Information & Ideas</strong>, which accounts for 12-14 questions per test. The most basic question type in this category: <em>What is this passage mainly about?</em></p>
+
+      <h3>What the SAT Actually Tests Here</h3>
+      <p>Main idea questions don't just ask you to summarize — they ask you to identify the <strong>central claim or purpose</strong> of a short passage. The correct answer is almost always a statement that is:</p>
+      <ul>
+        <li>Broad enough to cover the whole passage</li>
+        <li>Specific enough to match what the passage actually says</li>
+        <li>Supported by most or all of the passage, not just one sentence</li>
+      </ul>
+
+      <h3>The Four Wrong Answer Traps</h3>
+      <p>The SAT uses the same wrong answer patterns over and over. Learn to spot them:</p>
+      <ul>
+        <li><strong>Too broad</strong> — sounds right but could describe thousands of different passages</li>
+        <li><strong>Too narrow</strong> — only covers one detail, not the whole point</li>
+        <li><strong>True but irrelevant</strong> — factually correct but not what the passage is arguing</li>
+        <li><strong>Opposite</strong> — actually contradicts what the author says</li>
+      </ul>
+
+      <div class="example-box">
+        <div class="ex-label">Practice Passage</div>
+        <em>"Scientists have long assumed that sleep primarily serves a restorative function — allowing the body to repair tissues and consolidate memories. However, a 2019 study suggests a more dynamic role: during sleep, the brain actively flushes out toxic waste products that accumulate during waking hours. This finding implies that chronic sleep deprivation may contribute to neurological disorders by allowing these toxins to build up."</em>
+      </div>
+
+      <p>A main idea question for this passage might read: <em>"Which choice best states the main idea of the text?"</em></p>
+      <ul>
+        <li>A) Sleep is important for physical health. (Too broad)</li>
+        <li>B) A 2019 study found that the brain removes toxins during sleep. (Too narrow — only one detail)</li>
+        <li>C) Recent research suggests sleep plays an active role in clearing harmful substances from the brain. ✓</li>
+        <li>D) Scientists have completely changed their understanding of sleep. (Too extreme — "completely")</li>
+      </ul>
+
+      <div class="tip-box">
+        <div class="tip-label">💡 The Main Idea Formula</div>
+        After reading a passage, try completing this sentence in your head before looking at the answers: <em>"This passage is mainly arguing that ___."</em> Your answer should match the correct choice almost word-for-word in meaning.
+      </div>
+    `
+  },
+  math_0: {
+    tag: 'Math — Algebra',
+    title: 'Linear Equations — One Variable',
+    body: `
+      <p>Before we touch a single number, let's talk about what linear equations actually <em>are</em>. You've used them your whole life without realizing it.</p>
+
+      <h3>Real Life First</h3>
+      <p>You're saving up for AirPods that cost $180. You already have $45 and you earn $15 per hour babysitting. How many hours do you need to work?</p>
+
+      <p>That's a linear equation: <strong>45 + 15h = 180</strong></p>
+
+      <p>Solve it: subtract 45 from both sides → 15h = 135 → divide both sides by 15 → <strong>h = 9 hours</strong>. Done.</p>
+
+      <p>Every single one-variable linear equation on the SAT is this same idea in different clothing. The math never gets harder than this — only the story changes.</p>
+
+      <h3>The Golden Rule</h3>
+      <div class="highlight-box">
+        Whatever you do to one side of an equation, you must do to the other. The equal sign is a scale — keep it balanced.
+      </div>
+
+      <h3>Step-by-Step Method</h3>
+      <ol>
+        <li><strong>Simplify each side.</strong> Distribute, combine like terms.</li>
+        <li><strong>Move variable terms to one side.</strong> Add or subtract.</li>
+        <li><strong>Move constant terms to the other side.</strong></li>
+        <li><strong>Divide by the coefficient.</strong> Isolate the variable.</li>
+        <li><strong>Check your answer.</strong> Plug it back in — takes 10 seconds and catches careless errors.</li>
+      </ol>
+
+      <div class="example-box">
+        <div class="ex-label">SAT-Style Example</div>
+        <em>3(x - 4) = 2x + 7</em><br><br>
+        Step 1: Distribute → <strong>3x - 12 = 2x + 7</strong><br>
+        Step 2: Subtract 2x → <strong>x - 12 = 7</strong><br>
+        Step 3: Add 12 → <strong>x = 19</strong><br>
+        Check: 3(19-4) = 45 and 2(19)+7 = 45 ✓
+      </div>
+
+      <h3>SAT Word Problem Translation</h3>
+      <p>The SAT almost always wraps these in a word problem. Here's your translation guide:</p>
+      <ul>
+        <li>"is" or "equals" → <strong>=</strong></li>
+        <li>"more than" or "increased by" → <strong>+</strong></li>
+        <li>"less than" or "decreased by" → <strong>−</strong></li>
+        <li>"times" or "of" → <strong>×</strong></li>
+        <li>"per" or "each" → multiply by the variable</li>
+      </ul>
+
+      <div class="tip-box">
+        <div class="tip-label">💡 Always Check</div>
+        On SAT word problems, re-read the last sentence after you solve. The question often asks for something <em>other</em> than x — like "total cost" or "number of items remaining." Solve for x, then take one more step.
+      </div>
+    `
+  }
+};
+
+const QUIZ_DATA = {
+  strategy: [
+    {
+      q: "The Digital SAT is adaptive. What does this mean for a student's score?",
+      options: [
+        "All students receive the same questions in both modules",
+        "Students who perform well in Module 1 are routed to a harder Module 2 with a higher score ceiling",
+        "The difficulty of questions changes based on each individual answer",
+        "Module 2 is always harder than Module 1 for every student"
+      ],
+      correct: 1,
+      explain: "The Digital SAT uses section-level adaptive testing. Module 2's difficulty is determined by your Module 1 performance. Students routed to the harder Module 2 can reach higher scores — making Module 1 the most strategically important part of the test."
+    },
+    {
+      q: "You're 20 minutes into a 32-minute Reading & Writing module and you've answered 18 of 27 questions. You have 9 questions left and 12 minutes. What should you do?",
+      options: [
+        "Speed up significantly — you're running out of time",
+        "Your pace is fine — you're slightly ahead, keep going steadily",
+        "Skip the remaining questions and start reviewing",
+        "Guess on all 9 to save time for review"
+      ],
+      correct: 1,
+      explain: "At 20 minutes into a 32-minute module, you should have used about 63% of your time — meaning you should have answered about 17 questions. You're at 18 questions, so you're slightly ahead of pace. No need to rush or panic. Continue steadily."
+    },
+    {
+      q: "There are 3 questions left on the Math section and you have 30 seconds remaining. You have no idea how to solve any of them. What is the best strategy?",
+      options: [
+        "Leave them blank — wrong answers hurt your score",
+        "Spend all 30 seconds trying to solve the hardest one",
+        "Quickly fill in an answer (any answer) for all three",
+        "Skip the two harder ones and only attempt the easier one"
+      ],
+      correct: 2,
+      explain: "The Digital SAT has NO penalty for wrong answers. A blank and a wrong answer both give you zero points. But a guessed answer gives you a 25% chance of scoring. Always fill in something — never leave a question blank."
+    },
+    {
+      q: "When reading a Reading & Writing passage, what should you do FIRST?",
+      options: [
+        "Read the entire passage carefully, then look at the question",
+        "Read the question before reading the passage so you know what to look for",
+        "Read the answer choices first to predict what the passage will say",
+        "Read the first and last sentence of the passage only"
+      ],
+      correct: 1,
+      explain: "Read the question first. This tells you exactly what information you need from the passage — you're not reading for general comprehension, you're reading to answer one specific question. This technique alone can save 15-20 seconds per question."
+    },
+    {
+      q: "A student scores in the top 30% on Reading & Writing Module 1. What happens next?",
+      options: [
+        "They are given the same Module 2 as everyone else",
+        "They skip Module 2 and proceed directly to Math",
+        "They are routed to the higher-difficulty Module 2 with a higher score ceiling",
+        "They are given fewer questions in Module 2 as a reward"
+      ],
+      correct: 2,
+      explain: "Strong performance in Module 1 routes you to the harder Module 2. This is the path to a high score — the harder Module 2 has a higher maximum score potential. Students who get the easier Module 2 cannot score above a certain threshold regardless of how well they do."
+    }
+  ],
+  reading: [
+    {
+      passage: "Marine biologists have traditionally classified coral reefs as either 'healthy' or 'degraded' based on coral cover percentage. A 2023 study challenges this binary framework, demonstrating that reefs with low coral cover can still maintain high biodiversity and ecological function if certain fish species are present. The researchers argue that management strategies focused solely on coral cover may inadvertently neglect reefs that, despite appearances, are ecologically vital.",
+      q: "Which choice best states the main idea of the text?",
+      options: [
+        "Coral cover percentage is the most reliable indicator of reef health",
+        "Fish species diversity is more important than coral cover in all reef ecosystems",
+        "The traditional measure of reef health may overlook reefs that remain ecologically important",
+        "Marine biologists have recently abandoned all existing reef classification systems"
+      ],
+      correct: 2,
+      explain: "The passage argues that the traditional binary framework (healthy vs degraded based on coral cover) may miss reefs that are ecologically vital despite low coral cover. Choice C captures this central claim. Choice A is the opposite of the argument. Choice B is too extreme ('in all reef ecosystems'). Choice D uses 'abandoned all' — too extreme."
+    },
+    {
+      passage: "The word 'nice' originally meant 'foolish or stupid' in the 13th century, derived from the Latin 'nescius' (ignorant). Over the following centuries, its meaning shifted to 'wanton,' then 'lascivious,' then 'strange,' before gradually acquiring the positive meaning of 'pleasant' that it carries today. Linguists call this process amelioration — the tendency of a word's meaning to become more positive over time.",
+      q: "As used in the passage, 'amelioration' most nearly means:",
+      options: [
+        "The process by which words fall out of common usage",
+        "The shift of a word's meaning toward a more positive connotation over time",
+        "The tendency of languages to borrow words from Latin",
+        "A change in pronunciation that occurs across generations"
+      ],
+      correct: 1,
+      explain: "Vocabulary in context questions require you to use the passage's own definition. The passage defines amelioration immediately after using the word: 'the tendency of a word's meaning to become more positive over time.' Choice B matches this definition exactly. Never rely on outside knowledge — always use the passage."
+    },
+    {
+      passage: "Text 1: Electric vehicles (EVs) represent a critical step toward reducing transportation emissions. Their adoption at scale could meaningfully slow climate change.\n\nText 2: While EVs reduce tailpipe emissions, critics note that the electricity powering them often comes from fossil fuels. Until the energy grid is substantially decarbonized, the climate benefits of EVs may be limited.",
+      q: "How would the author of Text 2 most likely respond to the claim made in Text 1?",
+      options: [
+        "By agreeing that EVs are the most effective solution to climate change",
+        "By arguing that the benefits of EVs depend on the cleanliness of the electricity grid",
+        "By claiming that tailpipe emissions are not a significant contributor to climate change",
+        "By suggesting that transportation emissions are impossible to reduce"
+      ],
+      correct: 1,
+      explain: "Cross-text questions ask you to identify the relationship between two passages. Text 2 doesn't reject EVs entirely — it qualifies the claim in Text 1. Text 2's author would say: 'EVs help, BUT only if the grid is clean.' Choice B captures this nuanced position. The other choices misrepresent Text 2's argument."
+    }
+  ],
+  math: [
+    {
+      q: "A gym membership costs $40 per month plus a one-time registration fee of $25. If a member has paid a total of $265, for how many months has she been a member?",
+      options: ["5", "6", "7", "8"],
+      correct: 1,
+      explain: "Set up the equation: 25 + 40m = 265. Subtract 25 from both sides: 40m = 240. Divide by 40: m = 6. She has been a member for 6 months. Always re-read: the question asks for months, which is m. No extra step needed here."
+    },
+    {
+      q: "If 3x + 7 = 4x - 5, what is the value of x?",
+      options: ["2", "7", "12", "−2"],
+      correct: 2,
+      explain: "Subtract 3x from both sides: 7 = x - 5. Add 5 to both sides: x = 12. Check: 3(12)+7 = 43 and 4(12)-5 = 43. ✓ The trap answer is 2, which comes from mishandling the subtraction. Always check your answer by plugging it back in."
+    },
+    {
+      q: "A store sells notebooks for $3 each and pens for $1.50 each. Maya buys a total of 10 items and spends $22.50. How many notebooks did Maya buy?",
+      options: ["3", "4", "5", "6"],
+      correct: 2,
+      explain: "Let n = notebooks, p = pens. Two equations: n + p = 10 and 3n + 1.5p = 22.50. From the first equation: p = 10 - n. Substitute: 3n + 1.5(10-n) = 22.50 → 3n + 15 - 1.5n = 22.50 → 1.5n = 7.5 → n = 5. Maya bought 5 notebooks."
+    }
+  ]
+};
+
+// ════════════════════════════════════
+//  STATE
+// ════════════════════════════════════
+let currentProfile = null;
+let currentModule = null;
+let currentLessonIndex = 0;
+let currentPage = 'homePage';
+let pageHistory = [];
+let quizState = { questions: [], current: 0, score: 0, answered: false };
+
+// ════════════════════════════════════
+//  PROFILE SYSTEM
+// ════════════════════════════════════
+function getProfiles() {
+  return JSON.parse(localStorage.getItem('satProfiles') || '[]');
+}
+function saveProfiles(profiles) {
+  localStorage.setItem('satProfiles', JSON.stringify(profiles));
+}
+function getProfileData(name) {
+  return JSON.parse(localStorage.getItem('satData_' + name) || JSON.stringify({
+    name, streak: 0, lastVisit: null,
+    progress: { strategy:0, reading:0, writing:0, math:0, advmath:0, data:0, geometry:0, practice:0 },
+    quizScores: {},
+    lessonsCompleted: {}
+  }));
+}
+function saveProfileData(data) {
+  localStorage.setItem('satData_' + data.name, JSON.stringify(data));
+}
+
+function getAvatarClass(name) {
+  const colors = ['avatar-y', 'avatar-p', 'avatar-g'];
+  const idx = name.charCodeAt(0) % colors.length;
+  return colors[idx];
+}
+function getInitials(name) {
+  return name.slice(0,2).toUpperCase();
+}
+
+function renderProfileScreen() {
+  const profiles = getProfiles();
+  const container = document.getElementById('profileCards');
+  container.innerHTML = '';
+
+  // Pre-populate Eriana and Liah if no profiles exist
+  if (profiles.length === 0) {
+    const defaultProfiles = ['Eriana', 'Liah'];
+    defaultProfiles.forEach(n => {
+      if (!profiles.find(p => p === n)) profiles.push(n);
+    });
+    saveProfiles(profiles);
+  }
+
+  profiles.forEach(name => {
+    const data = getProfileData(name);
+    const totalProgress = Object.values(data.progress).reduce((a,b) => a+b, 0) / (Object.keys(data.progress).length * 100);
+    const pct = Math.round(totalProgress * 100);
+    const card = document.createElement('div');
+    card.className = 'profile-card';
+    card.onclick = () => loadProfile(name);
+    card.innerHTML = `
+      <div class="profile-avatar ${getAvatarClass(name)}">${getInitials(name)}</div>
+      <div class="profile-info">
+        <div class="profile-name">${name}</div>
+        <div class="profile-meta">${pct > 0 ? pct + '% complete' : 'Just starting out'}</div>
+      </div>
+      <div class="profile-streak">🔥 ${data.streak}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function loadProfile(name) {
+  currentProfile = getProfileData(name);
+  updateStreak();
+  saveProfileData(currentProfile);
+
+  document.getElementById('profileScreen').classList.remove('active');
+  document.getElementById('appScreen').classList.add('active');
+
+  const av = document.getElementById('topbarAvatar');
+  av.className = 'topbar-avatar ' + getAvatarClass(name);
+  av.textContent = getInitials(name);
+
+  renderHomeScreen();
+  showPage('homePage', 'nav-home');
+}
+
+function updateStreak() {
+  const today = new Date().toDateString();
+  if (currentProfile.lastVisit !== today) {
+    const yesterday = new Date(Date.now() - 86400000).toDateString();
+    if (currentProfile.lastVisit === yesterday) {
+      currentProfile.streak++;
+    } else if (currentProfile.lastVisit !== today) {
+      currentProfile.streak = currentProfile.streak > 0 && currentProfile.lastVisit !== yesterday ? 0 : currentProfile.streak;
+      if (!currentProfile.lastVisit) currentProfile.streak = 1;
+      else if (currentProfile.lastVisit !== yesterday) currentProfile.streak = 1;
+    }
+    currentProfile.lastVisit = today;
+  }
+}
+
+function switchProfile() {
+  document.getElementById('appScreen').classList.remove('active');
+  document.getElementById('profileScreen').classList.add('active');
+  renderProfileScreen();
+}
+
+function showNewProfileForm() {
+  document.getElementById('newProfileForm').classList.add('open');
+  document.getElementById('newProfileName').focus();
+}
+function hideNewProfileForm() {
+  document.getElementById('newProfileForm').classList.remove('open');
+  document.getElementById('newProfileName').value = '';
+}
+function createProfile() {
+  const name = document.getElementById('newProfileName').value.trim();
+  if (!name) return;
+  const profiles = getProfiles();
+  if (!profiles.includes(name)) {
+    profiles.push(name);
+    saveProfiles(profiles);
+  }
+  hideNewProfileForm();
+  loadProfile(name);
+}
+
+// ════════════════════════════════════
+//  HOME SCREEN
+// ════════════════════════════════════
+function renderHomeScreen() {
+  if (!currentProfile) return;
+  document.getElementById('heroName').textContent = currentProfile.name;
+
+  // Countdown
+  const now = new Date();
+  let nextDate = SAT_DATES.find(d => d.date > now);
+  if (!nextDate) nextDate = SAT_DATES[SAT_DATES.length - 1];
+  const days = Math.ceil((nextDate.date - now) / 86400000);
+  document.getElementById('nextTestDate').textContent = nextDate.label;
+  document.getElementById('daysCount').textContent = days > 0 ? days : 'Today!';
+
+  // Stats
+  document.getElementById('statStreak').textContent = currentProfile.streak;
+  const totalPct = Math.round(Object.values(currentProfile.progress).reduce((a,b)=>a+b,0) / (Object.keys(currentProfile.progress).length * 100) * 100);
+  document.getElementById('statCompleted').textContent = totalPct + '%';
+
+  const scores = Object.values(currentProfile.quizScores);
+  if (scores.length > 0) {
+    const avg = scores.reduce((a,b) => a + b.pct, 0) / scores.length;
+    const est = Math.round(800 + avg * 8);
+    document.getElementById('statScore').textContent = est;
+  } else {
+    document.getElementById('statScore').textContent = '—';
+  }
+
+  // Module progress
+  Object.keys(currentProfile.progress).forEach(mod => {
+    const pct = currentProfile.progress[mod];
+    const bar = document.getElementById('prog-' + mod);
+    const badge = document.getElementById('badge-' + mod);
+    const meta = document.getElementById('meta-' + mod);
+    if (bar) bar.style.width = pct + '%';
+    if (badge) {
+      if (pct === 0) { badge.textContent = 'Start'; badge.className = 'module-badge badge-new'; }
+      else if (pct === 100) { badge.textContent = '✓ Done'; badge.className = 'module-badge badge-done'; }
+      else { badge.textContent = pct + '%'; badge.className = 'module-badge badge-pct'; }
+    }
+    const m = MODULES[mod];
+    if (m && meta) {
+      const done = Math.floor(m.lessons.length * pct / 100);
+      meta.textContent = mod === 'practice' ? (pct > 0 ? 'Attempted' : 'Not attempted') : `${done} / ${m.lessons.length} done`;
+    }
+  });
+
+  renderProgressPage();
+}
+
+// ════════════════════════════════════
+//  MODULE & LESSON NAVIGATION
+// ════════════════════════════════════
+function openModule(modKey) {
+  currentModule = modKey;
+  const mod = MODULES[modKey];
+  if (!mod) return;
+
+  document.getElementById('moduleHeroArea').innerHTML = `
+    <div class="module-hero-icon">${mod.icon}</div>
+    <div class="module-hero-title">${mod.title}</div>
+    <div class="module-hero-desc">${mod.desc}</div>
+  `;
+
+  const lessonList = document.getElementById('lessonListArea');
+  lessonList.innerHTML = '';
+  mod.lessons.forEach((lesson, i) => {
+    const key = modKey + '_' + i;
+    const done = currentProfile.lessonsCompleted[key];
+    const hasContent = LESSON_CONTENT[key];
+    const hasQuiz = QUIZ_DATA[modKey] && i === 0;
+    const item = document.createElement('div');
+    item.className = 'lesson-item';
+    item.onclick = () => {
+      if (hasContent) openLesson(modKey, i);
+      else if (hasQuiz || QUIZ_DATA[modKey]) openQuiz(modKey);
+    };
+    item.innerHTML = `
+      <div class="lesson-num ${done ? 'done' : (i === 0 ? 'active-lesson' : '')}">${done ? '✓' : (i + 1)}</div>
+      <div class="lesson-info">
+        <div class="lesson-title">${lesson.title}</div>
+        <div class="lesson-sub">${lesson.sub}</div>
+      </div>
+      <div class="lesson-arrow">›</div>
+    `;
+    lessonList.appendChild(item);
+  });
+
+  // Add quiz button if available
+  if (QUIZ_DATA[modKey]) {
+    const quizItem = document.createElement('div');
+    quizItem.className = 'lesson-item';
+    quizItem.style.borderColor = 'var(--yellow)';
+    quizItem.onclick = () => openQuiz(modKey);
+    quizItem.innerHTML = `
+      <div class="lesson-num active-lesson">⚡</div>
+      <div class="lesson-info">
+        <div class="lesson-title">Practice Quiz</div>
+        <div class="lesson-sub">${QUIZ_DATA[modKey].length} questions · Instant feedback</div>
+      </div>
+      <div class="lesson-arrow" style="color:var(--yellow)">›</div>
+    `;
+    lessonList.appendChild(quizItem);
+  }
+
+  showPage('modulePage', null, true);
+  document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">${mod.icon}</span> ${mod.title}`;
+}
+
+function openLesson(modKey, index) {
+  currentModule = modKey;
+  currentLessonIndex = index;
+  const key = modKey + '_' + index;
+  const content = LESSON_CONTENT[key];
+
+  if (!content) {
+    // Coming soon
+    document.getElementById('lessonContentArea').innerHTML = `
+      <div style="text-align:center;padding:3rem 1rem;">
+        <div style="font-size:3rem;margin-bottom:1rem;">🚧</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:0.5rem;">Coming Soon</div>
+        <div style="color:var(--text2);font-size:0.9rem;line-height:1.6;">This lesson is being built. Check back in the next session — new content is added regularly.</div>
+      </div>
+    `;
+    showPage('lessonPage', null, true);
+    document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">SAT</span> Prep`;
+    return;
+  }
+
+  // Mark as completed
+  currentProfile.lessonsCompleted[key] = true;
+  const mod = MODULES[modKey];
+  const totalLessons = mod.lessons.length;
+  const done = Object.keys(currentProfile.lessonsCompleted).filter(k => k.startsWith(modKey + '_')).length;
+  currentProfile.progress[modKey] = Math.min(100, Math.round((done / totalLessons) * 100));
+  saveProfileData(currentProfile);
+
+  document.getElementById('lessonContentArea').innerHTML = `
+    <div class="lesson-tag">${content.tag}</div>
+    <div class="lesson-title-big">${content.title}</div>
+    <div class="lesson-body">${content.body}</div>
+  `;
+
+  const mod2 = MODULES[modKey];
+  const prevBtn = document.getElementById('btnLessonPrev');
+  const nextBtn = document.getElementById('btnLessonNext');
+  prevBtn.style.display = index === 0 ? 'none' : 'block';
+  nextBtn.textContent = index < mod2.lessons.length - 1 ? 'Next Lesson →' : 'Take the Quiz →';
+
+  showPage('lessonPage', null, true);
+  document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">${mod.icon}</span> ${mod.title}`;
+  document.getElementById('lessonPage').scrollTop = 0;
+}
+
+function lessonNav(dir) {
+  const mod = MODULES[currentModule];
+  const newIndex = currentLessonIndex + dir;
+  if (newIndex < 0) return;
+  if (newIndex >= mod.lessons.length) {
+    openQuiz(currentModule);
+    return;
+  }
+  openLesson(currentModule, newIndex);
+}
+
+// ════════════════════════════════════
+//  QUIZ SYSTEM
+// ════════════════════════════════════
+function openQuiz(modKey) {
+  const questions = QUIZ_DATA[modKey];
+  if (!questions) return;
+  quizState = { modKey, questions, current: 0, score: 0, answered: false };
+  renderQuizQuestion();
+  showPage('quizPage', null, true);
+  const mod = MODULES[modKey];
+  document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">⚡</span> Quiz`;
+}
+
+function renderQuizQuestion() {
+  const { questions, current } = quizState;
+  const total = questions.length;
+  const q = questions[current];
+
+  document.getElementById('quizProgressFill').style.width = (current / total * 100) + '%';
+  document.getElementById('quizCounter').textContent = `${current + 1} / ${total}`;
+
+  quizState.answered = false;
+
+  let html = `<div class="quiz-qnum">Question ${current + 1} of ${total}</div>`;
+
+  if (q.passage) {
+    html += `<div class="quiz-passage">${q.passage.replace(/\n/g, '<br><br>')}</div>`;
+  }
+
+  html += `<div class="quiz-question">${q.q}</div><div class="quiz-options">`;
+  const letters = ['A','B','C','D'];
+  q.options.forEach((opt, i) => {
+    html += `<div class="quiz-option" id="opt_${i}" onclick="selectAnswer(${i})">
+      <div class="option-letter">${letters[i]}</div>
+      <div>${opt}</div>
+    </div>`;
+  });
+  html += '</div>';
+  html += `<div class="quiz-explanation" id="quizExplain"></div>`;
+  html += `<button class="btn-next-q" id="btnNextQ" onclick="nextQuestion()">
+    ${current === total - 1 ? 'See Results' : 'Next Question →'}
+  </button>`;
+
+  document.getElementById('quizBodyArea').innerHTML = html;
+}
+
+function selectAnswer(idx) {
+  if (quizState.answered) return;
+  quizState.answered = true;
+
+  const q = quizState.questions[quizState.current];
+  const isCorrect = idx === q.correct;
+  if (isCorrect) quizState.score++;
+
+  const opts = document.querySelectorAll('.quiz-option');
+  opts.forEach((el, i) => {
+    el.classList.add('answered');
+    if (i === q.correct) el.classList.add('correct');
+    else if (i === idx && !isCorrect) el.classList.add('wrong');
+  });
+
+  const explain = document.getElementById('quizExplain');
+  explain.className = 'quiz-explanation show';
+  explain.innerHTML = `
+    <div class="explanation-header ${isCorrect ? 'correct' : 'wrong'}">
+      ${isCorrect ? '✓ Correct!' : '✗ Not quite'}
+    </div>
+    ${q.explain}
+  `;
+
+  document.getElementById('btnNextQ').classList.add('show');
+}
+
+function nextQuestion() {
+  quizState.current++;
+  if (quizState.current >= quizState.questions.length) {
+    showQuizResults();
+  } else {
+    renderQuizQuestion();
+  }
+}
+
+function showQuizResults() {
+  const { score, questions, modKey } = quizState;
+  const total = questions.length;
+  const pct = Math.round(score / total * 100);
+
+  // Save score
+  currentProfile.quizScores[modKey] = { score, total, pct, date: new Date().toISOString() };
+  if (pct >= 70) {
+    currentProfile.progress[modKey] = Math.max(currentProfile.progress[modKey], 80);
+  }
+  saveProfileData(currentProfile);
+  renderHomeScreen();
+
+  let msg, sub;
+  if (pct >= 90) { msg = "Outstanding! 🌟"; sub = "You've got this section locked down. Keep that energy going into the next module."; }
+  else if (pct >= 70) { msg = "Solid work! 💪"; sub = "You understand the material. Review the questions you missed and try again to push toward 90%+."; }
+  else if (pct >= 50) { msg = "Good start! 📚"; sub = "Go back through the lessons for this module, then retake the quiz. You're closer than you think."; }
+  else { msg = "Keep pushing! 🔥"; sub = "This section needs more practice. Review the lessons carefully — the patterns will click. You've got this."; }
+
+  document.getElementById('quizBodyArea').innerHTML = `
+    <div class="quiz-results fade-in">
+      <div class="results-score">${pct}%</div>
+      <div class="results-label">${score} out of ${total} correct</div>
+      <div class="results-msg">${msg}</div>
+      <div class="results-sub">${sub}</div>
+      <div class="results-btns">
+        <button class="btn-retry" onclick="openQuiz('${modKey}')">Retry Quiz</button>
+        <button class="btn-continue" onclick="goBack(); goBack();">Back to Modules</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('quizProgressFill').style.width = '100%';
+}
+
+// ════════════════════════════════════
+//  PROGRESS PAGE
+// ════════════════════════════════════
+function renderProgressPage() {
+  if (!currentProfile) return;
+
+  const scores = currentProfile.quizScores;
+  const allPcts = Object.values(scores).map(s => s.pct);
+  let estScore = '—';
+  if (allPcts.length > 0) {
+    const avg = allPcts.reduce((a,b)=>a+b,0) / allPcts.length;
+    estScore = Math.round(900 + avg * 7);
+  }
+
+  document.getElementById('projectedScore').textContent = estScore;
+
+  const container = document.getElementById('progressCards');
+  container.innerHTML = '';
+
+  Object.keys(MODULES).forEach(mod => {
+    const m = MODULES[mod];
+    const pct = currentProfile.progress[mod] || 0;
+    const quizData = scores[mod];
+    const card = document.createElement('div');
+    card.className = 'score-card';
+    card.innerHTML = `
+      <div class="score-card-header">
+        <div class="score-card-icon">${m.icon}</div>
+        <div class="score-card-title">${m.title}</div>
+        <div class="score-card-pct">${pct}%</div>
+      </div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-fill" style="width:${pct}%"></div>
+      </div>
+      ${quizData ? `<div style="font-size:0.75rem;color:var(--text2);margin-top:8px;">Last quiz: ${quizData.score}/${quizData.total} (${quizData.pct}%)</div>` : ''}
+    `;
+    container.appendChild(card);
+  });
+}
+
+// ════════════════════════════════════
+//  STRATEGY TIPS PAGE
+// ════════════════════════════════════
+function renderStrategyPage() {
+  const tips = [
+    { icon: '🎯', color: 'icon-y', title: 'Module 1 is the key', body: 'The Digital SAT adapts based on your Module 1 performance. Students routed to the harder Module 2 have access to a higher score ceiling. Treat Module 1 with maximum focus — it is not a warmup.' },
+    { icon: '📖', color: 'icon-p', title: 'Read the question first', body: 'On every Reading & Writing question, read the question before the passage. This tells you exactly what to look for. You are not reading for general comprehension — you are hunting for one specific piece of information.' },
+    { icon: '🚫', color: 'icon-y', title: 'Never leave a blank answer', body: 'There is no penalty for wrong answers on the Digital SAT. A blank and a wrong answer both give you zero points. A guessed answer gives you a 25% chance of points. Always fill in something.' },
+    { icon: '⏱️', color: 'icon-g', title: 'Use the two-pass strategy', body: 'In each module, do a first pass answering everything you know confidently. Mark tough questions for review. Then use remaining time on the hard ones. This prevents easy questions from slipping by while you grind on a hard one.' },
+    { icon: '🔢', color: 'icon-y', title: 'Use Desmos strategically', body: 'The Bluebook app includes a free Desmos graphing calculator for the entire Math section. You can graph equations, check your algebra, and solve systems visually. Learn to use it — it is a major advantage.' },
+    { icon: '✂️', color: 'icon-p', title: 'Eliminate before guessing', body: 'On multiple choice questions, eliminating even one wrong answer changes your odds from 25% to 33%. Eliminating two gives you 50/50. Always try to cross off wrong answers before making your final choice.' },
+    { icon: '📅', color: 'icon-g', title: 'June 6 is your practice run', body: 'Your first SAT date is June 6. Treat it as a real test — go in prepared — but also as a high-stakes practice run. The experience of the real test environment will help you perform even better on August 15.' },
+    { icon: '🧠', color: 'icon-p', title: 'Wrong answer traps in Reading', body: 'The SAT uses four wrong answer types: too broad, too narrow, true but irrelevant, and the opposite of what the passage says. Learn to spot these patterns and eliminating wrong answers becomes fast and reliable.' },
+    { icon: '💤', color: 'icon-g', title: 'Sleep beats cramming', body: 'The night before the test, sleep matters more than last-minute studying. A well-rested brain processes information faster and makes fewer careless errors. Stop studying by 9pm the night before test day.' }
+  ];
+
+  const container = document.getElementById('strategyCards');
+  container.innerHTML = '';
+  tips.forEach((tip, i) => {
+    const card = document.createElement('div');
+    card.className = 'strategy-card';
+    card.innerHTML = `
+      <div class="strat-header" onclick="toggleStrat(this)">
+        <div class="strat-icon ${tip.color}">${tip.icon}</div>
+        <div class="strat-title">${tip.title}</div>
+        <div class="strat-toggle">▼</div>
+      </div>
+      <div class="strat-body">${tip.body}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function toggleStrat(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.strat-toggle');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+// ════════════════════════════════════
+//  PAGE NAVIGATION
+// ════════════════════════════════════
+function showPage(pageId, navId, pushHistory) {
+  if (pushHistory && currentPage !== pageId) {
+    pageHistory.push(currentPage);
+  }
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  currentPage = pageId;
+
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (navId) document.getElementById(navId).classList.add('active');
+
+  const backBtn = document.getElementById('topbarBack');
+  const isTopLevel = ['homePage','progressPage','strategyTipsPage'].includes(pageId);
+  backBtn.classList.toggle('visible', !isTopLevel);
+
+  if (pageId === 'homePage') {
+    document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">SAT</span> Prep`;
+    renderHomeScreen();
+  }
+  if (pageId === 'progressPage') {
+    document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">📈</span> Progress`;
+    renderProgressPage();
+  }
+  if (pageId === 'strategyTipsPage') {
+    document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">💡</span> Strategy`;
+    renderStrategyPage();
+  }
+
+  window.scrollTo(0,0);
+  const activePage = document.getElementById(pageId);
+  if (activePage) activePage.scrollTop = 0;
+}
+
+function goBack() {
+  if (pageHistory.length > 0) {
+    const prev = pageHistory.pop();
+    showPage(prev, prev === 'homePage' ? 'nav-home' : null, false);
+  } else {
+    showPage('homePage', 'nav-home', false);
+  }
+}
+
+// ════════════════════════════════════
+//  THEME
+// ════════════════════════════════════
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  const newTheme = isDark ? 'light' : 'dark';
+  html.setAttribute('data-theme', newTheme);
+  const icon = newTheme === 'dark' ? '🌙' : '☀️';
+  ['themeBtn','themeBtnProfile'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = icon;
+  });
+  localStorage.setItem('satTheme', newTheme);
+}
+
+// ════════════════════════════════════
+//  INIT
+// ════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('satTheme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  const icon = saved === 'dark' ? '🌙' : '☀️';
+  ['themeBtn','themeBtnProfile'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = icon;
+  });
+  renderProfileScreen();
+
+  document.getElementById('newProfileName').addEventListener('keydown', e => {
+    if (e.key === 'Enter') createProfile();
+  });
+});
+</script>
+</body>
+</html>
