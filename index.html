@@ -83,6 +83,19 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 }
 .orb1 { width: 400px; height: 400px; background: var(--yellow); top: -100px; right: -100px; }
 .orb2 { width: 300px; height: 300px; background: var(--pink); bottom: -50px; left: -80px; }
+.profile-wallpaper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+#profileScreen > *:not(.profile-wallpaper) {
+  position: relative;
+  z-index: 1;
+}
+
 
 .profile-logo {
   font-family: 'Syne', sans-serif;
@@ -892,6 +905,71 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 /* Utility */
 .mt-1 { margin-top: 0.5rem; }
 .divider { height: 1px; background: var(--border); margin: 1rem 0; }
+
+.reset-module-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px dashed var(--border2);
+  border-radius: 12px;
+  padding: 0.75rem;
+  color: var(--text3);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin: 0 0 1.5rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.reset-module-btn:hover { border-color: var(--red); color: var(--red); }
+
+.confirm-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+}
+.confirm-box {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 18px;
+  padding: 1.5rem;
+  max-width: 320px;
+  width: 100%;
+}
+.confirm-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.confirm-sub {
+  font-size: 0.85rem; color: var(--text2);
+  line-height: 1.6; margin-bottom: 1.25rem;
+}
+.confirm-btns { display: flex; gap: 0.625rem; }
+.confirm-cancel {
+  flex: 1; padding: 0.75rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  color: var(--text2);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem; cursor: pointer;
+}
+.confirm-danger {
+  flex: 1; padding: 0.75rem;
+  background: #FF6B6B22;
+  border: 1px solid #FF6B6B44;
+  border-radius: 10px;
+  color: #FF6B6B;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.875rem; cursor: pointer;
+}
+.confirm-danger:hover { background: #FF6B6B33; }
+
 </style>
 </head>
 <body>
@@ -901,8 +979,124 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 <!-- ═══ PROFILE SCREEN ═══ -->
 <div id="profileScreen" class="screen active">
   <button class="theme-toggle-topbar" onclick="toggleTheme()" id="themeBtnProfile" style="position:absolute;top:1rem;right:1rem;z-index:10;">🌙</button>
-  <div class="profile-bg-orb orb1"></div>
-  <div class="profile-bg-orb orb2"></div>
+
+  <div class="profile-wallpaper" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 380 780" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <rect width="380" height="780" fill="#0F0F13"/>
+      <g opacity="0.13">
+        <rect x="22" y="108" width="172" height="108" rx="7" fill="none" stroke="#FFD93D" stroke-width="1"/>
+        <rect x="28" y="114" width="160" height="96" rx="4" fill="none" stroke="#FFD93D" stroke-width="0.5"/>
+        <line x1="48" y1="132" x2="174" y2="132" stroke="#FFD93D" stroke-width="0.6"/>
+        <line x1="48" y1="142" x2="158" y2="142" stroke="#FFD93D" stroke-width="0.6"/>
+        <line x1="48" y1="152" x2="166" y2="152" stroke="#FFD93D" stroke-width="0.6"/>
+        <line x1="48" y1="162" x2="150" y2="162" stroke="#FFD93D" stroke-width="0.6"/>
+        <rect x="28" y="120" width="40" height="26" rx="3" fill="none" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="34" y1="127" x2="62" y2="127" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="34" y1="134" x2="58" y2="134" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="34" y1="141" x2="60" y2="141" stroke="#FF6B9D" stroke-width="0.5"/>
+        <rect x="10" y="216" width="194" height="9" rx="4.5" fill="none" stroke="#FFD93D" stroke-width="0.7"/>
+        <rect x="26" y="223" width="162" height="5" rx="2.5" fill="none" stroke="#FFD93D" stroke-width="0.4"/>
+      </g>
+      <g transform="translate(202, 96)" opacity="0.1">
+        <text font-size="8" fill="#FFD93D" font-family="monospace">Which choice best states</text>
+        <text y="12" font-size="8" fill="#FFD93D" font-family="monospace">the main idea?</text>
+        <text y="26" font-size="7.5" fill="#FFD93D" font-family="monospace">○ A) Prior findings confirmed</text>
+        <text y="38" font-size="7.5" fill="#FFD93D" font-family="monospace">● B) New role discovered</text>
+        <text y="50" font-size="7.5" fill="#FFD93D" font-family="monospace">○ C) Scientists disagree</text>
+        <text y="62" font-size="7.5" fill="#FFD93D" font-family="monospace">○ D) Study was flawed</text>
+      </g>
+      <line x1="196" y1="145" x2="202" y2="130" stroke="#FFD93D" stroke-width="0.4" stroke-opacity="0.08" stroke-dasharray="3,3"/>
+      <g opacity="0.11">
+        <rect x="28" y="272" width="148" height="20" rx="3" fill="none" stroke="#FF6B9D" stroke-width="0.7"/>
+        <rect x="28" y="290" width="152" height="20" rx="3" fill="none" stroke="#FFD93D" stroke-width="0.7"/>
+        <rect x="28" y="308" width="145" height="20" rx="3" fill="none" stroke="#FF6B9D" stroke-width="0.7"/>
+        <rect x="28" y="326" width="150" height="20" rx="3" fill="none" stroke="#FFD93D" stroke-width="0.7"/>
+        <rect x="28" y="344" width="140" height="20" rx="3" fill="none" stroke="#FF6B9D" stroke-width="0.7"/>
+        <line x1="28" y1="270" x2="28" y2="366" stroke="#FF6B9D" stroke-width="2"/>
+        <line x1="31" y1="269" x2="31" y2="365" stroke="#FFD93D" stroke-width="1.2"/>
+      </g>
+      <g transform="translate(192, 278)" opacity="0.09">
+        <text font-size="8" fill="#FF6B9D" font-family="monospace">The word "lucid" most</text>
+        <text y="12" font-size="8" fill="#FF6B9D" font-family="monospace">nearly means:</text>
+        <text y="26" font-size="7.5" fill="#FF6B9D" font-family="monospace">○ A) emotional</text>
+        <text y="38" font-size="7.5" fill="#FF6B9D" font-family="monospace">● B) clear and easy</text>
+        <text y="50" font-size="7.5" fill="#FF6B9D" font-family="monospace">○ C) complicated</text>
+        <text y="62" font-size="7.5" fill="#FF6B9D" font-family="monospace">○ D) outdated</text>
+      </g>
+      <line x1="178" y1="310" x2="192" y2="310" stroke="#FF6B9D" stroke-width="0.4" stroke-opacity="0.07" stroke-dasharray="3,3"/>
+      <g opacity="0.12">
+        <rect x="228" y="400" width="100" height="130" rx="9" fill="none" stroke="#FF6B9D" stroke-width="1"/>
+        <rect x="236" y="412" width="84" height="106" rx="4" fill="none" stroke="#FF6B9D" stroke-width="0.5"/>
+        <circle cx="278" cy="524" r="4.5" fill="none" stroke="#FF6B9D" stroke-width="0.7"/>
+        <line x1="244" y1="426" x2="312" y2="426" stroke="#FF6B9D" stroke-width="0.6"/>
+        <line x1="244" y1="436" x2="306" y2="436" stroke="#FF6B9D" stroke-width="0.5"/>
+        <rect x="244" y="446" width="64" height="36" rx="3" fill="none" stroke="#FFD93D" stroke-width="0.5"/>
+        <line x1="250" y1="454" x2="300" y2="454" stroke="#FFD93D" stroke-width="0.5"/>
+        <line x1="250" y1="462" x2="296" y2="462" stroke="#FFD93D" stroke-width="0.5"/>
+        <line x1="250" y1="470" x2="292" y2="470" stroke="#FFD93D" stroke-width="0.5"/>
+        <line x1="244" y1="488" x2="312" y2="488" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="244" y1="498" x2="308" y2="498" stroke="#FF6B9D" stroke-width="0.5"/>
+      </g>
+      <g transform="translate(22, 408)" opacity="0.09">
+        <text font-size="8" fill="#FFD93D" font-family="monospace">If 3x + 7 = 4x - 5,</text>
+        <text y="12" font-size="8" fill="#FFD93D" font-family="monospace">what is the value of x?</text>
+        <text y="26" font-size="7.5" fill="#FFD93D" font-family="monospace">○ A)  2</text>
+        <text y="38" font-size="7.5" fill="#FFD93D" font-family="monospace">● B) 12</text>
+        <text y="50" font-size="7.5" fill="#FFD93D" font-family="monospace">○ C)  7</text>
+        <text y="62" font-size="7.5" fill="#FFD93D" font-family="monospace">○ D) -2</text>
+      </g>
+      <line x1="160" y1="450" x2="228" y2="460" stroke="#FFD93D" stroke-width="0.4" stroke-opacity="0.07" stroke-dasharray="3,3"/>
+      <g opacity="0.1" transform="translate(182, 394) rotate(-4)">
+        <rect x="0" y="0" width="2.8" height="100" rx="1.4" fill="#FFD93D"/>
+        <path d="M-4 0 L7 0 L5 16 L-2 16 Z" fill="#FFD93D"/>
+        <rect x="-1" y="98" width="4.8" height="5.5" rx="1" fill="#FF6B9D"/>
+      </g>
+      <g opacity="0.09" transform="translate(344, 390) rotate(10)">
+        <rect x="0" y="0" width="2.5" height="88" rx="1.2" fill="#FF6B9D"/>
+        <path d="M-3.5 0 L6.5 0 L4.5 15 L-1.5 15 Z" fill="#FF6B9D"/>
+        <rect x="-1" y="86" width="4.5" height="5" rx="1" fill="#FFD93D"/>
+      </g>
+      <g opacity="0.1" transform="translate(60, 560) rotate(5)">
+        <rect x="0" y="0" width="105" height="136" rx="4" fill="none" stroke="#FF6B9D" stroke-width="0.8"/>
+        <line x1="10" y1="22" x2="95" y2="22" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="10" y1="32" x2="90" y2="32" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="10" y1="42" x2="94" y2="42" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="10" y1="52" x2="84" y2="52" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="10" y1="68" x2="95" y2="68" stroke="#FFD93D" stroke-width="0.5"/>
+        <line x1="10" y1="78" x2="88" y2="78" stroke="#FFD93D" stroke-width="0.5"/>
+        <line x1="10" y1="88" x2="92" y2="88" stroke="#FFD93D" stroke-width="0.5"/>
+        <line x1="10" y1="98" x2="82" y2="98" stroke="#FFD93D" stroke-width="0.5"/>
+        <line x1="10" y1="108" x2="86" y2="108" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="10" y1="118" x2="78" y2="118" stroke="#FF6B9D" stroke-width="0.5"/>
+      </g>
+      <g transform="translate(178, 568)" opacity="0.08">
+        <text font-size="8" fill="#FF6B9D" font-family="monospace">Choose the correct</text>
+        <text y="12" font-size="8" fill="#FF6B9D" font-family="monospace">punctuation mark:</text>
+        <text y="26" font-size="7.5" fill="#FF6B9D" font-family="monospace">○ A) comma</text>
+        <text y="38" font-size="7.5" fill="#FF6B9D" font-family="monospace">○ B) period</text>
+        <text y="50" font-size="7.5" fill="#FF6B9D" font-family="monospace">● C) semicolon</text>
+        <text y="62" font-size="7.5" fill="#FF6B9D" font-family="monospace">○ D) dash</text>
+      </g>
+      <g opacity="0.09" transform="translate(240, 556) rotate(-6)">
+        <rect x="0" y="0" width="90" height="118" rx="4" fill="none" stroke="#FFD93D" stroke-width="0.8"/>
+        <line x1="10" y1="20" x2="80" y2="20" stroke="#FFD93D" stroke-width="0.5"/>
+        <line x1="10" y1="30" x2="74" y2="30" stroke="#FFD93D" stroke-width="0.5"/>
+        <line x1="10" y1="40" x2="78" y2="40" stroke="#FFD93D" stroke-width="0.5"/>
+        <rect x="10" y="54" width="68" height="44" rx="3" fill="none" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="16" y1="63" x2="72" y2="63" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="16" y1="71" x2="68" y2="71" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="16" y1="79" x2="64" y2="79" stroke="#FF6B9D" stroke-width="0.5"/>
+        <line x1="10" y1="104" x2="80" y2="104" stroke="#FFD93D" stroke-width="0.5"/>
+      </g>
+      <g transform="translate(46, 698)" opacity="0.07">
+        <text font-size="8" fill="#FFD93D" font-family="monospace">A store sells notebooks for $3</text>
+        <text y="12" font-size="8" fill="#FFD93D" font-family="monospace">and pens for $1.50. Maya buys</text>
+        <text y="24" font-size="8" fill="#FFD93D" font-family="monospace">10 items for $22.50. How many</text>
+        <text y="36" font-size="8" fill="#FFD93D" font-family="monospace">notebooks did she buy?</text>
+        <text y="50" font-size="7.5" fill="#FFD93D" font-family="monospace">○ A) 3   ○ B) 4   ● C) 5   ○ D) 6</text>
+      </g>
+    </svg>
+  </div>
 
   <div class="profile-logo">SAT <span>Prep</span></div>
 
@@ -1537,6 +1731,441 @@ const LESSON_CONTENT = {
       </div>
     `
   }
+  // ── SESSION 2 LESSONS ──
+  ,reading_1: {
+    tag: 'Reading & Writing',
+    title: 'Information & Ideas — Finding Evidence',
+    body: `
+      <p>Evidence questions are the second most common question type in the Reading & Writing section. They come in two forms — and knowing which one you're facing saves you from a major trap.</p>
+      <h3>Type 1: Command of Evidence (Textual)</h3>
+      <p>These ask you to find which part of the passage best supports a claim. The question usually looks like: <em>"Which quotation from the passage most effectively illustrates the claim that..."</em></p>
+      <div class="highlight-box">The trap: All four answer choices will be real quotes from the passage. Three of them will be true — but only one directly supports the specific claim in the question. Don't pick something that sounds impressive. Pick what directly proves the point.</div>
+      <h3>Type 2: Command of Evidence (Quantitative)</h3>
+      <p>These pair a passage with a graph, table, or chart. You need to use both the text AND the data together. The question might ask: <em>"Which choice most effectively uses data from the table to support the student's argument?"</em></p>
+      <div class="example-box">
+        <div class="ex-label">Strategy for Data Questions</div>
+        <ol>
+          <li>Read the passage claim first — what is it arguing?</li>
+          <li>Look at the data — what does it actually show?</li>
+          <li>Find the answer choice that cites specific numbers from the data that directly support the claim</li>
+          <li>Eliminate choices that cite real data but for the wrong claim</li>
+        </ol>
+      </div>
+      <h3>The Evidence Ladder</h3>
+      <p>Strong evidence is specific, direct, and matches the exact claim. Weak evidence is vague, indirect, or only loosely related. The SAT always includes one answer that's close but not quite — it supports a slightly different claim. Train yourself to ask: <em>"Does this evidence prove THIS specific point, or just something nearby?"</em></p>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Shortcut</div>
+        For textual evidence questions, go back to the passage and underline the sentence that proves the claim before looking at answers. Then find the answer that matches your underlined text. This eliminates the temptation to choose something that sounds good but doesn't quite fit.
+      </div>
+    `
+  },
+  reading_2: {
+    tag: 'Reading & Writing',
+    title: 'Craft & Structure — Vocabulary in Context',
+    body: `
+      <p>Vocabulary in context is one of the most manageable question types on the SAT — once you know the rule. The rule is simple: <strong>the dictionary definition doesn't matter. Only the passage matters.</strong></p>
+      <h3>What These Questions Look Like</h3>
+      <p>The question will highlight a word in the passage and ask: <em>"As used in the text, what does [word] most nearly mean?"</em> The word chosen is almost always a common word being used in a slightly unusual or specific way.</p>
+      <div class="example-box">
+        <div class="ex-label">Classic Example</div>
+        <em>Passage: "The critic's review was pointed — each sentence landed with surgical precision."</em><br><br>
+        Question: As used in the text, "pointed" most nearly means:<br>
+        A) having a sharp tip<br>
+        B) direct and purposeful ✓<br>
+        C) rude or offensive<br>
+        D) geometrically angular
+      </div>
+      <p>Choice A is the literal dictionary definition. Choice C is a common informal meaning. Choice D is related to the word's shape. But the passage context — "surgical precision," "landed" — tells us the critic's writing is focused and deliberate. Choice B fits.</p>
+      <h3>The Substitution Test</h3>
+      <p>After picking an answer, substitute it back into the sentence. Read the whole sentence aloud with your chosen word. If it sounds natural and preserves the meaning, you've got it. If it sounds off or changes the tone, try another choice.</p>
+      <div class="highlight-box">
+        Never pick an answer just because it's a well-known definition of the word. The SAT specifically chooses words with multiple meanings to trap students who go with their first instinct.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Context Clues to Look For</div>
+        Words and phrases near the highlighted word that signal tone and meaning: contrast words (but, however, although), similarity words (like, similarly, just as), and cause-effect words (therefore, as a result, because). These clues narrow down which meaning fits.
+      </div>
+    `
+  },
+  reading_3: {
+    tag: 'Reading & Writing',
+    title: 'Craft & Structure — Text Analysis & Author Purpose',
+    body: `
+      <p>Text analysis questions ask you to think about HOW a passage is written, not just WHAT it says. These questions dig into the author's choices — why did they include this detail, what is their overall purpose, what tone are they using?</p>
+      <h3>Author's Purpose Questions</h3>
+      <p>These ask: <em>"What is the main purpose of the text?"</em> or <em>"Why does the author include [detail]?"</em></p>
+      <p>Purpose answers almost always start with a verb: to argue, to illustrate, to describe, to counter, to support, to question, to analyze. Match the verb to what the author is actually doing.</p>
+      <div class="example-box">
+        <div class="ex-label">Purpose Verb Guide</div>
+        <strong>to argue / to claim</strong> — author is making a case for something<br>
+        <strong>to illustrate / to demonstrate</strong> — author is showing an example<br>
+        <strong>to counter / to refute</strong> — author is pushing back on another view<br>
+        <strong>to describe / to depict</strong> — author is painting a picture, no argument<br>
+        <strong>to question / to challenge</strong> — author is casting doubt on something
+      </div>
+      <h3>Tone Questions</h3>
+      <p>Tone questions ask about the author's attitude. Common tones on the SAT: <em>skeptical, enthusiastic, cautious, critical, nostalgic, optimistic, neutral/objective</em>. Look for charged language — strong adjectives, emotional verbs, hedging words like "perhaps" or "might" — to identify tone.</p>
+      <h3>Function Questions</h3>
+      <p>These ask what a specific sentence or paragraph does structurally. Common functions: introduces a counterargument, provides supporting evidence, transitions between ideas, restates the thesis, complicates the argument.</p>
+      <div class="tip-box">
+        <div class="tip-label">💡 Eliminate Extremes</div>
+        Wrong answers on tone and purpose questions tend to be too extreme (the author "passionately condemns" when the tone is mildly critical) or too narrow (focuses on one detail rather than the whole passage). Eliminate answers that overstate or understate what you actually read.
+      </div>
+    `
+  },
+  reading_4: {
+    tag: 'Reading & Writing',
+    title: 'Craft & Structure — Cross-Text Connections',
+    body: `
+      <p>Cross-text questions are unique to the Digital SAT's Reading & Writing section. You get two short passages — Text 1 and Text 2 — and one question asking you to compare them. These look intimidating but follow very predictable patterns.</p>
+      <h3>The Four Relationships</h3>
+      <p>The two texts will always have one of these relationships:</p>
+      <div class="highlight-box">
+        <strong>Agreement</strong> — both texts support the same claim<br>
+        <strong>Disagreement</strong> — the texts take opposing positions<br>
+        <strong>Text 2 extends Text 1</strong> — Text 2 adds evidence or nuance to Text 1's claim<br>
+        <strong>Text 2 complicates Text 1</strong> — Text 2 introduces a limitation or exception to Text 1
+      </div>
+      <h3>How to Approach These</h3>
+      <ol>
+        <li>Read Text 1 and write a one-sentence summary in your head: <em>"Text 1 argues that ___."</em></li>
+        <li>Read Text 2 and do the same: <em>"Text 2 argues that ___."</em></li>
+        <li>Identify the relationship: do they agree, disagree, or does one build on/complicate the other?</li>
+        <li>The question will usually ask how the author of Text 2 would respond to Text 1 — find the answer that matches your identified relationship.</li>
+      </ol>
+      <div class="example-box">
+        <div class="ex-label">Common Question Stems</div>
+        "Based on the texts, how would the author of Text 2 most likely respond to the argument in Text 1?"<br><br>
+        "Which statement best describes the relationship between the two texts?"<br><br>
+        "The author of Text 1 would most likely characterize the research described in Text 2 as..."
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Watch for Nuance</div>
+        The hardest cross-text questions involve texts that partially agree. Text 2 might agree with Text 1's conclusion but disagree with its reasoning, or agree in theory but add a limiting condition. Read both texts carefully before committing to "agreement" or "disagreement."
+      </div>
+    `
+  },
+  reading_5: {
+    tag: 'Reading & Writing',
+    title: 'Expression of Ideas — Word Choice & Precision',
+    body: `
+      <p>Expression of Ideas questions test your ability to choose the best word or phrase for a given context. Unlike grammar questions (which have clear rules), these require judgment about style, tone, and precision.</p>
+      <h3>What These Questions Test</h3>
+      <ul>
+        <li><strong>Precision</strong> — choosing the most accurate word for the specific meaning</li>
+        <li><strong>Concision</strong> — eliminating unnecessary words without losing meaning</li>
+        <li><strong>Tone consistency</strong> — matching the formality and register of the surrounding text</li>
+        <li><strong>Avoiding redundancy</strong> — not saying the same thing twice</li>
+      </ul>
+      <h3>Concision — The SAT Loves This</h3>
+      <p>One of the most common wrong answers is a choice that says the same thing as a correct answer but with more words. The SAT considers wordiness a writing error.</p>
+      <div class="example-box">
+        <div class="ex-label">Concision Example</div>
+        Which is better?<br><br>
+        A) "The experiment was conducted for the purpose of testing the hypothesis"<br>
+        B) "The experiment tested the hypothesis" ✓<br><br>
+        B says the same thing in half the words. On the SAT, B wins every time.
+      </div>
+      <h3>Tone Consistency</h3>
+      <p>If a passage is written in formal academic language, a casual slang answer will always be wrong — even if it's technically accurate. Match the register of the surrounding text.</p>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Redundancy Test</div>
+        If an answer choice contains a word that's already implied by another word in the sentence, it's redundant and wrong. Example: "future plans" — plans are always future, so "future" is redundant. "Past history" — history is always past. The SAT tests this repeatedly.
+      </div>
+    `
+  },
+  reading_6: {
+    tag: 'Reading & Writing',
+    title: 'Expression of Ideas — Transitions & Sentence Flow',
+    body: `
+      <p>Transition questions ask you to choose the right connecting word or phrase between sentences or ideas. These are extremely common on the Digital SAT and follow clear, learnable patterns.</p>
+      <h3>The Transition Categories</h3>
+      <div class="highlight-box">
+        <strong>Contrast:</strong> however, although, while, on the other hand, nevertheless, yet, but, despite<br><br>
+        <strong>Continuation/Addition:</strong> furthermore, moreover, additionally, also, in addition, similarly<br><br>
+        <strong>Cause/Effect:</strong> therefore, thus, consequently, as a result, because, since<br><br>
+        <strong>Illustration:</strong> for example, for instance, specifically, in particular<br><br>
+        <strong>Concession:</strong> admittedly, granted, even though, while it is true that
+      </div>
+      <h3>How to Solve These</h3>
+      <ol>
+        <li>Read the sentence before the blank</li>
+        <li>Read the sentence after the blank</li>
+        <li>Ask: what is the relationship? Do they agree? Contrast? Does one cause the other?</li>
+        <li>Match the relationship to the right transition category</li>
+        <li>Pick the answer from that category</li>
+      </ol>
+      <div class="example-box">
+        <div class="ex-label">Practice</div>
+        "Scientists expected the new treatment to reduce symptoms. ___, patients in the study reported no improvement."<br><br>
+        The first sentence sets up an expectation. The second sentence contradicts it. This is a CONTRAST relationship. The answer must be a contrast word: <strong>However</strong> ✓
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Adding vs. Contrasting</div>
+        The most common mistake is confusing "furthermore" (adding a similar point) with "however" (introducing a contrast). Always identify the relationship FIRST, then pick the word. Never pick a transition word just because it sounds sophisticated.
+      </div>
+    `
+  },
+  reading_7: {
+    tag: 'Reading & Writing',
+    title: 'Data Interpretation in Reading',
+    body: `
+      <p>The Digital SAT regularly pairs reading passages with a graph, chart, or table. These are called "data interpretation" questions and they test whether you can synthesize written information with visual data.</p>
+      <h3>The Three Question Types</h3>
+      <ul>
+        <li><strong>What does the data show?</strong> — straightforward reading of the graph or table</li>
+        <li><strong>Does the data support the claim?</strong> — comparing the author's argument to the numbers</li>
+        <li><strong>Which choice best uses the data?</strong> — finding the answer that cites specific, accurate data to support a point</li>
+      </ul>
+      <h3>Reading Charts Quickly</h3>
+      <p>Before answering, spend 15 seconds reading the chart: check the title, x-axis label, y-axis label, and units. Students who skip this step misread charts and choose wrong answers that cite real numbers but from the wrong category.</p>
+      <div class="highlight-box">
+        The data never lies — but answers do. Wrong answers on data questions often cite real numbers from the chart but use them incorrectly (wrong year, wrong category, or drawing a conclusion the data doesn't actually support).
+      </div>
+      <div class="example-box">
+        <div class="ex-label">Common Trap</div>
+        A passage claims: "City A had the highest growth rate in 2022."<br>
+        A table shows City A had the highest total population in 2022.<br><br>
+        These are NOT the same thing. Growth rate ≠ total population. Wrong answers will try to use total population data to support a growth rate claim. Don't fall for it.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Match the Language</div>
+        The correct answer will use language that precisely matches both the passage claim AND the data. If the claim says "most significant increase," look for answers that reference change over time, not absolute values. Precision in language = correct answer.
+      </div>
+    `
+  },
+  writing_0: {
+    tag: 'Writing & Language',
+    title: 'Subject-Verb Agreement — The #1 Tested Grammar Rule',
+    body: `
+      <p>Subject-verb agreement is the single most tested grammar concept on the SAT Writing section. The rule is simple: singular subjects take singular verbs, plural subjects take plural verbs. But the SAT makes it tricky in three specific ways.</p>
+      <h3>The Basic Rule</h3>
+      <div class="formula">Singular subject → singular verb (adds -s)<br>Plural subject → plural verb (no -s)</div>
+      <p>Example: <em>The dog runs.</em> (singular) vs. <em>The dogs run.</em> (plural)</p>
+      <h3>Trap 1 — The Prepositional Phrase Separator</h3>
+      <p>The SAT puts a prepositional phrase between the subject and verb to make you forget what the subject is.</p>
+      <div class="example-box">
+        <div class="ex-label">Example</div>
+        "The collection of rare stamps <u>are</u> valuable." ✗<br>
+        "The collection of rare stamps <u>is</u> valuable." ✓<br><br>
+        The subject is "collection" (singular), not "stamps." Cross out "of rare stamps" and the error becomes obvious.
+      </div>
+      <h3>Trap 2 — Inverted Sentences</h3>
+      <p>Sometimes the verb comes before the subject. Don't be fooled by word order.</p>
+      <div class="example-box">
+        <div class="ex-label">Example</div>
+        "On the table <u>sits</u> three trophies." ✗<br>
+        "On the table <u>sit</u> three trophies." ✓<br><br>
+        Reorder the sentence: "Three trophies sit on the table." Now the agreement is obvious.
+      </div>
+      <h3>Trap 3 — Tricky Singular Subjects</h3>
+      <p>These words are always singular, even when they sound plural: <strong>everyone, everyone, anyone, no one, someone, each, every, either, neither, the number</strong></p>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Cross-Out Method</div>
+        On any agreement question, cross out all prepositional phrases between the subject and verb. What's left is your real subject. Then check: is the verb form correct for that subject?
+      </div>
+    `
+  },
+  writing_1: {
+    tag: 'Writing & Language',
+    title: 'Pronoun Agreement & Case',
+    body: `
+      <p>Pronouns must agree with their antecedent (the noun they refer to) in number and gender. They must also be in the correct case. The SAT tests both of these consistently.</p>
+      <h3>Pronoun-Antecedent Agreement</h3>
+      <p>A pronoun must match the noun it replaces in number (singular/plural).</p>
+      <div class="example-box">
+        <div class="ex-label">Common Error</div>
+        "Each student must bring their own pencil." — technically this is now widely accepted<br>
+        "Each of the companies released their annual report." ✗<br>
+        "Each of the companies released its annual report." ✓<br><br>
+        "Each" is singular, so the pronoun must be singular "its," not plural "their."
+      </div>
+      <h3>Pronoun Case — Subject vs. Object</h3>
+      <div class="highlight-box">
+        <strong>Subject pronouns</strong> (doing the action): I, he, she, we, they, who<br>
+        <strong>Object pronouns</strong> (receiving the action): me, him, her, us, them, whom
+      </div>
+      <div class="example-box">
+        <div class="ex-label">Who vs. Whom</div>
+        Who is correct when it's the subject: "Who called?" (Who is doing the calling)<br>
+        Whom is correct when it's the object: "To whom did you speak?" (You spoke to whom)<br><br>
+        Trick: Substitute "he" or "him." If "he" works → use who. If "him" works → use whom. (Both end in m!)
+      </div>
+      <h3>Ambiguous Pronouns</h3>
+      <p>If a pronoun could refer to more than one noun, it's ambiguous and wrong. "After Maria called Sofia, she left." — who left? That's ambiguous. The SAT will ask you to fix these by replacing the pronoun with the specific noun.</p>
+      <div class="tip-box">
+        <div class="tip-label">💡 Its vs. It's</div>
+        "Its" = possessive (belonging to it). "It's" = it is. The SAT tests this every single time. If you can replace it with "it is" and it makes sense → use it's. Otherwise → use its.
+      </div>
+    `
+  },
+  writing_2: {
+    tag: 'Writing & Language',
+    title: 'Comma Rules — The Complete Guide',
+    body: `
+      <p>Commas are the most tested punctuation mark on the SAT. There are five situations where commas are required — and just as important, knowing when NOT to use them.</p>
+      <h3>When to USE Commas</h3>
+      <div class="highlight-box">
+        <strong>1. Before coordinating conjunctions joining two independent clauses</strong><br>
+        FANBOYS: For, And, Nor, But, Or, Yet, So<br>
+        "She studied hard, and she aced the test." ✓<br><br>
+        <strong>2. After introductory elements</strong><br>
+        "After the storm passed, the sun appeared." ✓<br><br>
+        <strong>3. Around nonessential clauses/phrases</strong><br>
+        "Dr. Chen, who won the Nobel Prize, is my professor." ✓<br><br>
+        <strong>4. Between items in a series (Oxford comma)</strong><br>
+        "I need eggs, milk, and butter." ✓<br><br>
+        <strong>5. Between coordinate adjectives</strong><br>
+        "It was a long, difficult exam." ✓
+      </div>
+      <h3>When NOT to Use Commas</h3>
+      <ul>
+        <li>Never between a subject and its verb: "The dog, runs fast." ✗</li>
+        <li>Never before essential clauses: "Students who study hard succeed." (no comma) ✓</li>
+        <li>Never between two independent clauses without a conjunction (comma splice): "I studied, I passed." ✗</li>
+      </ul>
+      <div class="example-box">
+        <div class="ex-label">Essential vs. Nonessential</div>
+        "My sister who lives in Paris is visiting." — no commas (which sister? the one in Paris — essential)<br>
+        "My sister, who lives in Paris, is visiting." — commas (I have one sister, extra info — nonessential)
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Removal Test</div>
+        For nonessential clause questions: remove the clause between the commas. If the sentence still makes complete sense and means the same thing, commas are correct. If removing it changes the essential meaning, no commas.
+      </div>
+    `
+  },
+  writing_3: {
+    tag: 'Writing & Language',
+    title: 'Semicolons, Colons & Dashes',
+    body: `
+      <p>These three punctuation marks are heavily tested on the SAT and each has very specific rules. Mastering them is one of the fastest ways to gain points on the Writing section.</p>
+      <h3>Semicolons ( ; )</h3>
+      <p>A semicolon joins two independent clauses (complete sentences) without a conjunction. Both sides must be able to stand alone as a sentence.</p>
+      <div class="formula">Independent clause ; independent clause</div>
+      <div class="example-box">
+        <div class="ex-label">Semicolon Examples</div>
+        "She loves math; it comes naturally to her." ✓<br>
+        "She loves math; especially algebra." ✗ ("especially algebra" is not a complete sentence)
+      </div>
+      <h3>Colons ( : )</h3>
+      <p>A colon introduces something — a list, an explanation, or a clarification. The material before the colon must be a complete sentence. The material after does not have to be.</p>
+      <div class="formula">Complete sentence : list, explanation, or elaboration</div>
+      <div class="example-box">
+        <div class="ex-label">Colon Examples</div>
+        "She needed three things: focus, practice, and rest." ✓<br>
+        "She needed: focus, practice, and rest." ✗ (before the colon is not a complete sentence)
+      </div>
+      <h3>Dashes ( — )</h3>
+      <p>Dashes are flexible — they can do what commas and colons do, but with more emphasis. A pair of dashes sets off nonessential information. A single dash introduces an elaboration or surprise.</p>
+      <div class="example-box">
+        <div class="ex-label">Dash Examples</div>
+        "The answer — surprisingly — was right in front of us." ✓ (pair of dashes)<br>
+        "She had one goal — to graduate." ✓ (single dash introducing elaboration)
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Independence Test</div>
+        Before choosing a semicolon, ask: can both sides stand alone as complete sentences? If yes, semicolon works. If either side is a fragment, use a comma or restructure.
+      </div>
+    `
+  },
+  writing_4: {
+    tag: 'Writing & Language',
+    title: 'Sentence Fragments & Run-Ons',
+    body: `
+      <p>Fragments and run-ons are two of the most common sentence-level errors on the SAT. Knowing how to identify and fix them is essential for the Writing section.</p>
+      <h3>Fragments — Incomplete Sentences</h3>
+      <p>A complete sentence needs a subject AND a verb AND expresses a complete thought. A fragment is missing at least one of these.</p>
+      <div class="example-box">
+        <div class="ex-label">Fragment Examples</div>
+        "Running through the park every morning." ✗ (no subject — who is running?)<br>
+        "The student who studied hardest." ✗ (has a subject but no main verb — "who studied" is a clause, not the main verb)<br>
+        "Although she studied all night." ✗ (dependent clause — can't stand alone)
+      </div>
+      <h3>How to Fix Fragments</h3>
+      <ul>
+        <li>Add a subject: "She runs through the park every morning." ✓</li>
+        <li>Add a main verb: "The student who studied hardest earned an A." ✓</li>
+        <li>Remove the subordinator: "She studied all night." ✓</li>
+      </ul>
+      <h3>Run-Ons — Too Much in One Sentence</h3>
+      <p>A run-on joins two independent clauses without proper punctuation or conjunction.</p>
+      <div class="example-box">
+        <div class="ex-label">Run-On and Fixes</div>
+        "She studied all night she still felt unprepared." ✗ (comma splice or run-on)<br><br>
+        Fix 1 — Add semicolon: "She studied all night; she still felt unprepared." ✓<br>
+        Fix 2 — Add conjunction: "She studied all night, but she still felt unprepared." ✓<br>
+        Fix 3 — Make two sentences: "She studied all night. She still felt unprepared." ✓
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Two-Sentence Test</div>
+        When you see a long sentence on the SAT, try splitting it at the underlined portion. If you end up with two complete sentences joined by nothing (or only a comma), it's a run-on. Fix it with a semicolon, a period, or a comma + conjunction.
+      </div>
+    `
+  },
+  writing_5: {
+    tag: 'Writing & Language',
+    title: 'Parallel Structure',
+    body: `
+      <p>Parallel structure means that items in a list or comparison must be in the same grammatical form. This is one of the most elegant grammar rules — and the SAT tests it constantly.</p>
+      <h3>The Parallelism Rule</h3>
+      <div class="highlight-box">
+        When you have a list of two or more items, every item must be in the same form:<br>
+        all nouns, OR all verbs, OR all phrases — never mixed.
+      </div>
+      <div class="example-box">
+        <div class="ex-label">Parallelism Errors</div>
+        "She likes hiking, to swim, and the beach." ✗ (gerund, infinitive, noun — mixed)<br>
+        "She likes hiking, swimming, and going to the beach." ✓ (all gerunds)<br><br>
+        "The job requires accuracy, being efficient, and that you communicate well." ✗<br>
+        "The job requires accuracy, efficiency, and clear communication." ✓ (all nouns)
+      </div>
+      <h3>Parallelism in Comparisons</h3>
+      <p>When comparing two things, both sides of the comparison must be parallel.</p>
+      <div class="example-box">
+        <div class="ex-label">Comparison Parallelism</div>
+        "Her singing is better than her sister." ✗ (comparing singing to a person)<br>
+        "Her singing is better than her sister's." ✓ (comparing singing to singing)<br><br>
+        "To read is as important as writing." ✗<br>
+        "Reading is as important as writing." ✓
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The List Scan</div>
+        Whenever you see a list in a sentence, stop and check: are all items in the same form? Convert each item to its bare form in your head. If they don't match, something needs to change. The SAT will always change only one item — find the odd one out.
+      </div>
+    `
+  },
+  writing_6: {
+    tag: 'Writing & Language',
+    title: 'Misplaced Modifiers & Apostrophes',
+    body: `
+      <p>Two distinct but equally important topics: misplaced modifiers (which create unintentionally funny sentences) and apostrophes (which are misused constantly in real life but have clear rules).</p>
+      <h3>Misplaced Modifiers</h3>
+      <p>A modifier must be placed as close as possible to the word it describes. When it's too far away, it accidentally describes the wrong thing.</p>
+      <div class="example-box">
+        <div class="ex-label">Misplaced Modifier Examples</div>
+        "Running down the street, the bus was missed by the student." ✗<br>
+        (The bus was running? No — the student was running. Fix: "Running down the street, the student missed the bus.") ✓<br><br>
+        "She almost drove her kids to school every day." ✗ (almost modifies drove — she almost drove?)<br>
+        "She drove her kids to school almost every day." ✓ (almost modifies every day)
+      </div>
+      <h3>The SAT Modifier Pattern</h3>
+      <p>The SAT almost always tests modifiers with an introductory phrase at the start of a sentence. The rule: the noun immediately after the comma must be the thing being modified.</p>
+      <div class="formula">Introductory phrase, [the modified noun] must come first.</div>
+      <h3>Apostrophes — Three Rules</h3>
+      <div class="highlight-box">
+        <strong>Rule 1 — Possession (singular):</strong> Add 's → "the dog's bowl"<br>
+        <strong>Rule 2 — Possession (plural ending in s):</strong> Add ' only → "the dogs' bowls"<br>
+        <strong>Rule 3 — Contractions:</strong> Replace missing letters → "it's" = it is, "they're" = they are<br><br>
+        NEVER use an apostrophe for plural nouns: "three dog's" ✗ → "three dogs" ✓
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Their / There / They're</div>
+        Their = possessive (their books). There = location (over there). They're = they are. The SAT tests these every test. When you see one, substitute the full phrase — if "they are" makes sense, use they're. Otherwise, choose between their and there based on possession vs. location.
+      </div>
+    `
+  }
+
 };
 
 const QUIZ_DATA = {
@@ -1635,6 +2264,124 @@ const QUIZ_DATA = {
       explain: "Cross-text questions ask you to identify the relationship between two passages. Text 2 doesn't reject EVs entirely — it qualifies the claim in Text 1. Text 2's author would say: 'EVs help, BUT only if the grid is clean.' Choice B captures this nuanced position. The other choices misrepresent Text 2's argument."
     }
   ],
+
+  writing: [
+    {
+      q: "Which choice best corrects the underlined error?\n\nThe committee of senior engineers have decided to postpone the project launch.",
+      options: [
+        "have decided",
+        "has decided",
+        "are deciding",
+        "were deciding"
+      ],
+      correct: 1,
+      explain: "The subject is 'committee' (singular), not 'engineers.' The prepositional phrase 'of senior engineers' sits between the subject and verb — cross it out and you get 'The committee have decided,' which is clearly wrong. 'Has decided' agrees with the singular subject 'committee.'"
+    },
+    {
+      q: "Which version of the sentence uses parallel structure correctly?",
+      options: [
+        "The coach emphasized practicing daily, to stay focused, and rest.",
+        "The coach emphasized practicing daily, staying focused, and resting.",
+        "The coach emphasized to practice daily, staying focused, and rest.",
+        "The coach emphasized practice daily, to stay focused, and resting."
+      ],
+      correct: 1,
+      explain: "Parallel structure requires all items in a list to be in the same grammatical form. Choice B has three gerunds (verb+ing): practicing, staying, resting. All other choices mix forms — infinitives, gerunds, and base verbs — which violates parallelism."
+    },
+    {
+      q: "Which punctuation correctly joins these two independent clauses?\n\n'The results were unexpected ___ the team celebrated anyway.'",
+      options: [
+        "The results were unexpected, the team celebrated anyway.",
+        "The results were unexpected; the team celebrated anyway.",
+        "The results were unexpected: the team celebrated anyway.",
+        "The results were unexpected, but, the team celebrated anyway."
+      ],
+      correct: 1,
+      explain: "Two independent clauses can be joined with a semicolon. Choice A is a comma splice — two complete sentences joined only by a comma, which is incorrect. Choice C uses a colon incorrectly — a colon introduces a list or explanation, not a contrasting independent clause. Choice D has an unnecessary comma after 'but.'"
+    },
+    {
+      q: "Which sentence contains a misplaced modifier?",
+      options: [
+        "Running late, Eriana grabbed her backpack and rushed out the door.",
+        "Eriana grabbed her backpack, running late, and rushed out the door.",
+        "Having finished the quiz, the score appeared on her screen.",
+        "Having finished the quiz, she saw her score on the screen."
+      ],
+      correct: 2,
+      explain: "In Choice C, 'Having finished the quiz' modifies the noun immediately after the comma — which is 'the score.' But the score didn't finish the quiz; she did. This is a dangling modifier. Choice D correctly places 'she' immediately after the comma, making the modifier logical."
+    },
+    {
+      q: "Which choice correctly uses an apostrophe?",
+      options: [
+        "The three student's submitted their projects on time.",
+        "Its important to review you're notes before the exam.",
+        "The teachers' lounge is reserved for faculty members.",
+        "The dog wagged it's tail enthusiastically."
+      ],
+      correct: 2,
+      explain: "Choice C correctly uses 'teachers'' — a plural possessive where the apostrophe follows the 's' because there are multiple teachers. Choice A incorrectly makes 'students' possessive instead of plural. Choice B should be 'It's' (it is) and 'your' (not 'you're'). Choice D should be 'its' (possessive, no apostrophe)."
+    }
+  ],
+  advmath: [
+    {
+      q: "What are the solutions to x² - 5x + 6 = 0?",
+      options: ["x = 2 and x = 3", "x = -2 and x = -3", "x = 1 and x = 6", "x = 2 and x = -3"],
+      correct: 0,
+      explain: "Factor the quadratic: find two numbers that multiply to 6 and add to -5. Those numbers are -2 and -3. So (x - 2)(x - 3) = 0. Setting each factor to zero: x = 2 or x = 3. Check: (2)² - 5(2) + 6 = 4 - 10 + 6 = 0 ✓"
+    },
+    {
+      q: "If f(x) = 2x² - 3x + 1, what is f(4)?",
+      options: ["17", "21", "29", "33"],
+      correct: 1,
+      explain: "Substitute x = 4 into the function: f(4) = 2(4)² - 3(4) + 1 = 2(16) - 12 + 1 = 32 - 12 + 1 = 21. The most common mistake is forgetting to square first before multiplying by 2."
+    },
+    {
+      q: "A population of bacteria doubles every 3 hours. If there are 500 bacteria initially, which expression gives the population after t hours?",
+      options: ["500 + 2t", "500 × 2t", "500 × 2^(t/3)", "500 × (t/3)²"],
+      correct: 2,
+      explain: "Exponential growth formula: P = P₀ × r^(t/period). The initial population is 500, it doubles (×2) every 3 hours. After t hours, the number of doubling periods is t/3. So P = 500 × 2^(t/3). After 3 hours: 500 × 2^1 = 1000 ✓. After 6 hours: 500 × 2^2 = 2000 ✓."
+    }
+  ],
+  data: [
+    {
+      q: "In a class of 30 students, scores on a quiz are: 5 students scored 60, 10 scored 70, 10 scored 80, 5 scored 90. What is the mean score?",
+      options: ["72.5", "75", "77.5", "70"],
+      correct: 1,
+      explain: "Mean = (sum of all values) ÷ (number of values). Sum = (5×60) + (10×70) + (10×80) + (5×90) = 300 + 700 + 800 + 450 = 2250. Divide by 30 students: 2250 ÷ 30 = 75. The median would also be 75 here, but mean requires this weighted calculation."
+    },
+    {
+      q: "A shirt originally costs $80. It is marked down 25%, then the sale price is marked down an additional 10%. What is the final price?",
+      options: ["$52.00", "$54.00", "$56.00", "$58.00"],
+      correct: 1,
+      explain: "Step 1: 25% off $80 = $80 × 0.75 = $60. Step 2: 10% off $60 = $60 × 0.90 = $54. The trap is adding 25% + 10% = 35% off, which gives $52. But sequential discounts don't add — the second discount applies to the already-reduced price."
+    },
+    {
+      q: "A scatterplot shows a strong positive correlation between hours studied and test scores. A student who studied 6 hours scored 82. Based on the trend, a student who studied 9 hours would most likely score:",
+      options: ["Around 82", "Lower than 82", "Higher than 82", "Exactly 100"],
+      correct: 2,
+      explain: "A positive correlation means as one variable increases, the other tends to increase. More study hours → higher scores. So 9 hours > 6 hours means the predicted score would be higher than 82. We can't say exactly how much higher without the specific line of best fit equation, but the direction is clearly higher."
+    }
+  ],
+  geometry: [
+    {
+      q: "A right triangle has legs of length 5 and 12. What is the length of the hypotenuse?",
+      options: ["13", "15", "17", "169"],
+      correct: 0,
+      explain: "Use the Pythagorean theorem: a² + b² = c². So 5² + 12² = c². 25 + 144 = 169. c = √169 = 13. The 5-12-13 triangle is a Pythagorean triple worth memorizing alongside 3-4-5 and 8-15-17."
+    },
+    {
+      q: "A circle has a radius of 6. What is the area?",
+      options: ["12π", "36π", "6π", "18π"],
+      correct: 1,
+      explain: "Area of a circle = πr². With r = 6: Area = π(6)² = 36π. The SAT provides this formula on the reference sheet, but it's worth memorizing so you don't waste time finding it. Common mistake: using diameter instead of radius."
+    },
+    {
+      q: "In a right triangle, the angle opposite a side of length 8 has a hypotenuse of 10. What is sin(θ) for that angle?",
+      options: ["4/5", "3/5", "4/3", "5/8"],
+      correct: 0,
+      explain: "SOHCAHTOA: Sin = Opposite/Hypotenuse. The opposite side is 8, the hypotenuse is 10. Sin(θ) = 8/10 = 4/5. You can verify this is a 6-8-10 triangle (a 3-4-5 triple scaled by 2). Note: cos(θ) = 6/10 = 3/5, tan(θ) = 8/6 = 4/3."
+    }
+  ],
   math: [
     {
       q: "A gym membership costs $40 per month plus a one-time registration fee of $25. If a member has paid a total of $265, for how many months has she been a member?",
@@ -1728,6 +2475,14 @@ function renderProfileScreen() {
     `;
     container.appendChild(card);
   });
+
+  // Reset all button
+  const resetAllBtn = document.createElement('button');
+  resetAllBtn.className = 'reset-module-btn';
+  resetAllBtn.style.marginTop = '1rem';
+  resetAllBtn.innerHTML = '↺ Reset all progress';
+  resetAllBtn.onclick = confirmResetAll;
+  container.appendChild(resetAllBtn);
 }
 
 function loadProfile(name) {
@@ -1875,6 +2630,13 @@ function openModule(modKey) {
     `;
     lessonList.appendChild(item);
   });
+
+  // Add reset button
+  const resetBtn = document.createElement('button');
+  resetBtn.className = 'reset-module-btn';
+  resetBtn.innerHTML = '↺ Reset this module';
+  resetBtn.onclick = () => confirmResetModule(modKey);
+  lessonList.appendChild(resetBtn);
 
   // Add quiz button if available
   if (QUIZ_DATA[modKey]) {
@@ -2087,6 +2849,8 @@ function renderProgressPage() {
 
   const container = document.getElementById('progressCards');
   container.innerHTML = '';
+  
+  // Add reset all button at bottom - added after cards
 
   Object.keys(MODULES).forEach(mod => {
     const m = MODULES[mod];
@@ -2227,6 +2991,78 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') createProfile();
   });
 });
+
+// ════════════════════════════════════
+//  RESET FUNCTIONALITY
+// ════════════════════════════════════
+let pendingResetModule = null;
+let pendingResetAll = false;
+
+function confirmResetModule(modKey) {
+  pendingResetModule = modKey;
+  pendingResetAll = false;
+  const mod = MODULES[modKey];
+  document.getElementById('confirmTitle').textContent = 'Reset ' + mod.title + '?';
+  document.getElementById('confirmSub').textContent = 'This will clear all lesson progress and quiz scores for ' + mod.title + '. Your other modules will not be affected.';
+  document.getElementById('confirmOverlay').style.display = 'flex';
+}
+
+function confirmResetAll() {
+  pendingResetModule = null;
+  pendingResetAll = true;
+  document.getElementById('confirmTitle').textContent = 'Reset all progress?';
+  document.getElementById('confirmSub').textContent = 'This will clear ALL lesson progress, quiz scores, and streaks across every module. Your profile will remain. This cannot be undone.';
+  document.getElementById('confirmOverlay').style.display = 'flex';
+}
+
+function closeConfirmBtn() {
+  document.getElementById('confirmOverlay').style.display = 'none';
+  pendingResetModule = null;
+  pendingResetAll = false;
+}
+
+function closeConfirm(e) {
+  if (e.target === document.getElementById('confirmOverlay')) closeConfirmBtn();
+}
+
+function executeReset() {
+  if (!currentProfile) return;
+  if (pendingResetModule) {
+    const mod = pendingResetModule;
+    currentProfile.progress[mod] = 0;
+    if (currentProfile.quizScores[mod]) delete currentProfile.quizScores[mod];
+    Object.keys(currentProfile.lessonsCompleted).forEach(k => {
+      if (k.startsWith(mod + '_')) delete currentProfile.lessonsCompleted[k];
+    });
+    saveProfileData(currentProfile);
+    closeConfirmBtn();
+    openModule(mod);
+    renderHomeScreen();
+  } else if (pendingResetAll) {
+    Object.keys(currentProfile.progress).forEach(k => { currentProfile.progress[k] = 0; });
+    currentProfile.quizScores = {};
+    currentProfile.lessonsCompleted = {};
+    currentProfile.streak = 0;
+    saveProfileData(currentProfile);
+    closeConfirmBtn();
+    showPage('homePage', 'nav-home');
+    renderHomeScreen();
+  }
+}
+
 </script>
+
+<!-- Confirm Reset Modal -->
+<div class="confirm-overlay" id="confirmOverlay" style="display:none;" onclick="closeConfirm(event)">
+  <div class="confirm-box">
+    <div class="confirm-title" id="confirmTitle">Reset this module?</div>
+    <div class="confirm-sub" id="confirmSub">This will clear all lesson progress and quiz scores for this module. Your other modules won't be affected.</div>
+    <div class="confirm-btns">
+      <button class="confirm-cancel" onclick="closeConfirmBtn()">Cancel</button>
+      <button class="confirm-danger" onclick="executeReset()">Yes, Reset</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
