@@ -1571,7 +1571,7 @@ const MODULES = {
       { title: 'Semicolons, Colons & Dashes', sub: 'The punctuation the SAT loves to test' },
       { title: 'Sentence Fragments & Run-Ons', sub: 'Fix the most common writing errors' },
       { title: 'Parallel Structure', sub: 'Lists that balance and sentences that sing' },
-      { title: 'Modifiers & Apostrophes', sub: 'Misplaced modifiers and its vs. it\'s' }
+      { title: 'Modifiers & Apostrophes', sub: 'Misplaced modifiers, its vs its' }
     ]
   },
   math: {
@@ -1629,7 +1629,7 @@ const MODULES = {
       { title: 'Words About Tone & Attitude', sub: 'Skeptical, ambivalent, ardent...' },
       { title: 'Words About Change & Movement', sub: 'Evolve, diminish, proliferate...' },
       { title: 'Words About Description & Quality', sub: 'Vivid, subtle, conspicuous...' },
-      { title: 'Roots, Prefixes & Suffixes', sub: 'Decode any word you've never seen' },
+      { title: 'Roots, Prefixes & Suffixes', sub: 'Decode any word you have never seen' },
       { title: 'Flashcard Practice — Review Mode', sub: 'Test yourself on all 200 words' }
     ]
   },
@@ -3549,7 +3549,7 @@ function openModule(modKey) {
     `;
     document.getElementById('lessonListArea').innerHTML = '';
     showPage('modulePage', null, true);
-    document.getElementById('topbarTitle').innerHTML = \`<span style="color:var(--yellow)">\${mod.icon}</span> \${mod.title}\`;
+    document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">\${mod.icon}</span> \${mod.title}`;
     return;
   }
 
