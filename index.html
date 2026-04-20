@@ -1029,6 +1029,121 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
   background: var(--pink)11;
 }
 
+
+.claude-help-box {
+  margin-top: 2rem;
+  background: linear-gradient(135deg, var(--yellow)08, var(--pink)08);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  padding: 1.25rem;
+  overflow: hidden;
+}
+.claude-help-header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.875rem;
+}
+.claude-help-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; flex-shrink: 0;
+}
+.claude-help-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.9rem;
+}
+.claude-help-sub {
+  font-size: 0.75rem;
+  color: var(--text2);
+  margin-top: 1px;
+}
+.claude-prompts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.875rem;
+}
+.claude-prompt-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.625rem 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.claude-prompt-item:hover {
+  border-color: var(--yellow);
+  background: var(--yellow)08;
+}
+.claude-prompt-text {
+  font-size: 0.8rem;
+  color: var(--text);
+  line-height: 1.4;
+  flex: 1;
+}
+.claude-prompt-copy {
+  font-size: 0.7rem;
+  color: var(--text3);
+  white-space: nowrap;
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.claude-prompt-item:hover .claude-prompt-copy {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+.claude-prompt-item.copied .claude-prompt-copy {
+  color: var(--green);
+  border-color: var(--green);
+}
+.claude-open-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  border: none;
+  border-radius: 10px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #1A1000;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  text-decoration: none;
+}
+.claude-open-btn:hover { opacity: 0.9; }
+.claude-copied-toast {
+  position: fixed;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.claude-copied-toast.show { opacity: 1; }
+
 </style>
 </head>
 <body>
@@ -1524,15 +1639,68 @@ const READ_TIMES = {
 };
 
 const VIDEO_LINKS = {
-  strategy: 'https://www.google.com/search?q=Khan+Academy+SAT+test+strategy+digital+SAT+site:khanacademy.org',
-  reading: 'https://www.google.com/search?q=Khan+Academy+SAT+reading+and+writing+site:khanacademy.org',
-  writing: 'https://www.google.com/search?q=Khan+Academy+SAT+grammar+writing+language+site:khanacademy.org',
-  vocab: 'https://www.google.com/search?q=Khan+Academy+SAT+vocabulary+words+in+context+site:khanacademy.org',
-  punctuation: 'https://www.google.com/search?q=Khan+Academy+SAT+punctuation+grammar+site:khanacademy.org',
-  math: 'https://www.google.com/search?q=Khan+Academy+SAT+math+algebra+linear+equations+site:khanacademy.org',
-  advmath: 'https://www.google.com/search?q=Khan+Academy+SAT+math+quadratics+advanced+math+site:khanacademy.org',
-  data: 'https://www.google.com/search?q=Khan+Academy+SAT+math+statistics+data+analysis+site:khanacademy.org',
-  geometry: 'https://www.google.com/search?q=Khan+Academy+SAT+math+geometry+trigonometry+site:khanacademy.org'
+  strategy: 'https://www.khanacademy.org/test-prep/digital-sat',
+  reading: 'https://www.khanacademy.org/test-prep/sat-reading-and-writing',
+  writing: 'https://www.khanacademy.org/test-prep/sat-reading-and-writing',
+  vocab: 'https://www.khanacademy.org/test-prep/sat-reading-and-writing',
+  punctuation: 'https://www.khanacademy.org/test-prep/sat-reading-and-writing',
+  math: 'https://www.khanacademy.org/test-prep/sat-math',
+  advmath: 'https://www.khanacademy.org/test-prep/sat-math',
+  data: 'https://www.khanacademy.org/test-prep/sat-math',
+  geometry: 'https://www.khanacademy.org/test-prep/sat-math'
+};
+
+const CLAUDE_PROMPTS = {
+  strategy: [
+    "I just learned about the Digital SAT adaptive format. Can you explain in simple terms how the scoring works and why Module 1 is so important?",
+    "Can you give me a study schedule for the next 3 weeks to prepare for the SAT? I have the test on June 6th.",
+    "What are the biggest mistakes students make on the Digital SAT and how can I avoid them?"
+  ],
+  reading: [
+    "I just studied SAT Reading. Can you give me a short practice passage with a main idea question and explain the answer step by step?",
+    "Can you explain the difference between essential and nonessential information in SAT reading passages with examples?",
+    "What are the most common wrong answer traps in SAT Reading and Writing questions? Give me examples of each."
+  ],
+  writing: [
+    "I just studied SAT grammar rules. Can you quiz me with 5 grammar questions and explain each answer in detail?",
+    "Can you explain subject-verb agreement in a simple way with 5 examples that would appear on the SAT?",
+    "What are the top 10 grammar rules I absolutely must know for the SAT Writing section?"
+  ],
+  vocab: [
+    "Can you quiz me on SAT vocabulary? Give me 10 words with definitions and use each in a sentence the way the SAT would.",
+    "I struggle with SAT vocabulary in context questions. Can you give me a passage and show me how to figure out word meanings from context?",
+    "Can you teach me the most important Latin and Greek roots for the SAT and show me how they help decode unfamiliar words?"
+  ],
+  punctuation: [
+    "I just studied punctuation rules. Can you give me 5 tricky SAT-style sentences and ask me where the punctuation goes?",
+    "Can you explain the difference between when to use a semicolon versus a colon versus a dash with clear examples?",
+    "I always confuse its and it is, their and there, and your and you are. Can you help me remember the difference with a simple trick?"
+  ],
+  math: [
+    "I just learned about linear equations. Can you give me 3 SAT-style word problems with step by step solutions?",
+    "Can you explain how to set up equations from word problems on the SAT? I struggle with translating English into math.",
+    "What are the most common algebra mistakes students make on the SAT and how do I avoid them?"
+  ],
+  advmath: [
+    "Can you walk me through solving a quadratic equation step by step, both by factoring and using the quadratic formula?",
+    "I struggle with function notation on the SAT. Can you explain what f of x means and give me practice problems?",
+    "Can you explain exponential growth and decay in simple terms with a real world example like the SAT would use?"
+  ],
+  data: [
+    "Can you explain the difference between mean, median, and mode and show me how the SAT tries to trick students with these?",
+    "I struggle reading scatterplots on the SAT. Can you explain lines of best fit and what positive and negative correlation means?",
+    "Can you give me a SAT-style statistics problem with a data table and walk me through how to answer it?"
+  ],
+  geometry: [
+    "Can you walk me through the Pythagorean theorem with 3 SAT-style examples from easy to hard?",
+    "Can you explain SOHCAHTOA in the simplest way possible and show me exactly how it appears on the SAT?",
+    "I always forget the circle formulas. Can you explain area, circumference, and arc length with examples?"
+  ],
+  practice: [
+    "I just finished a practice SAT. Can you help me understand why I got certain questions wrong?",
+    "What should I focus on in the final week before my SAT test date?",
+    "Can you give me tips for managing test anxiety on SAT test day?"
+  ]
 };
 
 const MODULES = {
@@ -3643,7 +3811,6 @@ function openLesson(modKey, index) {
   saveProfileData(currentProfile);
 
   const readTime = READ_TIMES[key] || 5;
-  const videoUrl = VIDEO_LINKS[modKey] || 'https://www.khanacademy.org/test-prep/sat';
   const now = new Date();
   const timeStr = now.toLocaleDateString('en-US', {month:'short', day:'numeric'}) + ' at ' + now.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
   
@@ -3660,11 +3827,7 @@ function openLesson(modKey, index) {
     </div>
     <div class="lesson-title-big">${content.title}</div>
     <div class="lesson-body">${content.body}
-      <div class="video-resource-box">
-        <div class="video-resource-label">📺 Video Resource</div>
-        <div class="video-resource-text">Want to see this concept explained visually? Khan Academy has free official SAT videos covering this exact topic.</div>
-        <a href="${videoUrl}" target="_blank" class="video-resource-btn">Find Khan Academy Videos →</a>
-      </div>
+      ${buildClaudeBox(modKey)}
     </div>
   `;
 
@@ -4040,6 +4203,70 @@ function executeReset() {
   }
 }
 
+
+// ════════════════════════════════════
+//  CLAUDE PROMPT SYSTEM
+// ════════════════════════════════════
+function copyPrompt(text, el) {
+  navigator.clipboard.writeText(text).then(() => {
+    const item = el.closest('.claude-prompt-item');
+    const copyLabel = el;
+    copyLabel.textContent = 'Copied!';
+    item.classList.add('copied');
+    
+    const toast = document.getElementById('copiedToast');
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+      copyLabel.textContent = 'Copy';
+      item.classList.remove('copied');
+      toast.classList.remove('show');
+    }, 2000);
+  }).catch(() => {
+    // Fallback for browsers that block clipboard
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    
+    const toast = document.getElementById('copiedToast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  });
+}
+
+function buildClaudeBox(modKey) {
+  const prompts = CLAUDE_PROMPTS[modKey] || CLAUDE_PROMPTS.strategy;
+  const promptItems = prompts.map(p => `
+    <div class="claude-prompt-item" onclick="copyPrompt(this.dataset.prompt, this.querySelector('.claude-prompt-copy'))" data-prompt="${p.replace(/"/g, '&quot;')}">
+      <div class="claude-prompt-text">${p}</div>
+      <div class="claude-prompt-copy">Copy</div>
+    </div>
+  `).join('');
+  
+  return \`
+    <div class="claude-help-box">
+      <div class="claude-help-header">
+        <div class="claude-help-icon">✦</div>
+        <div>
+          <div class="claude-help-title">Still have questions? Ask Claude</div>
+          <div class="claude-help-sub">Copy a prompt below, then open Claude to get a personalized explanation</div>
+        </div>
+      </div>
+      <div class="claude-prompts">
+        \${promptItems}
+      </div>
+      <a href="https://claude.ai" target="_blank" class="claude-open-btn">
+        Open Claude.ai →
+      </a>
+    </div>
+  \`;
+}
+
 </script>
 
 <!-- Confirm Reset Modal -->
@@ -4053,6 +4280,10 @@ function executeReset() {
     </div>
   </div>
 </div>
+
+
+<!-- Copied Toast -->
+<div class="claude-copied-toast" id="copiedToast">✓ Prompt copied!</div>
 
 </body>
 </html>
