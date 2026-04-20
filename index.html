@@ -970,6 +970,65 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 }
 .confirm-danger:hover { background: #FF6B6B33; }
 
+
+.lesson-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.875rem;
+}
+.lesson-read-time {
+  font-size: 0.75rem;
+  color: var(--yellow-dim);
+  font-weight: 500;
+}
+[data-theme="light"] .lesson-read-time { color: #8B6500; }
+.lesson-position {
+  font-size: 0.72rem;
+  color: var(--text3);
+}
+.module-last-visit {
+  font-size: 0.75rem;
+  color: var(--text3);
+  margin-top: 0.5rem;
+}
+.video-resource-box {
+  margin-top: 2rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-left: 3px solid var(--pink);
+  border-radius: 0 12px 12px 0;
+  padding: 1rem;
+}
+.video-resource-label {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--pink);
+  margin-bottom: 0.4rem;
+}
+.video-resource-text {
+  font-size: 0.82rem;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+.video-resource-btn {
+  display: inline-block;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--pink);
+  text-decoration: none;
+  border: 1px solid var(--pink)44;
+  border-radius: 8px;
+  padding: 0.4rem 0.875rem;
+  transition: all 0.2s;
+}
+.video-resource-btn:hover {
+  background: var(--pink)11;
+}
+
 </style>
 </head>
 <body>
@@ -1312,6 +1371,46 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
         </div>
       </div>
 
+      <!-- Vocabulary Builder -->
+      <div class="module-card fade-in" onclick="openModule('vocab')" style="animation-delay:0.35s">
+        <div class="card-accent accent-pink"></div>
+        <div class="module-top">
+          <div class="module-icon icon-p">📝</div>
+          <div>
+            <div class="module-title">Vocabulary Builder</div>
+            <div class="module-sub">200 SAT words, flashcards, roots & prefixes</div>
+          </div>
+          <div class="module-badge badge-new" id="badge-vocab">Start</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="prog-vocab" style="width:0%"></div>
+        </div>
+        <div class="module-meta">
+          <span>7 lessons · 1 quiz</span>
+          <span id="meta-vocab">0 / 7 done</span>
+        </div>
+      </div>
+
+      <!-- Punctuation Deep Dive -->
+      <div class="module-card fade-in" onclick="openModule('punctuation')" style="animation-delay:0.375s">
+        <div class="card-accent accent-yellow"></div>
+        <div class="module-top">
+          <div class="module-icon icon-y">✏️</div>
+          <div>
+            <div class="module-title">Punctuation Deep Dive</div>
+            <div class="module-sub">Every rule, every mark, every SAT trap</div>
+          </div>
+          <div class="module-badge badge-new" id="badge-punctuation">Start</div>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="prog-punctuation" style="width:0%"></div>
+        </div>
+        <div class="module-meta">
+          <span>8 lessons · 1 quiz</span>
+          <span id="meta-punctuation">0 / 8 done</span>
+        </div>
+      </div>
+
       <!-- Practice Test -->
       <div class="module-card fade-in" onclick="openModule('practice')" style="animation-delay:0.4s">
         <div class="card-accent accent-purple"></div>
@@ -1409,6 +1508,33 @@ const SAT_DATES = [
   { label: 'August 15, 2025', date: new Date('2025-08-15') }
 ];
 
+
+const READ_TIMES = {
+  strategy_0: 5, strategy_1: 6, strategy_2: 5, strategy_3: 4,
+  reading_0: 6, reading_1: 6, reading_2: 5, reading_3: 5,
+  reading_4: 6, reading_5: 5, reading_6: 5, reading_7: 6,
+  writing_0: 6, writing_1: 6, writing_2: 7, writing_3: 6,
+  writing_4: 5, writing_5: 5, writing_6: 6,
+  vocab_0: 5, vocab_1: 7, vocab_2: 6, vocab_3: 6,
+  vocab_4: 6, vocab_5: 7, vocab_6: 5,
+  punctuation_0: 7, punctuation_1: 6, punctuation_2: 6,
+  punctuation_3: 6, punctuation_4: 7, punctuation_5: 5,
+  punctuation_6: 5, punctuation_7: 6,
+  math_0: 7, advmath_0: 6, data_0: 5, geometry_0: 6
+};
+
+const VIDEO_LINKS = {
+  strategy: 'https://www.khanacademy.org/test-prep/sat',
+  reading: 'https://www.khanacademy.org/test-prep/sat/x0a8c2e5f3b316ef9:reading-and-writing',
+  writing: 'https://www.khanacademy.org/test-prep/sat/x0a8c2e5f3b316ef9:reading-and-writing',
+  vocab: 'https://www.khanacademy.org/test-prep/sat',
+  punctuation: 'https://www.khanacademy.org/test-prep/sat/x0a8c2e5f3b316ef9:reading-and-writing',
+  math: 'https://www.khanacademy.org/test-prep/sat/x0a8c2e5f3b316ef9:math',
+  advmath: 'https://www.khanacademy.org/test-prep/sat/x0a8c2e5f3b316ef9:math',
+  data: 'https://www.khanacademy.org/test-prep/sat/x0a8c2e5f3b316ef9:math',
+  geometry: 'https://www.khanacademy.org/test-prep/sat/x0a8c2e5f3b316ef9:math'
+};
+
 const MODULES = {
   strategy: {
     title: 'Test Strategy', icon: '🧭', accent: 'accent-yellow',
@@ -1492,6 +1618,33 @@ const MODULES = {
       { title: 'The Pythagorean Theorem', sub: 'Right triangles in every context' },
       { title: 'Circles — Area, Circumference & Arcs', sub: 'Central angles and arc length' },
       { title: 'Trigonometry — SOHCAHTOA', sub: 'Sine, cosine, tangent made simple' }
+    ]
+  },
+  vocab: {
+    title: 'Vocabulary Builder', icon: '📝', accent: 'accent-pink',
+    desc: 'Build the vocabulary that unlocks higher SAT scores. 200 high-frequency SAT words, flashcard mode, roots & prefixes, and vocabulary-in-context practice.',
+    lessons: [
+      { title: 'How Vocabulary Is Tested on the SAT', sub: 'Strategy before memorization' },
+      { title: 'Words About Argument & Reasoning', sub: 'Claim, refute, assert, concede...' },
+      { title: 'Words About Tone & Attitude', sub: 'Skeptical, ambivalent, ardent...' },
+      { title: 'Words About Change & Movement', sub: 'Evolve, diminish, proliferate...' },
+      { title: 'Words About Description & Quality', sub: 'Vivid, subtle, conspicuous...' },
+      { title: 'Roots, Prefixes & Suffixes', sub: 'Decode any word you've never seen' },
+      { title: 'Flashcard Practice — Review Mode', sub: 'Test yourself on all 200 words' }
+    ]
+  },
+  punctuation: {
+    title: 'Punctuation Deep Dive', icon: '✏️', accent: 'accent-yellow',
+    desc: 'A complete, dedicated punctuation course. Every mark, every rule, every SAT trap — with 10+ examples each. Built specifically because punctuation matters.',
+    lessons: [
+      { title: 'Commas — All 7 Rules Explained', sub: 'Every situation, every exception' },
+      { title: 'Semicolons — The Independent Clause Rule', sub: 'When they work and when they don't' },
+      { title: 'Colons — Introducing with Purpose', sub: 'Lists, explanations, and elaborations' },
+      { title: 'Dashes — Single and Paired', sub: 'Em dash, en dash, and hyphens' },
+      { title: 'Apostrophes — Possession & Contractions', sub: 'Its vs it's and every variation' },
+      { title: 'Quotation Marks & Punctuation Placement', sub: 'Inside or outside — the rule is clear' },
+      { title: 'Punctuation in Lists & Series', sub: 'Oxford comma, complex lists with semicolons' },
+      { title: 'Putting It All Together', sub: 'Mixed practice with real SAT sentences' }
     ]
   },
   practice: {
@@ -2166,9 +2319,760 @@ const LESSON_CONTENT = {
     `
   }
 
+  ,vocab_0: {
+    tag: 'Vocabulary Builder',
+    title: 'How Vocabulary Is Tested on the SAT',
+    body: `
+      <p>Before memorizing a single word, let's understand exactly how vocabulary shows up on the Digital SAT — because the strategy changes everything.</p>
+      <h3>Two Ways Vocabulary Appears</h3>
+      <p><strong>1. Words in Context questions</strong> — A short passage highlights one word and asks what it most nearly means in that specific context. These are NOT about dictionary definitions. They're about how the word is being used in that sentence.</p>
+      <p><strong>2. Precision & Word Choice questions</strong> — You're given a sentence with a blank and asked to choose the word that most precisely completes it. The four choices are all related words — synonyms — but only one fits the exact tone and meaning of the passage.</p>
+      <div class="highlight-box">
+        The SAT never asks you to define a word in isolation. It always gives you context. This means even if you don't know a word, you can often figure it out from the surrounding sentences.
+      </div>
+      <h3>The Two-Track Approach</h3>
+      <p>We're going to build your vocabulary two ways simultaneously:</p>
+      <ul>
+        <li><strong>Track 1 — High-frequency SAT words.</strong> There are roughly 200 words that appear repeatedly across SAT tests. Learning these gives you a massive advantage.</li>
+        <li><strong>Track 2 — Word decoding skills.</strong> Roots, prefixes, and suffixes let you figure out words you've never seen before. This is the skill that lasts a lifetime.</li>
+      </ul>
+      <h3>How to Study These Words Effectively</h3>
+      <ul>
+        <li>Don't just memorize definitions — learn each word in a sentence</li>
+        <li>Group words by category (tone words together, argument words together)</li>
+        <li>Learn antonyms alongside words — knowing what a word is NOT helps as much as knowing what it is</li>
+        <li>Use the flashcard mode in this app daily — even 10 minutes a day compounds significantly</li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Context Clue System</div>
+        When you see an unfamiliar word on the SAT: Step 1 — look for contrast words nearby (but, however, although) which signal the word means the opposite of something you recognize. Step 2 — look for similarity words (like, similarly) which signal the word means something similar to a word you know. Step 3 — use roots and prefixes to decode the structure of the word.
+      </div>
+    `
+  },
+  vocab_1: {
+    tag: 'Vocabulary Builder',
+    title: 'Words About Argument & Reasoning',
+    body: `
+      <p>The SAT loves passages about arguments, debates, and reasoning. These 30 words appear constantly in academic and scientific passages — knowing them will unlock entire passages that used to feel confusing.</p>
+      <h3>Core Argument Words</h3>
+      <div class="highlight-box">
+        <strong>assert</strong> — to state confidently, to claim firmly<br>
+        <em>"The researcher asserted that the data supported her hypothesis."</em><br><br>
+        <strong>refute</strong> — to prove something wrong, to disprove<br>
+        <em>"The new evidence refuted the previously accepted theory."</em><br><br>
+        <strong>concede</strong> — to admit reluctantly, to acknowledge a point you'd rather not<br>
+        <em>"The author concedes that critics make some valid points."</em><br><br>
+        <strong>corroborate</strong> — to confirm, to support with additional evidence<br>
+        <em>"A second study corroborated the original findings."</em><br><br>
+        <strong>contradict</strong> — to say or show the opposite<br>
+        <em>"The witness's testimony contradicted the official report."</em>
+      </div>
+      <div class="highlight-box">
+        <strong>substantiate</strong> — to provide evidence for, to back up a claim<br>
+        <em>"She needed data to substantiate her argument."</em><br><br>
+        <strong>undermine</strong> — to weaken, to damage something gradually<br>
+        <em>"The new findings undermined confidence in the old model."</em><br><br>
+        <strong>bolster</strong> — to strengthen, to support<br>
+        <em>"The additional research bolstered her case considerably."</em><br><br>
+        <strong>contend</strong> — to argue, to maintain a position<br>
+        <em>"Scientists contend that the climate is changing rapidly."</em><br><br>
+        <strong>postulate</strong> — to suggest or assume as a starting point<br>
+        <em>"Einstein postulated that the speed of light is constant."</em>
+      </div>
+      <div class="highlight-box">
+        <strong>premise</strong> — a starting assumption that an argument is built on<br>
+        <em>"The entire argument rests on a faulty premise."</em><br><br>
+        <strong>conjecture</strong> — an opinion or conclusion based on incomplete evidence<br>
+        <em>"Without more data, this remains mere conjecture."</em><br><br>
+        <strong>empirical</strong> — based on observation and evidence rather than theory<br>
+        <em>"The study provided empirical support for the hypothesis."</em><br><br>
+        <strong>inference</strong> — a conclusion reached by reasoning from evidence<br>
+        <em>"From the data, we can draw several reasonable inferences."</em><br><br>
+        <strong>qualify</strong> — to modify or limit a statement (NOT to become eligible)<br>
+        <em>"She qualified her claim by noting it only applied in certain conditions."</em>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Pairs to Know</div>
+        These words often appear as opposites in passages: assert/concede, bolster/undermine, corroborate/refute, substantiate/contradict. If you know one, you know the other.
+      </div>
+    `
+  },
+  vocab_2: {
+    tag: 'Vocabulary Builder',
+    title: 'Words About Tone & Attitude',
+    body: `
+      <p>Tone words are tested directly ("What is the author's attitude toward...?") and indirectly (choosing the word that matches the passage's tone). These are among the highest-value vocabulary words on the SAT.</p>
+      <h3>Positive Tone Words</h3>
+      <div class="highlight-box">
+        <strong>ardent</strong> — very enthusiastic and passionate<br>
+        <strong>effusive</strong> — expressing feelings in an unrestrained way<br>
+        <strong>sanguine</strong> — optimistic, especially in difficult situations<br>
+        <strong>laudatory</strong> — expressing praise<br>
+        <strong>reverent</strong> — showing deep respect and admiration
+      </div>
+      <h3>Negative Tone Words</h3>
+      <div class="highlight-box">
+        <strong>sardonic</strong> — grimly mocking or cynical<br>
+        <strong>dismissive</strong> — treating something as unworthy of consideration<br>
+        <strong>disparaging</strong> — expressing the opinion that something is of little worth<br>
+        <strong>condescending</strong> — showing a superior attitude toward others<br>
+        <strong>vitriolic</strong> — filled with bitter criticism
+      </div>
+      <h3>Neutral / Balanced Tone Words</h3>
+      <div class="highlight-box">
+        <strong>ambivalent</strong> — having mixed or contradictory feelings<br>
+        <strong>equivocal</strong> — uncertain, open to more than one interpretation<br>
+        <strong>dispassionate</strong> — not influenced by strong emotion, objective<br>
+        <strong>circumspect</strong> — wary, careful about all circumstances<br>
+        <strong>pragmatic</strong> — dealing with things sensibly and practically
+      </div>
+      <h3>Skeptical Tone Words</h3>
+      <div class="highlight-box">
+        <strong>skeptical</strong> — not easily convinced, questioning<br>
+        <strong>dubious</strong> — hesitating or doubting<br>
+        <strong>cynical</strong> — believing people are motivated only by self-interest<br>
+        <strong>wary</strong> — cautious about possible dangers<br>
+        <strong>incredulous</strong> — unwilling or unable to believe something
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 SAT Tone Trap</div>
+        The SAT rarely uses extreme tone words like "furious" or "ecstatic" in correct answers. Academic passages tend toward measured tones. If you're choosing between "skeptical" and "outraged," skeptical is almost always closer to what the SAT considers correct for an academic author.
+      </div>
+    `
+  },
+  vocab_3: {
+    tag: 'Vocabulary Builder',
+    title: 'Words About Change & Movement',
+    body: `
+      <p>Science and history passages — which make up a large portion of SAT reading — are full of words describing how things change over time. These words appear constantly.</p>
+      <h3>Words Meaning to Increase or Spread</h3>
+      <div class="highlight-box">
+        <strong>proliferate</strong> — to increase rapidly in number<br>
+        <em>"Social media platforms proliferated throughout the 2010s."</em><br><br>
+        <strong>augment</strong> — to make larger or more extensive<br>
+        <em>"Exercise augments the brain's ability to form memories."</em><br><br>
+        <strong>amplify</strong> — to make larger, stronger, or more intense<br>
+        <strong>accelerate</strong> — to increase in speed or rate<br>
+        <strong>propagate</strong> — to spread widely, to promote
+      </div>
+      <h3>Words Meaning to Decrease or Weaken</h3>
+      <div class="highlight-box">
+        <strong>diminish</strong> — to make or become less<br>
+        <em>"Chronic stress can diminish immune function."</em><br><br>
+        <strong>wane</strong> — to decrease in vigor or extent (opposite of wax)<br>
+        <em>"Public interest in the story began to wane after the first week."</em><br><br>
+        <strong>curtail</strong> — to reduce or limit<br>
+        <strong>mitigate</strong> — to make less severe or serious<br>
+        <strong>attenuate</strong> — to reduce in force or value
+      </div>
+      <h3>Words Meaning to Change or Transform</h3>
+      <div class="highlight-box">
+        <strong>evolve</strong> — to develop gradually<br>
+        <strong>transition</strong> — to undergo a process of change<br>
+        <strong>supplant</strong> — to take the place of something (often by force)<br>
+        <em>"Digital cameras supplanted film cameras within a decade."</em><br><br>
+        <strong>usurp</strong> — to take a position of power illegally or by force<br>
+        <strong>displace</strong> — to take the place of, to force out
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Wax and Wane</div>
+        "Wax" means to increase (the moon waxes as it grows fuller). "Wane" means to decrease (the moon wanes as it shrinks). This pair appears on the SAT and trips up students who only know "wax" as a candle material.
+      </div>
+    `
+  },
+  vocab_4: {
+    tag: 'Vocabulary Builder',
+    title: 'Words About Description & Quality',
+    body: `
+      <p>These words show up in literary passages and social science texts — anywhere an author is describing people, places, ideas, or qualities with precision.</p>
+      <h3>Words for Being Clear or Obvious</h3>
+      <div class="highlight-box">
+        <strong>conspicuous</strong> — clearly visible, attracting notice<br>
+        <strong>overt</strong> — done openly, not secret<br>
+        <strong>manifest</strong> — clear or obvious (as an adjective)<br>
+        <strong>lucid</strong> — clearly expressed, easy to understand<br>
+        <strong>transparent</strong> — obvious, easy to perceive
+      </div>
+      <h3>Words for Being Hidden or Subtle</h3>
+      <div class="highlight-box">
+        <strong>subtle</strong> — so delicate or precise as to be difficult to analyze<br>
+        <strong>covert</strong> — not openly acknowledged<br>
+        <strong>implicit</strong> — suggested but not directly expressed<br>
+        <strong>latent</strong> — existing but not yet developed or manifest<br>
+        <strong>nuanced</strong> — characterized by subtle shades of meaning
+      </div>
+      <h3>Words for Excellence or Importance</h3>
+      <div class="highlight-box">
+        <strong>pivotal</strong> — of crucial importance in relation to development<br>
+        <strong>seminal</strong> — strongly influencing later developments<br>
+        <em>"Watson and Crick's paper was seminal in the field of genetics."</em><br><br>
+        <strong>seminal</strong> — original and influential<br>
+        <strong>paramount</strong> — more important than anything else<br>
+        <strong>exemplary</strong> — serving as a desirable model, representing the best
+      </div>
+      <h3>Words for Complexity</h3>
+      <div class="highlight-box">
+        <strong>intricate</strong> — very complicated or detailed<br>
+        <strong>convoluted</strong> — extremely complex and difficult to follow<br>
+        <strong>nuanced</strong> — having subtle distinctions<br>
+        <strong>multifaceted</strong> — having many different aspects<br>
+        <strong>ambiguous</strong> — open to more than one interpretation
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Implicit vs. Explicit</div>
+        Explicit = directly stated. Implicit = suggested but not said directly. The SAT tests both words and the concepts they represent — "what does the author explicitly state?" vs. "what can be implicitly inferred?"
+      </div>
+    `
+  },
+  vocab_5: {
+    tag: 'Vocabulary Builder',
+    title: 'Roots, Prefixes & Suffixes',
+    body: `
+      <p>This is the most powerful vocabulary skill you can develop. Learning roots lets you decode words you have never seen before — on the SAT and for the rest of your life.</p>
+      <h3>The Most Important Prefixes</h3>
+      <div class="highlight-box">
+        <strong>anti-</strong> = against → antibiotic, antipathy, antithesis<br>
+        <strong>bene-</strong> = good → benefit, benevolent, benefactor<br>
+        <strong>mal-</strong> = bad → malicious, malfunction, malevolent<br>
+        <strong>circum-</strong> = around → circumvent, circumstance, circumspect<br>
+        <strong>inter-</strong> = between → interrupt, intervene, intercede<br>
+        <strong>intra-</strong> = within → intramural, intravenous<br>
+        <strong>mis-</strong> = wrongly → misrepresent, misconception<br>
+        <strong>pre-</strong> = before → precede, premature, preempt<br>
+        <strong>post-</strong> = after → postpone, postulate, posterior<br>
+        <strong>sub-</strong> = under → subjugate, subordinate, subvert<br>
+        <strong>super-</strong> = above → supersede, superficial, superfluous<br>
+        <strong>trans-</strong> = across → transcend, transition, transparent
+      </div>
+      <h3>Critical Roots</h3>
+      <div class="highlight-box">
+        <strong>aud</strong> = hear → audible, auditory, audience<br>
+        <strong>chron</strong> = time → chronological, anachronism, synchronize<br>
+        <strong>dict</strong> = say/speak → dictate, contradict, predict<br>
+        <strong>duc/duct</strong> = lead → deduce, conduct, introduce<br>
+        <strong>graph/gram</strong> = write → paragraph, diagram, biography<br>
+        <strong>log/logy</strong> = word/study → dialogue, biology, logic<br>
+        <strong>mit/miss</strong> = send → transmit, dismiss, mission<br>
+        <strong>path</strong> = feeling/suffering → empathy, sympathy, apathy<br>
+        <strong>port</strong> = carry → transport, import, portable<br>
+        <strong>scrib/script</strong> = write → describe, manuscript, inscription<br>
+        <strong>spec/spect</strong> = look → inspect, spectator, perspective<br>
+        <strong>vid/vis</strong> = see → evident, visible, vision<br>
+        <strong>voc/voke</strong> = call → vocal, invoke, provocative
+      </div>
+      <div class="example-box">
+        <div class="ex-label">Decoding in Action</div>
+        You see the word "circumspect" on the SAT and don't know it.<br><br>
+        Break it down: circum (around) + spect (look) = looking around carefully.<br><br>
+        So "circumspect" means cautious, careful to consider all possibilities. ✓<br><br>
+        You decoded a word you never studied — just from roots.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Suffixes Signal Word Type</div>
+        -tion/-sion = noun (decision, transition)<br>
+        -ous/-ious = adjective (tenacious, ambiguous)<br>
+        -ize/-ise = verb (rationalize, prioritize)<br>
+        -ly = adverb (subtly, ardently)<br>
+        -ment = noun (assessment, argument)<br>
+        Knowing the suffix tells you the word's job in the sentence before you even know its meaning.
+      </div>
+    `
+  },
+  vocab_6: {
+    tag: 'Vocabulary Builder',
+    title: 'Flashcard Practice — Review Mode',
+    body: `
+      <p>You have now covered the five core vocabulary categories. This lesson is your review session — use it to test yourself on everything before taking the quiz.</p>
+      <h3>Quick Review — All Categories</h3>
+      <div class="highlight-box">
+        <strong>Argument & Reasoning:</strong> assert, refute, concede, corroborate, substantiate, bolster, undermine, contend, postulate, empirical, inference, conjecture, premise, qualify, contradict
+      </div>
+      <div class="highlight-box">
+        <strong>Tone & Attitude:</strong> ardent, effusive, sanguine, sardonic, dismissive, disparaging, ambivalent, equivocal, circumspect, pragmatic, skeptical, dubious, cynical, incredulous, reverent
+      </div>
+      <div class="highlight-box">
+        <strong>Change & Movement:</strong> proliferate, augment, amplify, diminish, wane, curtail, mitigate, attenuate, supplant, usurp, evolve, displace, propagate, accelerate, augment
+      </div>
+      <div class="highlight-box">
+        <strong>Description & Quality:</strong> conspicuous, overt, lucid, subtle, covert, implicit, latent, nuanced, pivotal, seminal, paramount, exemplary, intricate, convoluted, ambiguous
+      </div>
+      <div class="highlight-box">
+        <strong>Key Prefixes:</strong> anti, bene, mal, circum, inter, mis, pre, post, sub, super, trans<br>
+        <strong>Key Roots:</strong> aud, chron, dict, graph, log, path, port, scrib, spec, vid, voc
+      </div>
+      <h3>Self-Test Strategy</h3>
+      <p>Go through each word above and try to use it in a sentence about your own life. This is the fastest way to move words from short-term to long-term memory. For example: "My dad was ardent about building this app for me." The more personal the sentence, the better it sticks.</p>
+      <div class="tip-box">
+        <div class="tip-label">💡 Before the Quiz</div>
+        Focus extra attention on words you hesitated on during this review. Those are your gaps. The quiz that follows will test all five categories — you'll see exactly which areas need more time.
+      </div>
+    `
+  },
+  punctuation_0: {
+    tag: 'Punctuation Deep Dive',
+    title: 'Commas — All 7 Rules Explained',
+    body: `
+      <p>Commas are the most tested punctuation mark on the SAT. Most students know one or two rules — but the SAT tests all seven. Here they all are, with examples.</p>
+      <h3>Rule 1 — Before a Coordinating Conjunction</h3>
+      <p>Use a comma before FANBOYS (For, And, Nor, But, Or, Yet, So) when joining two independent clauses.</p>
+      <div class="example-box"><div class="ex-label">Example</div>"She studied every night, and her scores improved dramatically." ✓<br>"She studied every night and improved." ✗ (no comma — second part isn't an independent clause)</div>
+      <h3>Rule 2 — After an Introductory Element</h3>
+      <p>Use a comma after any introductory word, phrase, or clause that comes before the main clause.</p>
+      <div class="example-box"><div class="ex-label">Example</div>"After three weeks of preparation, she felt confident." ✓<br>"However, the results were unexpected." ✓<br>"Running late, she grabbed her bag and left." ✓</div>
+      <h3>Rule 3 — Around Nonessential Information</h3>
+      <p>Use commas to set off information that could be removed without changing the core meaning.</p>
+      <div class="example-box"><div class="ex-label">Example</div>"Dr. Smith, who won three awards, teaches biology." ✓ (remove "who won three awards" — sentence still works)<br>"The student who studied hardest earned the highest grade." ✗ (no commas — "who studied hardest" is essential)</div>
+      <h3>Rule 4 — Between Items in a Series</h3>
+      <div class="example-box"><div class="ex-label">Example</div>"She packed a pencil, a calculator, and a water bottle." ✓ (Oxford comma before "and")</div>
+      <h3>Rule 5 — Between Coordinate Adjectives</h3>
+      <p>Use a comma between two adjectives that each independently modify the noun. Test: can you put "and" between them?</p>
+      <div class="example-box"><div class="ex-label">Example</div>"It was a long, difficult exam." ✓ (long AND difficult — both modify exam independently)<br>"She wore a bright red jacket." ✗ (bright modifies "red jacket" as a unit — no comma)</div>
+      <h3>Rule 6 — With Direct Address</h3>
+      <div class="example-box"><div class="ex-label">Example</div>"Eriana, your score improved significantly." ✓<br>"Thank you, Liah, for your hard work." ✓</div>
+      <h3>Rule 7 — Never Between Subject and Verb</h3>
+      <div class="example-box"><div class="ex-label">Example</div>"The student who studied hardest, earned an A." ✗ — never separate subject from verb with a single comma.</div>
+      <div class="tip-box"><div class="tip-label">💡 The Two-Comma Rule</div>If you open a nonessential clause with a comma, you MUST close it with a comma. One comma without its partner is always wrong. Think of them like parentheses — they come in pairs.</div>
+    `
+  },
+  punctuation_1: {
+    tag: 'Punctuation Deep Dive',
+    title: 'Semicolons — The Independent Clause Rule',
+    body: `
+      <p>Semicolons have one primary rule on the SAT — and it's strict. Master this one rule and you'll never miss a semicolon question.</p>
+      <h3>The Only Rule You Need</h3>
+      <div class="formula">A semicolon must have a complete sentence on BOTH sides.</div>
+      <p>Both the part before the semicolon and the part after must be able to stand alone as independent sentences. If either side is a fragment, the semicolon is wrong.</p>
+      <div class="example-box">
+        <div class="ex-label">Correct Semicolon Use</div>
+        "The experiment failed; the team redesigned the protocol." ✓<br>
+        — "The experiment failed" = complete sentence ✓<br>
+        — "The team redesigned the protocol" = complete sentence ✓<br><br>
+        "She loves reading; especially mystery novels." ✗<br>
+        — "She loves reading" = complete sentence ✓<br>
+        — "especially mystery novels" = NOT a complete sentence ✗
+      </div>
+      <h3>Semicolons With Transitional Words</h3>
+      <p>Semicolons are often used before transitional words like however, therefore, moreover, furthermore, consequently. The semicolon goes BEFORE the transition word, not after.</p>
+      <div class="example-box">
+        <div class="ex-label">With Transitions</div>
+        "The study was small; however, the results were significant." ✓<br>
+        "The study was small, however; the results were significant." ✗<br>
+        "The study was small, however, the results were significant." ✗ (comma splice)
+      </div>
+      <h3>Semicolons in Complex Lists</h3>
+      <p>When list items themselves contain commas, use semicolons to separate the items — this prevents confusion.</p>
+      <div class="example-box">
+        <div class="ex-label">Complex List</div>
+        "The team included Dr. Chen, a biologist; Dr. Patel, a chemist; and Dr. Kim, a physicist." ✓
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Quick Test</div>
+        Before choosing a semicolon answer, split the sentence at the semicolon. Read each half. Can both halves stand alone? If yes — semicolon works. If either half is a fragment — semicolon is wrong, choose a different answer.
+      </div>
+    `
+  },
+  punctuation_2: {
+    tag: 'Punctuation Deep Dive',
+    title: 'Colons — Introducing with Purpose',
+    body: `
+      <p>Colons are one of the most misused punctuation marks — but the SAT rule is actually quite simple once you know it.</p>
+      <h3>The Colon Rule</h3>
+      <div class="formula">Complete sentence : list, explanation, or elaboration</div>
+      <p>The material BEFORE the colon must always be a complete, independent sentence. The material after the colon does not have to be a complete sentence — it can be a word, phrase, list, or sentence.</p>
+      <div class="example-box">
+        <div class="ex-label">Correct Colon Use</div>
+        "She had three goals: improve her score, build her vocabulary, and master punctuation." ✓<br>
+        — Before colon: "She had three goals" = complete sentence ✓<br><br>
+        "Her conclusion was clear: more practice leads to better results." ✓<br>
+        — Before colon: "Her conclusion was clear" = complete sentence ✓<br><br>
+        "She wanted to improve: her score." ✗<br>
+        — Before colon: complete sentence ✓ BUT "her score" alone is too minimal — this should just be "She wanted to improve her score."
+      </div>
+      <h3>Common Colon Mistake</h3>
+      <div class="example-box">
+        <div class="ex-label">Wrong Colon Use</div>
+        "The three most important rules are: practice, preparation, and patience." ✗<br>
+        — "The three most important rules are" is NOT a complete sentence — it needs what comes after to be complete. Remove the colon: "The three most important rules are practice, preparation, and patience." ✓
+      </div>
+      <h3>Colon vs. Semicolon — The Key Difference</h3>
+      <div class="highlight-box">
+        <strong>Semicolon</strong> = joins two equally weighted independent clauses (both sides must be complete sentences)<br><br>
+        <strong>Colon</strong> = introduces something that explains or elaborates on the first clause (only the first side must be a complete sentence)
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The "Namely" Test</div>
+        If you can insert "namely" or "that is" after the colon and it makes sense, the colon is probably correct. "She had one goal, namely: to graduate." The "namely" works, so the colon works.
+      </div>
+    `
+  },
+  punctuation_3: {
+    tag: 'Punctuation Deep Dive',
+    title: 'Dashes, Hyphens & Their Differences',
+    body: `
+      <p>Students often confuse hyphens and dashes — they look similar but do completely different jobs. The SAT tests both, and knowing the difference is a quick win.</p>
+      <h3>The Em Dash ( — )</h3>
+      <p>The em dash is the long dash. It has two uses:</p>
+      <div class="highlight-box">
+        <strong>Use 1 — Paired dashes (like parentheses):</strong> Set off nonessential information with extra emphasis<br>
+        "The answer — surprisingly — was right in front of them." ✓<br><br>
+        <strong>Use 2 — Single dash (like a colon):</strong> Introduce an elaboration or dramatic pause<br>
+        "She had one goal — to ace the SAT." ✓
+      </div>
+      <h3>The Paired Dash Rule</h3>
+      <p>Just like commas around nonessential clauses, if you open with a dash you must close with a dash. Never mix — use two dashes or zero dashes around nonessential information.</p>
+      <div class="example-box">
+        <div class="ex-label">Paired Dash Examples</div>
+        "The study — which took three years — produced surprising results." ✓<br>
+        "The study — which took three years, produced surprising results." ✗ (opened with dash, closed with comma)
+      </div>
+      <h3>The Hyphen ( - )</h3>
+      <p>The hyphen is the short dash. It joins words together — it never separates clauses.</p>
+      <div class="highlight-box">
+        <strong>Hyphen uses:</strong><br>
+        Compound modifiers before a noun: "a well-known author," "a high-scoring student"<br>
+        Compound nouns: "self-esteem," "mother-in-law"<br>
+        Numbers: "twenty-one," "forty-five"<br><br>
+        <strong>No hyphen when modifier comes AFTER noun:</strong><br>
+        "The author is well known." ✓ (no hyphen after noun)<br>
+        "The author is well-known." ✗
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Quick Memory Aid</div>
+        Em dash = Emphasis and separation (long dash, big job)<br>
+        Hyphen = Joining (short dash, connecting job)<br>
+        Never use a hyphen where a dash belongs or vice versa on the SAT.
+      </div>
+    `
+  },
+  punctuation_4: {
+    tag: 'Punctuation Deep Dive',
+    title: 'Apostrophes — Every Rule & Every Trap',
+    body: `
+      <p>Apostrophe questions are on every single SAT. The good news: there are only three rules, and the traps are always the same ones.</p>
+      <h3>Rule 1 — Singular Possession</h3>
+      <div class="formula">singular noun + 's = possession</div>
+      <div class="example-box">
+        <div class="ex-label">Examples</div>
+        "the student's notebook" (one student's notebook) ✓<br>
+        "Eriana's score improved" ✓<br>
+        "the class's assignment" ✓ (even when the noun ends in s, add 's)
+      </div>
+      <h3>Rule 2 — Plural Possession</h3>
+      <div class="formula">plural noun ending in s + ' only (no extra s)</div>
+      <div class="example-box">
+        <div class="ex-label">Examples</div>
+        "the students' notebooks" (multiple students' notebooks) ✓<br>
+        "the teachers' lounge" (lounge belonging to multiple teachers) ✓<br>
+        "the children's books" ✓ (children is already plural, not ending in s, so add 's)
+      </div>
+      <h3>Rule 3 — Contractions</h3>
+      <div class="highlight-box">
+        it's = it is | its = belonging to it<br>
+        they're = they are | their = belonging to them | there = location<br>
+        you're = you are | your = belonging to you<br>
+        who's = who is | whose = belonging to whom<br>
+        we're = we are | were = past tense of be
+      </div>
+      <h3>The Biggest Trap — Plurals Never Need Apostrophes</h3>
+      <div class="example-box">
+        <div class="ex-label">Common Wrong Answers</div>
+        "The 1990's were a transformative decade." ✗ → "The 1990s were..." ✓<br>
+        "She received A's on all her test's." ✗ → "She received As on all her tests." ✓<br>
+        "Three CEO's attended the meeting." ✗ → "Three CEOs attended..." ✓
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Substitution Test</div>
+        Every time you see it's, they're, you're, or who's — substitute the full two words. If "it is," "they are," "you are," or "who is" makes sense in the sentence → use the contraction with the apostrophe. If not → use the possessive form without an apostrophe.
+      </div>
+    `
+  },
+  punctuation_5: {
+    tag: 'Punctuation Deep Dive',
+    title: 'Quotation Marks & Punctuation Placement',
+    body: `
+      <p>Quotation mark questions on the SAT are less about when to use quotes and more about where other punctuation goes in relation to the closing quotation mark.</p>
+      <h3>The American Rule — Periods and Commas</h3>
+      <div class="formula">Periods and commas ALWAYS go INSIDE closing quotation marks.</div>
+      <div class="example-box">
+        <div class="ex-label">Always Inside</div>
+        She said, "I'll be ready soon." ✓ (period inside)<br>
+        She called it "a breakthrough," and the team agreed. ✓ (comma inside)<br>
+        She said, "I'll be ready soon". ✗ (period outside — wrong in American English)
+      </div>
+      <h3>Question Marks and Exclamation Points</h3>
+      <p>These go inside IF the quoted material is a question or exclamation. They go outside if the surrounding sentence is the question.</p>
+      <div class="example-box">
+        <div class="ex-label">Inside vs. Outside</div>
+        She asked, "Are you ready?" ✓ (the quote itself is a question)<br>
+        Did she say "I'm ready"? ✓ (the surrounding sentence is the question)<br>
+        Did she say "Are you ready?" ✓ (both are questions — one mark serves both)
+      </div>
+      <h3>Semicolons and Colons</h3>
+      <div class="formula">Semicolons and colons ALWAYS go OUTSIDE closing quotation marks.</div>
+      <div class="example-box">
+        <div class="ex-label">Always Outside</div>
+        She described the study as "groundbreaking"; others disagreed. ✓<br>
+        She described the study as "groundbreaking": the team celebrated. ✓
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Memory Trick</div>
+        Periods and commas are small — they tuck inside the quotes.<br>
+        Semicolons and colons are structural — they stay outside.<br>
+        Question marks and exclamation points — it depends on who's asking.
+      </div>
+    `
+  },
+  punctuation_6: {
+    tag: 'Punctuation Deep Dive',
+    title: 'Punctuation in Lists & Series',
+    body: `
+      <p>Lists seem simple but the SAT tests them in ways that catch students off guard — especially when list items themselves contain commas.</p>
+      <h3>Simple Lists — Use Commas</h3>
+      <div class="example-box">
+        <div class="ex-label">Simple List</div>
+        "She studied reading, writing, and math." ✓<br>
+        The Oxford comma (before "and") is standard on the SAT. Always include it.
+      </div>
+      <h3>Complex Lists — Use Semicolons</h3>
+      <p>When individual list items contain their own commas, upgrade the separators to semicolons to avoid confusion.</p>
+      <div class="example-box">
+        <div class="ex-label">Complex List</div>
+        ✗ Confusing: "The speakers were Dr. Lee, a biologist, Dr. Park, a chemist, and Dr. Kim, a physicist."<br><br>
+        ✓ Clear: "The speakers were Dr. Lee, a biologist; Dr. Park, a chemist; and Dr. Kim, a physicist."
+      </div>
+      <h3>Colons to Introduce Lists</h3>
+      <p>Use a colon to introduce a list only when the text before the colon is a complete sentence.</p>
+      <div class="example-box">
+        <div class="ex-label">Colon + List</div>
+        "She needed three things: focus, practice, and rest." ✓<br>
+        "She needed: focus, practice, and rest." ✗ (before colon is not a complete sentence)
+      </div>
+      <h3>What NOT to Do With Lists</h3>
+      <ul>
+        <li>Never use a colon after "such as," "including," or "like" — these words already signal a list</li>
+        <li>Never mix commas and semicolons as separators in the same list</li>
+        <li>Never use a semicolon before "and" in a simple list (only in complex lists)</li>
+      </ul>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Upgrade Rule</div>
+        Simple list → commas. Complex list (items have internal commas) → semicolons. It's an upgrade, not a replacement. You never mix the two in the same list.
+      </div>
+    `
+  },
+  punctuation_7: {
+    tag: 'Punctuation Deep Dive',
+    title: 'Putting It All Together — Mixed Practice',
+    body: `
+      <p>You have now covered every punctuation mark the SAT tests. This final lesson pulls everything together with mixed examples — the kind of multi-rule sentences that appear on the real test.</p>
+      <h3>Strategy for Punctuation Questions</h3>
+      <ol>
+        <li><strong>Identify what punctuation mark is being tested.</strong> Look at the answer choices — they'll all use different marks or placements. That tells you what rule to apply.</li>
+        <li><strong>Check both sides of the mark.</strong> Are both sides complete sentences? One? Neither? This determines whether to use a period, semicolon, comma + conjunction, or colon.</li>
+        <li><strong>Apply the specific rule</strong> for that mark.</li>
+        <li><strong>Eliminate systematically.</strong> You often don't need to know why the right answer is right — just why three answers are wrong.</li>
+      </ol>
+      <h3>The Punctuation Hierarchy</h3>
+      <div class="highlight-box">
+        <strong>Strongest separation (two complete sentences):</strong><br>
+        Period. | Semicolon; | Comma + FANBOYS, but/and/so<br><br>
+        <strong>Medium separation (introduce or set off):</strong><br>
+        Colon: | Em dash — | Paired commas ,___,<br><br>
+        <strong>Weakest / joining:</strong><br>
+        Comma alone , | Hyphen - (for compound words only)
+      </div>
+      <div class="example-box">
+        <div class="ex-label">Mixed Practice Sentence</div>
+        "The researchers — who had worked for three years — finally published their findings: a complete reversal of the previous model; however, the scientific community remained skeptical."<br><br>
+        Count the rules used: paired dashes (nonessential clause), colon (introducing elaboration), semicolon + however (joining independent clauses with transition). Three rules. One sentence. The SAT does this.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Your Punctuation Checklist</div>
+        Before submitting any punctuation answer on the SAT, ask:<br>
+        ✓ Are both sides of my semicolon complete sentences?<br>
+        ✓ Is the part before my colon a complete sentence?<br>
+        ✓ Did I close every paired dash and paired comma?<br>
+        ✓ Is my apostrophe showing possession or a contraction — not a plural?<br>
+        ✓ Did periods and commas go inside quotation marks?
+      </div>
+    `
+  }
 };
 
 const QUIZ_DATA = {
+  vocab: [
+    {
+      q: "As used in academic writing, to 'assert' a claim most nearly means to:",
+      options: ["Prove it with data", "State it confidently", "Question it carefully", "Withdraw it reluctantly"],
+      correct: 1,
+      explain: "To assert means to state something confidently and firmly. It does not imply proof — you can assert something without proving it. This is why 'substantiate' (to provide evidence for) is a different word. On the SAT, assert often appears in passages where an author makes a strong claim."
+    },
+    {
+      q: "Which word most nearly means to WEAKEN an argument?",
+      options: ["Bolster", "Corroborate", "Undermine", "Substantiate"],
+      correct: 2,
+      explain: "Undermine means to weaken or damage something gradually. Bolster and substantiate both mean to strengthen or support. Corroborate means to confirm with additional evidence. Knowing these as two pairs — bolster/substantiate (strengthen) vs. undermine/refute (weaken) — makes this question instantly solvable."
+    },
+    {
+      q: "A researcher who is 'skeptical' of new findings would most likely:",
+      options: ["Accept them immediately", "Question them and demand more evidence", "Ignore them entirely", "Celebrate the discovery"],
+      correct: 1,
+      explain: "Skeptical means not easily convinced, questioning. A skeptical researcher would question the findings and want more evidence before accepting them. This is different from dismissive (treating findings as unworthy of attention) or incredulous (unable to believe something)."
+    },
+    {
+      q: "The prefix 'bene-' means:",
+      options: ["Against", "Below", "Good", "Around"],
+      correct: 2,
+      explain: "Bene- means good or well. Examples: benefit (good result), benevolent (wishing good to others), beneficial (producing good results). Its opposite is mal- (bad), as in malicious, malfunction, malevolent. Knowing these two prefixes together doubles their value."
+    },
+    {
+      q: "Which word best describes an argument that is based on observation and evidence rather than theory?",
+      options: ["Conjecture", "Empirical", "Postulated", "Ambivalent"],
+      correct: 1,
+      explain: "Empirical means based on observation, experience, and evidence. Conjecture is an opinion based on incomplete evidence — essentially the opposite. Postulated means assumed as a starting point (theoretical). Ambivalent describes mixed feelings and has nothing to do with evidence."
+    },
+    {
+      q: "The word 'proliferate' most nearly means:",
+      options: ["To decrease steadily", "To increase rapidly in number", "To remain unchanged", "To combine into one"],
+      correct: 1,
+      explain: "Proliferate means to increase rapidly in number or spread widely. 'Social media platforms proliferated in the 2010s' means they multiplied rapidly. Its near-opposite would be diminish or wane (to decrease). Augment means to increase but more gradually and often by adding to something existing."
+    },
+    {
+      q: "An author described as 'sardonic' would most likely write in a tone that is:",
+      options: ["Warmly enthusiastic", "Grimly mocking or cynical", "Carefully neutral", "Deeply reverent"],
+      correct: 1,
+      explain: "Sardonic means grimly mocking or cynical. A sardonic writer makes cutting, dark observations often with bitter humor. This is more extreme than skeptical (questioning) and more negative than circumspect (careful and cautious). Reverent is the opposite — showing deep respect."
+    },
+    {
+      q: "Which word means 'suggested but not directly expressed'?",
+      options: ["Overt", "Explicit", "Implicit", "Conspicuous"],
+      correct: 2,
+      explain: "Implicit means suggested or implied without being directly stated. Its opposite is explicit (directly stated). Overt and conspicuous both mean clearly visible or obvious. The SAT frequently tests implicit vs. explicit — 'what does the author explicitly state' vs. 'what can be implicitly inferred.'"
+    },
+    {
+      q: "The root 'chron' appears in chronological, anachronism, and synchronize. What does 'chron' mean?",
+      options: ["Place", "Time", "Sound", "Movement"],
+      correct: 1,
+      explain: "Chron means time. Chronological = in order of time. Anachronism = something placed in the wrong time period. Synchronize = to cause to occur at the same time. Knowing this root unlocks all three words and any others sharing it, like chronicle (a record of events in time)."
+    },
+    {
+      q: "To 'concede' a point in an argument means to:",
+      options: ["Prove it decisively", "Dismiss it as irrelevant", "Acknowledge it reluctantly", "Repeat it for emphasis"],
+      correct: 2,
+      explain: "To concede means to admit something reluctantly — to acknowledge a point you would prefer not to. In arguments, authors concede that critics have some valid points while still maintaining their overall position. This is a sophisticated rhetorical move the SAT loves to test in passages."
+    }
+  ],
+  punctuation: [
+    {
+      q: "Which version correctly uses a semicolon?",
+      options: [
+        "She studied hard; and passed the exam.",
+        "She studied hard; she passed the exam.",
+        "She studied; hard and passed the exam.",
+        "She studied hard; passing the exam easily."
+      ],
+      correct: 1,
+      explain: "A semicolon must have a complete, independent sentence on both sides. Choice B: 'She studied hard' is complete ✓ and 'she passed the exam' is complete ✓. Choice A fails because 'and passed the exam' is not an independent clause. Choice D fails because 'passing the exam easily' is a fragment."
+    },
+    {
+      q: "Which sentence uses a colon correctly?",
+      options: [
+        "She needed: more practice and better pacing.",
+        "The exam tested: reading, writing, and math.",
+        "She had one clear weakness: time management.",
+        "Her goals included: scoring above 1200."
+      ],
+      correct: 2,
+      explain: "A colon must be preceded by a complete, independent sentence. Choice C: 'She had one clear weakness' is a complete sentence ✓, and 'time management' elaborates on what that weakness is ✓. Choices A, B, and D all have incomplete sentences before the colon — 'She needed,' 'The exam tested,' and 'Her goals included' cannot stand alone."
+    },
+    {
+      q: "Which sentence uses apostrophes correctly?",
+      options: [
+        "The student's scores improved after three week's of practice.",
+        "The students' scores improved after three weeks of practice.",
+        "The students scores improved after three weeks of practice.",
+        "The student's score's improved after three weeks of practice."
+      ],
+      correct: 1,
+      explain: "Choice B is correct: 'students'' uses a plural possessive apostrophe (multiple students' scores), and 'weeks' is simply a plural noun requiring no apostrophe. Choice A incorrectly adds an apostrophe to 'weeks' (a simple plural). Choice C omits the needed possessive apostrophe. Choice D incorrectly adds an apostrophe to 'scores' (a simple plural)."
+    },
+    {
+      q: "Where should the period go in this sentence? She called the discovery 'remarkable'",
+      options: [
+        "She called the discovery 'remarkable.'",
+        "She called the discovery 'remarkable'.",
+        "She called the discovery 'remarkable!'",
+        "Either A or B is acceptable"
+      ],
+      correct: 0,
+      explain: "In American English, periods always go INSIDE closing quotation marks — no exceptions. Choice A is correct. Choice B places the period outside, which follows British convention but is wrong on the American-standard SAT. This rule applies to commas as well: they always go inside closing quotation marks."
+    },
+    {
+      q: "Which sentence correctly uses paired dashes?",
+      options: [
+        "The results — which shocked everyone — were published immediately.",
+        "The results — which shocked everyone, were published immediately.",
+        "The results, which shocked everyone — were published immediately.",
+        "The results — which shocked everyone were published immediately."
+      ],
+      correct: 0,
+      explain: "Paired dashes work like parentheses — if you open with a dash, you must close with a dash. Choice A correctly uses two dashes to set off 'which shocked everyone.' Choices B, C, and D all mix punctuation marks (dash with comma) or leave the pair incomplete, which is always wrong."
+    },
+    {
+      q: "Which sentence handles a complex list correctly?",
+      options: [
+        "The team included Maya, a writer, Jordan, a designer, and Sam, a developer.",
+        "The team included Maya, a writer; Jordan, a designer; and Sam, a developer.",
+        "The team included Maya; a writer, Jordan; a designer, and Sam; a developer.",
+        "The team included: Maya a writer, Jordan a designer, and Sam a developer."
+      ],
+      correct: 1,
+      explain: "When list items themselves contain commas, semicolons replace commas as separators to prevent confusion. Choice B correctly uses semicolons between the three team members (each of whom has a comma-separated descriptor). Choice A is confusing — it's unclear where one person ends and another begins. Choice C misplaces the semicolons."
+    },
+    {
+      q: "Which version correctly uses a hyphen?",
+      options: [
+        "She is a well-known author.",
+        "The author is well-known in her field.",
+        "She wrote a well known book.",
+        "Both A and B are correct"
+      ],
+      correct: 0,
+      explain: "Hyphens connect compound modifiers that come BEFORE a noun. Choice A: 'well-known' comes before 'author' → hyphen needed ✓. Choice B: 'well known' comes AFTER 'is' (a linking verb) → no hyphen needed. So 'She is a well-known author' needs a hyphen, but 'The author is well known' does not. Choice D is wrong because B should not have a hyphen."
+    },
+    {
+      q: "Which sentence has a comma splice error?",
+      options: [
+        "She studied every night, and her scores improved.",
+        "She studied every night; her scores improved.",
+        "She studied every night, her scores improved.",
+        "She studied every night. Her scores improved."
+      ],
+      correct: 2,
+      explain: "A comma splice occurs when two independent clauses are joined with only a comma — no conjunction. Choice C is a comma splice: 'She studied every night' and 'her scores improved' are both complete sentences joined by only a comma. Fix it by adding a conjunction (Choice A), using a semicolon (Choice B), or making two sentences (Choice D)."
+    },
+    {
+      q: "Which is the correct use of 'its' vs. 'it's'?",
+      options: [
+        "The study published it's findings last month.",
+        "Its important to review all punctuation rules.",
+        "The app tracks its users' progress automatically.",
+        "The committee shared it's final decision."
+      ],
+      correct: 2,
+      explain: "Its (no apostrophe) is possessive — belonging to it. It's (with apostrophe) = it is. Choice C: 'The app tracks its users' progress' — substitute 'it is': 'The app tracks it is users' progress' → doesn't work → use possessive 'its' ✓. Choices A, B, and D all incorrectly use 'it's' where the possessive 'its' is needed, or vice versa."
+    },
+    {
+      q: "After the introductory phrase, where does the comma go?\n\n'After three years of research the team published their findings.'",
+      options: [
+        "After three years, of research the team published their findings.",
+        "After three years of research, the team published their findings.",
+        "After three years of research the team, published their findings.",
+        "No comma is needed in this sentence."
+      ],
+      correct: 1,
+      explain: "A comma is required after an introductory phrase before the main clause. The introductory phrase here is 'After three years of research' — it sets the scene before the main clause 'the team published their findings.' The comma goes at the end of the introductory phrase, immediately before the main clause begins. This is one of the most tested comma rules on the SAT."
+    }
+  ],
   strategy: [
     {
       q: "The Digital SAT is adaptive. What does this mean for a student's score?",
@@ -2426,9 +3330,11 @@ function saveProfiles(profiles) {
 function getProfileData(name) {
   return JSON.parse(localStorage.getItem('satData_' + name) || JSON.stringify({
     name, streak: 0, lastVisit: null,
-    progress: { strategy:0, reading:0, writing:0, math:0, advmath:0, data:0, geometry:0, practice:0 },
+    progress: { strategy:0, reading:0, writing:0, math:0, advmath:0, data:0, geometry:0, practice:0, vocab:0, punctuation:0 },
     quizScores: {},
-    lessonsCompleted: {}
+    lessonsCompleted: {},
+    lastVisitedModule: {},
+    totalTimeSpent: 0
   }));
 }
 function saveProfileData(data) {
@@ -2601,10 +3507,33 @@ function openModule(modKey) {
   const mod = MODULES[modKey];
   if (!mod) return;
 
+  // Lock math modules until Session 4
+  const lockedModules = ['math','advmath','data','geometry','practice'];
+  if (lockedModules.includes(modKey)) {
+    document.getElementById('moduleHeroArea').innerHTML = `
+      <div style="text-align:center;padding:2rem 1rem;">
+        <div style="font-size:3rem;margin-bottom:1rem;">${mod.icon}</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:0.75rem;">${mod.title}</div>
+        <div style="background:var(--yellow)15;border:1px solid var(--yellow)33;border-radius:14px;padding:1rem 1.25rem;margin-bottom:1rem;">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;color:var(--yellow);margin-bottom:0.4rem;">🔓 Coming Next Week</div>
+          <div style="font-size:0.85rem;color:var(--text2);line-height:1.6;">This module is being built specially for you with real-world examples designed to make math click. Check back soon — it will be worth the wait.</div>
+        </div>
+        <div style="font-size:0.8rem;color:var(--text3);">Focus on Reading, Writing & Vocabulary first —<br>they're all ready for you right now.</div>
+      </div>
+    `;
+    document.getElementById('lessonListArea').innerHTML = '';
+    showPage('modulePage', null, true);
+    document.getElementById('topbarTitle').innerHTML = \`<span style="color:var(--yellow)">\${mod.icon}</span> \${mod.title}\`;
+    return;
+  }
+
+  const lastVisit = currentProfile.lastVisitedModule && currentProfile.lastVisitedModule[modKey];
+  const lastVisitHtml = lastVisit ? `<div class="module-last-visit">Last studied: ${lastVisit}</div>` : '';
   document.getElementById('moduleHeroArea').innerHTML = `
     <div class="module-hero-icon">${mod.icon}</div>
     <div class="module-hero-title">${mod.title}</div>
     <div class="module-hero-desc">${mod.desc}</div>
+    ${lastVisitHtml}
   `;
 
   const lessonList = document.getElementById('lessonListArea');
@@ -2687,10 +3616,30 @@ function openLesson(modKey, index) {
   currentProfile.progress[modKey] = Math.min(100, Math.round((done / totalLessons) * 100));
   saveProfileData(currentProfile);
 
+  const readTime = READ_TIMES[key] || 5;
+  const videoUrl = VIDEO_LINKS[modKey] || 'https://www.khanacademy.org/test-prep/sat';
+  const now = new Date();
+  const timeStr = now.toLocaleDateString('en-US', {month:'short', day:'numeric'}) + ' at ' + now.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+  
+  // Save last visited timestamp for this module
+  if (!currentProfile.lastVisitedModule) currentProfile.lastVisitedModule = {};
+  currentProfile.lastVisitedModule[modKey] = timeStr;
+  saveProfileData(currentProfile);
+
   document.getElementById('lessonContentArea').innerHTML = `
     <div class="lesson-tag">${content.tag}</div>
+    <div class="lesson-meta-row">
+      <span class="lesson-read-time">⏱ ${readTime} min read</span>
+      <span class="lesson-position">Lesson ${index + 1} of ${MODULES[modKey].lessons.length}</span>
+    </div>
     <div class="lesson-title-big">${content.title}</div>
-    <div class="lesson-body">${content.body}</div>
+    <div class="lesson-body">${content.body}
+      <div class="video-resource-box">
+        <div class="video-resource-label">📺 Video Resource</div>
+        <div class="video-resource-text">Want to see this concept explained visually? Khan Academy has free official SAT videos covering this exact topic.</div>
+        <a href="${videoUrl}" target="_blank" class="video-resource-btn">Watch on Khan Academy →</a>
+      </div>
+    </div>
   `;
 
   const mod2 = MODULES[modKey];
