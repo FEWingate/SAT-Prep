@@ -4241,30 +4241,26 @@ function copyPrompt(text, el) {
 
 function buildClaudeBox(modKey) {
   const prompts = CLAUDE_PROMPTS[modKey] || CLAUDE_PROMPTS.strategy;
-  const promptItems = prompts.map(p => `
-    <div class="claude-prompt-item" onclick="copyPrompt(this.dataset.prompt, this.querySelector('.claude-prompt-copy'))" data-prompt="${p.replace(/"/g, '&quot;')}">
-      <div class="claude-prompt-text">${p}</div>
-      <div class="claude-prompt-copy">Copy</div>
-    </div>
-  `).join('');
+  let promptItems = '';
+  prompts.forEach(function(p) {
+    const safeP = p.replace(/"/g, '&quot;');
+    promptItems += '<div class="claude-prompt-item" onclick="copyPrompt(this.dataset.prompt, this.querySelector(\'.claude-prompt-copy\'))" data-prompt="' + safeP + '">' +
+      '<div class="claude-prompt-text">' + p + '</div>' +
+      '<div class="claude-prompt-copy">Copy</div>' +
+      '</div>';
+  });
   
-  return \`
-    <div class="claude-help-box">
-      <div class="claude-help-header">
-        <div class="claude-help-icon">✦</div>
-        <div>
-          <div class="claude-help-title">Still have questions? Ask Claude</div>
-          <div class="claude-help-sub">Copy a prompt below, then open Claude to get a personalized explanation</div>
-        </div>
-      </div>
-      <div class="claude-prompts">
-        \${promptItems}
-      </div>
-      <a href="https://claude.ai" target="_blank" class="claude-open-btn">
-        Open Claude.ai →
-      </a>
-    </div>
-  \`;
+  return '<div class="claude-help-box">' +
+    '<div class="claude-help-header">' +
+      '<div class="claude-help-icon">✦</div>' +
+      '<div>' +
+        '<div class="claude-help-title">Still have questions? Ask Claude</div>' +
+        '<div class="claude-help-sub">Copy a prompt below, then open Claude for a personalized explanation</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="claude-prompts">' + promptItems + '</div>' +
+    '<a href="https://claude.ai" target="_blank" class="claude-open-btn">Open Claude.ai →</a>' +
+  '</div>';
 }
 
 </script>
