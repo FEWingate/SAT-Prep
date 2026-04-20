@@ -3328,14 +3328,32 @@ function saveProfiles(profiles) {
   localStorage.setItem('satProfiles', JSON.stringify(profiles));
 }
 function getProfileData(name) {
-  return JSON.parse(localStorage.getItem('satData_' + name) || JSON.stringify({
-    name, streak: 0, lastVisit: null,
-    progress: { strategy:0, reading:0, writing:0, math:0, advmath:0, data:0, geometry:0, practice:0, vocab:0, punctuation:0 },
-    quizScores: {},
-    lessonsCompleted: {},
-    lastVisitedModule: {},
-    totalTimeSpent: 0
-  }));
+  try {
+    const saved = localStorage.getItem('satData_' + name);
+    const defaults = {
+      name, streak: 0, lastVisit: null,
+      progress: { strategy:0, reading:0, writing:0, math:0, advmath:0, data:0, geometry:0, practice:0, vocab:0, punctuation:0 },
+      quizScores: {},
+      lessonsCompleted: {},
+      lastVisitedModule: {},
+      totalTimeSpent: 0
+    };
+    if (!saved) return defaults;
+    const parsed = JSON.parse(saved);
+    // Migrate old data — merge with defaults so new fields are always present
+    const migrated = Object.assign({}, defaults, parsed);
+    migrated.progress = Object.assign({}, defaults.progress, parsed.progress || {});
+    migrated.quizScores = parsed.quizScores || {};
+    migrated.lessonsCompleted = parsed.lessonsCompleted || {};
+    migrated.lastVisitedModule = parsed.lastVisitedModule || {};
+    return migrated;
+  } catch(e) {
+    return {
+      name, streak: 0, lastVisit: null,
+      progress: { strategy:0, reading:0, writing:0, math:0, advmath:0, data:0, geometry:0, practice:0, vocab:0, punctuation:0 },
+      quizScores: {}, lessonsCompleted: {}, lastVisitedModule: {}, totalTimeSpent: 0
+    };
+  }
 }
 function saveProfileData(data) {
   localStorage.setItem('satData_' + data.name, JSON.stringify(data));
@@ -3351,16 +3369,15 @@ function getInitials(name) {
 }
 
 function renderProfileScreen() {
-  const profiles = getProfiles();
+  let profiles = [];
+  try { profiles = getProfiles(); } catch(e) { profiles = []; }
   const container = document.getElementById('profileCards');
+  if (!container) return;
   container.innerHTML = '';
 
   // Pre-populate Eriana and Liah if no profiles exist
   if (profiles.length === 0) {
-    const defaultProfiles = ['Eriana', 'Liah'];
-    defaultProfiles.forEach(n => {
-      if (!profiles.find(p => p === n)) profiles.push(n);
-    });
+    profiles = ['Eriana', 'Liah'];
     saveProfiles(profiles);
   }
 
@@ -3429,23 +3446,32 @@ function switchProfile() {
 }
 
 function showNewProfileForm() {
-  document.getElementById('newProfileForm').classList.add('open');
-  document.getElementById('newProfileName').focus();
+  const form = document.getElementById('newProfileForm');
+  const input = document.getElementById('newProfileName');
+  if (form) form.classList.add('open');
+  if (input) { input.value = ''; setTimeout(() => input.focus(), 100); }
 }
 function hideNewProfileForm() {
   document.getElementById('newProfileForm').classList.remove('open');
   document.getElementById('newProfileName').value = '';
 }
 function createProfile() {
-  const name = document.getElementById('newProfileName').value.trim();
-  if (!name) return;
-  const profiles = getProfiles();
-  if (!profiles.includes(name)) {
-    profiles.push(name);
-    saveProfiles(profiles);
+  try {
+    const input = document.getElementById('newProfileName');
+    if (!input) return;
+    const name = input.value.trim();
+    if (!name) { input.focus(); return; }
+    let profiles = [];
+    try { profiles = getProfiles(); } catch(e) { profiles = []; }
+    if (!profiles.includes(name)) {
+      profiles.push(name);
+      saveProfiles(profiles);
+    }
+    hideNewProfileForm();
+    loadProfile(name);
+  } catch(e) {
+    console.error('Create profile error:', e);
   }
-  hideNewProfileForm();
-  loadProfile(name);
 }
 
 // ════════════════════════════════════
@@ -3927,18 +3953,33 @@ function toggleTheme() {
 //  INIT
 // ════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('satTheme') || 'dark';
-  document.documentElement.setAttribute('data-theme', saved);
-  const icon = saved === 'dark' ? '🌙' : '☀️';
-  ['themeBtn','themeBtnProfile'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = icon;
-  });
-  renderProfileScreen();
+  try {
+    const saved = localStorage.getItem('satTheme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    const icon = saved === 'dark' ? '🌙' : '☀️';
+    ['themeBtn','themeBtnProfile'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = icon;
+    });
+  } catch(e) {}
 
-  document.getElementById('newProfileName').addEventListener('keydown', e => {
-    if (e.key === 'Enter') createProfile();
-  });
+  try {
+    renderProfileScreen();
+  } catch(e) {
+    console.error('Profile screen error:', e);
+    // If profile screen fails, clear bad data and retry
+    try {
+      localStorage.removeItem('satProfiles');
+      renderProfileScreen();
+    } catch(e2) {}
+  }
+
+  const nameInput = document.getElementById('newProfileName');
+  if (nameInput) {
+    nameInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') createProfile();
+    });
+  }
 });
 
 // ════════════════════════════════════
