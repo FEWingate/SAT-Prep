@@ -4615,7 +4615,7 @@ async function sendToClaudeAPI(userText) {
         'anthropic-dangerous-direct-browser-access': 'true'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 1000,
         system: systemPrompt,
         messages: tutorMessages
@@ -4630,11 +4630,13 @@ async function sendToClaudeAPI(userText) {
       tutorMessages.push({ role: 'assistant', content: reply });
       addClaudeMessage(reply);
     } else if (data.error) {
-      addClaudeMessage('I had trouble connecting. Please check that your API key is set up correctly, then try again.');
+      addClaudeMessage('Connection error: ' + data.error.type + ' — ' + data.error.message);
+    } else {
+      addClaudeMessage('Unexpected response. Please try again.');
     }
   } catch (err) {
     hideTyping();
-    addClaudeMessage('I could not connect right now. Make sure you are online and try again.');
+    addClaudeMessage('Network error: ' + err.message + '. Make sure you are online and try again.');
   }
   
   tutorIsLoading = false;
