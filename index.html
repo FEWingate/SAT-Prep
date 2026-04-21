@@ -1355,6 +1355,117 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 }
 [data-theme="light"] .tutor-prompt-label { color: var(--yellow-dim); }
 
+
+.api-key-setup {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.api-key-setup-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.api-key-setup h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+.api-key-setup p {
+  font-size: 0.875rem;
+  color: var(--text2);
+  line-height: 1.6;
+  max-width: 340px;
+  margin-bottom: 1.5rem;
+}
+.api-key-input-wrap {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.api-key-input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.api-key-input:focus { border-color: var(--yellow); }
+.api-key-input::placeholder { color: var(--text3); }
+.api-key-save-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, var(--yellow), var(--pink));
+  border: none;
+  border-radius: 12px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1A1000;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.api-key-save-btn:hover { opacity: 0.9; }
+.api-key-skip {
+  font-size: 0.78rem;
+  color: var(--text3);
+  cursor: pointer;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+}
+.api-key-skip:hover { color: var(--text2); }
+.api-key-banner {
+  background: var(--yellow)11;
+  border: 1px solid var(--yellow)33;
+  border-radius: 10px;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.78rem;
+  color: var(--text2);
+  line-height: 1.5;
+  max-width: 360px;
+  text-align: left;
+}
+.api-key-banner strong { color: var(--yellow); }
+[data-theme="light"] .api-key-banner strong { color: var(--yellow-dim); }
+
+.tutor-key-bar {
+  padding: 0.5rem 1.25rem;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.tutor-key-status {
+  font-size: 0.72rem;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.tutor-key-change {
+  font-size: 0.72rem;
+  color: var(--text3);
+  cursor: pointer;
+  text-decoration: underline;
+}
+.tutor-key-change:hover { color: var(--text2); }
+
 </style>
 </head>
 <body>
@@ -4500,12 +4611,17 @@ function askClaudeFromBox(el) {
 // ════════════════════════════════════
 //  AI TUTOR PANEL
 // ════════════════════════════════════
-const ANTHROPIC_API_KEY = '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';
+let ANTHROPIC_API_KEY = localStorage.getItem('satPrepApiKey') || '';
 let tutorMessages = [];
 let tutorIsLoading = false;
 let currentLessonContext = '';
 
 function openTutorPanel(prompt) {
+  if (!checkApiKey()) {
+    showApiKeySetup(() => openTutorPanel(prompt));
+    return;
+  }
+  updateKeyBar();
   tutorMessages = [];
   tutorIsLoading = false;
   
@@ -4656,6 +4772,89 @@ function sendTutorMessage() {
 // Update currentLessonContext whenever a lesson is opened
 const _origOpenLesson = openLesson;
 
+
+// ════════════════════════════════════
+//  API KEY MANAGEMENT
+// ════════════════════════════════════
+function checkApiKey() {
+  const key = localStorage.getItem('satPrepApiKey');
+  if (key && key.startsWith('sk-ant')) {
+    ANTHROPIC_API_KEY = key;
+    return true;
+  }
+  return false;
+}
+
+function showApiKeySetup(onSuccess) {
+  const overlay = document.createElement('div');
+  overlay.className = 'api-key-setup';
+  overlay.id = 'apiKeySetup';
+  overlay.innerHTML = `
+    <div class="api-key-setup-icon">🔑</div>
+    <h2>Connect Your AI Tutor</h2>
+    <p>To use the Ask Claude feature, enter your Anthropic API key below. It is stored only on this device and never shared.</p>
+    <div class="api-key-input-wrap">
+      <input type="password" class="api-key-input" id="apiKeyInput" placeholder="sk-ant-api03-..." />
+      <div class="api-key-banner">
+        <strong>Where to find your key:</strong> Go to console.anthropic.com → API Keys → copy your key
+      </div>
+      <button class="api-key-save-btn" onclick="saveApiKey()">Connect Tutor →</button>
+      <div class="api-key-skip" onclick="skipApiKey()">Skip for now</div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  document.getElementById('apiKeyInput').focus();
+  
+  window._apiKeySuccessCallback = onSuccess;
+  
+  document.getElementById('apiKeyInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') saveApiKey();
+  });
+}
+
+function saveApiKey() {
+  const input = document.getElementById('apiKeyInput');
+  const key = input ? input.value.trim() : '';
+  if (!key || !key.startsWith('sk-ant')) {
+    input.style.borderColor = 'var(--red)';
+    input.placeholder = 'Key must start with sk-ant...';
+    setTimeout(() => { 
+      input.style.borderColor = '';
+      input.placeholder = 'sk-ant-api03-...';
+    }, 2000);
+    return;
+  }
+  localStorage.setItem('satPrepApiKey', key);
+  ANTHROPIC_API_KEY = key;
+  const setup = document.getElementById('apiKeySetup');
+  if (setup) setup.remove();
+  updateKeyBar();
+  if (window._apiKeySuccessCallback) {
+    window._apiKeySuccessCallback();
+    window._apiKeySuccessCallback = null;
+  }
+}
+
+function skipApiKey() {
+  const setup = document.getElementById('apiKeySetup');
+  if (setup) setup.remove();
+  closeTutorPanel();
+}
+
+function changeApiKey() {
+  localStorage.removeItem('satPrepApiKey');
+  ANTHROPIC_API_KEY = '';
+  closeTutorPanel();
+  setTimeout(() => showApiKeySetup(() => openTutorPanel(null)), 300);
+}
+
+function updateKeyBar() {
+  const bar = document.getElementById('tutorKeyBar');
+  if (!bar) return;
+  const hasKey = checkApiKey();
+  bar.style.display = hasKey ? 'flex' : 'none';
+}
+
 </script>
 
 <!-- Confirm Reset Modal -->
@@ -4682,6 +4881,10 @@ const _origOpenLesson = openLesson;
     <div class="tutor-panel-icon">✦</div>
     <div class="tutor-panel-title">Ask Claude — Your SAT Tutor</div>
     <div class="tutor-panel-close" onclick="closeTutorPanel()">✕</div>
+  </div>
+  <div class="tutor-key-bar" id="tutorKeyBar" style="display:none;">
+    <div class="tutor-key-status">✓ Tutor AI connected</div>
+    <div class="tutor-key-change" onclick="changeApiKey()">Change key</div>
   </div>
   <div class="tutor-prompt-selected" id="tutorPromptSelected" style="display:none;">
     <div class="tutor-prompt-label">Your question</div>
