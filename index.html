@@ -1978,25 +1978,170 @@ const CLAUDE_PROMPTS = {
     "Can you give me a study schedule for the next 3 weeks to prepare for the SAT? I have the test on June 6th.",
     "What are the biggest mistakes students make on the Digital SAT and how can I avoid them?"
   ],
-  reading: [
-    "I just studied SAT Reading. Can you give me a short practice passage with a main idea question and explain the answer step by step?",
-    "Can you explain the difference between essential and nonessential information in SAT reading passages with examples?",
-    "What are the most common wrong answer traps in SAT Reading and Writing questions? Give me examples of each."
+  reading_0: [
+    "I just studied main idea questions on the SAT. Can you give me a short passage and ask me what the main idea is, then explain the answer?",
+    "Can you show me examples of the four wrong answer traps on SAT main idea questions: too broad, too narrow, true but irrelevant, and opposite?",
+    "Can you give me 3 SAT-style passages of different difficulty and ask me to identify the main idea of each one?"
+  ],
+  reading_1: [
+    "I just studied SAT evidence questions. Can you give me a passage with a claim and ask me which quote best supports it?",
+    "Can you explain the difference between textual evidence questions and data interpretation evidence questions on the SAT?",
+    "Can you show me an example of a wrong answer that is true but does not actually support the specific claim being asked about?"
+  ],
+  reading_2: [
+    "I just studied vocabulary in context. Can you give me 5 sentences where a common word is used in an unusual way and ask me what it means?",
+    "Can you explain why the dictionary definition is often the wrong answer on SAT vocabulary in context questions?",
+    "Can you show me how to use contrast words and similarity words in a passage to figure out what an unfamiliar word means?"
+  ],
+  reading_3: [
+    "I just studied author purpose and tone. Can you give me a short passage and ask me what the author's main purpose is?",
+    "Can you explain the difference between the tone words skeptical, dismissive, and ambivalent with examples of each?",
+    "Can you show me a passage and ask me to identify whether the author is arguing, illustrating, countering, or describing?"
+  ],
+  reading_4: [
+    "I just studied cross-text questions. Can you give me two short passages that disagree with each other and ask me how they relate?",
+    "Can you explain the four possible relationships between two SAT passages: agreement, disagreement, extension, and complication?",
+    "Can you show me an example where Text 2 partially agrees with Text 1 but adds an important limitation?"
+  ],
+  reading_5: [
+    "I just studied word choice and concision. Can you give me 5 wordy sentences and ask me to pick the most concise version?",
+    "Can you explain what redundancy means in SAT writing questions and give me 5 examples of redundant phrases I should avoid?",
+    "Can you show me examples of SAT questions where the answer needs to match the formal tone of the surrounding passage?"
+  ],
+  reading_6: [
+    "I just studied transitions. Can you give me 5 sentences with a blank and ask me which transition word fits best?",
+    "Can you explain the difference between furthermore, however, therefore, and for example with examples of when to use each?",
+    "Can you give me a paragraph with a missing transition and show me how to identify the relationship between the two ideas first?"
+  ],
+  reading_7: [
+    "I just studied data interpretation in SAT reading. Can you describe a simple table and ask me a question that combines the data with a passage claim?",
+    "Can you explain the most common trap on SAT data questions where the data is real but used for the wrong claim?",
+    "Can you show me the difference between a question asking what the data shows versus a question asking what the data supports?"
   ],
   writing: [
     "I just studied SAT grammar rules. Can you quiz me with 5 grammar questions and explain each answer in detail?",
     "Can you explain subject-verb agreement in a simple way with 5 examples that would appear on the SAT?",
     "What are the top 10 grammar rules I absolutely must know for the SAT Writing section?"
   ],
+  writing_0: [
+    "I just studied subject-verb agreement. Can you give me 5 SAT-style sentences where a prepositional phrase hides the real subject?",
+    "Can you explain why words like everyone, anyone, each, and neither are always singular with examples?",
+    "Can you give me an inverted sentence and show me how to flip it around to find the real subject and check agreement?"
+  ],
+  writing_1: [
+    "I just studied pronoun agreement. Can you give me 5 sentences with pronoun errors and ask me to identify and fix each one?",
+    "Can you explain the who versus whom rule using the he equals who and him equals whom trick with examples?",
+    "Can you show me 3 examples of ambiguous pronouns on the SAT and explain how to rewrite them clearly?"
+  ],
+  writing_2: [
+    "I just studied comma rules. Can you give me 10 sentences and ask me whether each one needs a comma or not?",
+    "Can you explain the difference between essential and nonessential clauses and show me how that determines whether to use commas?",
+    "Can you show me 5 examples of the most common comma mistakes on the SAT including comma splices and missing commas?"
+  ],
+  writing_3: [
+    "I just studied semicolons, colons, and dashes. Can you give me 5 sentences with a blank and ask me which punctuation mark belongs?",
+    "Can you explain the independence test for semicolons and show me 3 correct and 3 incorrect uses?",
+    "Can you show me the difference between using a colon and using a dash to introduce information at the end of a sentence?"
+  ],
+  writing_4: [
+    "I just studied sentence fragments and run-ons. Can you give me 5 sentences and ask me whether each is complete, a fragment, or a run-on?",
+    "Can you show me 3 different ways to fix a comma splice and explain when to use each fix?",
+    "Can you explain why a clause starting with although or because cannot stand alone as a sentence?"
+  ],
+  writing_5: [
+    "I just studied parallel structure. Can you give me 5 sentences with parallelism errors and ask me to fix each one?",
+    "Can you explain parallel structure in comparisons and show me why her singing is better than her sister is wrong?",
+    "Can you give me a list with one non-parallel item and ask me to identify which item does not belong?"
+  ],
+  writing_6: [
+    "I just studied misplaced modifiers and apostrophes. Can you give me 5 sentences with modifier errors and ask me to fix them?",
+    "Can you quiz me on its versus it is, their versus there versus they are, and whose versus who is with 10 questions?",
+    "Can you show me 5 introductory phrases and ask me what noun must come immediately after the comma in each one?"
+  ],
   vocab: [
     "Can you quiz me on SAT vocabulary? Give me 10 words with definitions and use each in a sentence the way the SAT would.",
     "I struggle with SAT vocabulary in context questions. Can you give me a passage and show me how to figure out word meanings from context?",
     "Can you teach me the most important Latin and Greek roots for the SAT and show me how they help decode unfamiliar words?"
   ],
+  vocab_0: [
+    "I just learned about how vocabulary is tested on the SAT. Can you show me an example of a vocabulary in context question and walk me through how to solve it?",
+    "Can you explain the difference between words in context questions and word choice precision questions on the SAT?",
+    "Can you show me how to use contrast words and cause and effect words in a passage to figure out what an unknown word means?"
+  ],
+  vocab_1: [
+    "I just studied SAT argument and reasoning words. Can you quiz me on assert, refute, concede, corroborate, and substantiate with 5 sentences?",
+    "Can you explain the difference between bolster and undermine, and between corroborate and contradict, with SAT-style examples?",
+    "Can you give me a short passage about a scientific debate and ask me to identify which argument words the author uses?"
+  ],
+  vocab_2: [
+    "I just studied SAT tone words. Can you give me 5 passages and ask me to identify the author's tone from the words skeptical, ambivalent, sardonic, reverent, and pragmatic?",
+    "Can you explain the difference between skeptical, dubious, and incredulous, and show me when each one would appear on the SAT?",
+    "Can you show me why extreme tone words like furious or ecstatic are almost never the right answer on SAT tone questions?"
+  ],
+  vocab_3: [
+    "I just studied words about change and movement. Can you quiz me on proliferate, wane, supplant, mitigate, and augment with example sentences?",
+    "Can you explain the difference between diminish, curtail, and attenuate, and show me how each would appear in a SAT passage?",
+    "Can you give me 5 SAT-style sentences using change words and ask me to pick the word that best fits the context?"
+  ],
+  vocab_4: [
+    "I just studied description and quality words. Can you quiz me on conspicuous, implicit, seminal, nuanced, and lucid with examples?",
+    "Can you explain the difference between overt and covert, and between explicit and implicit, with SAT-style examples?",
+    "Can you give me a passage using 5 description words and ask me what each one means in context?"
+  ],
+  vocab_5: [
+    "I just studied roots and prefixes. Can you give me 5 unfamiliar words and ask me to decode their meaning using the roots I just learned?",
+    "Can you quiz me on the prefixes bene, mal, circum, inter, and sub by giving me words that use each one?",
+    "Can you show me how knowing the root spec leads me to understand spectator, inspect, perspective, and circumspect?"
+  ],
+  vocab_6: [
+    "I just finished reviewing all my SAT vocabulary. Can you give me a 10 question mixed quiz covering all five vocabulary categories?",
+    "Can you give me 5 SAT-style vocabulary in context questions using words from the argument, tone, change, description, and roots categories?",
+    "Can you identify which vocabulary category is my weakest based on a quick 5 question quiz and then give me extra practice on that category?"
+  ],
   punctuation: [
     "I just studied punctuation rules. Can you give me 5 tricky SAT-style sentences and ask me where the punctuation goes?",
     "Can you explain the difference between when to use a semicolon versus a colon versus a dash with clear examples?",
     "I always confuse its and it is, their and there, and your and you are. Can you help me remember the difference with a simple trick?"
+  ],
+  punctuation_0: [
+    "I just studied all 7 comma rules. Can you give me 10 sentences and ask me whether each needs a comma and which rule applies?",
+    "Can you explain the difference between essential and nonessential clauses and show me how that determines comma usage?",
+    "Can you give me 5 sentences that violate the rule about never putting a comma between a subject and its verb?"
+  ],
+  punctuation_1: [
+    "I just studied semicolons. Can you give me 5 sentences and ask me whether a semicolon is used correctly in each one?",
+    "Can you show me the correct way to use a semicolon before transition words like however, therefore, and furthermore?",
+    "Can you give me 3 run-on sentences and ask me to fix each one using a semicolon correctly?"
+  ],
+  punctuation_2: [
+    "I just studied colons. Can you give me 5 sentences and ask me whether the colon is used correctly in each one?",
+    "Can you explain why a colon cannot follow the words such as, including, or like with 3 examples?",
+    "Can you show me the difference between using a semicolon and using a colon with two examples side by side?"
+  ],
+  punctuation_3: [
+    "I just studied dashes and hyphens. Can you give me 5 sentences and ask me whether to use an em dash, a hyphen, or neither?",
+    "Can you explain the rule about hyphens in compound modifiers and show me when to use them before versus after a noun?",
+    "Can you give me 3 sentences using paired dashes incorrectly and ask me to identify and fix the error in each one?"
+  ],
+  punctuation_4: [
+    "I just studied apostrophe rules. Can you give me 10 sentences with its, it is, their, there, they are, your, and you are and ask me which is correct?",
+    "Can you show me 5 examples of incorrect apostrophes used with plural nouns and explain why they are wrong?",
+    "Can you quiz me on singular possessive versus plural possessive apostrophes with 8 SAT-style examples?"
+  ],
+  punctuation_5: [
+    "I just studied quotation mark punctuation placement. Can you give me 5 sentences and ask me where the period, comma, or semicolon goes?",
+    "Can you explain the rule about periods and commas going inside quotation marks versus semicolons going outside?",
+    "Can you show me 3 examples where a question mark goes inside the quotation marks and 3 where it goes outside?"
+  ],
+  punctuation_6: [
+    "I just studied punctuation in lists. Can you give me 3 simple lists and 3 complex lists and ask me which type of separator to use?",
+    "Can you explain the Oxford comma rule and show me an example where leaving it out creates genuine confusion?",
+    "Can you show me a complex list with commas inside the items and rewrite it correctly using semicolons?"
+  ],
+  punctuation_7: [
+    "I just finished the punctuation course. Can you give me a 10 question mixed quiz covering commas, semicolons, colons, dashes, apostrophes, and quotation marks?",
+    "Can you give me 5 long SAT-style sentences that use multiple punctuation rules at once and ask me to identify any errors?",
+    "Can you identify which punctuation mark gives me the most trouble based on a quick quiz and give me extra practice on just that mark?"
   ],
   math: [
     "I just learned about linear equations. Can you give me 3 SAT-style word problems with step by step solutions?",
@@ -4150,7 +4295,7 @@ function openLesson(modKey, index) {
     </div>
     <div class="lesson-title-big">${content.title}</div>
     <div class="lesson-body">${content.body}
-      ${buildClaudeBox(modKey)}
+      ${buildClaudeBoxForLesson(modKey, index)}
     </div>
   `;
 
@@ -4605,6 +4750,30 @@ function askClaudeFromBox(el) {
   currentLessonContext = document.querySelector('.lesson-title-big') ?
     document.querySelector('.lesson-title-big').textContent : 'SAT preparation';
   openTutorPanel(prompt);
+}
+
+function buildClaudeBoxForLesson(modKey, lessonIndex) {
+  const specificKey = modKey + '_' + lessonIndex;
+  const prompts = CLAUDE_PROMPTS[specificKey] || CLAUDE_PROMPTS[modKey] || CLAUDE_PROMPTS.strategy;
+  let promptItems = '';
+  prompts.forEach(function(p) {
+    const safeP = p.replace(/"/g, '&quot;');
+    promptItems += '<div class="claude-prompt-item" onclick="askClaudeFromBox(this)">' +
+      '<div class="claude-prompt-text">' + p + '</div>' +
+      '<div class="claude-prompt-copy">Ask &#8594;</div>' +
+      '</div>';
+  });
+  return '<div class="claude-help-box">' +
+    '<div class="claude-help-header">' +
+      '<div class="claude-help-icon">&#10022;</div>' +
+      '<div>' +
+        '<div class="claude-help-title">Still have questions? Ask Claude</div>' +
+        '<div class="claude-help-sub">Tap a question for an instant explanation without leaving this page</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="claude-prompts">' + promptItems + '</div>' +
+    '<button onclick="openTutorPanel(null)" class="claude-open-btn">Open Tutor Chat &#8594;</button>' +
+  '</div>';
 }
 
 
