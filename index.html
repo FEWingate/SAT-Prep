@@ -5527,6 +5527,8 @@ function closeTutorPanel() {
 
 function addWelcomeMessage() {
   const name = currentProfile ? currentProfile.name : 'there';
+  const messagesEl = document.getElementById('tutorMessages');
+  messagesEl.scrollTop = 0;
   addClaudeMessage("Hi " + name + "! I am your SAT tutor. What would you like help with? You can ask me anything about the lesson you just read, request more examples, or ask me to quiz you on the material.");
 }
 
@@ -5549,7 +5551,9 @@ function addClaudeMessage(text) {
   div.innerHTML = '<div class="tutor-msg-avatar tutor-msg-avatar-claude">✦</div>' +
     '<div class="tutor-msg-bubble">' + formatted + '</div>';
   messagesEl.appendChild(div);
-  messagesEl.scrollTop = messagesEl.scrollHeight;
+  setTimeout(() => {
+    div.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
 }
 
 function showTyping() {
