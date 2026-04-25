@@ -4413,8 +4413,8 @@ function openModule(modKey) {
   const mod = MODULES[modKey];
   if (!mod) return;
 
-  // Lock math modules until Session 4
-  const lockedModules = ['math','advmath','data','geometry','practice'];
+  // Lock modules not yet built
+  const lockedModules = ['advmath','data','geometry','practice'];
   if (lockedModules.includes(modKey)) {
     document.getElementById('moduleHeroArea').innerHTML = `
       <div style="text-align:center;padding:2rem 1rem;">
@@ -4424,12 +4424,12 @@ function openModule(modKey) {
           <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;color:var(--yellow);margin-bottom:0.4rem;">🔓 Coming Next Week</div>
           <div style="font-size:0.85rem;color:var(--text2);line-height:1.6;">This module is being built specially for you with real-world examples designed to make math click. Check back soon — it will be worth the wait.</div>
         </div>
-        <div style="font-size:0.8rem;color:var(--text3);">Focus on Reading, Writing & Vocabulary first —<br>they're all ready for you right now.</div>
+        <div style="font-size:0.8rem;color:var(--text3);">Focus on Reading, Writing & Vocabulary first —<br>they are all ready for you right now.</div>
       </div>
     `;
     document.getElementById('lessonListArea').innerHTML = '';
     showPage('modulePage', null, true);
-    document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">\${mod.icon}</span> \${mod.title}`;
+    document.getElementById('topbarTitle').innerHTML = '<span style="color:var(--yellow)">' + mod.icon + '</span> ' + mod.title;
     return;
   }
 
@@ -4491,7 +4491,7 @@ function openModule(modKey) {
   }
 
   showPage('modulePage', null, true);
-  document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">${mod.icon}</span> ${mod.title}`;
+  document.getElementById('topbarTitle').innerHTML = '<span style="color:var(--yellow)">' + mod.icon + '</span> ' + mod.title;
 }
 
 function openLesson(modKey, index) {
@@ -4551,7 +4551,7 @@ function openLesson(modKey, index) {
   nextBtn.textContent = index < mod2.lessons.length - 1 ? 'Next Lesson →' : 'Take the Quiz →';
 
   showPage('lessonPage', null, true);
-  document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">${mod.icon}</span> ${mod.title}`;
+  document.getElementById('topbarTitle').innerHTML = '<span style="color:var(--yellow)">' + mod.icon + '</span> ' + mod.title;
   document.getElementById('lessonPage').scrollTop = 0;
 }
 
