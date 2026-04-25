@@ -2183,6 +2183,41 @@ const CLAUDE_PROMPTS = {
     "I struggle with function notation on the SAT. Can you explain what f of x means and give me practice problems?",
     "Can you explain exponential growth and decay in simple terms with a real world example like the SAT would use?"
   ],
+  advmath_0: [
+    "I just studied factoring quadratics. Can you give me 3 quadratic equations to factor and walk me through each solution step by step?",
+    "Can you explain the sign trick for factoring? When do both numbers have the same sign versus different signs?",
+    "Can you give me a quadratic equation and show me how to check both solutions by substituting them back in?"
+  ],
+  advmath_1: [
+    "I just studied the quadratic formula. Can you give me an equation that does not factor neatly and show me how to use the formula?",
+    "Can you explain what the discriminant tells us and give me 3 equations where I need to figure out how many solutions exist?",
+    "Can you show me how to use Desmos to find the solutions of a quadratic by graphing it and finding where it crosses the x-axis?"
+  ],
+  advmath_2: [
+    "I just studied function notation. Can you give me 5 function evaluation problems including one where I substitute an expression like a+2 instead of a number?",
+    "Can you explain domain and range in simple terms with a real-world example and show me how these concepts appear on the SAT?",
+    "Can you show me the difference between f(4) and f(x+4) with a worked example and explain why students confuse them?"
+  ],
+  advmath_3: [
+    "I just studied exponential growth and decay. Can you give me 3 word problems where I need to identify the initial value, rate, and time period?",
+    "Can you explain the difference between a growth factor and a decay factor and show me how to convert a percentage to the right multiplier?",
+    "Can you show me a problem where I need to distinguish between linear growth and exponential growth from a description?"
+  ],
+  advmath_4: [
+    "I just studied polynomial multiplication. Can you give me 4 FOIL problems starting easy and getting harder?",
+    "Can you explain the most common FOIL mistakes and show me exactly where students go wrong on each one?",
+    "Can you show me how to use Desmos to verify that two polynomial expressions are equivalent by graphing them?"
+  ],
+  advmath_5: [
+    "I just studied absolute value equations. Can you give me 4 absolute value equations to solve and remind me to always find both cases?",
+    "Can you explain why absolute value equations always have two cases and show me a real-world example of when this matters?",
+    "Can you give me an absolute value inequality and walk me through how to solve and interpret the solution?"
+  ],
+  advmath_6: [
+    "Can you show me step by step how to use Desmos to solve a system of two linear equations by finding the intersection point?",
+    "Can you explain how to use Desmos to solve a quadratic equation by graphing it and finding where it crosses the x-axis?",
+    "Can you walk me through using Desmos to check an algebra answer I already calculated by hand?"
+  ],
   data: [
     "Can you explain the difference between mean, median, and mode and show me how the SAT tries to trick students with these?",
     "I struggle reading scatterplots on the SAT. Can you explain lines of best fit and what positive and negative correlation means?",
@@ -2253,7 +2288,7 @@ const MODULES = {
   },
   advmath: {
     title: 'Math — Advanced', icon: '📐', accent: 'accent-yellow',
-    desc: 'Quadratics, functions, and exponentials — the Advanced Math questions that unlock 650+ on the Math section.',
+    desc: 'Quadratics, functions, and exponentials — have a pencil and paper ready. These concepts click best when you write them out.',
     lessons: [
       { title: 'Quadratic Equations — Factoring', sub: 'Find the roots without a formula' },
       { title: 'Quadratic Equations — The Formula', sub: 'When factoring won\'t work' },
@@ -3776,6 +3811,315 @@ const LESSON_CONTENT = {
       </div>
     `
   }
+  ,advmath_0: {
+    tag: 'Math — Advanced',
+    title: 'Quadratic Equations — Factoring',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper before starting this lesson.</strong> You will want to work through the examples as you read.</p>
+      <p>A quadratic equation has an x² term. Instead of describing a straight line, it describes a curve called a <strong>parabola</strong>. Quadratics are everywhere in real life — the arc of a basketball shot, the path of a thrown ball, the shape of a satellite dish.</p>
+      <h3>Real Life First</h3>
+      <p>A ball is thrown upward. Its height in feet after t seconds is given by h = -16t² + 32t. When does the ball hit the ground? That is a quadratic equation — and factoring is one way to solve it.</p>
+      <h3>Standard Form</h3>
+      <div class="formula">ax² + bx + c = 0</div>
+      <p>To solve by factoring, find two numbers that <strong>multiply to give c</strong> and <strong>add to give b</strong>.</p>
+      <h3>The Factoring Method</h3>
+      <div class="example-box">
+        <div class="ex-label">Worked Example</div>
+        Solve: x² - 5x + 6 = 0<br><br>
+        Find two numbers that multiply to 6 and add to -5.<br>
+        Those numbers are -2 and -3: (-2) × (-3) = 6 and (-2) + (-3) = -5<br><br>
+        Factor: (x - 2)(x - 3) = 0<br><br>
+        Set each factor to zero:<br>
+        x - 2 = 0 → x = 2<br>
+        x - 3 = 0 → x = 3<br><br>
+        Solutions: x = 2 or x = 3<br><br>
+        Check: (2)² - 5(2) + 6 = 4 - 10 + 6 = 0 ✓<br>
+        Check: (3)² - 5(3) + 6 = 9 - 15 + 6 = 0 ✓
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>Which of the following are the solutions to x² + 2x - 8 = 0?</em><br><br>
+        A) x = 2 and x = -4 ✓<br>
+        B) x = -2 and x = 4<br>
+        C) x = 4 and x = 2<br>
+        D) x = -4 and x = -2<br><br>
+        Find two numbers that multiply to -8 and add to 2: those are 4 and -2.<br>
+        Factor: (x + 4)(x - 2) = 0 → x = -4 or x = 2.<br><br>
+        <strong>Why B is wrong:</strong> x = -2 and x = 4 gives (x+2)(x-4) = x²-2x-8, not +2x-8.<br>
+        <strong>Why C is wrong:</strong> Both positive — multiply gives +8 not -8.<br>
+        <strong>Why D is wrong:</strong> Both negative — adds to -6 not +2.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Sign Trick</div>
+        When c is positive: both numbers have the SAME sign (both + or both -), determined by the sign of b.<br>
+        When c is negative: the numbers have DIFFERENT signs. The larger number takes the sign of b.<br>
+        Master this pattern and factoring becomes fast.
+      </div>
+    `
+  },
+  advmath_1: {
+    tag: 'Math — Advanced',
+    title: 'Quadratic Equations — The Quadratic Formula',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> This lesson has a formula worth writing down.</p>
+      <p>Factoring works beautifully when the numbers are clean. But what about x² + 3x - 1 = 0? Those numbers do not factor neatly. That is when you reach for the quadratic formula — it works on EVERY quadratic, no matter how messy.</p>
+      <h3>The Quadratic Formula</h3>
+      <div class="formula">x = (-b ± √(b² - 4ac)) / 2a</div>
+      <p>For any equation in the form ax² + bx + c = 0, just identify a, b, and c and plug them in.</p>
+      <h3>The Discriminant — A Powerful Shortcut</h3>
+      <p>The expression under the square root — <strong>b² - 4ac</strong> — is called the discriminant. It tells you how many solutions exist before you finish the calculation:</p>
+      <div class="highlight-box">
+        <strong>b² - 4ac > 0</strong> → two real solutions (two x-intercepts)<br>
+        <strong>b² - 4ac = 0</strong> → one real solution (parabola touches x-axis at one point)<br>
+        <strong>b² - 4ac < 0</strong> → no real solutions (parabola never crosses x-axis)
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>What are the solutions to 2x² - 4x - 6 = 0?</em><br><br>
+        A) x = -1 and x = 3 ✓<br>
+        B) x = 1 and x = -3<br>
+        C) x = 2 and x = -1<br>
+        D) x = 3 and x = 2<br><br>
+        First simplify: divide everything by 2 → x² - 2x - 3 = 0<br>
+        Now factor: find numbers that multiply to -3 and add to -2: that is -3 and 1.<br>
+        (x - 3)(x + 1) = 0 → x = 3 or x = -1 ✓<br><br>
+        Using the formula: a=2, b=-4, c=-6<br>
+        x = (4 ± √(16 + 48)) / 4 = (4 ± √64) / 4 = (4 ± 8) / 4<br>
+        x = 12/4 = 3 or x = -4/4 = -1 ✓<br><br>
+        <strong>Why B is wrong:</strong> Signs flipped — plugging in gives 2-4-6 = -8, not 0.<br>
+        <strong>Why C and D are wrong:</strong> Neither satisfies the original equation when checked.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Desmos Shortcut</div>
+        On the SAT you have Desmos available. Type the equation as y = 2x²-4x-6 and look for where the parabola crosses the x-axis. Those x-values are your solutions. Use Desmos to verify your algebra answer in seconds.
+      </div>
+    `
+  },
+  advmath_2: {
+    tag: 'Math — Advanced',
+    title: 'Functions — What They Really Are',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> Function notation looks confusing at first — writing it out helps it click.</p>
+      <p>A function is just a machine. You put a number in, it does something to it, and gives you a number out. That is it. The notation f(x) just means "what the machine gives you when you put in x."</p>
+      <h3>Real Life First</h3>
+      <p>Your streaming service charges $12 per month plus $3 per premium channel. The total cost is a function of how many premium channels you add: <strong>f(x) = 3x + 12</strong>. If you add 4 premium channels: f(4) = 3(4) + 12 = $24. The machine took in 4 and gave out 24.</p>
+      <h3>Function Notation</h3>
+      <div class="highlight-box">
+        f(x) — read as "f of x" — means the output when x is the input<br>
+        f(3) means substitute 3 everywhere you see x<br>
+        f(a+1) means substitute (a+1) everywhere you see x
+      </div>
+      <h3>Domain and Range</h3>
+      <ul>
+        <li><strong>Domain</strong> — all possible INPUT values (x values)</li>
+        <li><strong>Range</strong> — all possible OUTPUT values (y values)</li>
+      </ul>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>If f(x) = 2x² - 3x + 1, what is the value of f(4)?</em><br><br>
+        A) 17 &nbsp; B) 21 ✓ &nbsp; C) 25 &nbsp; D) 29<br><br>
+        Substitute x = 4 everywhere:<br>
+        f(4) = 2(4)² - 3(4) + 1<br>
+        = 2(16) - 12 + 1<br>
+        = 32 - 12 + 1<br>
+        = 21 ✓<br><br>
+        <strong>Why A is wrong:</strong> A common error is computing 2(4²) as (2×4)² = 64 instead of 2×16 = 32.<br>
+        <strong>Why C is wrong:</strong> Forgetting to add the +1 at the end.<br>
+        <strong>Why D is wrong:</strong> Adding instead of subtracting 3(4).
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Always Square Before Multiplying</div>
+        The most common function mistake: computing 2x² as (2x)². These are completely different. 2(4)² = 2(16) = 32. But (2×4)² = 8² = 64. The exponent only applies to x, not to the coefficient in front of it.
+      </div>
+    `
+  },
+  advmath_3: {
+    tag: 'Math — Advanced',
+    title: 'Exponential Growth & Decay',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> Exponential problems have a formula worth memorizing.</p>
+      <p>Linear growth adds the same amount every period. Exponential growth MULTIPLIES by the same amount every period. The difference is dramatic — and the SAT tests it constantly because it models real-world phenomena like population growth, compound interest, and viral spread.</p>
+      <h3>Real Life First</h3>
+      <p>You post a video and it gets shared. Every hour the number of views doubles. You start with 100 views. After 1 hour: 200. After 2 hours: 400. After 3 hours: 800. After 10 hours: 100 × 2¹⁰ = 102,400 views. That is exponential growth — linear thinking would never predict it.</p>
+      <h3>The Exponential Formula</h3>
+      <div class="formula">f(t) = a × r^t</div>
+      <ul>
+        <li><strong>a</strong> = starting amount (initial value)</li>
+        <li><strong>r</strong> = growth or decay factor</li>
+        <li><strong>t</strong> = time periods elapsed</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>Growth:</strong> r > 1. Example: r = 1.05 means 5% growth per period<br>
+        <strong>Decay:</strong> 0 < r < 1. Example: r = 0.90 means 10% decrease per period<br><br>
+        If the problem says "increases by 8%": r = 1.08<br>
+        If the problem says "decreases by 8%": r = 0.92
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A town has a population of 5,000. The population grows at 4% per year. Which function gives the population after t years?</em><br><br>
+        A) f(t) = 5000 + 0.04t<br>
+        B) f(t) = 5000(0.04)^t<br>
+        C) f(t) = 5000(1.04)^t ✓<br>
+        D) f(t) = 5000(1.4)^t<br><br>
+        4% growth means multiply by 1.04 each year. Starting at 5,000: f(t) = 5000(1.04)^t ✓<br><br>
+        <strong>Why A is wrong:</strong> This is linear growth — adds the same amount each year. Not exponential.<br>
+        <strong>Why B is wrong:</strong> 0.04 as the base means the population shrinks to almost zero immediately.<br>
+        <strong>Why D is wrong:</strong> 1.4 means 40% growth per year — ten times the stated rate.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Growth vs Decay Quick Check</div>
+        After one period, does the quantity go UP or DOWN? If up, your r must be greater than 1. If down, r must be between 0 and 1. Plug t = 1 into your answer choice and check — this eliminates wrong answers in seconds.
+      </div>
+    `
+  },
+  advmath_4: {
+    tag: 'Math — Advanced',
+    title: 'Polynomials & Rational Expressions',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> Polynomial operations are hands-on — you need to write them out.</p>
+      <p>A polynomial is an expression with multiple terms involving x raised to different powers. You have been working with polynomials all along — linear expressions (x + 3) and quadratics (x² - 5x + 6) are both polynomials. Now we extend those skills.</p>
+      <h3>Adding and Subtracting Polynomials</h3>
+      <p>Combine like terms — terms with the same variable and exponent.</p>
+      <div class="example-box">
+        <div class="ex-label">Example</div>
+        (3x² + 2x - 5) + (x² - 4x + 3)<br>
+        = (3x² + x²) + (2x - 4x) + (-5 + 3)<br>
+        = 4x² - 2x - 2
+      </div>
+      <h3>Multiplying Polynomials — FOIL</h3>
+      <p>FOIL stands for First, Outer, Inner, Last. Use it to multiply two binomials.</p>
+      <div class="example-box">
+        <div class="ex-label">FOIL Example</div>
+        (x + 3)(x - 5)<br>
+        First: x × x = x²<br>
+        Outer: x × (-5) = -5x<br>
+        Inner: 3 × x = 3x<br>
+        Last: 3 × (-5) = -15<br>
+        Result: x² - 5x + 3x - 15 = x² - 2x - 15
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>Which expression is equivalent to (2x + 3)(x - 4)?</em><br><br>
+        A) 2x² - 5x - 12 ✓<br>
+        B) 2x² + 5x - 12<br>
+        C) 2x² - 8x - 12<br>
+        D) 2x² - 5x + 12<br><br>
+        FOIL: (2x)(x) + (2x)(-4) + (3)(x) + (3)(-4)<br>
+        = 2x² - 8x + 3x - 12<br>
+        = 2x² - 5x - 12 ✓<br><br>
+        <strong>Why B is wrong:</strong> Sign error — outer term should be -8x not +8x.<br>
+        <strong>Why C is wrong:</strong> Forgot to combine the -8x and +3x middle terms.<br>
+        <strong>Why D is wrong:</strong> Sign error on the last term — 3 × -4 = -12 not +12.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Use Desmos to Check</div>
+        On the SAT you can verify polynomial multiplication instantly. Type both the original expression and your answer into Desmos as two separate equations. If they produce the same graph, they are equivalent. This check takes 15 seconds and catches arithmetic errors.
+      </div>
+    `
+  },
+  advmath_5: {
+    tag: 'Math — Advanced',
+    title: 'Absolute Value & Nonlinear Systems',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> Absolute value has a two-case rule that requires writing out both solutions.</p>
+      <p>Absolute value means distance from zero on a number line — it is always positive. |5| = 5 and |-5| = 5. Both 5 and -5 are exactly 5 units from zero. This is the key insight that unlocks absolute value equations.</p>
+      <h3>Real Life First</h3>
+      <p>A manufacturing process aims to produce bolts that are exactly 10mm long. Quality control accepts bolts within 0.5mm of the target. The acceptable range is |length - 10| ≤ 0.5. This describes all lengths between 9.5mm and 10.5mm — a real-world absolute value inequality.</p>
+      <h3>Solving Absolute Value Equations</h3>
+      <div class="highlight-box">
+        When |expression| = k, split into TWO equations:<br>
+        expression = k AND expression = -k<br><br>
+        Solve both and you have both solutions.
+      </div>
+      <div class="example-box">
+        <div class="ex-label">Example</div>
+        Solve |2x - 6| = 10<br><br>
+        Case 1: 2x - 6 = 10 → 2x = 16 → x = 8<br>
+        Case 2: 2x - 6 = -10 → 2x = -4 → x = -2<br><br>
+        Solutions: x = 8 or x = -2<br>
+        Check: |2(8)-6| = |10| = 10 ✓ and |2(-2)-6| = |-10| = 10 ✓
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>If |3x + 9| = 15, which of the following could be a value of x?</em><br><br>
+        A) -8 ✓ &nbsp; B) -6 &nbsp; C) 2 ✓ &nbsp; D) 6<br><br>
+        Case 1: 3x + 9 = 15 → 3x = 6 → x = 2 ✓<br>
+        Case 2: 3x + 9 = -15 → 3x = -24 → x = -8 ✓<br><br>
+        Both A and C are correct. SAT sometimes has two correct answers in "which could be" questions — always solve both cases.<br><br>
+        <strong>Why B is wrong:</strong> |3(-6)+9| = |-9| = 9, not 15.<br>
+        <strong>Why D is wrong:</strong> |3(6)+9| = |27| = 27, not 15.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Never Forget the Second Case</div>
+        The most common absolute value mistake is solving only one case and missing the negative solution. Always write out both cases, solve both, and check both. On the SAT, the answer choices are specifically designed to trap students who only find one solution.
+      </div>
+    `
+  }
+  ,desmos_guide: {
+    tag: 'Math Strategy',
+    title: 'Using Desmos on the SAT — Your Secret Weapon',
+    body: `
+      <p>📝 <strong>Open Desmos now to follow along:</strong> Go to <strong>desmos.com/scientific</strong> on your phone or computer. Practice these techniques before test day so they feel natural.</p>
+      <p>Every student taking the Digital SAT has access to a built-in Desmos graphing calculator for the entire Math section. Most students use it as a basic calculator. Smart students use it as a strategic advantage. Here is exactly how.</p>
+      <h3>What Desmos Can Do For You</h3>
+      <div class="highlight-box">
+        1. Graph any equation instantly to see its shape<br>
+        2. Find where two lines intersect (solve systems visually)<br>
+        3. Find where a parabola crosses the x-axis (solve quadratics visually)<br>
+        4. Check your algebra answers by plugging in values<br>
+        5. Evaluate functions without mental arithmetic errors
+      </div>
+      <h3>Strategy 1 — Solve Systems by Graphing</h3>
+      <p>Instead of using substitution or elimination, graph both equations and find the intersection point.</p>
+      <div class="example-box">
+        <div class="ex-label">How To</div>
+        Problem: Solve 2x + y = 10 and x - y = 2<br><br>
+        In Desmos, type: y = -2x + 10 (rearrange first equation)<br>
+        Then type: y = x - 2 (rearrange second equation)<br><br>
+        The two lines intersect at a point — click it to see the coordinates.<br>
+        The x and y values at the intersection are your solution.<br><br>
+        Answer appears instantly: (4, 2) meaning x = 4, y = 2.
+      </div>
+      <h3>Strategy 2 — Solve Quadratics by Graphing</h3>
+      <p>Instead of factoring or using the formula, graph the quadratic and find the x-intercepts.</p>
+      <div class="example-box">
+        <div class="ex-label">How To</div>
+        Problem: Solve x² - 5x + 6 = 0<br><br>
+        In Desmos, type: y = x^2 - 5x + 6<br><br>
+        The parabola appears. Find where it crosses the x-axis.<br>
+        Click each x-intercept to see the exact coordinates.<br><br>
+        The x-values where y = 0 are your solutions: x = 2 and x = 3.
+      </div>
+      <h3>Strategy 3 — Verify Your Algebra Answers</h3>
+      <p>Finished a problem? Use Desmos to confirm your answer before moving on.</p>
+      <div class="example-box">
+        <div class="ex-label">How To</div>
+        You solved a linear equation and got x = 7.<br><br>
+        Type both sides of the original equation into Desmos:<br>
+        y = 5x - 8 and y = 2x + 13<br><br>
+        Find the intersection. If x = 7 at the intersection, your answer is correct.<br>
+        If not, you made an error somewhere — go back and find it.
+      </div>
+      <h3>Strategy 4 — Evaluate Functions Fast</h3>
+      <div class="example-box">
+        <div class="ex-label">How To</div>
+        Problem: If f(x) = 2x² - 3x + 1, what is f(4)?<br><br>
+        Type: f(x) = 2x^2 - 3x + 1<br>
+        Then type: f(4)<br><br>
+        Desmos calculates and displays 21 instantly. No arithmetic errors possible.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Desmos on Test Day</div>
+        The Bluebook testing app has Desmos built in — you do not need to navigate to a website. It opens with one click during the Math section. Practice using it now so the interface feels familiar. Students who know Desmos well can solve some Advanced Math questions in under 30 seconds that would take 2 minutes by hand.
+      </div>
+    `
+  }
 };
 
 const QUIZ_DATA = {
@@ -4111,19 +4455,73 @@ const QUIZ_DATA = {
       q: "What are the solutions to x² - 5x + 6 = 0?",
       options: ["x = 2 and x = 3", "x = -2 and x = -3", "x = 1 and x = 6", "x = 2 and x = -3"],
       correct: 0,
-      explain: "Factor the quadratic: find two numbers that multiply to 6 and add to -5. Those numbers are -2 and -3. So (x - 2)(x - 3) = 0. Setting each factor to zero: x = 2 or x = 3. Check: (2)² - 5(2) + 6 = 4 - 10 + 6 = 0 ✓"
+      explain: "Find two numbers that multiply to 6 and add to -5: those are -2 and -3. Factor: (x-2)(x-3) = 0. Set each to zero: x = 2 or x = 3. Check: (2)²-5(2)+6 = 0 and (3)²-5(3)+6 = 0. Both correct."
+    },
+    {
+      q: "Which of the following are the solutions to x² + 2x - 8 = 0?",
+      options: ["x = 2 and x = 4", "x = -4 and x = 2", "x = 4 and x = -2", "x = -2 and x = -4"],
+      correct: 1,
+      explain: "Find two numbers that multiply to -8 and add to 2: those are 4 and -2. Factor: (x+4)(x-2) = 0. So x = -4 or x = 2. Check: (-4)²+2(-4)-8 = 16-8-8 = 0 and (2)²+2(2)-8 = 4+4-8 = 0."
+    },
+    {
+      q: "The equation 2x² - 4x - 6 = 0 has solutions x = a and x = b where a > b. What is the value of a - b?",
+      options: ["2", "3", "4", "5"],
+      correct: 2,
+      explain: "Simplify by dividing by 2: x²-2x-3 = 0. Factor: (x-3)(x+1) = 0. So x = 3 or x = -1. Since a > b: a = 3 and b = -1. Therefore a - b = 3 - (-1) = 4."
     },
     {
       q: "If f(x) = 2x² - 3x + 1, what is f(4)?",
-      options: ["17", "21", "29", "33"],
+      options: ["17", "21", "25", "29"],
       correct: 1,
-      explain: "Substitute x = 4 into the function: f(4) = 2(4)² - 3(4) + 1 = 2(16) - 12 + 1 = 32 - 12 + 1 = 21. The most common mistake is forgetting to square first before multiplying by 2."
+      explain: "Substitute x = 4: f(4) = 2(4)² - 3(4) + 1 = 2(16) - 12 + 1 = 32 - 12 + 1 = 21. Most common mistake: computing 2(4²) as (2×4)² = 64. Remember: the exponent only applies to x, not the coefficient."
     },
     {
-      q: "A population of bacteria doubles every 3 hours. If there are 500 bacteria initially, which expression gives the population after t hours?",
-      options: ["500 + 2t", "500 × 2t", "500 × 2^(t/3)", "500 × (t/3)²"],
+      q: "If g(x) = 3x - 5, what is the value of g(a + 2)?",
+      options: ["3a - 3", "3a + 1", "3a - 1", "3a + 6"],
+      correct: 1,
+      explain: "Substitute (a+2) everywhere you see x: g(a+2) = 3(a+2) - 5 = 3a + 6 - 5 = 3a + 1. The key is replacing x with the entire expression (a+2), not just a. Distribute the 3 before combining."
+    },
+    {
+      q: "A population of bacteria doubles every 3 hours. Starting with 500 bacteria, which expression gives the population after t hours?",
+      options: ["500 + 2t", "500 x 2t", "500 x 2^(t/3)", "500 x (t/3)^2"],
       correct: 2,
-      explain: "Exponential growth formula: P = P₀ × r^(t/period). The initial population is 500, it doubles (×2) every 3 hours. After t hours, the number of doubling periods is t/3. So P = 500 × 2^(t/3). After 3 hours: 500 × 2^1 = 1000 ✓. After 6 hours: 500 × 2^2 = 2000 ✓."
+      explain: "Exponential formula: P = initial x rate^(time/period). Initial = 500, doubles (x2) every 3 hours, so period = 3. After t hours: P = 500 x 2^(t/3). Check at t=3: 500 x 2^1 = 1000 (doubled). At t=6: 500 x 2^2 = 2000 (doubled again)."
+    },
+    {
+      q: "A town of 4,000 people loses 5% of its population each year. Which function models the population after t years?",
+      options: ["P(t) = 4000(1.05)^t", "P(t) = 4000(0.95)^t", "P(t) = 4000 - 0.05t", "P(t) = 4000(0.05)^t"],
+      correct: 1,
+      explain: "Losing 5% per year means keeping 95% each year: decay factor = 1 - 0.05 = 0.95. So P(t) = 4000(0.95)^t. Check at t=1: 4000(0.95) = 3800, which is a 5% decrease. Choice A would show growth. Choice C is linear, not exponential."
+    },
+    {
+      q: "Which expression is equivalent to (2x + 3)(x - 4)?",
+      options: ["2x² - 5x - 12", "2x² + 5x - 12", "2x² - 8x - 12", "2x² - 5x + 12"],
+      correct: 0,
+      explain: "FOIL: (2x)(x) + (2x)(-4) + (3)(x) + (3)(-4) = 2x² - 8x + 3x - 12 = 2x² - 5x - 12. Why B is wrong: outer term is -8x not +8x. Why C is wrong: did not combine -8x and +3x. Why D is wrong: 3 x -4 = -12 not +12."
+    },
+    {
+      q: "What is the result of (x + 5)² ?",
+      options: ["x² + 25", "x² + 5x + 25", "x² + 10x + 25", "x² - 10x + 25"],
+      correct: 2,
+      explain: "(x+5)² means (x+5)(x+5). FOIL: x² + 5x + 5x + 25 = x² + 10x + 25. The most common error is writing x² + 25 — this forgets the middle term entirely. Remember: (a+b)² = a² + 2ab + b²."
+    },
+    {
+      q: "If |2x - 6| = 10, what are the solutions for x?",
+      options: ["x = 8 only", "x = -2 only", "x = 8 and x = -2", "x = 8 and x = 2"],
+      correct: 2,
+      explain: "Split into two cases. Case 1: 2x-6 = 10, so 2x = 16, x = 8. Case 2: 2x-6 = -10, so 2x = -4, x = -2. Both solutions: x = 8 or x = -2. Always solve both cases with absolute value equations — the negative case is just as valid."
+    },
+    {
+      q: "Which value of x satisfies |3x + 9| = 15?",
+      options: ["x = -8", "x = 2", "x = -8 and x = 2", "x = 6"],
+      correct: 2,
+      explain: "Case 1: 3x+9 = 15, so 3x = 6, x = 2. Case 2: 3x+9 = -15, so 3x = -24, x = -8. Both x = 2 and x = -8 are valid solutions. Check: |3(2)+9| = |15| = 15 and |3(-8)+9| = |-15| = 15. Both work."
+    },
+    {
+      q: "A ball is thrown upward. Its height in feet after t seconds is h(t) = -16t² + 32t. At what time does the ball return to the ground?",
+      options: ["t = 1", "t = 2", "t = 3", "t = 4"],
+      correct: 1,
+      explain: "The ball is on the ground when h(t) = 0. Set -16t² + 32t = 0. Factor out -16t: -16t(t - 2) = 0. So t = 0 (when thrown) or t = 2 (when it lands). The answer is t = 2 seconds. This is a real-world quadratic — the parabola shape models the arc of the ball."
     }
   ],
   data: [
@@ -4168,22 +4566,76 @@ const QUIZ_DATA = {
   ],
   math: [
     {
-      q: "A gym membership costs $40 per month plus a one-time registration fee of $25. If a member has paid a total of $265, for how many months has she been a member?",
+      q: "Solve for x: 5x - 8 = 2x + 13",
+      options: ["x = 3", "x = 5", "x = 7", "x = 9"],
+      correct: 2,
+      explain: "Subtract 2x from both sides: 3x - 8 = 13. Add 8: 3x = 21. Divide: x = 7. Check: 5(7)-8 = 27 and 2(7)+13 = 27. The trap answer is x = 5, from subtracting incorrectly. Always plug your answer back in to verify."
+    },
+    {
+      q: "A gym membership costs $40 per month plus a one-time registration fee of $25. If a member paid $265 total, for how many months has she been a member?",
       options: ["5", "6", "7", "8"],
       correct: 1,
-      explain: "Set up the equation: 25 + 40m = 265. Subtract 25 from both sides: 40m = 240. Divide by 40: m = 6. She has been a member for 6 months. Always re-read: the question asks for months, which is m. No extra step needed here."
+      explain: "Set up: 25 + 40m = 265. Subtract 25: 40m = 240. Divide: m = 6. The $25 fee is the y-intercept and $40 is the monthly rate (slope). Re-read: the question asks for months, which is exactly m."
     },
     {
-      q: "If 3x + 7 = 4x - 5, what is the value of x?",
-      options: ["2", "7", "12", "−2"],
+      q: "A line passes through the points (1, 3) and (4, 9). What is the slope of the line?",
+      options: ["1", "2", "3", "4"],
+      correct: 1,
+      explain: "Slope = (y2-y1)/(x2-x1) = (9-3)/(4-1) = 6/3 = 2. The line rises 2 units for every 1 unit right. Common trap: dividing 3 by 6 instead of 6 by 3 gives 0.5."
+    },
+    {
+      q: "A phone plan charges $25 per month plus $0.05 per text. Last month the bill was $40. How many texts were sent?",
+      options: ["200", "250", "300", "350"],
       correct: 2,
-      explain: "Subtract 3x from both sides: 7 = x - 5. Add 5 to both sides: x = 12. Check: 3(12)+7 = 43 and 4(12)-5 = 43. ✓ The trap answer is 2, which comes from mishandling the subtraction. Always check your answer by plugging it back in."
+      explain: "Set up: 25 + 0.05t = 40. Subtract 25: 0.05t = 15. Divide: t = 300. The monthly flat fee is the y-intercept and the per-text charge is the slope. Check: 25 + 0.05(300) = 25 + 15 = 40."
     },
     {
-      q: "A store sells notebooks for $3 each and pens for $1.50 each. Maya buys a total of 10 items and spends $22.50. How many notebooks did Maya buy?",
+      q: "Solve the system: 2x + y = 10 and x - y = 2. What is the value of x?",
+      options: ["2", "3", "4", "5"],
+      correct: 2,
+      explain: "Add both equations: (2x + y) + (x - y) = 10 + 2, giving 3x = 12, so x = 4. Then y = x - 2 = 2. Check in first equation: 2(4) + 2 = 10. Elimination works perfectly here because y and -y cancel."
+    },
+    {
+      q: "A store sells notebooks for $3 each and pens for $1.50 each. Maya buys 10 items and spends $22.50. How many notebooks did she buy?",
       options: ["3", "4", "5", "6"],
       correct: 2,
-      explain: "Let n = notebooks, p = pens. Two equations: n + p = 10 and 3n + 1.5p = 22.50. From the first equation: p = 10 - n. Substitute: 3n + 1.5(10-n) = 22.50 → 3n + 15 - 1.5n = 22.50 → 1.5n = 7.5 → n = 5. Maya bought 5 notebooks."
+      explain: "Let n = notebooks, p = pens. System: n + p = 10 and 3n + 1.5p = 22.50. Substitute p = 10 - n: 3n + 1.5(10-n) = 22.50, then 1.5n = 7.5, so n = 5."
+    },
+    {
+      q: "Which inequality represents: a number increased by 12 is at most 30?",
+      options: ["x + 12 > 30", "x + 12 >= 30", "x + 12 < 30", "x + 12 <= 30"],
+      correct: 3,
+      explain: "'At most 30' means the value cannot exceed 30. That is the less-than-or-equal sign. Memory trick: at most means <= and at least means >=. Memorize this pair and inequality word problems become straightforward."
+    },
+    {
+      q: "Layla can spend no more than $80 on school supplies. She buys a backpack for $35. Folders cost $2.50 each. What is the maximum number of folders she can buy?",
+      options: ["16", "17", "18", "20"],
+      correct: 2,
+      explain: "Inequality: 35 + 2.5f <= 80. Subtract 35: 2.5f <= 45. Divide: f <= 18. Maximum is 18 folders. Check: 35 + 2.5(18) = 80 exactly. 19 folders would cost $82.50, exceeding the budget."
+    },
+    {
+      q: "Marcus earns $18 per hour regularly and $27 per hour overtime. He worked 40 regular hours and some overtime, earning $1,017 total. How many overtime hours did he work?",
+      options: ["9", "11", "13", "15"],
+      correct: 1,
+      explain: "Let h = overtime hours. Equation: 18(40) + 27h = 1017. So 720 + 27h = 1017. Subtract 720: 27h = 297. Divide: h = 11. Check: 720 + 27(11) = 1017."
+    },
+    {
+      q: "If -3x > 15, which of the following must be true?",
+      options: ["x > 5", "x > -5", "x < 5", "x < -5"],
+      correct: 3,
+      explain: "Divide both sides by -3 and FLIP the inequality sign: x < -5. Dividing by a negative always flips the sign. Check: if x = -6, then -3(-6) = 18 > 15. Correct. If x = -4, then -3(-4) = 12, which is NOT greater than 15."
+    },
+    {
+      q: "A survey found that 180 out of 450 students prefer morning classes. In a school of 3,000 students, how many would be expected to prefer morning classes?",
+      options: ["900", "1,000", "1,100", "1,200"],
+      correct: 3,
+      explain: "Find the ratio: 180/450 = 0.40 = 40%. Apply to 3,000: 0.40 x 3,000 = 1,200. Or proportion: 180/450 = x/3000, cross multiply: 450x = 540,000, x = 1,200."
+    },
+    {
+      q: "Two friends split the cost of a gift. One pays $15 more than the other. Together they spend $63. How much does the friend who pays MORE contribute?",
+      options: ["$24", "$33", "$39", "$48"],
+      correct: 2,
+      explain: "Let x = smaller amount, x + 15 = larger. Together: x + (x+15) = 63, so 2x = 48, so x = 24. The friend who pays MORE contributes 24 + 15 = $39. Classic re-read trap: the question asks for the LARGER amount, not x."
     }
   ]
 };
@@ -4414,7 +4866,7 @@ function openModule(modKey) {
   if (!mod) return;
 
   // Lock modules not yet built
-  const lockedModules = ['advmath','data','geometry','practice'];
+  const lockedModules = ['data','geometry','practice'];
   if (lockedModules.includes(modKey)) {
     document.getElementById('moduleHeroArea').innerHTML = `
       <div style="text-align:center;padding:2rem 1rem;">
