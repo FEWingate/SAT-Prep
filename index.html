@@ -1743,7 +1743,7 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
           <div class="progress-bar-fill" id="prog-math" style="width:0%"></div>
         </div>
         <div class="module-meta">
-          <span>6 lessons · 3 quizzes</span>
+          <span>6 lessons · 1 quiz</span>
           <span id="meta-math">0 / 6 done</span>
         </div>
       </div>
@@ -2147,6 +2147,36 @@ const CLAUDE_PROMPTS = {
     "I just learned about linear equations. Can you give me 3 SAT-style word problems with step by step solutions?",
     "Can you explain how to set up equations from word problems on the SAT? I struggle with translating English into math.",
     "What are the most common algebra mistakes students make on the SAT and how do I avoid them?"
+  ],
+  math_0: [
+    "I just studied one-variable linear equations. Can you give me 3 SAT-style word problems that require setting up and solving a linear equation?",
+    "Can you show me how to check my answer by substituting it back into the original equation with an example?",
+    "Can you explain the most common one-variable equation mistakes on the SAT and show me how to avoid each one?"
+  ],
+  math_1: [
+    "I just studied slope and two-variable equations. Can you give me a word problem where I need to identify the slope and y-intercept and explain what each means?",
+    "Can you explain the difference between slope as a rate of change versus y-intercept as a starting value with 3 real-world examples?",
+    "Can you give me 3 SAT-style sentences and ask me to translate each one into slope-intercept form?"
+  ],
+  math_2: [
+    "I just studied systems of equations. Can you give me a word problem that requires setting up and solving a system using substitution?",
+    "Can you show me a problem where elimination is faster than substitution and explain how to decide which method to use?",
+    "Can you give me a system of equations and ask me to solve it, then show me how to verify the answer satisfies both equations?"
+  ],
+  math_3: [
+    "I just studied linear inequalities. Can you give me 3 SAT word problems using the phrases at most, at least, and no more than?",
+    "Can you explain the negative number flip rule for inequalities with 3 examples that show why the sign must flip?",
+    "Can you give me a budget constraint problem and ask me to find the maximum number of items I can buy?"
+  ],
+  math_4: [
+    "I just studied building equations from word problems. Can you give me a paragraph-style SAT problem and walk me through translating it into an equation step by step?",
+    "Can you quiz me on the translation dictionary? Give me 10 English phrases and ask me to write the math symbol or expression for each.",
+    "Can you give me a problem where the answer is not x itself but something like 2x or x plus 5, to practice re-reading the question?"
+  ],
+  math_5: [
+    "I just studied ratios, rates, and proportions. Can you give me 3 SAT-style proportion problems including one with unit conversion?",
+    "Can you show me all three types of percentage problems on the SAT: finding the percent, finding the part, and finding the whole?",
+    "Can you give me a survey data problem where I need to scale up a sample proportion to a larger population?"
   ],
   advmath: [
     "Can you walk me through solving a quadratic equation step by step, both by factoring and using the quadratic formula?",
@@ -3531,6 +3561,221 @@ const LESSON_CONTENT = {
       </div>
     `
   }
+  ,math_1: {
+    tag: 'Math — Algebra',
+    title: 'Linear Equations — Two Variables & Slope',
+    body: `
+      <p>One-variable equations find a single unknown. Two-variable equations describe a <strong>relationship</strong> — how two things change together. The SAT tests this constantly because it mirrors real life.</p>
+      <h3>Real Life First</h3>
+      <p>You work two jobs — babysitting at $15/hour and tutoring at $25/hour. Last week you earned $275 total. That's a two-variable equation: <strong>15b + 25t = 275</strong>, where b is babysitting hours and t is tutoring hours.</p>
+      <p>There are many combinations that work — but each one is a point on a line when graphed. That line is the equation.</p>
+      <h3>Slope-Intercept Form</h3>
+      <div class="formula">y = mx + b</div>
+      <ul>
+        <li><strong>m</strong> = slope (how steep the line is, how fast y changes per unit of x)</li>
+        <li><strong>b</strong> = y-intercept (where the line crosses the y-axis, the starting value)</li>
+      </ul>
+      <h3>What Slope Really Means</h3>
+      <p>Slope is a rate of change. In the real world:</p>
+      <div class="example-box">
+        <div class="ex-label">SAT-Style Interpretation</div>
+        A phone plan costs $30 per month plus $0.10 per text. The equation is: <strong>C = 0.10t + 30</strong><br><br>
+        Slope = 0.10 → cost increases by $0.10 for each additional text<br>
+        Y-intercept = 30 → base monthly cost before any texts
+      </div>
+      <h3>Finding Slope From Two Points</h3>
+      <div class="formula">m = (y₂ - y₁) / (x₂ - x₁)</div>
+      <div class="example-box">
+        <div class="ex-label">Worked Example</div>
+        Points (2, 7) and (5, 13):<br>
+        m = (13 - 7) / (5 - 2) = 6 / 3 = <strong>2</strong><br>
+        The line rises 2 units for every 1 unit it moves right.
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A gym charges a $50 registration fee and $30 per month. Which equation represents the total cost C after m months?</em><br><br>
+        A) C = 50m + 30<br>
+        B) C = 30m + 50 ✓<br>
+        C) C = 80m<br>
+        D) C = 30 + 50m<br><br>
+        <strong>Why B:</strong> The monthly charge ($30) multiplies by months, so it goes with m. The registration fee ($50) is a one-time cost — the y-intercept.<br>
+        <strong>Why A is wrong:</strong> This makes the registration fee grow with months — that's not how one-time fees work.<br>
+        <strong>Why C is wrong:</strong> This ignores the separate registration fee entirely.<br>
+        <strong>Why D is wrong:</strong> Same as B but the labels are swapped — 50 would mean $50/month which is incorrect.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Rate vs. Starting Value</div>
+        On SAT word problems, the number that multiplies by a variable is always the RATE (slope). The standalone number is always the STARTING VALUE (y-intercept). Identifying these two pieces instantly sets up your equation.
+      </div>
+    `
+  },
+  math_2: {
+    tag: 'Math — Algebra',
+    title: 'Systems of Equations',
+    body: `
+      <p>A system of equations is two equations with two unknowns. Instead of one line, you have two — and the solution is the point where they cross. The SAT loves systems because they model real two-variable situations.</p>
+      <h3>Real Life First</h3>
+      <p>You and your friend both order from the same restaurant. You order 2 tacos and 1 drink for $11. Your friend orders 1 taco and 2 drinks for $10. What does each item cost?</p>
+      <p>That's a system: <strong>2t + d = 11</strong> and <strong>t + 2d = 10</strong></p>
+      <h3>Method 1 — Substitution</h3>
+      <p>Solve one equation for one variable, then substitute into the other.</p>
+      <div class="example-box">
+        <div class="ex-label">Substitution Example</div>
+        2t + d = 11 and t + 2d = 10<br><br>
+        Step 1: Solve second equation for t: t = 10 - 2d<br>
+        Step 2: Substitute into first: 2(10 - 2d) + d = 11<br>
+        Step 3: Distribute: 20 - 4d + d = 11<br>
+        Step 4: Simplify: 20 - 3d = 11 → 3d = 9 → <strong>d = 3</strong><br>
+        Step 5: Back-substitute: t = 10 - 2(3) = <strong>t = 4</strong><br><br>
+        Tacos cost $4, drinks cost $3. ✓
+      </div>
+      <h3>Method 2 — Elimination</h3>
+      <p>Add or subtract equations to eliminate one variable entirely. Best when coefficients already match or are easy to match.</p>
+      <div class="example-box">
+        <div class="ex-label">Elimination Example</div>
+        2t + d = 11<br>
+        t + 2d = 10<br><br>
+        Multiply second equation by 2: 2t + 4d = 20<br>
+        Subtract first from this: (2t + 4d) - (2t + d) = 20 - 11<br>
+        Result: 3d = 9 → <strong>d = 3</strong>, then t = 4 ✓
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>3x + 2y = 16 and x - y = 2. What is the value of x?</em><br><br>
+        A) 2 &nbsp; B) 3 &nbsp; C) 4 ✓ &nbsp; D) 5<br><br>
+        From second equation: x = y + 2. Substitute: 3(y+2) + 2y = 16 → 3y + 6 + 2y = 16 → 5y = 10 → y = 2. Then x = 2 + 2 = <strong>4</strong>.<br><br>
+        <strong>Why A is wrong:</strong> x = 2 would mean y = 0, but 3(2) + 2(0) = 6, not 16.<br>
+        <strong>Why B is wrong:</strong> A common error from mishandling the substitution step.<br>
+        <strong>Why D is wrong:</strong> Another common arithmetic slip — always check by substituting back.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Choose Your Method Wisely</div>
+        Use substitution when one equation easily isolates a variable (like x = ... or y = ...). Use elimination when both equations have matching coefficients. On the SAT, elimination is often faster — look for it first.
+      </div>
+    `
+  },
+  math_3: {
+    tag: 'Math — Algebra',
+    title: 'Linear Inequalities',
+    body: `
+      <p>Inequalities work almost exactly like equations — with one critical difference. They describe a range of answers instead of a single answer. On the SAT, they appear in word problems about limits, budgets, and constraints.</p>
+      <h3>Real Life First</h3>
+      <p>You can spend at most $120 on concert tickets. Floor seats cost $45 each and balcony seats cost $25 each. If you buy 2 floor seats, how many balcony seats can you still afford?</p>
+      <p>That's an inequality: <strong>45(2) + 25b ≤ 120</strong> → <strong>25b ≤ 30</strong> → <strong>b ≤ 1.2</strong> → at most 1 balcony seat.</p>
+      <h3>The Four Inequality Signs</h3>
+      <div class="highlight-box">
+        <strong>></strong> greater than (not including the boundary)<br>
+        <strong>≥</strong> greater than or equal to (including the boundary)<br>
+        <strong><</strong> less than (not including the boundary)<br>
+        <strong>≤</strong> less than or equal to (including the boundary)<br><br>
+        SAT word problem clues: "at most" → ≤ | "at least" → ≥ | "more than" → > | "fewer than" → <
+      </div>
+      <h3>The Critical Flip Rule</h3>
+      <div class="highlight-box">
+        When you multiply or divide BOTH sides of an inequality by a NEGATIVE number, you must FLIP the inequality sign.<br><br>
+        -2x > 8 → divide by -2, flip sign → x < -4
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A school store sells pens for $2 each and notebooks for $5 each. Layla has $30 to spend and wants to buy at least 3 notebooks. What is the maximum number of pens she can buy?</em><br><br>
+        A) 6 &nbsp; B) 7 ✓ &nbsp; C) 8 &nbsp; D) 9<br><br>
+        3 notebooks cost $15. Remaining: $30 - $15 = $15. Pens: $15 ÷ $2 = 7.5 → maximum 7 pens.<br><br>
+        <strong>Why C and D are wrong:</strong> 8 pens would cost $16, which exceeds the $15 remaining.<br>
+        <strong>Why A is wrong:</strong> 6 is valid but not the MAXIMUM — she can afford 7.<br>
+        <strong>Key trap:</strong> The question asks for maximum pens, not total items. Always re-read what is being asked.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Translate Before You Calculate</div>
+        Before writing any inequality, underline the constraint words in the problem: at most, at least, no more than, minimum, maximum. These words tell you which inequality sign to use. Getting the sign wrong means getting the answer wrong even if your math is perfect.
+      </div>
+    `
+  },
+  math_4: {
+    tag: 'Math — Algebra',
+    title: 'Word Problems — Building Equations',
+    body: `
+      <p>This is the lesson that ties everything together. The SAT Math section is dominated by word problems — real scenarios dressed up in math. The skill is translation: converting English sentences into algebraic expressions.</p>
+      <h3>Real Life First</h3>
+      <p>Think about how often you do this without realizing it. Splitting a restaurant bill, figuring out if you have enough money for something, calculating how long a drive will take — all of that is informal algebra. We're just going to formalize it.</p>
+      <h3>The Translation Dictionary</h3>
+      <div class="highlight-box">
+        <strong>is / are / equals / was</strong> → =<br>
+        <strong>more than / increased by / added to</strong> → +<br>
+        <strong>less than / decreased by / fewer than</strong> → −<br>
+        <strong>times / product of / of</strong> → ×<br>
+        <strong>per / for each / every</strong> → × (with variable)<br>
+        <strong>ratio of / quotient</strong> → ÷<br>
+        <strong>a number / some number</strong> → x (or any variable)<br>
+        <strong>total / sum / altogether</strong> → add everything up
+      </div>
+      <h3>The Four-Step Method</h3>
+      <ol>
+        <li><strong>Identify what the variable represents.</strong> Write it down: "Let x = number of hours worked."</li>
+        <li><strong>Translate each piece of the problem</strong> using the dictionary above.</li>
+        <li><strong>Set up the equation or inequality.</strong></li>
+        <li><strong>Solve, then re-read the question</strong> — make sure you're answering what was actually asked.</li>
+      </ol>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>Marcus earns $18 per hour at his regular job and $27 per hour for overtime. Last week he worked 40 regular hours and some overtime hours, earning $1,017 total. How many overtime hours did he work?</em><br><br>
+        A) 9 &nbsp; B) 11 ✓ &nbsp; C) 13 &nbsp; D) 15<br><br>
+        Let h = overtime hours.<br>
+        18(40) + 27h = 1017<br>
+        720 + 27h = 1017<br>
+        27h = 297<br>
+        h = 11 ✓<br><br>
+        <strong>Why A is wrong:</strong> 9 hours gives 720 + 243 = 963, not 1017.<br>
+        <strong>Why C is wrong:</strong> 13 hours gives 720 + 351 = 1071, which exceeds 1017.<br>
+        <strong>Why D is wrong:</strong> Same — too high. Always verify by plugging back in.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Re-Read Rule</div>
+        The most common mistake on SAT word problems is solving for x when the question asks for something else — like 2x, or x + 5, or the total cost. After solving, re-read the last sentence of the problem before choosing your answer. This habit alone can save 3-4 points per test.
+      </div>
+    `
+  },
+  math_5: {
+    tag: 'Math — Algebra',
+    title: 'Ratios, Rates & Proportions',
+    body: `
+      <p>Ratio and proportion problems account for a significant portion of SAT Math. They show up in science contexts, social studies data, recipe-scaling problems, and unit conversions — and they all follow the same core logic.</p>
+      <h3>Real Life First</h3>
+      <p>You're making your favorite recipe for a party and need to triple it. The original calls for 2 cups of flour and 3 eggs. How many eggs do you need? That's a proportion: <strong>2/3 = 6/x</strong> → x = 9 eggs. You use proportions every day.</p>
+      <h3>Setting Up Proportions</h3>
+      <div class="formula">a/b = c/d → cross multiply → ad = bc</div>
+      <div class="example-box">
+        <div class="ex-label">Proportion Example</div>
+        A car travels 150 miles in 3 hours. At the same rate, how far will it travel in 5 hours?<br><br>
+        150/3 = x/5 → cross multiply → 3x = 750 → x = <strong>250 miles</strong>
+      </div>
+      <h3>Percentage Problems</h3>
+      <p>Percentages are just ratios out of 100. Three types appear on every SAT:</p>
+      <div class="highlight-box">
+        <strong>Type 1 — Find the percent:</strong> What percent of 80 is 20? → 20/80 × 100 = 25%<br><br>
+        <strong>Type 2 — Find the part:</strong> What is 35% of 140? → 0.35 × 140 = 49<br><br>
+        <strong>Type 3 — Find the whole:</strong> 45 is 30% of what number? → 45/0.30 = 150
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A survey found that 240 out of 600 students prefer online learning. If the school has 2,500 students total, how many would be expected to prefer online learning?</em><br><br>
+        A) 800 &nbsp; B) 900 &nbsp; C) 1,000 ✓ &nbsp; D) 1,200<br><br>
+        240/600 = x/2500 → 600x = 600,000 → x = <strong>1,000</strong><br><br>
+        Or: 240/600 = 0.40 = 40%. Then 40% × 2500 = 1,000 ✓<br><br>
+        <strong>Why A is wrong:</strong> 800/2500 = 32%, not 40%.<br>
+        <strong>Why B is wrong:</strong> 900/2500 = 36%, not 40%.<br>
+        <strong>Why D is wrong:</strong> 1200/2500 = 48% — a common error from dividing incorrectly.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Two Methods, One Answer</div>
+        On ratio and proportion problems, always check your answer with a second method. Set up the proportion AND calculate the percentage separately. If both give the same answer, you can be confident. If they differ, you made an arithmetic error somewhere.
+      </div>
+    `
+  }
 };
 
 const QUIZ_DATA = {
@@ -4848,13 +5093,9 @@ function addClaudeMessage(text) {
   const messagesEl = document.getElementById('tutorMessages');
   const div = document.createElement('div');
   div.className = 'tutor-msg tutor-msg-claude';
-  const formatted = text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/\n/g, '<br>');
+  const formatted = renderMarkdown(text);
   div.innerHTML = '<div class="tutor-msg-avatar tutor-msg-avatar-claude">✦</div>' +
-    '<div class="tutor-msg-bubble"><p>' + formatted + '</p></div>';
+    '<div class="tutor-msg-bubble">' + formatted + '</div>';
   messagesEl.appendChild(div);
   messagesEl.scrollTop = messagesEl.scrollHeight;
 }
@@ -4941,6 +5182,83 @@ function sendTutorMessage() {
 // Update currentLessonContext whenever a lesson is opened
 const _origOpenLesson = openLesson;
 
+
+
+// ════════════════════════════════════
+//  MARKDOWN RENDERER
+// ════════════════════════════════════
+function renderMarkdown(text) {
+  // Split into lines for processing
+  const lines = text.split('\n');
+  let html = '';
+  let inList = false;
+  let inNumberedList = false;
+  
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+    
+    // Apply inline formatting first
+    line = line
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/`(.*?)`/g, '<code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:0.85em;">$1</code>');
+    
+    // H1 heading: # Title
+    if (/^# (.+)/.test(line)) {
+      if (inList) { html += '</ul>'; inList = false; }
+      if (inNumberedList) { html += '</ol>'; inNumberedList = false; }
+      html += '<h3 style="font-family:Syne,sans-serif;font-weight:700;font-size:1rem;color:var(--yellow);margin:1rem 0 0.4rem;">' + line.replace(/^# /, '') + '</h3>';
+    }
+    // H2 heading: ## Title
+    else if (/^## (.+)/.test(line)) {
+      if (inList) { html += '</ul>'; inList = false; }
+      if (inNumberedList) { html += '</ol>'; inNumberedList = false; }
+      html += '<h4 style="font-family:Syne,sans-serif;font-weight:700;font-size:0.9rem;color:var(--pink);margin:0.875rem 0 0.35rem;">' + line.replace(/^## /, '') + '</h4>';
+    }
+    // H3 heading: ### Title
+    else if (/^### (.+)/.test(line)) {
+      if (inList) { html += '</ul>'; inList = false; }
+      if (inNumberedList) { html += '</ol>'; inNumberedList = false; }
+      html += '<h5 style="font-family:Syne,sans-serif;font-weight:600;font-size:0.85rem;color:var(--text);margin:0.75rem 0 0.3rem;">' + line.replace(/^### /, '') + '</h5>';
+    }
+    // Horizontal rule: --- or ***
+    else if (/^[-*]{3,}$/.test(line.trim())) {
+      if (inList) { html += '</ul>'; inList = false; }
+      if (inNumberedList) { html += '</ol>'; inNumberedList = false; }
+      html += '<hr style="border:none;border-top:1px solid var(--border);margin:0.75rem 0;">';
+    }
+    // Bullet list item: - item or * item
+    else if (/^[-*] (.+)/.test(line)) {
+      if (inNumberedList) { html += '</ol>'; inNumberedList = false; }
+      if (!inList) { html += '<ul style="padding-left:1.25rem;margin:0.4rem 0;">'; inList = true; }
+      html += '<li style="margin-bottom:0.3rem;">' + line.replace(/^[-*] /, '') + '</li>';
+    }
+    // Numbered list: 1. item
+    else if (/^\d+\. (.+)/.test(line)) {
+      if (inList) { html += '</ul>'; inList = false; }
+      if (!inNumberedList) { html += '<ol style="padding-left:1.25rem;margin:0.4rem 0;">'; inNumberedList = true; }
+      html += '<li style="margin-bottom:0.3rem;">' + line.replace(/^\d+\. /, '') + '</li>';
+    }
+    // Empty line — paragraph break
+    else if (line.trim() === '') {
+      if (inList) { html += '</ul>'; inList = false; }
+      if (inNumberedList) { html += '</ol>'; inNumberedList = false; }
+      html += '<br>';
+    }
+    // Regular paragraph text
+    else {
+      if (inList) { html += '</ul>'; inList = false; }
+      if (inNumberedList) { html += '</ol>'; inNumberedList = false; }
+      html += '<p style="margin-bottom:0.5rem;">' + line + '</p>';
+    }
+  }
+  
+  // Close any open lists
+  if (inList) html += '</ul>';
+  if (inNumberedList) html += '</ol>';
+  
+  return html;
+}
 
 // ════════════════════════════════════
 //  API KEY MANAGEMENT
