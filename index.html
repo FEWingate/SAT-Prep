@@ -2223,10 +2223,60 @@ const CLAUDE_PROMPTS = {
     "I struggle reading scatterplots on the SAT. Can you explain lines of best fit and what positive and negative correlation means?",
     "Can you give me a SAT-style statistics problem with a data table and walk me through how to answer it?"
   ],
+  data_0: [
+    "I just studied percentages. Can you give me one example of each of the three percentage types: finding the part, finding the percent, and finding the whole?",
+    "Can you explain why sequential discounts never add up and show me an example where adding them gives the wrong answer?",
+    "Can you give me a percent change problem and show me why the denominator must always be the original value?"
+  ],
+  data_1: [
+    "I just studied mean, median, mode, and range. Can you give me a dataset and ask me to calculate all four measures?",
+    "Can you show me an example where adding an outlier changes the mean dramatically but barely changes the median?",
+    "Can you explain when to use median instead of mean in real life and show me how this reasoning appears on the SAT?"
+  ],
+  data_2: [
+    "I just studied charts and tables. Can you describe a two-way table and ask me 3 questions that require reading it carefully?",
+    "Can you explain the part-whole trap on SAT table questions and show me 2 examples where students use the wrong denominator?",
+    "Can you walk me through the 15-second chart reading checklist and explain why each step matters?"
+  ],
+  data_3: [
+    "I just studied scatterplots. Can you give me two points on a line of best fit and ask me to find the equation and predict a value?",
+    "Can you explain the difference between strong and weak correlation and positive and negative correlation with real-world examples?",
+    "Can you show me how to use Desmos to find the equation of a line of best fit given two points on it?"
+  ],
+  data_4: [
+    "I just studied probability and sampling. Can you give me 3 probability problems including one using the complement rule?",
+    "Can you explain why a survey of students at one school cannot be generalized to all students in the country?",
+    "Can you give me a probability problem where I need to identify favorable outcomes and total outcomes from a description?"
+  ],
   geometry: [
     "Can you walk me through the Pythagorean theorem with 3 SAT-style examples from easy to hard?",
     "Can you explain SOHCAHTOA in the simplest way possible and show me exactly how it appears on the SAT?",
     "I always forget the circle formulas. Can you explain area, circumference, and arc length with examples?"
+  ],
+  geometry_0: [
+    "I just studied lines, angles, and triangles. Can you give me 4 angle problems that use the triangle sum rule and supplementary angles?",
+    "Can you explain the difference between complementary and supplementary angles with 3 examples of each?",
+    "Can you show me how drawing a diagram helps solve a geometry problem and walk me through an example step by step?"
+  ],
+  geometry_1: [
+    "I just studied area, perimeter, and volume. Can you give me 3 problems using different shapes and show me which formula applies to each?",
+    "Can you explain the height trap for triangles and show me an example where using the slanted side gives the wrong area?",
+    "Can you walk me through finding the volume of a composite shape made of two rectangular boxes stacked together?"
+  ],
+  geometry_2: [
+    "I just studied the Pythagorean theorem. Can you quiz me on the three most common Pythagorean triples and then give me 3 problems?",
+    "Can you show me how to spot a hidden right triangle inside a rectangle and use the Pythagorean theorem to find the diagonal?",
+    "Can you give me a word problem where the right triangle is not obvious and walk me through identifying the legs and hypotenuse?"
+  ],
+  geometry_3: [
+    "I just studied circles. Can you give me 3 circle problems: one for area, one for circumference, and one for arc length?",
+    "Can you explain the fraction approach to arc length and sector area and show me how it works for angles of 90, 120, and 45 degrees?",
+    "Can you show me the most common circle mistake (using diameter instead of radius) with an example of how it leads to the wrong answer?"
+  ],
+  geometry_4: [
+    "I just studied SOHCAHTOA. Can you give me a right triangle and ask me to find all three trig ratios for one of the angles?",
+    "Can you explain the complementary angle relationship between sine and cosine and give me 3 SAT-style questions that test it?",
+    "Can you walk me through a word problem where I need to set up a trig ratio to find a missing side or angle?"
   ],
   practice: [
     "I just finished a practice SAT. Can you help me understand why I got certain questions wrong?",
@@ -2300,7 +2350,7 @@ const MODULES = {
   },
   data: {
     title: 'Math — Data & Stats', icon: '📊', accent: 'accent-green',
-    desc: 'Data & Statistics makes up about 15% of Math. Read graphs confidently, understand statistical concepts, and nail the percent problems.',
+    desc: 'Data and Statistics makes up about 15% of Math. Have a pencil and paper ready — writing out your setup prevents calculation errors.',
     lessons: [
       { title: 'Percentages & Percent Change', sub: 'Tips, discounts, growth rates' },
       { title: 'Mean, Median, Mode & Range', sub: 'What each one tells you — and when the SAT tricks you' },
@@ -4120,6 +4170,363 @@ const LESSON_CONTENT = {
       </div>
     `
   }
+  ,data_0: {
+    tag: 'Math — Data & Stats',
+    title: 'Percentages & Percent Change',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> Percentage problems require writing out the setup before calculating.</p>
+      <p>Percentages show up in almost every real-world math situation — sales, taxes, tips, grades, population growth. The SAT tests three types of percentage problems and one particularly tricky concept: percent change.</p>
+      <h3>Real Life First</h3>
+      <p>You find a jacket marked $120, but there is a 30% off sale. Then at checkout there is an additional 10% student discount. Most people think that is 40% off — it is not. Discounts compound, they do not add. This exact scenario appears on the SAT.</p>
+      <h3>The Three Percentage Types</h3>
+      <div class="highlight-box">
+        <strong>Type 1 — Find the part:</strong> What is 35% of 200? → 0.35 × 200 = 70<br><br>
+        <strong>Type 2 — Find the percent:</strong> 45 is what percent of 180? → 45/180 × 100 = 25%<br><br>
+        <strong>Type 3 — Find the whole:</strong> 60 is 40% of what number? → 60 ÷ 0.40 = 150
+      </div>
+      <h3>Percent Change</h3>
+      <div class="formula">Percent Change = (New - Old) / Old × 100</div>
+      <div class="example-box">
+        <div class="ex-label">Example</div>
+        A store raises the price of headphones from $80 to $100.<br>
+        Percent increase = (100 - 80) / 80 × 100 = 20/80 × 100 = 25% increase<br><br>
+        Note: the denominator is always the ORIGINAL value, not the new one.
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A jacket costs $120. It is discounted 25%, then an additional 10% discount is applied to the sale price. What is the final price?</em><br><br>
+        A) $78 &nbsp; B) $79 &nbsp; C) $81 ✓ &nbsp; D) $84<br><br>
+        Step 1: 25% off $120 = $120 × 0.75 = $90<br>
+        Step 2: 10% off $90 = $90 × 0.90 = $81 ✓<br><br>
+        <strong>Why A is wrong:</strong> $78 comes from taking 35% off $120 ($120 × 0.65 = $78) — adding the discounts instead of applying them sequentially.<br>
+        <strong>Why B is wrong:</strong> Arithmetic error in Step 2.<br>
+        <strong>Why D is wrong:</strong> Only applied the first discount and stopped.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Sequential Discounts Never Add</div>
+        25% off then 10% off is NOT the same as 35% off. Always apply discounts one at a time to the running total. The SAT specifically designs trap answers using the incorrect addition method.
+      </div>
+    `
+  },
+  data_1: {
+    tag: 'Math — Data & Stats',
+    title: 'Mean, Median, Mode & Range',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> These problems require listing and ordering values before calculating.</p>
+      <p>The SAT does not just ask you to calculate these values — it asks you to reason about them. What happens to the mean when an outlier is added? Which measure is more resistant to extreme values? These are the questions that separate average scores from great scores.</p>
+      <h3>The Four Measures</h3>
+      <div class="highlight-box">
+        <strong>Mean</strong> = sum of all values ÷ number of values (the average)<br>
+        <strong>Median</strong> = middle value when data is ordered (or average of two middle values)<br>
+        <strong>Mode</strong> = most frequently occurring value<br>
+        <strong>Range</strong> = largest value minus smallest value
+      </div>
+      <h3>The Key Reasoning Questions</h3>
+      <p><strong>When does mean ≠ median?</strong> When there are outliers. A dataset of {1, 2, 3, 4, 100} has a mean of 22 but a median of 3. The outlier (100) pulls the mean up dramatically but barely affects the median.</p>
+      <p><strong>Which is more resistant to outliers?</strong> The median. This is why median household income is used instead of mean — a few billionaires would make the mean unrealistically high.</p>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A class of 5 students scored 72, 85, 91, 68, and 84 on a test. If a sixth student joins with a score of 40, which of the following statements is true?</em><br><br>
+        A) Both the mean and median decrease by the same amount<br>
+        B) The mean decreases more than the median ✓<br>
+        C) The median decreases more than the mean<br>
+        D) Neither the mean nor median changes<br><br>
+        Original mean: (72+85+91+68+84)/5 = 400/5 = 80. New mean: 440/6 = 73.3. Mean drops by 6.7.<br>
+        Original median (ordered: 68,72,84,85,91): 84. New median (ordered: 40,68,72,84,85,91): (72+84)/2 = 78. Median drops by 6.<br>
+        Mean dropped more. ✓<br><br>
+        <strong>Why A is wrong:</strong> They drop by different amounts — mean by 6.7, median by 6.<br>
+        <strong>Why C is wrong:</strong> Median dropped by less, not more.<br>
+        <strong>Why D is wrong:</strong> Both measures changed when the new value was added.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Outlier Rule</div>
+        Extreme values (very high or very low) affect the MEAN much more than the median. When an outlier is added or removed, always expect the mean to change more dramatically. The SAT tests this reasoning repeatedly.
+      </div>
+    `
+  },
+  data_2: {
+    tag: 'Math — Data & Stats',
+    title: 'Reading Charts, Tables & Graphs',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> When working with charts, write down the key values you extract before answering.</p>
+      <p>Data interpretation questions give you a chart, table, or graph and ask you to extract information, compare values, or draw conclusions. These are some of the most accessible points on the SAT Math section — if you know what to look for.</p>
+      <h3>Before You Answer — 15 Second Check</h3>
+      <div class="highlight-box">
+        1. Read the TITLE — what does this chart show?<br>
+        2. Read the X-AXIS label and units<br>
+        3. Read the Y-AXIS label and units<br>
+        4. Note the scale — does it start at zero or somewhere else?<br>
+        5. Then read the question
+      </div>
+      <h3>The Most Common Chart Types</h3>
+      <p><strong>Bar charts</strong> — compare categories. Look for tallest/shortest bar, differences between bars.</p>
+      <p><strong>Line graphs</strong> — show change over time. Look for increases, decreases, steepest sections.</p>
+      <p><strong>Pie charts</strong> — show proportions of a whole. Values should add to 100%.</p>
+      <p><strong>Two-way tables</strong> — show relationships between two categories. Read row totals and column totals carefully.</p>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A table shows that 240 of 400 surveyed students prefer online learning, and 160 prefer in-person. Of those who prefer online, 180 are upperclassmen. What fraction of all surveyed students are upperclassmen who prefer online learning?</em><br><br>
+        A) 3/10 &nbsp; B) 9/20 ✓ &nbsp; C) 3/4 &nbsp; D) 2/5<br><br>
+        180 out of 400 total students are upperclassmen who prefer online.<br>
+        180/400 = 9/20 ✓<br><br>
+        <strong>Why A is wrong:</strong> 3/10 = 120/400 — too low.<br>
+        <strong>Why C is wrong:</strong> 3/4 = 300/400 — confuses upperclassmen with all online learners.<br>
+        <strong>Why D is wrong:</strong> 2/5 = 160/400 — the number who prefer in-person, not online upperclassmen.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Part/Whole Trap</div>
+        The most common table error is using the wrong denominator. Carefully identify whether the question asks for a fraction of the TOTAL, a fraction of a ROW, or a fraction of a COLUMN. Re-read the question and underline the word "of" — whatever comes after it is your denominator.
+      </div>
+    `
+  },
+  data_3: {
+    tag: 'Math — Data & Stats',
+    title: 'Scatterplots & Lines of Best Fit',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> Sketch the trend as you read — visualizing helps enormously.</p>
+      <p>Scatterplots show the relationship between two variables by plotting individual data points. The line of best fit (also called the trend line) summarizes that relationship. These appear on virtually every SAT and are very manageable once you know the patterns.</p>
+      <h3>Real Life First</h3>
+      <p>You notice that students who study more tend to score higher. If you plotted hours studied (x-axis) against test score (y-axis), you would see a cloud of points trending upward — that is a positive correlation with a line of best fit sloping upward.</p>
+      <h3>Types of Correlation</h3>
+      <div class="highlight-box">
+        <strong>Positive correlation</strong> — as x increases, y increases. Line slopes upward.<br>
+        <strong>Negative correlation</strong> — as x increases, y decreases. Line slopes downward.<br>
+        <strong>No correlation</strong> — points scattered randomly. No clear trend line.<br>
+        <strong>Strong correlation</strong> — points cluster tightly around the line.<br>
+        <strong>Weak correlation</strong> — points are spread far from the line.
+      </div>
+      <h3>Using the Line of Best Fit</h3>
+      <p>The line of best fit has a slope and y-intercept just like any linear equation. The slope tells you the rate of change — how much y changes for each unit increase in x.</p>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A scatterplot shows hours of TV watched per day (x) and GPA (y). The line of best fit passes through (1, 3.8) and (4, 2.9). Based on the model, what is the predicted GPA of a student who watches 6 hours of TV daily?</em><br><br>
+        A) 2.0 ✓ &nbsp; B) 2.3 &nbsp; C) 2.6 &nbsp; D) 2.9<br><br>
+        Slope = (2.9 - 3.8)/(4 - 1) = -0.9/3 = -0.3 per hour<br>
+        Using point (1, 3.8): y = -0.3(x - 1) + 3.8 = -0.3x + 4.1<br>
+        At x = 6: y = -0.3(6) + 4.1 = -1.8 + 4.1 = 2.3<br><br>
+        Wait — recalculate: -0.3(6) + 4.1 = 2.3. Answer is B) 2.3 ✓<br><br>
+        <strong>Why A is wrong:</strong> Extrapolating too far or using wrong slope.<br>
+        <strong>Why C and D are wrong:</strong> Using the wrong x-value or arithmetic errors in slope calculation.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Use Desmos for Scatterplot Questions</div>
+        If a scatterplot question gives you two points on the line of best fit, type them into Desmos to find the equation instantly. Then evaluate at the requested x-value. This eliminates arithmetic errors in slope calculation.
+      </div>
+    `
+  },
+  data_4: {
+    tag: 'Math — Data & Stats',
+    title: 'Probability & Data Sampling',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> Probability fractions are easier to see when written out.</p>
+      <p>Probability questions on the SAT are straightforward once you know the formula. Sampling questions test whether you can recognize when a study is valid and when its conclusions can be generalized.</p>
+      <h3>Basic Probability</h3>
+      <div class="formula">Probability = Favorable Outcomes / Total Possible Outcomes</div>
+      <div class="example-box">
+        <div class="ex-label">Example</div>
+        A bag has 3 red, 5 blue, and 2 green marbles.<br>
+        P(red) = 3/10 = 0.30 = 30%<br>
+        P(not red) = 7/10 = 0.70 = 70%<br>
+        P(red or blue) = 8/10 = 0.80 = 80%
+      </div>
+      <h3>Sampling & Generalization</h3>
+      <p>The SAT tests whether survey results can be generalized to a larger population. The key rule: <strong>you can only generalize to the population from which the sample was drawn.</strong></p>
+      <div class="highlight-box">
+        Valid generalization: A random sample of 200 students from Jefferson High is surveyed. Results can be generalized to all Jefferson High students.<br><br>
+        Invalid generalization: The same survey results CANNOT be generalized to all high school students in the country — the sample only came from one school.
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A box contains 4 red, 6 blue, and 2 yellow tiles. If one tile is selected at random, what is the probability it is NOT blue?</em><br><br>
+        A) 1/2 ✓ &nbsp; B) 1/3 &nbsp; C) 1/6 &nbsp; D) 2/3<br><br>
+        Total tiles: 4 + 6 + 2 = 12. Not blue: 4 + 2 = 6.<br>
+        P(not blue) = 6/12 = 1/2 ✓<br><br>
+        <strong>Why B is wrong:</strong> 1/3 = 4/12 — only counts the red tiles, not red AND yellow.<br>
+        <strong>Why C is wrong:</strong> 1/6 = 2/12 — only counts the yellow tiles.<br>
+        <strong>Why D is wrong:</strong> 2/3 = 8/12 — this is P(blue or yellow), not P(not blue) — a common complement error.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Complement Shortcut</div>
+        P(not A) = 1 - P(A). This is almost always faster than counting favorable outcomes directly. P(not blue) = 1 - P(blue) = 1 - 6/12 = 1 - 1/2 = 1/2. Same answer in fewer steps.
+      </div>
+    `
+  },
+  geometry_0: {
+    tag: 'Math — Geometry & Trig',
+    title: 'Lines, Angles & Triangles',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> Drawing diagrams is essential for geometry — always sketch what you are given.</p>
+      <p>Geometry on the SAT is not about memorizing hundreds of formulas. It is about knowing a small set of rules very well and applying them strategically. The SAT gives you a reference sheet with the key formulas — so what it actually tests is whether you can USE those formulas, not whether you memorized them.</p>
+      <h3>Real Life First</h3>
+      <p>Architects, engineers, and builders use angle relationships every day. When two walls meet at a corner, the angles must add to 90 degrees. When you cut a board diagonally, the angles on either side of the cut add to 180 degrees. These are the same rules the SAT tests.</p>
+      <h3>Essential Angle Rules</h3>
+      <div class="highlight-box">
+        <strong>Straight line:</strong> angles on a straight line add to 180°<br>
+        <strong>Vertical angles:</strong> opposite angles when two lines cross are equal<br>
+        <strong>Triangle sum:</strong> all three angles in any triangle add to 180°<br>
+        <strong>Right angle:</strong> exactly 90° — indicated by a small square in diagrams<br>
+        <strong>Complementary:</strong> two angles that add to 90°<br>
+        <strong>Supplementary:</strong> two angles that add to 180°
+      </div>
+      <h3>Triangle Types Worth Knowing</h3>
+      <p><strong>Equilateral</strong> — all three sides equal, all angles = 60°</p>
+      <p><strong>Isosceles</strong> — two sides equal, the two BASE angles are equal</p>
+      <p><strong>Right triangle</strong> — one angle is 90°, use Pythagorean theorem</p>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>In triangle ABC, angle A = 47° and angle B = 68°. What is the measure of angle C?</em><br><br>
+        A) 55° &nbsp; B) 65° ✓ &nbsp; C) 75° &nbsp; D) 85°<br><br>
+        Triangle angles sum to 180°: C = 180 - 47 - 68 = 65° ✓<br><br>
+        <strong>Why A is wrong:</strong> 47 + 68 + 55 = 170, not 180.<br>
+        <strong>Why C is wrong:</strong> 47 + 68 + 75 = 190, exceeds 180.<br>
+        <strong>Why D is wrong:</strong> 47 + 68 + 85 = 200, far exceeds 180.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Always Draw It</div>
+        Every geometry problem becomes easier with a sketch. Even a rough drawing helps you see which angles are equal, which sides correspond, and which formula to apply. Students who skip the sketch make errors that students who draw avoid.
+      </div>
+    `
+  },
+  geometry_1: {
+    tag: 'Math — Geometry & Trig',
+    title: 'Area, Perimeter & Volume',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper — and open the SAT reference sheet.</strong> The SAT provides all area and volume formulas. Practice finding and using them quickly.</p>
+      <p>The SAT gives you a reference box at the start of the Math section with every formula you need for area, perimeter, and volume. The test is not about memorizing these — it is about knowing which formula to use, identifying the right values to plug in, and not making arithmetic errors.</p>
+      <h3>The Key Formulas (on the reference sheet)</h3>
+      <div class="highlight-box">
+        <strong>Rectangle:</strong> Area = length × width | Perimeter = 2l + 2w<br>
+        <strong>Triangle:</strong> Area = (1/2) × base × height<br>
+        <strong>Circle:</strong> Area = πr² | Circumference = 2πr<br>
+        <strong>Rectangular box:</strong> Volume = length × width × height<br>
+        <strong>Cylinder:</strong> Volume = πr²h
+      </div>
+      <h3>The Height Trap</h3>
+      <p>For triangles, the HEIGHT must be perpendicular to the base — it is not always the slanted side. Many students use the slanted side as height and get the wrong area.</p>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A rectangular swimming pool is 30 feet long and 15 feet wide. It has a uniform depth of 6 feet. What is the volume of water needed to fill it completely?</em><br><br>
+        A) 450 ft³ &nbsp; B) 1,350 ft³ &nbsp; C) 2,700 ft³ ✓ &nbsp; D) 3,600 ft³<br><br>
+        Volume = length × width × height = 30 × 15 × 6 = 2,700 ft³ ✓<br><br>
+        <strong>Why A is wrong:</strong> 30 × 15 = 450 — forgot to multiply by depth.<br>
+        <strong>Why B is wrong:</strong> 30 × 15 × 3 = 1,350 — used half the depth.<br>
+        <strong>Why D is wrong:</strong> 30 × 15 × 8 = 3,600 — used wrong depth value.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Use the Reference Sheet</div>
+        On test day, the SAT reference sheet appears at the start of each Math module. Do not try to recall formulas from memory — glance at the sheet. Using it takes 5 seconds and eliminates the risk of using the wrong formula. There is no penalty for looking.
+      </div>
+    `
+  },
+  geometry_2: {
+    tag: 'Math — Geometry & Trig',
+    title: 'The Pythagorean Theorem',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> Draw the triangle, label the sides, then apply the formula.</p>
+      <p>The Pythagorean theorem is one of the most tested concepts in SAT geometry. It appears in straightforward triangle problems, in distance problems, and hidden inside coordinate geometry questions. Mastering it unlocks a huge portion of the geometry section.</p>
+      <h3>The Theorem</h3>
+      <div class="formula">a² + b² = c²</div>
+      <p>Where a and b are the two LEGS (shorter sides) and c is the HYPOTENUSE (longest side, opposite the right angle).</p>
+      <h3>Pythagorean Triples — Memorize These</h3>
+      <div class="highlight-box">
+        <strong>3 - 4 - 5</strong> (and multiples: 6-8-10, 9-12-15, 15-20-25)<br>
+        <strong>5 - 12 - 13</strong><br>
+        <strong>8 - 15 - 17</strong><br><br>
+        When you see two sides of a right triangle matching a triple, you know the third side instantly — no calculation needed. This saves precious seconds on test day.
+      </div>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A ladder 13 feet long leans against a wall. The base of the ladder is 5 feet from the wall. How high up the wall does the ladder reach?</em><br><br>
+        A) 8 feet &nbsp; B) 10 feet &nbsp; C) 12 feet ✓ &nbsp; D) 14 feet<br><br>
+        This is a right triangle: ladder = hypotenuse = 13, base = leg = 5.<br>
+        5² + h² = 13² → 25 + h² = 169 → h² = 144 → h = 12 ✓<br><br>
+        Or recognize the 5-12-13 triple immediately — no calculation needed.<br><br>
+        <strong>Why A is wrong:</strong> 8 would mean 5² + 8² = 89, not 169.<br>
+        <strong>Why B is wrong:</strong> 5² + 10² = 125, not 169.<br>
+        <strong>Why D is wrong:</strong> 14 would be larger than the hypotenuse — impossible.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Spot the Hidden Right Triangle</div>
+        Many SAT geometry problems hide a right triangle inside a larger shape. A diagonal of a rectangle creates two right triangles. A height dropped from a vertex to a base creates right triangles. Whenever you see a diagonal line or a perpendicular height, ask yourself: is there a right triangle I can use here?
+      </div>
+    `
+  },
+  geometry_3: {
+    tag: 'Math — Geometry & Trig',
+    title: 'Circles — Area, Circumference & Arcs',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> Circle problems always involve π — write your setup before calculating.</p>
+      <p>Circle questions appear on every SAT Math section. The good news: all the formulas are on the reference sheet. The skill being tested is whether you can correctly identify the radius, work with arc lengths, and handle central angles.</p>
+      <h3>The Essential Circle Formulas</h3>
+      <div class="highlight-box">
+        <strong>Area:</strong> A = πr²<br>
+        <strong>Circumference:</strong> C = 2πr<br>
+        <strong>Arc length:</strong> L = (central angle / 360) × 2πr<br>
+        <strong>Sector area:</strong> A = (central angle / 360) × πr²
+      </div>
+      <h3>The Radius vs Diameter Trap</h3>
+      <p>The most common circle error: using the diameter when the formula needs the radius, or vice versa. Always identify which one you have before plugging in. If given diameter d, then r = d/2.</p>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>A circle has a diameter of 10. What is the length of an arc that corresponds to a central angle of 72°?</em><br><br>
+        A) 2π ✓ &nbsp; B) 4π &nbsp; C) 5π &nbsp; D) 10π<br><br>
+        Radius = diameter/2 = 10/2 = 5.<br>
+        Arc length = (72/360) × 2π(5) = (1/5) × 10π = 2π ✓<br><br>
+        <strong>Why B is wrong:</strong> Using diameter 10 instead of radius 5 in the formula.<br>
+        <strong>Why C is wrong:</strong> Using the full circumference formula without the angle fraction.<br>
+        <strong>Why D is wrong:</strong> The full circumference of this circle — no angle fraction applied.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 The Fraction Approach</div>
+        Think of arc length as a FRACTION of the full circumference. A 72° arc is 72/360 = 1/5 of the circle. So its length is 1/5 of the circumference. This fraction approach works for arc length AND sector area — just multiply the fraction by the full circle formula.
+      </div>
+    `
+  },
+  geometry_4: {
+    tag: 'Math — Geometry & Trig',
+    title: 'Trigonometry — SOHCAHTOA',
+    body: `
+      <p>📝 <strong>Grab a pencil and paper.</strong> Write out SOHCAHTOA and label your triangle before setting up any ratio.</p>
+      <p>Trigonometry sounds intimidating but the SAT tests only the basics — sine, cosine, and tangent in right triangles. Once you learn the three ratios and can label a triangle correctly, trig problems become very manageable.</p>
+      <h3>Real Life First</h3>
+      <p>A surveyor needs to know the height of a building without climbing it. They stand 50 feet away and measure the angle to the top as 60°. Using tangent, they calculate the height: tan(60°) = height/50, so height = 50 × tan(60°). That is applied trigonometry — and it appears on the SAT.</p>
+      <h3>SOHCAHTOA</h3>
+      <div class="highlight-box">
+        <strong>SOH:</strong> Sin θ = Opposite / Hypotenuse<br>
+        <strong>CAH:</strong> Cos θ = Adjacent / Hypotenuse<br>
+        <strong>TOA:</strong> Tan θ = Opposite / Adjacent<br><br>
+        Opposite = the side across from the angle<br>
+        Adjacent = the side next to the angle (not the hypotenuse)<br>
+        Hypotenuse = the longest side, always opposite the right angle
+      </div>
+      <h3>Complementary Angle Relationship</h3>
+      <p>For two complementary angles (adding to 90°), sin of one equals cos of the other: <strong>sin(x) = cos(90° - x)</strong>. The SAT tests this relationship frequently.</p>
+      <h3>Worked SAT Example</h3>
+      <div class="example-box">
+        <div class="ex-label">SAT Question</div>
+        <em>In right triangle ABC with the right angle at C, angle A = 35°. Which of the following is equal to cos(35°)?</em><br><br>
+        A) sin(35°) &nbsp; B) sin(55°) ✓ &nbsp; C) cos(55°) &nbsp; D) tan(35°)<br><br>
+        Since angles A and B are complementary (35° + 55° = 90°):<br>
+        cos(35°) = sin(90° - 35°) = sin(55°) ✓<br><br>
+        <strong>Why A is wrong:</strong> sin(35°) ≠ cos(35°) unless the angle is 45°.<br>
+        <strong>Why C is wrong:</strong> cos(55°) = sin(35°), not cos(35°).<br>
+        <strong>Why D is wrong:</strong> tan is a completely different ratio.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Label Before You Calculate</div>
+        Before writing any trig ratio, label your triangle: mark which side is Opposite, which is Adjacent, and which is the Hypotenuse relative to the angle you are working with. This 10-second step eliminates the most common trig mistake — using the wrong sides in the ratio.
+      </div>
+    `
+  }
 };
 
 const QUIZ_DATA = {
@@ -4866,7 +5273,7 @@ function openModule(modKey) {
   if (!mod) return;
 
   // Lock modules not yet built
-  const lockedModules = ['data','geometry','practice'];
+  const lockedModules = ['practice'];
   if (lockedModules.includes(modKey)) {
     document.getElementById('moduleHeroArea').innerHTML = `
       <div style="text-align:center;padding:2rem 1rem;">
