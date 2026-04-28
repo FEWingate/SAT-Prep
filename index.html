@@ -1764,7 +1764,7 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
         </div>
         <div class="module-meta">
           <span>6 lessons · 3 quizzes</span>
-          <span id="meta-advmath">0 / 6 done</span>
+          <span id="meta-advmath">0 / 7 done</span>
         </div>
       </div>
 
@@ -1957,7 +1957,7 @@ const READ_TIMES = {
   punctuation_0: 7, punctuation_1: 6, punctuation_2: 6,
   punctuation_3: 6, punctuation_4: 7, punctuation_5: 5,
   punctuation_6: 5, punctuation_7: 6,
-  math_0: 7, advmath_0: 6, data_0: 5, geometry_0: 6
+  math_0: 7, advmath_0: 6, advmath_1: 6, advmath_2: 5, advmath_3: 6, advmath_4: 5, advmath_5: 6, advmath_6: 7, data_0: 5, geometry_0: 6
 };
 
 const VIDEO_LINKS = {
@@ -5440,20 +5440,26 @@ function openLesson(modKey, index) {
   currentModule = modKey;
   currentLessonIndex = index;
   const key = modKey + '_' + index;
-  const content = LESSON_CONTENT[key];
+  let lessonContent = LESSON_CONTENT[key];
+
+  // Special routing for Desmos lesson (advmath index 6)
+  if (!lessonContent && modKey === 'advmath' && index === 6) {
+    lessonContent = LESSON_CONTENT['desmos_guide'];
+  }
+
+  // Writing module alternate key mapping
+  if (!lessonContent && modKey === 'writing') {
+    const writingKeys = ['writing_0','writing_1','writing_2','writing_3','writing_4','writing_5','writing_6'];
+    if (writingKeys[index]) lessonContent = LESSON_CONTENT[writingKeys[index]];
+  }
+
+  const content = lessonContent;
 
   if (!content) {
     // Coming soon
-    currentLessonContext = content.tag + ': ' + content.title;
-  document.getElementById('lessonContentArea').innerHTML = `
-      <div style="text-align:center;padding:3rem 1rem;">
-        <div style="font-size:3rem;margin-bottom:1rem;">🚧</div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:0.5rem;">Coming Soon</div>
-        <div style="color:var(--text2);font-size:0.9rem;line-height:1.6;">This lesson is being built. Check back in the next session — new content is added regularly.</div>
-      </div>
-    `;
+    document.getElementById('lessonContentArea').innerHTML = '<div style="text-align:center;padding:3rem 1rem;"><div style="font-size:3rem;margin-bottom:1rem;">🚧</div><div style="font-family:Syne,sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:0.5rem;">Coming Soon</div><div style="color:var(--text2);font-size:0.9rem;line-height:1.6;">This lesson is being built. Check back in the next session.</div></div>';
     showPage('lessonPage', null, true);
-    document.getElementById('topbarTitle').innerHTML = `<span style="color:var(--yellow)">SAT</span> Prep`;
+    document.getElementById('topbarTitle').innerHTML = '<span style="color:var(--yellow)">SAT</span> Prep';
     return;
   }
 
