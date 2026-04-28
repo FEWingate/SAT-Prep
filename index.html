@@ -5390,7 +5390,13 @@ function openModule(modKey) {
   mod.lessons.forEach((lesson, i) => {
     const key = modKey + '_' + i;
     const done = currentProfile.lessonsCompleted[key];
-    const hasContent = LESSON_CONTENT[key];
+    // Check for special content mappings (Desmos guide, writing alternates)
+    let hasContent = LESSON_CONTENT[key];
+    if (!hasContent && modKey === 'advmath' && i === 6) hasContent = LESSON_CONTENT['desmos_guide'];
+    if (!hasContent && modKey === 'writing') {
+      const wKeys = ['writing_0','writing_1','writing_2','writing_3','writing_4','writing_5','writing_6'];
+      if (wKeys[i]) hasContent = LESSON_CONTENT[wKeys[i]];
+    }
     const hasQuiz = QUIZ_DATA[modKey] && i === 0;
     const item = document.createElement('div');
     item.className = 'lesson-item';
