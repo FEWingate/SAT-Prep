@@ -4531,7 +4531,7 @@ const LESSON_CONTENT = {
 
 const QUIZ_DATA = {
   vocab: [
-    {
+{
       q: "As used in academic writing, to 'assert' a claim most nearly means to:",
       options: ["Prove it with data", "State it confidently", "Question it carefully", "Withdraw it reluctantly"],
       correct: 1,
@@ -4593,7 +4593,7 @@ const QUIZ_DATA = {
     }
   ],
   punctuation: [
-    {
+{
       q: "Which version correctly uses a semicolon?",
       options: [
         "She studied hard; and passed the exam.",
@@ -4705,7 +4705,7 @@ const QUIZ_DATA = {
     }
   ],
   strategy: [
-    {
+{
       q: "The Digital SAT is adaptive. What does this mean for a student's score?",
       options: [
         "All students receive the same questions in both modules",
@@ -4762,7 +4762,7 @@ const QUIZ_DATA = {
     }
   ],
   reading: [
-    {
+{
       passage: "Marine biologists have traditionally classified coral reefs as either 'healthy' or 'degraded' based on coral cover percentage. A 2023 study challenges this binary framework, demonstrating that reefs with low coral cover can still maintain high biodiversity and ecological function if certain fish species are present. The researchers argue that management strategies focused solely on coral cover may inadvertently neglect reefs that, despite appearances, are ecologically vital.",
       q: "Which choice best states the main idea of the text?",
       options: [
@@ -4799,9 +4799,8 @@ const QUIZ_DATA = {
       explain: "Cross-text questions ask you to identify the relationship between two passages. Text 2 does not reject EVs entirely — it qualifies the claim in Text 1. Text 2's author would say: 'EVs help, BUT only if the grid is clean.' Choice B captures this nuanced position. The other choices misrepresent Text 2's argument."
     }
   ],
-
   writing: [
-    {
+{
       q: "Which choice best corrects the underlined error?\n\nThe committee of senior engineers have decided to postpone the project launch.",
       options: [
         "have decided",
@@ -4857,8 +4856,82 @@ const QUIZ_DATA = {
       explain: "Choice C correctly uses 'teachers'' — a plural possessive where the apostrophe follows the 's' because there are multiple teachers. Choice A incorrectly makes 'students' possessive instead of plural. Choice B should be 'It's' (it is) and 'your' (not 'you're'). Choice D should be 'its' (possessive, no apostrophe)."
     }
   ],
-  advmath: [
+  math: [
+{
+      q: "Solve for x: 5x - 8 = 2x + 13",
+      options: ["x = 3", "x = 5", "x = 7", "x = 9"],
+      correct: 2,
+      explain: "Subtract 2x from both sides: 3x - 8 = 13. Add 8: 3x = 21. Divide: x = 7. Check: 5(7)-8 = 27 and 2(7)+13 = 27. The trap answer is x = 5, from subtracting incorrectly. Always plug your answer back in to verify."
+    },
     {
+      q: "A gym membership costs $40 per month plus a one-time registration fee of $25. If a member paid $265 total, for how many months has she been a member?",
+      options: ["5", "6", "7", "8"],
+      correct: 1,
+      explain: "Set up: 25 + 40m = 265. Subtract 25: 40m = 240. Divide: m = 6. The $25 fee is the y-intercept and $40 is the monthly rate (slope). Re-read: the question asks for months, which is exactly m."
+    },
+    {
+      q: "A line passes through the points (1, 3) and (4, 9). What is the slope of the line?",
+      options: ["1", "2", "3", "4"],
+      correct: 1,
+      explain: "Slope = (y2-y1)/(x2-x1) = (9-3)/(4-1) = 6/3 = 2. The line rises 2 units for every 1 unit right. Common trap: dividing 3 by 6 instead of 6 by 3 gives 0.5."
+    },
+    {
+      q: "A phone plan charges $25 per month plus $0.05 per text. Last month the bill was $40. How many texts were sent?",
+      options: ["200", "250", "300", "350"],
+      correct: 2,
+      explain: "Set up: 25 + 0.05t = 40. Subtract 25: 0.05t = 15. Divide: t = 300. The monthly flat fee is the y-intercept and the per-text charge is the slope. Check: 25 + 0.05(300) = 25 + 15 = 40."
+    },
+    {
+      q: "Solve the system: 2x + y = 10 and x - y = 2. What is the value of x?",
+      options: ["2", "3", "4", "5"],
+      correct: 2,
+      explain: "Add both equations: (2x + y) + (x - y) = 10 + 2, giving 3x = 12, so x = 4. Then y = x - 2 = 2. Check in first equation: 2(4) + 2 = 10. Elimination works perfectly here because y and -y cancel."
+    },
+    {
+      q: "A store sells notebooks for $3 each and pens for $1.50 each. Maya buys 10 items and spends $22.50. How many notebooks did she buy?",
+      options: ["3", "4", "5", "6"],
+      correct: 2,
+      explain: "Let n = notebooks, p = pens. System: n + p = 10 and 3n + 1.5p = 22.50. Substitute p = 10 - n: 3n + 1.5(10-n) = 22.50, then 1.5n = 7.5, so n = 5."
+    },
+    {
+      q: "Which inequality represents: a number increased by 12 is at most 30?",
+      options: ["x + 12 > 30", "x + 12 >= 30", "x + 12 < 30", "x + 12 <= 30"],
+      correct: 3,
+      explain: "'At most 30' means the value cannot exceed 30. That is the less-than-or-equal sign. Memory trick: at most means <= and at least means >=. Memorize this pair and inequality word problems become straightforward."
+    },
+    {
+      q: "Layla can spend no more than $80 on school supplies. She buys a backpack for $35. Folders cost $2.50 each. What is the maximum number of folders she can buy?",
+      options: ["16", "17", "18", "20"],
+      correct: 2,
+      explain: "Inequality: 35 + 2.5f <= 80. Subtract 35: 2.5f <= 45. Divide: f <= 18. Maximum is 18 folders. Check: 35 + 2.5(18) = 80 exactly. 19 folders would cost $82.50, exceeding the budget."
+    },
+    {
+      q: "Marcus earns $18 per hour regularly and $27 per hour overtime. He worked 40 regular hours and some overtime, earning $1,017 total. How many overtime hours did he work?",
+      options: ["9", "11", "13", "15"],
+      correct: 1,
+      explain: "Let h = overtime hours. Equation: 18(40) + 27h = 1017. So 720 + 27h = 1017. Subtract 720: 27h = 297. Divide: h = 11. Check: 720 + 27(11) = 1017."
+    },
+    {
+      q: "If -3x > 15, which of the following must be true?",
+      options: ["x > 5", "x > -5", "x < 5", "x < -5"],
+      correct: 3,
+      explain: "Divide both sides by -3 and FLIP the inequality sign: x < -5. Dividing by a negative always flips the sign. Check: if x = -6, then -3(-6) = 18 > 15. Correct. If x = -4, then -3(-4) = 12, which is NOT greater than 15."
+    },
+    {
+      q: "A survey found that 180 out of 450 students prefer morning classes. In a school of 3,000 students, how many would be expected to prefer morning classes?",
+      options: ["900", "1,000", "1,100", "1,200"],
+      correct: 3,
+      explain: "Find the ratio: 180/450 = 0.40 = 40%. Apply to 3,000: 0.40 x 3,000 = 1,200. Or proportion: 180/450 = x/3000, cross multiply: 450x = 540,000, x = 1,200."
+    },
+    {
+      q: "Two friends split the cost of a gift. One pays $15 more than the other. Together they spend $63. How much does the friend who pays MORE contribute?",
+      options: ["$24", "$33", "$39", "$48"],
+      correct: 2,
+      explain: "Let x = smaller amount, x + 15 = larger. Together: x + (x+15) = 63, so 2x = 48, so x = 24. The friend who pays MORE contributes 24 + 15 = $39. Classic re-read trap: the question asks for the LARGER amount, not x."
+    }
+  ],
+  advmath: [
+{
       q: "What are the solutions to x² - 5x + 6 = 0?",
       options: ["x = 2 and x = 3", "x = -2 and x = -3", "x = 1 and x = 6", "x = 2 and x = -3"],
       correct: 0,
@@ -4933,118 +5006,129 @@ const QUIZ_DATA = {
   ],
   data: [
     {
-      q: "In a class of 30 students, scores on a quiz are: 5 students scored 60, 10 scored 70, 10 scored 80, 5 scored 90. What is the mean score?",
-      options: ["72.5", "75", "77.5", "70"],
-      correct: 1,
-      explain: "Mean = (sum of all values) ÷ (number of values). Sum = (5×60) + (10×70) + (10×80) + (5×90) = 300 + 700 + 800 + 450 = 2250. Divide by 30 students: 2250 ÷ 30 = 75. The median would also be 75 here, but mean requires this weighted calculation."
-    },
-    {
-      q: "A shirt originally costs $80. It is marked down 25%, then the sale price is marked down an additional 10%. What is the final price?",
-      options: ["$52.00", "$54.00", "$56.00", "$58.00"],
-      correct: 1,
-      explain: "Step 1: 25% off $80 = $80 × 0.75 = $60. Step 2: 10% off $60 = $60 × 0.90 = $54. The trap is adding 25% + 10% = 35% off, which gives $52. But sequential discounts don't add — the second discount applies to the already-reduced price."
-    },
-    {
-      q: "A scatterplot shows a strong positive correlation between hours studied and test scores. A student who studied 6 hours scored 82. Based on the trend, a student who studied 9 hours would most likely score:",
-      options: ["Around 82", "Lower than 82", "Higher than 82", "Exactly 100"],
+      q: "A jacket costs $120. It is discounted 25%, then an additional 10% discount is applied to the sale price. What is the final price?",
+      options: ["$78", "$79", "$81", "$84"],
       correct: 2,
-      explain: "A positive correlation means as one variable increases, the other tends to increase. More study hours → higher scores. So 9 hours > 6 hours means the predicted score would be higher than 82. We can't say exactly how much higher without the specific line of best fit equation, but the direction is clearly higher."
+      explain: "Step 1: 25% off $120 = $90. Step 2: 10% off $90 = $81. The trap is adding 25+10=35% off which gives $78. Sequential discounts never add."
+    },
+    {
+      q: "A store raised the price of a video game from $60 to $75. What was the percent increase?",
+      options: ["15%", "20%", "25%", "30%"],
+      correct: 2,
+      explain: "Percent change = (75-60)/60 x 100 = 25%. The denominator is always the ORIGINAL price. Dividing by the new price gives the wrong answer."
+    },
+    {
+      q: "72 is 40% of what number?",
+      options: ["28.8", "108", "144", "180"],
+      correct: 3,
+      explain: "Finding the whole: 72 divided by 0.40 = 180. Check: 40% of 180 = 72. This is the Type 3 percentage problem."
+    },
+    {
+      q: "Five students scored 68, 72, 84, 85, and 91. What is the median?",
+      options: ["80", "82", "84", "85"],
+      correct: 2,
+      explain: "Ordered: 68, 72, 84, 85, 91. Middle value (3rd of 5) = 84. Mean = 80, which is different. Always order values before finding the median."
+    },
+    {
+      q: "A dataset is {2, 4, 4, 6, 8, 100}. Which statement is true?",
+      options: ["Mean equals median", "Mean is greater than median", "Median is greater than mean", "Both equal 8"],
+      correct: 1,
+      explain: "Mean = 124/6 = 20.7. Median = (4+6)/2 = 5. The outlier 100 pulls the mean way up but barely affects the median."
+    },
+    {
+      q: "A box has 5 red, 3 blue, 2 green marbles. What is P(not red)?",
+      options: ["1/2", "1/3", "2/5", "3/5"],
+      correct: 0,
+      explain: "Not red = 5 out of 10 = 1/2. Complement: 1 - P(red) = 1 - 1/2 = 1/2. The complement rule is faster."
+    },
+    {
+      q: "Of 300 students, 180 prefer morning, 120 prefer afternoon. Of morning students, 90 are seniors. What fraction of ALL students are seniors who prefer morning?",
+      options: ["1/4", "3/10", "1/2", "3/5"],
+      correct: 1,
+      explain: "90 out of 300 = 3/10. The trap is using 180 as denominator instead of 300."
+    },
+    {
+      q: "A scatterplot of hours of sleep vs reaction time has a negative slope. What does this mean?",
+      options: ["More sleep = slower reaction", "More sleep = faster reaction", "No effect", "Reaction increases with sleep"],
+      correct: 1,
+      explain: "Negative slope: as x increases, y decreases. More sleep means lower ms reaction time which means FASTER reactions."
+    },
+    {
+      q: "150 students from Westside High: 60% prefer hybrid learning. Which conclusion is best?",
+      options: ["60% of all students prefer hybrid", "60% of Westside High students likely prefer hybrid", "All Westside students prefer hybrid", "No conclusions possible"],
+      correct: 1,
+      explain: "You can only generalize to the sampled population. Sample was from Westside High only."
+    },
+    {
+      q: "A line of best fit passes through (2, 50) and (8, 80). What is y when x = 11?",
+      options: ["90", "95", "100", "105"],
+      correct: 1,
+      explain: "Slope = (80-50)/(8-2) = 5. Equation: y = 5x+40. At x=11: y = 95."
     }
   ],
   geometry: [
     {
-      q: "A right triangle has legs of length 5 and 12. What is the length of the hypotenuse?",
-      options: ["13", "15", "17", "169"],
-      correct: 0,
-      explain: "Use the Pythagorean theorem: a² + b² = c². So 5² + 12² = c². 25 + 144 = 169. c = √169 = 13. The 5-12-13 triangle is a Pythagorean triple worth memorizing alongside 3-4-5 and 8-15-17."
-    },
-    {
-      q: "A circle has a radius of 6. What is the area?",
-      options: ["12π", "36π", "6π", "18π"],
+      q: "In triangle ABC, angle A = 52 and angle B = 73 degrees. What is angle C?",
+      options: ["45 degrees", "55 degrees", "65 degrees", "75 degrees"],
       correct: 1,
-      explain: "Area of a circle = πr². With r = 6: Area = π(6)² = 36π. The SAT provides this formula on the reference sheet, but it's worth memorizing so you don't waste time finding it. Common mistake: using diameter instead of radius."
+      explain: "Triangle angles sum to 180. C = 180-52-73 = 55 degrees."
     },
     {
-      q: "In a right triangle, the angle opposite a side of length 8 has a hypotenuse of 10. What is sin(θ) for that angle?",
-      options: ["4/5", "3/5", "4/3", "5/8"],
-      correct: 0,
-      explain: "SOHCAHTOA: Sin = Opposite/Hypotenuse. The opposite side is 8, the hypotenuse is 10. Sin(θ) = 8/10 = 4/5. You can verify this is a 6-8-10 triangle (a 3-4-5 triple scaled by 2). Note: cos(θ) = 6/10 = 3/5, tan(θ) = 8/6 = 4/3."
-    }
-  ],
-  math: [
-    {
-      q: "Solve for x: 5x - 8 = 2x + 13",
-      options: ["x = 3", "x = 5", "x = 7", "x = 9"],
-      correct: 2,
-      explain: "Subtract 2x from both sides: 3x - 8 = 13. Add 8: 3x = 21. Divide: x = 7. Check: 5(7)-8 = 27 and 2(7)+13 = 27. The trap answer is x = 5, from subtracting incorrectly. Always plug your answer back in to verify."
-    },
-    {
-      q: "A gym membership costs $40 per month plus a one-time registration fee of $25. If a member paid $265 total, for how many months has she been a member?",
-      options: ["5", "6", "7", "8"],
+      q: "A right triangle has legs of length 5 and 12. What is the hypotenuse?",
+      options: ["11", "13", "15", "17"],
       correct: 1,
-      explain: "Set up: 25 + 40m = 265. Subtract 25: 40m = 240. Divide: m = 6. The $25 fee is the y-intercept and $40 is the monthly rate (slope). Re-read: the question asks for months, which is exactly m."
+      explain: "5-12-13 Pythagorean triple. 25+144=169, square root = 13."
     },
     {
-      q: "A line passes through the points (1, 3) and (4, 9). What is the slope of the line?",
-      options: ["1", "2", "3", "4"],
+      q: "A ladder 17 feet long leans against a wall, base 8 feet away. How high does it reach?",
+      options: ["13 feet", "15 feet", "16 feet", "18 feet"],
       correct: 1,
-      explain: "Slope = (y2-y1)/(x2-x1) = (9-3)/(4-1) = 6/3 = 2. The line rises 2 units for every 1 unit right. Common trap: dividing 3 by 6 instead of 6 by 3 gives 0.5."
+      explain: "8-15-17 Pythagorean triple. 64 + h squared = 289, h = 15."
     },
     {
-      q: "A phone plan charges $25 per month plus $0.05 per text. Last month the bill was $40. How many texts were sent?",
-      options: ["200", "250", "300", "350"],
-      correct: 2,
-      explain: "Set up: 25 + 0.05t = 40. Subtract 25: 0.05t = 15. Divide: t = 300. The monthly flat fee is the y-intercept and the per-text charge is the slope. Check: 25 + 0.05(300) = 25 + 15 = 40."
-    },
-    {
-      q: "Solve the system: 2x + y = 10 and x - y = 2. What is the value of x?",
-      options: ["2", "3", "4", "5"],
-      correct: 2,
-      explain: "Add both equations: (2x + y) + (x - y) = 10 + 2, giving 3x = 12, so x = 4. Then y = x - 2 = 2. Check in first equation: 2(4) + 2 = 10. Elimination works perfectly here because y and -y cancel."
-    },
-    {
-      q: "A store sells notebooks for $3 each and pens for $1.50 each. Maya buys 10 items and spends $22.50. How many notebooks did she buy?",
-      options: ["3", "4", "5", "6"],
-      correct: 2,
-      explain: "Let n = notebooks, p = pens. System: n + p = 10 and 3n + 1.5p = 22.50. Substitute p = 10 - n: 3n + 1.5(10-n) = 22.50, then 1.5n = 7.5, so n = 5."
-    },
-    {
-      q: "Which inequality represents: a number increased by 12 is at most 30?",
-      options: ["x + 12 > 30", "x + 12 >= 30", "x + 12 < 30", "x + 12 <= 30"],
-      correct: 3,
-      explain: "'At most 30' means the value cannot exceed 30. That is the less-than-or-equal sign. Memory trick: at most means <= and at least means >=. Memorize this pair and inequality word problems become straightforward."
-    },
-    {
-      q: "Layla can spend no more than $80 on school supplies. She buys a backpack for $35. Folders cost $2.50 each. What is the maximum number of folders she can buy?",
-      options: ["16", "17", "18", "20"],
-      correct: 2,
-      explain: "Inequality: 35 + 2.5f <= 80. Subtract 35: 2.5f <= 45. Divide: f <= 18. Maximum is 18 folders. Check: 35 + 2.5(18) = 80 exactly. 19 folders would cost $82.50, exceeding the budget."
-    },
-    {
-      q: "Marcus earns $18 per hour regularly and $27 per hour overtime. He worked 40 regular hours and some overtime, earning $1,017 total. How many overtime hours did he work?",
-      options: ["9", "11", "13", "15"],
+      q: "A rectangle is 8 feet long and 6 feet wide. What is its diagonal?",
+      options: ["8", "10", "12", "14"],
       correct: 1,
-      explain: "Let h = overtime hours. Equation: 18(40) + 27h = 1017. So 720 + 27h = 1017. Subtract 720: 27h = 297. Divide: h = 11. Check: 720 + 27(11) = 1017."
+      explain: "6-8-10 triple (3-4-5 scaled by 2). Square root of (36+64) = 10."
     },
     {
-      q: "If -3x > 15, which of the following must be true?",
-      options: ["x > 5", "x > -5", "x < 5", "x < -5"],
-      correct: 3,
-      explain: "Divide both sides by -3 and FLIP the inequality sign: x < -5. Dividing by a negative always flips the sign. Check: if x = -6, then -3(-6) = 18 > 15. Correct. If x = -4, then -3(-4) = 12, which is NOT greater than 15."
+      q: "A box is 5 cm x 4 cm x 3 cm. What is its volume?",
+      options: ["47", "60", "72", "94"],
+      correct: 1,
+      explain: "Volume = 5 x 4 x 3 = 60 cubic cm. Common trap: calculating surface area (94) instead."
     },
     {
-      q: "A survey found that 180 out of 450 students prefer morning classes. In a school of 3,000 students, how many would be expected to prefer morning classes?",
-      options: ["900", "1,000", "1,100", "1,200"],
-      correct: 3,
-      explain: "Find the ratio: 180/450 = 0.40 = 40%. Apply to 3,000: 0.40 x 3,000 = 1,200. Or proportion: 180/450 = x/3000, cross multiply: 450x = 540,000, x = 1,200."
-    },
-    {
-      q: "Two friends split the cost of a gift. One pays $15 more than the other. Together they spend $63. How much does the friend who pays MORE contribute?",
-      options: ["$24", "$33", "$39", "$48"],
+      q: "A circle has diameter 14. What is its area?",
+      options: ["14 pi", "28 pi", "49 pi", "196 pi"],
       correct: 2,
-      explain: "Let x = smaller amount, x + 15 = larger. Together: x + (x+15) = 63, so 2x = 48, so x = 24. The friend who pays MORE contributes 24 + 15 = $39. Classic re-read trap: the question asks for the LARGER amount, not x."
+      explain: "Radius = 7. Area = pi x 49 = 49 pi. Always halve diameter before using the formula."
+    },
+    {
+      q: "A 90 degree arc in a circle with radius 8. What is the arc length?",
+      options: ["2 pi", "4 pi", "8 pi", "16 pi"],
+      correct: 1,
+      explain: "(90/360) x 2 pi x 8 = (1/4) x 16 pi = 4 pi."
+    },
+    {
+      q: "In right triangle ABC, sin(A) = 3/5. What is cos(A)?",
+      options: ["3/4", "4/5", "3/5", "5/3"],
+      correct: 1,
+      explain: "3-4-5 triangle. Opposite=3, hypotenuse=5, adjacent=4. cos(A) = 4/5."
+    },
+    {
+      q: "Angle A = 40 degrees in a right triangle. Which equals sin(40)?",
+      options: ["cos(40)", "cos(50)", "sin(50)", "tan(40)"],
+      correct: 1,
+      explain: "sin(x) = cos(90-x). sin(40) = cos(50). Complementary angles."
+    },
+    {
+      q: "A circle has circumference 20 pi. What is its area?",
+      options: ["10 pi", "20 pi", "100 pi", "400 pi"],
+      correct: 2,
+      explain: "2 pi r = 20 pi so r = 10. Area = pi x 100 = 100 pi."
     }
   ]
+}
 };
 
 // ════════════════════════════════════
