@@ -6560,7 +6560,7 @@ function buildExamCards() {
         '<div class="exam-detail"><div class="exam-detail-val">3hr 15m</div><div class="exam-detail-lbl">Total Time</div></div>' +
         '<div class="exam-detail"><div class="exam-detail-val">400-1600</div><div class="exam-detail-lbl">Score Scale</div></div>' +
       '</div>' +
-      '<button class="exam-start-btn ' + ex.btnCls + '" ' + (available ? 'onclick="startExam('' + ex.key + '')"' : 'disabled style="opacity:0.5;cursor:not-allowed"') + '>' +
+      '<button class="exam-start-btn ' + ex.btnCls + '" ' + (available ? 'onclick="startExam(\"' + ex.key + '\")"' : 'disabled style="opacity:0.5;cursor:not-allowed"') + '>' +
         (available ? (savedScore ? 'Retake Exam &#8594;' : 'Start Exam &#8594;') : 'Available Tomorrow') +
       '</button>';
     area.appendChild(card);
@@ -6791,7 +6791,7 @@ function showExamScore() {
   }
 
   html += '<div class="score-actions">' +
-    '<button class="btn-retake" onclick="startExam('' + examState.examId + '')">Retake Exam</button>' +
+    '<button class="btn-retake" onclick="startExam(\"' + examState.examId + '\")">Retake Exam</button>' +
     '<button class="btn-go-home" onclick="goHome()">Back to Home</button>' +
     '</div>';
 
