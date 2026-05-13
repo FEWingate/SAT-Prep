@@ -1466,6 +1466,80 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 }
 .tutor-key-change:hover { color: var(--text2); }
 
+
+/* ════ PRACTICE EXAM ════ */
+.exam-hero { padding: 1.5rem 1.25rem 1rem; text-align: center; }
+.exam-hero-title { font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.4rem; margin-bottom: 0.5rem; }
+.exam-hero-desc { font-size: 0.875rem; color: var(--text2); line-height: 1.6; max-width: 360px; margin: 0 auto 1.25rem; }
+.exam-cards { display: flex; flex-direction: column; gap: 0.875rem; padding: 0 1.25rem; margin-bottom: 1.5rem; }
+.exam-card { background: var(--surface); border: 1px solid var(--border2); border-radius: 18px; padding: 1.25rem; cursor: pointer; transition: all 0.2s; }
+.exam-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow); }
+.exam-card-header { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 0.875rem; }
+.exam-card-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.icon-exam-a { background: var(--yellow)22; }
+.icon-exam-b { background: var(--pink)22; }
+.exam-card-title { font-family: "Syne", sans-serif; font-weight: 700; font-size: 1rem; }
+.exam-card-sub { font-size: 0.78rem; color: var(--text2); margin-top: 2px; }
+.exam-card-score { margin-left: auto; font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--yellow); }
+[data-theme="light"] .exam-card-score { color: var(--yellow-dim); }
+.exam-card-details { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem; margin-bottom: 0.875rem; }
+.exam-detail { background: var(--bg2); border-radius: 8px; padding: 0.5rem; text-align: center; }
+.exam-detail-val { font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.85rem; }
+.exam-detail-lbl { font-size: 0.65rem; color: var(--text3); }
+.exam-start-btn { width: 100%; padding: 0.875rem; border: none; border-radius: 12px; font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+.btn-exam-a { background: linear-gradient(135deg, var(--yellow), #FFA500); color: #1A1000; }
+.btn-exam-b { background: linear-gradient(135deg, var(--pink), #C44080); color: #fff; }
+.exam-start-btn:hover { opacity: 0.9; }
+.exam-topbar { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--border); padding: 0.75rem 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+.exam-section-label { font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--yellow); flex: 1; }
+[data-theme="light"] .exam-section-label { color: var(--yellow-dim); }
+.exam-q-counter { font-size: 0.78rem; color: var(--text3); }
+.exam-timer { font-family: "Syne", sans-serif; font-weight: 800; font-size: 1rem; min-width: 52px; text-align: right; }
+.exam-timer.urgent { color: var(--red); animation: blink 1s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.exam-prog-bar { height: 3px; background: var(--bg2); }
+.exam-prog-fill { height: 100%; background: linear-gradient(90deg,var(--yellow),var(--pink)); transition: width 0.3s; }
+.exam-q-body { padding: 1rem 1.25rem 6rem; max-width: 680px; }
+.exam-q-num { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 0.875rem; }
+.exam-passage { background: var(--surface); border-left: 3px solid var(--yellow); border-radius: 0 12px 12px 0; padding: 0.875rem 1rem; font-size: 0.875rem; line-height: 1.75; color: var(--text2); font-style: italic; margin-bottom: 1.25rem; }
+[data-theme="light"] .exam-passage { border-left-color: var(--yellow-dim); }
+.exam-question { font-size: 0.975rem; line-height: 1.65; margin-bottom: 1.25rem; font-weight: 500; }
+.exam-options { display: flex; flex-direction: column; gap: 0.625rem; }
+.exam-option { background: var(--surface); border: 1.5px solid var(--border); border-radius: 14px; padding: 0.875rem 1rem; display: flex; align-items: flex-start; gap: 0.875rem; cursor: pointer; transition: all 0.18s; font-size: 0.9rem; line-height: 1.5; }
+.exam-option:hover { border-color: var(--yellow); background: var(--yellow)08; }
+.exam-option.selected { border-color: var(--yellow); background: var(--yellow)18; }
+.exam-opt-letter { width: 28px; height: 28px; min-width: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.78rem; background: var(--bg2); color: var(--text2); flex-shrink: 0; }
+.exam-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg); border-top: 1px solid var(--border); padding: 0.75rem 1.25rem; display: flex; gap: 0.625rem; z-index: 100; }
+.btn-exam-prev { padding: 0.75rem 1rem; border-radius: 12px; background: var(--surface); border: 1px solid var(--border2); color: var(--text2); font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; flex-shrink: 0; }
+.btn-exam-next { flex: 1; padding: 0.75rem; border-radius: 12px; background: linear-gradient(135deg,var(--yellow),var(--pink)); border: none; color: #1A1000; font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.9rem; cursor: pointer; }
+.exam-break-page { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; padding: 2rem 1.5rem; text-align: center; }
+.exam-break-icon { font-size: 3rem; margin-bottom: 1rem; }
+.exam-break-title { font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.5rem; margin-bottom: 0.75rem; }
+.exam-break-desc { font-size: 0.9rem; color: var(--text2); line-height: 1.6; margin-bottom: 2rem; max-width: 360px; }
+.btn-continue-exam { padding: 1rem 2rem; background: linear-gradient(135deg,var(--yellow),var(--pink)); border: none; border-radius: 14px; font-family: "Syne", sans-serif; font-weight: 700; font-size: 1rem; color: #1A1000; cursor: pointer; }
+.score-report { padding: 1.5rem 1.25rem 6rem; }
+.score-hero { text-align: center; background: linear-gradient(135deg,var(--yellow)15,var(--pink)15); border: 1px solid var(--yellow)33; border-radius: 20px; padding: 1.5rem; margin-bottom: 1.25rem; }
+.score-total { font-family: "Syne", sans-serif; font-weight: 800; font-size: 4rem; background: linear-gradient(135deg,var(--yellow),var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 0.25rem; }
+.score-range { font-size: 0.8rem; color: var(--text3); margin-bottom: 0.75rem; }
+.score-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+.score-sec-card { background: var(--surface); border-radius: 12px; padding: 0.875rem; text-align: center; }
+.score-sec-val { font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--yellow); }
+[data-theme="light"] .score-sec-val { color: var(--yellow-dim); }
+.score-sec-lbl { font-size: 0.72rem; color: var(--text2); }
+.score-msg { font-family: "Syne", sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.4rem; }
+.score-sub { font-size: 0.875rem; color: var(--text2); line-height: 1.6; }
+.missed-section { margin-top: 1.25rem; }
+.missed-title { font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 0.75rem; }
+.missed-item { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1rem; margin-bottom: 0.75rem; }
+.missed-q { font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.5rem; font-weight: 500; }
+.missed-answers { display: flex; gap: 1rem; font-size: 0.78rem; margin-bottom: 0.5rem; }
+.missed-your { color: var(--red); }
+.missed-correct { color: var(--green); }
+.missed-explain { font-size: 0.8rem; color: var(--text2); line-height: 1.6; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+.score-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+.btn-retake { flex: 1; padding: 0.875rem; border-radius: 12px; background: var(--surface); border: 1px solid var(--border2); color: var(--text2); font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.875rem; cursor: pointer; }
+.btn-go-home { flex: 1; padding: 0.875rem; border-radius: 12px; background: linear-gradient(135deg,var(--yellow),var(--pink)); border: none; color: #1A1000; font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.875rem; cursor: pointer; }
+
 </style>
 </head>
 <body>
@@ -4530,6 +4604,142 @@ const LESSON_CONTENT = {
   }
 };
 
+
+// ════════════════════════════════════
+//  PRACTICE EXAM A — Science & History
+// ════════════════════════════════════
+const EXAM_A = {
+  id: 'examA',
+  title: 'Practice Exam A',
+  theme: 'Science & History',
+  rw_time: 1920,
+  math_time: 2100,
+  sections: {
+    rw1: {
+      label: 'Reading & Writing — Module 1',
+      qs: [
+        { p: "The discovery of the Rosetta Stone in 1799 transformed the study of ancient Egypt. The stone bears the same decree in three scripts — ancient Egyptian hieroglyphs, Demotic, and ancient Greek — allowing scholars to use their knowledge of Greek to decode hieroglyphics for the first time.", q: "Which choice best states the main idea?", o: ["Napoleon's campaign was primarily scientific", "The Rosetta Stone enabled decipherment of hieroglyphics", "Ancient Egyptian writing was more complex than Greek", "French soldiers made most archaeological discoveries"], c: 1, e: "The passage focuses on how the trilingual stone allowed scholars to decode hieroglyphics. The other choices misrepresent or overstate details." },
+        { p: "Marine biologists long assumed the clownfish-anemone relationship was mutually beneficial — the anemone provides shelter; the clownfish drives away predators. A 2022 study suggests the relationship may be more parasitic under elevated ocean temperatures.", q: "The second sentence primarily serves to:", o: ["Introduce a counterargument", "Present the traditional understanding before a complication", "Define scientific terminology", "Summarize the 2022 study"], c: 1, e: "The second sentence explains the traditional view before the third sentence introduces new findings that challenge it — classic setup-then-complication structure." },
+        { p: "The economist argued that urban housing shortages result from misaligned incentives among developers, municipalities, and financial institutions. Addressing the shortage, she contended, requires restructuring these systems rather than simply building more units.", q: "As used in the passage, 'contended' most nearly means:", o: ["competed", "argued", "admitted", "observed"], c: 1, e: "In context, 'contended' means argued or maintained a position. 'Admitted' implies reluctance. 'Observed' means noticed factually. 'Competed' is unrelated." },
+        { p: "Text 1: Controlled burns are a vital tool for preventing catastrophic wildfires by reducing accumulated fuel loads.
+
+Text 2: Critics argue that while controlled burns reduce fuel loads, the release of particulate matter and CO2 contributes significantly to air pollution and climate change, potentially outweighing the benefits.", q: "How would the author of Text 2 most likely respond to Text 1?", o: ["By agreeing controlled burns are most effective", "By arguing environmental costs may offset the benefits", "By suggesting wildfires pose no real threat", "By claiming fuel loads are irrelevant to intensity"], c: 1, e: "Text 2 acknowledges fuel load reduction (conceding Text 1) but argues pollution costs may outweigh benefits — a nuanced qualification." },
+        { p: "Social media has altered how political information spreads. Rather than relying on institutional gatekeepers such as newspapers, citizens now encounter political content through decentralized, algorithmically curated feeds that amplify emotionally provocative material.", q: "Which choice best states the main idea?", o: ["Social media is more reliable than newspapers", "Social media changed political information by removing institutional filters and prioritizing emotional content", "Algorithms are the primary cause of political polarization", "Television networks no longer play any role"], c: 1, e: "The passage describes two changes: removal of institutional gatekeepers and algorithmic curation amplifying emotional content. Other choices overstate or distort." },
+        { p: "Scientists studying Arctic terns discovered they travel approximately 70,000 kilometers annually — the longest migration of any known animal — returning to within meters of their previous nesting sites.", q: "Which word, if inserted before 'navigate' in the last sentence, would best maintain the tone?", o: ["somehow", "consistently", "allegedly", "occasionally"], c: 1, e: "'Consistently' matches the formal scientific tone and reinforces precision. 'Somehow' introduces doubt. 'Allegedly' implies uncertainty. 'Occasionally' contradicts the established pattern." },
+        { p: "The architect's design was both _______ and functional, incorporating sustainable materials and passive solar techniques while maintaining an aesthetic critics described as quietly elegant.", q: "Which word most precisely completes the sentence?", o: ["innovative", "traditional", "controversial", "simplified"], c: 0, e: "The design uses sustainable materials and passive solar — modern, forward-thinking approaches. 'Innovative' fits precisely. 'Traditional' contradicts these modern techniques." },
+        { p: "Researchers at three institutions published competing studies on habit formation. Each used different methodologies and arrived at partially overlapping but not identical conclusions, suggesting the underlying mechanisms are more complex than previously understood.", q: "Which choice most effectively uses the passage to support the claim that habit formation is not fully understood?", o: ["Three prestigious institutions studied it", "Multiple teams using different methods reached only partially consistent conclusions", "One institution published the most comprehensive study", "All teams agreed on the neurological basis"], c: 1, e: "The different methodologies yielding only partially overlapping conclusions directly supports the complexity claim. Other choices misrepresent or omit key details." },
+        { p: "The council approved the new transit plan despite objections from business owners who feared construction disruption. _______, the mayor emphasized that long-term economic benefits would outweigh any short-term inconvenience.", q: "Which transition word best completes the sentence?", o: ["Therefore", "Nevertheless", "Similarly", "For instance"], c: 1, e: "The first clause shows objections; the second offers a counterpoint. 'Nevertheless' signals contrast while acknowledging the opposing view." },
+        { p: "In 1854, physician John Snow mapped cholera cases in London and traced the outbreak to a contaminated water pump. His work, conducted before germ theory was widely accepted, is considered a founding moment of modern epidemiology.", q: "Which choice is best supported by the passage?", o: ["Snow developed the germ theory", "Snow's investigation preceded widespread acceptance of germ theory", "Snow identified cholera bacteria", "Snow's methods have been discredited"], c: 1, e: "The passage explicitly states Snow's work was conducted 'before the germ theory was widely accepted.' Other choices add or contradict details." },
+        { p: "A study found students sleeping fewer than 6 hours averaged GPA 2.8, those sleeping 7-9 hours averaged 3.4, and those sleeping more than 9 hours averaged 3.1.", q: "Based on the data, which conclusion is best supported?", o: ["Students sleeping exactly 8 hours always earn highest GPA", "Sleeping 7-9 hours is associated with higher academic performance than sleeping under 6 hours", "Excessive sleep is more harmful than insufficient sleep", "GPA is determined primarily by sleep duration"], c: 1, e: "The data shows 7-9 hours (3.4) outperforms under 6 hours (2.8). Choice B correctly describes correlation, not causation. Other choices overstate or distort." },
+        { p: "The committee's report was unambiguous: the proposed merger would substantially reduce competition in the regional market, potentially harming consumers through higher prices and reduced service quality.", q: "As used in the passage, 'unambiguous' most nearly means:", o: ["controversial", "preliminary", "clear and direct", "optimistic"], c: 2, e: "Unambiguous means leaving no doubt. 'Controversial' means disputed — the opposite. 'Preliminary' means early. 'Optimistic' relates to attitude, not clarity." },
+        { p: "Unlike the geometric designs of the Bauhaus movement, designer Isamu Noguchi's organic forms drew inspiration from natural shapes — the curve of a stone, the arc of a wave. His work sought to bridge the divide between art and functional objects.", q: "The primary purpose of the first sentence is to:", o: ["Argue Bauhaus design was inferior", "Establish a contrast highlighting Noguchi's distinctive philosophy", "Provide history of the Bauhaus movement", "Critique Noguchi's reliance on natural forms"], c: 1, e: "The first sentence contrasts Bauhaus's geometry with Noguchi's organic forms to introduce what makes his approach distinctive." },
+        { q: "A student argues cities should invest in green infrastructure. Which sentence would most effectively conclude the argument?", o: ["Green infrastructure is an interesting concept some cities have explored.", "Investments in green infrastructure represent not merely an environmental choice but an economic and social one with lasting benefits.", "Some people disagree about whether green infrastructure is effective.", "Cities have many priorities competing for limited budgets."], c: 1, e: "An effective conclusion strengthens the main claim. Choice B frames green infrastructure as environmental, economic, and social — a strong, forward-looking close." },
+        { p: "The hypothesis that dinosaurs were warm-blooded was once considered fringe science. Evidence accumulated over decades, including bone growth rates and isotopic analysis, now suggests many dinosaur species were indeed endothermic, fundamentally changing paleontologists' understanding.", q: "The passage implies which of the following about scientific understanding?", o: ["Scientific consensus is permanent", "Unconventional hypotheses can become accepted through accumulating evidence", "Isotopic analysis is the most reliable dinosaur research method", "All dinosaur species are now confirmed as warm-blooded"], c: 1, e: "A once-fringe hypothesis became accepted as evidence accumulated — directly implying that scientific understanding evolves with evidence." },
+        { p: "The novelist's prose was _______, each sentence carefully balanced against the next, creating a rhythm that critics compared to chamber music.", q: "Which word most precisely completes the sentence?", o: ["verbose", "deliberate", "sporadic", "conventional"], c: 1, e: "'Deliberate' means intentional and carefully considered, matching 'each sentence carefully balanced.' 'Verbose' means excessively wordy. 'Sporadic' contradicts 'rhythm.'" },
+        { p: "Researchers found false news stories spread six times faster on social media than true ones, attributing this to novelty: false stories tend to be more surprising and emotionally provocative.", q: "Which choice most effectively uses the data to support a claim about why misinformation spreads?", o: ["Misinformation spreads because platforms are poorly designed", "False news spreads six times faster than true news because it is more novel and emotionally engaging", "Social media companies should face legal responsibility", "True news is generally less interesting than false news"], c: 1, e: "Choice B uses the specific data (six times faster) and the researchers' explanation (novelty and emotion) to support a clear, evidence-based claim." },
+        { p: "The Romantic term 'sublime' referred not to something merely beautiful but to something overwhelming — a landscape so vast it evoked awe and terror. Edmund Burke distinguished between the beautiful, which gave pleasure, and the sublime, which produced a kind of delightful horror.", q: "As used in the passage, 'distinguished' most nearly means:", o: ["celebrated", "separated or differentiated", "confused", "eliminated"], c: 1, e: "Burke 'distinguished between' two concepts — separated or differentiated them. 'Celebrated' means honored. 'Confused' is the opposite." },
+        { p: "A graph shows Country A emissions rising 200 to 350 million tons over 20 years. Country B stays flat at 150. Country C decreases from 300 to 180 million tons.", q: "A researcher claims at least one country achieved significant emissions reduction. Which choice best supports this?", o: ["Country A increased its emissions substantially", "Country C reduced emissions from 300 to 180 million tons — a 40% decrease", "Country B maintained consistent emissions", "All countries showed different trajectories"], c: 1, e: "Country C's 40% reduction directly supports the claim. Country A shows an increase. Country B shows stability. Choice D does not specifically support reduction." },
+        { p: "Strong versions of the Sapir-Whorf hypothesis hold that language fundamentally constrains what one can think, while critics argue that thought is largely pre-linguistic and universal.", q: "Which choice best describes the relationship between the two positions?", o: ["They agree language and thought are independent", "They disagree about the direction and degree of influence between language and thought", "Sapir-Whorf has been conclusively proven correct", "Both hold that thought shapes language"], c: 1, e: "Sapir-Whorf says language constrains thought; critics say thought is pre-linguistic. They disagree about direction and degree of influence." },
+        { p: "The city council voted to rename three parks after local civil rights leaders, reversing a decades-old policy of naming parks exclusively after colonial-era figures.", q: "Which sentence would most logically follow?", o: ["Colonial-era figures are historically significant.", "Supporters argued the renaming better reflects the community's current values and honors figures who shaped the city's modern identity.", "Park maintenance budgets were also discussed.", "The decision was made by a unanimous vote."], c: 1, e: "A logical continuation explains the reasoning behind the decision. Choice B does this by explaining supporters' rationale for the change." },
+        { p: "Although the new medication significantly reduced symptoms in clinical trials, the FDA's approval process requires demonstration of both efficacy and safety across diverse patient populations before the drug can be widely available.", q: "The word 'Although' signals:", o: ["That the medication will definitely be approved", "A contrast between trial success and remaining regulatory requirements", "That the FDA rarely approves new medications", "Agreement between trial results and FDA standards"], c: 1, e: "'Although' signals contrast. The medication succeeded in trials (positive), but FDA requires more steps (a remaining challenge) — a classic concession structure." },
+        { p: "Paleoclimatologists studying ice cores from Antarctica have reconstructed Earth's climate going back 800,000 years. The data reveals atmospheric CO2 levels and global temperatures have moved in close synchrony throughout this period.", q: "Which choice best states what the ice core data demonstrates?", o: ["Carbon dioxide causes global warming", "CO2 levels and global temperatures have historically moved together", "Antarctic ice cores are the most reliable climate records", "Current CO2 levels are unprecedented in Earth's history"], c: 1, e: "The passage describes CO2 and temperature moving 'in close synchrony' — correlation, not causation. Choice B accurately states they move together." },
+        { p: "The historian's account was praised for its _______ — she drew on primary sources from three continents and interviewed more than 200 witnesses, resulting in an exceptionally well-documented narrative.", q: "Which word most precisely completes the sentence?", o: ["brevity", "thoroughness", "simplicity", "controversy"], c: 1, e: "'Thoroughness' means extremely complete and detailed, matching three continents of sources and 200+ witnesses. 'Brevity' means shortness — contradicted by the scope." },
+        { p: "Researchers administered a memory test immediately after learning (92% average), 24 hours later without review (68%), and 24 hours later after 20 minutes of reviewing (85%).", q: "A student argues that reviewing before a delayed test significantly improves retention. Which data best supports this?", o: ["The immediate group scored 92%", "The review group scored 85% vs. 68% for the no-review group at 24 hours", "All three groups took the same test", "The immediate group outperformed both delayed groups"], c: 1, e: "The direct comparison between review (85%) and no-review (68%) at the same time point specifically supports the claim about review improving retention." },
+        { p: "Classical economists assumed market participants always act rationally. Behavioral economists, armed with psychological evidence, have demonstrated that human decision-making is systematically biased — by loss aversion, social pressure, and cognitive shortcuts.", q: "The primary purpose of the passage is to:", o: ["Argue classical economics should be abandoned", "Describe how behavioral economics challenged the classical assumption of rational actors", "Praise the contributions of classical economists", "Explain mathematical models in behavioral economics"], c: 1, e: "The passage contrasts classical economics' rationality assumption with behavioral economics' evidence of systematic biases — describing a challenge to an existing framework." },
+        { p: "The proposed regulation would require all new commercial buildings to install solar panels on at least 30% of their roof area. Proponents argue this will accelerate the renewable energy transition. Opponents contend mandated costs will deter construction.", q: "Which best describes the relationship between the positions?", o: ["Both agree solar panels are beneficial", "They agree on the goal but disagree about effects", "Proponents focus on environmental benefits while opponents raise economic concerns", "Both are equally supported by evidence in the passage"], c: 2, e: "Proponents emphasize environmental benefits; opponents raise economic concerns. Choice B is wrong — the passage does not show they agree on goals." }
+      ]
+    },
+    rw2: {
+      label: 'Reading & Writing — Module 2',
+      qs: [
+        { p: "Economist Thorstein Veblen coined 'conspicuous consumption' in 1899 to describe purchasing luxury goods not for utility but as a public display of wealth. Veblen argued this behavior was particularly pronounced among the newly wealthy, who lacked inherited social standing.", q: "Which choice best states the main idea?", o: ["Luxury goods are always superior in quality", "Veblen argued conspicuous consumption is status-signaling, especially among the newly wealthy", "Established elites spend more on luxury goods", "Conspicuous consumption benefits the economy"], c: 1, e: "The passage defines conspicuous consumption as status-signaling and notes it is especially common among the newly wealthy. Other choices distort or add unsupported claims." },
+        { p: "The new urban farming initiative has been described by city planners as both _______ and necessary — addressing food security, reducing transportation emissions, and creating green spaces in previously underutilized areas.", q: "Which word most precisely completes the sentence?", o: ["controversial", "impractical", "innovative", "redundant"], c: 2, e: "'Innovative' fits because the initiative is described as a new approach addressing multiple problems. 'Controversial' is not supported. 'Impractical' contradicts the positive framing. 'Redundant' contradicts 'necessary.'" },
+        { p: "Text 1: Mandatory voting, in place in countries like Australia and Belgium, increases voter participation and produces more representative outcomes.
+
+Text 2: Critics argue compelled political participation undermines political freedom — the right not to vote is as fundamental as the right to vote.", q: "How would the author of Text 2 respond to Text 1's claim about representative outcomes?", o: ["By agreeing higher turnout produces better outcomes", "By arguing forced participation may not produce meaningfully representative outcomes if voters are disengaged", "By suggesting Australia and Belgium are undemocratic", "By claiming turnout has no effect on elections"], c: 1, e: "Text 2 focuses on political freedom. It would counter Text 1 by questioning whether compelled participation — from disengaged voters — produces meaningful representation." },
+        { p: "The Alhambra palace demonstrates an extraordinary synthesis of Islamic geometric patterning and structural innovation. Water features were integrated not merely as decoration but as climate control — the evaporative cooling of fountains created a more comfortable microclimate.", q: "The passage primarily serves to:", o: ["Argue Islamic architecture is superior to European", "Describe how the Alhambra combined aesthetic and functional design", "Explain the history of Granada as an Islamic city", "Critique modern buildings for lacking similar features"], c: 1, e: "The passage describes geometric patterning (aesthetic) and water features for climate control (functional), showing both elements working together." },
+        { p: "Astronomers using the James Webb Space Telescope have observed galaxies that formed within 300 million years of the Big Bang — far earlier than previous models predicted, suggesting galaxy formation was more rapid and efficient than scientists had assumed.", q: "Which choice is best supported by the passage?", o: ["Webb disproved the Big Bang theory", "Early universe galaxy formation appears to have occurred faster than previously modeled", "All galaxies formed within 300 million years of the Big Bang", "Previous telescope technology was completely unreliable"], c: 1, e: "Galaxies formed 'far earlier than previous models predicted' directly supports the idea formation was faster than assumed. Other choices overstate or misrepresent." },
+        { p: "Research into sleep architecture has revealed that memory consolidation occurs primarily during slow-wave sleep. During this stage, the hippocampus systematically replays recent experiences, transferring information to long-term cortical storage.", q: "As used in the passage, 'architecture' most nearly means:", o: ["the physical design of buildings", "the structural organization or framework", "the historical development", "the visual appearance"], c: 1, e: "'Sleep architecture' refers to the structural organization of sleep stages. This is a metaphorical use meaning framework or structure — confirmed by the description of stages." },
+        { p: "Critics have argued that Hudson River School paintings simultaneously glorified and commodified the landscape, presenting wilderness as a spectacle for consumption by an increasingly urbanized population.", q: "Which choice best describes what critics argue?", o: ["The paintings were technically inferior to European landscape art", "They both celebrated nature and transformed it into a product for urban audiences", "They accurately documented the wilderness before industrialization", "Their large format made them unsuitable for private collection"], c: 1, e: "Critics argue the paintings 'simultaneously glorified and commodified' — celebrating nature while making it a spectacle. Choice B captures both elements." },
+        { p: "A survey of 500 small business owners found 68% cited affordable healthcare as their primary obstacle to hiring. Among businesses with fewer than 10 employees, this figure rose to 79%.", q: "A policy analyst claims healthcare costs are a significant barrier to small business growth, particularly for the smallest businesses. Which choice most effectively uses the data?", o: ["500 small business owners were surveyed", "68% of owners and 79% of the smallest businesses cited healthcare as their primary hiring obstacle", "Small businesses hire fewer employees than large corporations", "Healthcare costs affect businesses of all sizes"], c: 1, e: "Choice B uses both data points to directly support both parts of the analyst's claim — overall significance and the heightened impact on smallest businesses." },
+        { p: "The scientific community long assumed the deep ocean floor was a barren environment. _______, the discovery of hydrothermal vents in 1977 revealed thriving ecosystems sustained by chemosynthesis, overturning decades of ecological theory.", q: "Which transition word best completes the sentence?", o: ["Therefore", "Similarly", "However", "Consequently"], c: 2, e: "The first sentence states an assumption; the second describes a contradicting discovery. 'However' signals contrast between the assumption and the discovery." },
+        { p: "The playwright's dialogue was noted for its _______ quality — each character's speech revealed not only their immediate thoughts but the complex social forces shaping their choices.", q: "Which word most precisely completes the sentence?", o: ["verbose", "laconic", "layered", "literal"], c: 2, e: "'Layered' means having multiple levels of meaning, fitting dialogue that reveals both immediate thoughts and deeper social forces. 'Verbose' means excessively wordy. 'Laconic' means brief. 'Literal' means surface-level — the opposite." },
+        { p: "In cities, most residents experience nature primarily through parks rather than direct ecosystem engagement — a shift researchers link to declining environmental literacy and reduced motivation to support conservation.", q: "The passage implies which of the following about urban residents?", o: ["Urban residents oppose environmental conservation", "Limited direct engagement with ecosystems may reduce environmental knowledge and conservation motivation", "Parks are ineffective replacements for natural ecosystems", "Urbanization is the leading cause of species extinction"], c: 1, e: "The passage links park-only nature experience to 'declining environmental literacy and reduced motivation' — supporting Choice B. Other choices are too strong or unsupported." },
+        { p: "Jane Goodall observed chimpanzees using tools — stripping leaves from twigs to extract termites. This observation, initially dismissed by scientists who defined tool use as exclusively human, ultimately contributed to a fundamental revision of what distinguishes humans from primates.", q: "The passage implies which of the following about scientific definitions?", o: ["Scientific definitions are permanent", "Empirical observations can lead scientists to revise previously held definitions", "Goodall's work was immediately accepted", "Tool use is the primary distinction between humans and primates"], c: 1, e: "Goodall's observation was initially dismissed but 'ultimately contributed to a fundamental revision' — implying definitions change in response to evidence." },
+        { p: "A pharmaceutical company announced its allergy medication showed efficacy in 78% of Phase III patients, with side effects in fewer than 5%.", q: "A regulatory reviewer states the medication shows a strong efficacy-to-side-effect ratio. Which choice best uses the data to support this?", o: ["It was tested in Phase III trials", "The medication was effective in 78% of patients while producing side effects in fewer than 5% — a ratio of more than 15 to 1", "Clinical trials are required for all new medications", "Side effects were reported by some participants"], c: 1, e: "Choice B uses both data points and calculates the ratio, directly supporting the reviewer's specific claim about a strong efficacy-to-side-effect ratio." },
+        { p: "Historians debate whether Rome's fall should be attributed to external pressures — Germanic migrations — or internal decay, including political instability and economic decline. Most contemporary historians favor a multicausal explanation integrating both.", q: "Which choice best describes the current scholarly consensus?", o: ["Germanic invasions were the primary cause", "Internal decay was more significant than external pressure", "Rome's fall resulted from a combination of internal and external factors", "Historians have reached no agreement"], c: 2, e: "'Most contemporary historians favor a multicausal explanation that integrates both' directly supports Choice C. Choices A and B attribute to a single factor. Choice D is contradicted by 'most historians favor.'" },
+        { p: "The federal agency's response was characterized by a series of _______ decisions — each made under pressure and without adequate consultation of affected stakeholders, resulting in policies difficult to implement.", q: "Which word most precisely completes the sentence?", o: ["thoughtful", "hasty", "innovative", "transparent"], c: 1, e: "'Hasty' means rushed without adequate consideration, matching 'made under pressure and without adequate consultation.' 'Thoughtful' is the opposite. 'Transparent' relates to openness, not the process described." },
+        { p: "Expert chess players do not analyze more possible moves than novices — they analyze fewer. Experts rapidly identify which moves are worth considering by pattern recognition developed through thousands of hours of practice.", q: "The passage suggests that expertise involves:", o: ["Increased capacity to consider more options simultaneously", "Efficient pattern recognition allowing focus on promising options rather than all possibilities", "The ability to memorize large numbers of positions", "Slower, more deliberate decision-making than novices"], c: 1, e: "Experts 'analyze fewer' moves using 'pattern recognition' — efficient focus rather than exhaustive evaluation. Choice A is the opposite. Choice D says slower — the passage implies efficiency." },
+        { p: "A city homelessness task force proposed expanding emergency shelter, increasing mental health funding, and creating a rapid rehousing program. The task force emphasized these measures are complementary rather than competing.", q: "A council member argues the proposals reflect a comprehensive rather than piecemeal approach. Which choice most effectively supports this?", o: ["The task force proposed three separate solutions", "By addressing shelter, mental health, and rehousing — and framing these as complementary measures targeting distinct populations — the task force developed an integrated strategy", "Emergency shelter is most important", "The task force was created specifically for this issue"], c: 1, e: "Choice B references all three proposals and uses the task force's own framing ('complementary rather than competing') to demonstrate a coordinated approach." },
+        { p: "Fermentation, one of humanity's oldest food technologies, occurs when microorganisms break down sugars in the absence of oxygen. The process produces both preserved foods — bread, cheese, beer — and distinctive flavors that cannot be replicated by other means.", q: "Which choice is best supported by the passage?", o: ["Fermentation was invented in the modern era", "Fermentation is an ancient process that produces both preservation and unique flavors", "Fermentation requires oxygen to function", "Bread and cheese are made by identical fermentation processes"], c: 1, e: "The passage calls fermentation 'one of humanity's oldest food technologies' producing 'preserved foods' and 'distinctive flavors.' Choice B captures both. Other choices contradict the passage." },
+        { p: "Hybrid workers reported the highest job satisfaction among three work arrangements studied. Fully in-office workers showed the highest measurable output. Fully remote workers reported the lowest satisfaction but showed moderate output.", q: "A manager argues hybrid work offers the best balance of productivity and wellbeing. Which data best supports this?", o: ["Hybrid workers reported the highest satisfaction", "In-office workers showed highest output", "Hybrid workers had the highest satisfaction while maintaining moderate-to-high output, suggesting a favorable balance", "Remote workers showed lowest satisfaction"], c: 2, e: "Choice C uses the satisfaction data for hybrid (highest) and acknowledges output to support the 'best balance' claim. The question is about balance — not pure productivity or pure satisfaction alone." },
+        { p: "The letter, written in a tone of formal cordiality that barely concealed the author's exasperation, requested the landlord address recurring water damage within ten business days or face legal action.", q: "Which best describes the tone of the letter?", o: ["Warmly enthusiastic", "Formally polite but underlying frustrated", "Openly hostile", "Casually conversational"], c: 1, e: "The passage describes 'formal cordiality that barely concealed exasperation' — formal surface with underlying frustration. 'Openly hostile' overstates. 'Casual' contradicts 'formal.'" },
+        { p: "The philosopher argued that moral progress is not inevitable but rather the result of deliberate effort — cultivation of empathy, examination of inherited assumptions, and willingness to extend moral consideration to previously excluded groups.", q: "The philosopher's argument implies that moral progress:", o: ["Occurs automatically as societies develop economically", "Requires conscious effort and is not guaranteed", "Has been consistently achieved throughout history", "Depends primarily on technological advancement"], c: 1, e: "The philosopher explicitly states moral progress is 'not inevitable but rather the result of deliberate effort.' Choice B captures both elements — requires effort and is not guaranteed." },
+        { p: "The Endangered Species Act requires federal agencies to consult with the Fish and Wildlife Service before taking actions affecting listed species. Critics argue this significantly delays infrastructure; proponents contend it is essential to preventing irreversible harm to biodiversity.", q: "Which best describes the relationship between the positions?", o: ["Both agree the consultation requirement should be eliminated", "Critics focus on efficiency costs while proponents emphasize ecological protection", "Both agree biodiversity is the most important priority", "Proponents argue the process is too slow; critics argue it is not slow enough"], c: 1, e: "Critics focus on project delays (efficiency). Proponents focus on preventing 'irreversible harm to biodiversity' (ecology). These are different priorities — the core disagreement." },
+        { p: "By the mid-twentieth century, the American suburb had become a dominant cultural symbol — representing middle-class aspiration, domestic order, and racial exclusion that shaped political attitudes for generations.", q: "The passage implies which of the following about American suburbs?", o: ["Suburbs were created primarily for economic reasons unrelated to race", "The suburb represented a complex symbol encompassing both aspiration and exclusion", "Most Americans rejected suburban life", "Suburban growth had no lasting political effects"], c: 1, e: "The passage describes the suburb as representing 'aspiration, domestic order, AND racial exclusion' that 'shaped political attitudes' — capturing multiple dimensions. Other choices contradict the text." },
+        { p: "A scientist presented data showing cities with more green space had lower heat island effects, cleaner air, and lower respiratory illness rates. She cautioned that correlation does not establish causation and that income levels and proximity to industry also influence outcomes.", q: "Which choice best captures the scientist's overall message?", o: ["Green space definitively causes better health outcomes", "The data shows a positive correlation between green space and health outcomes, but causation cannot be confirmed", "Cities should prioritize green space above all other concerns", "The data she presented was unreliable"], c: 1, e: "The scientist presents correlation data but explicitly 'cautioned that correlation does not establish causation.' Choice B reflects both the positive correlation and the appropriate caution." },
+        { p: "Despite widespread concern about invasive species, ecologist Mark Davis and colleagues have argued that the native/non-native distinction is less meaningful than traditionally assumed, and that species should be evaluated based on actual ecological effects rather than geographic origin.", q: "The passage suggests that Davis's position is:", o: ["Entirely consistent with mainstream ecological consensus", "A challenge to traditional assumptions about how to evaluate species", "Based on evidence that invasive species have no ecological impact", "Widely accepted by conservation biologists"], c: 1, e: "Davis argues the native/non-native distinction is 'less meaningful than ecologists traditionally assumed' — directly challenging a traditional framework. 'Despite widespread concern' establishes his departure from mainstream." },
+        { p: "The documentary filmmaker employed a deliberately _______ visual style — minimal lighting, handheld cameras, and ambient sound — to give the impression that viewers were witnessing unmediated reality.", q: "Which word most precisely completes the sentence?", o: ["elaborate", "cinematic", "austere", "whimsical"], c: 2, e: "'Austere' means severely simple with no ornamentation — matching 'minimal lighting, handheld cameras, and ambient sound.' 'Elaborate' is the opposite. 'Whimsical' is entirely wrong in context." },
+        { p: "The town council approved converting an abandoned textile mill into mixed-use development featuring affordable housing, retail space, and a community arts center. The plan was developed over eighteen months through public meetings and stakeholder consultations.", q: "Which sentence would most logically follow?", o: ["Textile mills were historically important to the regional economy.", "Supporters noted that extensive community involvement increased the likelihood of the project's long-term success.", "Mixed-use development is a common urban planning strategy.", "The council voted five to two in favor."], c: 1, e: "The passage ends emphasizing the community consultation process. A logical continuation connects this process to an outcome — Choice B does this by linking involvement to likely success." }
+      ]
+    },
+    math1: {
+      label: 'Math — Module 1',
+      qs: [
+        { q: "If 4x + 9 = 33, what is the value of x?", o: ["4", "5", "6", "7"], c: 2, e: "4x = 24, x = 6. Check: 4(6)+9 = 33." },
+        { q: "A phone plan charges $30/month plus $0.08 per text. Last month the bill was $46. How many texts were sent?", o: ["150", "175", "200", "225"], c: 2, e: "30 + 0.08t = 46. 0.08t = 16. t = 200." },
+        { q: "What is the slope of the line through (2, 5) and (6, 13)?", o: ["1", "2", "3", "4"], c: 1, e: "Slope = (13-5)/(6-2) = 8/4 = 2." },
+        { q: "Solve the system: 3x + y = 11 and x - y = 1. What is x?", o: ["2", "3", "4", "5"], c: 1, e: "Add equations: 4x = 12, x = 3. Then y = 2. Check: 9+2 = 11." },
+        { q: "Which inequality represents: a number decreased by 8 is at least 15?", o: ["n - 8 > 15", "n - 8 >= 15", "n - 8 < 15", "n - 8 <= 15"], c: 1, e: "'At least' means >= 15. So n - 8 >= 15." },
+        { q: "What are the solutions to x² - 7x + 12 = 0?", o: ["x = 3 and x = 4", "x = -3 and x = -4", "x = 2 and x = 6", "x = 1 and x = 12"], c: 0, e: "Numbers that multiply to 12 and add to -7: -3 and -4. Factor: (x-3)(x-4) = 0. x = 3 or x = 4." },
+        { q: "If f(x) = 3x² - 2x + 1, what is f(3)?", o: ["20", "22", "24", "28"], c: 1, e: "f(3) = 3(9) - 2(3) + 1 = 27 - 6 + 1 = 22." },
+        { q: "A town grows at 3% per year starting at 8,000. Which gives population after t years?", o: ["8000 + 0.03t", "8000(0.03)^t", "8000(1.03)^t", "8000(1.3)^t"], c: 2, e: "Exponential growth: P = 8000(1.03)^t. Growth factor = 1.03." },
+        { q: "Right triangle ABC: angle C = 90°, leg a = 9, hypotenuse c = 15. What is leg b?", o: ["10", "11", "12", "13"], c: 2, e: "9² + b² = 15². 81 + b² = 225. b² = 144. b = 12. (9-12-15 triple)" },
+        { q: "A circle has circumference 18π. What is its area?", o: ["9π", "18π", "81π", "324π"], c: 2, e: "2πr = 18π, r = 9. Area = π(81) = 81π." },
+        { q: "If |2x + 4| = 10, what are the solutions?", o: ["x = 3 only", "x = -7 only", "x = 3 and x = -7", "x = 7 and x = -3"], c: 2, e: "Case 1: 2x+4=10, x=3. Case 2: 2x+4=-10, x=-7. Both solutions." },
+        { q: "A scatterplot has a strong negative slope of -4. If y = 50 when x = 2, what is predicted y when x = 7?", o: ["20", "30", "35", "70"], c: 1, e: "5 unit increase in x: change in y = 5×(-4) = -20. y = 50-20 = 30." },
+        { q: "Which expression is equivalent to (3x - 2)(x + 5)?", o: ["3x² + 13x - 10", "3x² + 13x + 10", "3x² - 10", "3x² + 15x - 10"], c: 0, e: "FOIL: 3x² + 15x - 2x - 10 = 3x² + 13x - 10." },
+        { q: "A bag has 4 red, 3 blue, 5 green tiles. What is P(not green)?", o: ["5/12", "7/12", "1/3", "2/3"], c: 1, e: "Total = 12. Not green = 7. P = 7/12." },
+        { q: "Triangle ABC: angle A = 58°, angle B = 67°. What is angle C?", o: ["45°", "55°", "65°", "75°"], c: 1, e: "C = 180 - 58 - 67 = 55°." },
+        { q: "The mean of five numbers is 14. Four are 10, 12, 16, 18. What is the fifth?", o: ["12", "14", "16", "18"], c: 1, e: "Sum = 70. Known sum = 56. Fifth = 70-56 = 14." },
+        { q: "A line has equation y = -2x + 7. What is the y-intercept?", o: ["-2", "2", "7", "-7"], c: 2, e: "In y = mx + b, b = 7 is the y-intercept." },
+        { q: "If g(x) = 4x - 3, what is g(a + 2)?", o: ["4a + 5", "4a - 1", "4a + 2", "4a + 8"], c: 0, e: "g(a+2) = 4(a+2)-3 = 4a+8-3 = 4a+5." },
+        { q: "A rectangle has area 96 and width 8. What is its perimeter?", o: ["28", "40", "44", "56"], c: 1, e: "Length = 96/8 = 12. Perimeter = 2(12+8) = 40." },
+        { q: "An arc has central angle 120° in a circle with radius 6. What is the arc length?", o: ["2π", "4π", "6π", "12π"], c: 1, e: "(120/360) × 2π(6) = (1/3) × 12π = 4π." },
+        { q: "Which value satisfies -4x ≤ 20?", o: ["x ≤ -5", "x ≥ -5", "x ≤ 5", "x ≥ 5"], c: 1, e: "Divide by -4, flip sign: x ≥ -5." },
+        { q: "In a right triangle, sin(A) = 5/13. What is cos(A)?", o: ["5/12", "12/13", "13/12", "5/13"], c: 1, e: "Opposite=5, hyp=13. Adjacent = 12 (5-12-13 triple). cos = 12/13." }
+      ]
+    },
+    math2: {
+      label: 'Math — Module 2',
+      qs: [
+        { q: "Solve for x: 7x - 3 = 4x + 12", o: ["3", "4", "5", "6"], c: 2, e: "3x-3=12. 3x=15. x=5." },
+        { q: "Two numbers sum to 45 and differ by 11. What is the larger?", o: ["24", "26", "27", "28"], c: 3, e: "x+y=45, x-y=11. Add: 2x=56, x=28." },
+        { q: "A store marks up prices 40%. A shirt costs $35 wholesale. What is the retail price?", o: ["$45", "$49", "$53", "$57"], c: 1, e: "Markup = 35×0.40 = 14. Retail = 35+14 = $49." },
+        { q: "What are the solutions to 2x² + x - 6 = 0?", o: ["x = 3/2 and x = -2", "x = -3/2 and x = 2", "x = 2 and x = 3", "x = -2 and x = -3"], c: 0, e: "Factor: (2x-3)(x+2) = 0. x = 3/2 or x = -2." },
+        { q: "A population decays at 6% per year starting at 12,000. Which gives population after t years?", o: ["12000(0.06)^t", "12000(0.94)^t", "12000(1.06)^t", "12000 - 0.06t"], c: 1, e: "6% decay: keep 94%. P = 12000(0.94)^t." },
+        { q: "If f(x) = x² - 4x + 3, for what values does f(x) = 0?", o: ["x = 1 and x = 3", "x = -1 and x = -3", "x = 2 only", "x = 4 only"], c: 0, e: "Factor: (x-1)(x-3) = 0. x = 1 or x = 3." },
+        { q: "In a right triangle, cos(B) = 7/25. What is sin(B)?", o: ["7/24", "24/25", "25/7", "7/25"], c: 1, e: "Adjacent=7, hyp=25. Opposite = 24. sin = 24/25." },
+        { q: "A scatterplot line passes through (0, 20) and (5, 45). What is the slope?", o: ["4", "5", "6", "9"], c: 1, e: "Slope = (45-20)/(5-0) = 25/5 = 5." },
+        { q: "A cylinder has radius 4 and height 9. What is its volume?", o: ["36π", "72π", "144π", "288π"], c: 2, e: "V = πr²h = π(16)(9) = 144π." },
+        { q: "If |3x - 9| = 12, what are the solutions?", o: ["x = 7 only", "x = -1 only", "x = 7 and x = -1", "x = 4 and x = -4"], c: 2, e: "Case 1: 3x-9=12, x=7. Case 2: 3x-9=-12, x=-1." },
+        { q: "Five test scores: 88, 92, 76, 95, 84. What is the mean?", o: ["85", "87", "89", "91"], c: 1, e: "Sum = 435. Mean = 435/5 = 87." },
+        { q: "Expand: (x + 4)²", o: ["x² + 8x + 16", "x² + 4x + 16", "x² + 16", "x² + 8x + 8"], c: 0, e: "(x+4)² = x² + 8x + 16." },
+        { q: "A circle has area 49π. What is its circumference?", o: ["7π", "14π", "28π", "49π"], c: 1, e: "πr² = 49π, r = 7. C = 2πr = 14π." },
+        { q: "Which expression equals (2x² + 3x - 5) - (x² - 2x + 1)?", o: ["x² + 5x - 6", "x² + x - 4", "x² + 5x - 4", "3x² + x - 6"], c: 0, e: "2x²+3x-5-x²+2x-1 = x²+5x-6." },
+        { q: "A survey: 240 of 400 prefer Brand A. Extrapolate to 5,000 people — how many prefer Brand A?", o: ["2,400", "2,800", "3,000", "3,200"], c: 2, e: "240/400 = 60%. 60% × 5,000 = 3,000." },
+        { q: "What is the discriminant of x² - 4x - 5?", o: ["4", "16", "24", "36"], c: 3, e: "b²-4ac = 16-4(1)(-5) = 16+20 = 36." },
+        { q: "In triangle ABC, angle A = 90°, BC = 26, AB = 10. What is AC?", o: ["20", "22", "24", "28"], c: 2, e: "10² + AC² = 26². 100+AC²=676. AC²=576. AC=24." },
+        { q: "A recipe uses 2.5 cups of sugar for 48 cookies. How much for 72 cookies?", o: ["3 cups", "3.25 cups", "3.5 cups", "3.75 cups"], c: 3, e: "2.5/48 = x/72. 48x=180. x=3.75 cups." },
+        { q: "The line y = mx + 4 passes through (3, 10). What is m?", o: ["1", "2", "3", "4"], c: 1, e: "10 = 3m+4. 3m=6. m=2." },
+        { q: "Which is equivalent to (4x - 1)(3x + 2)?", o: ["12x² + 5x - 2", "12x² + 5x + 2", "12x² - 5x - 2", "12x² - 5x + 2"], c: 0, e: "FOIL: 12x² + 8x - 3x - 2 = 12x² + 5x - 2." },
+        { q: "A student scored 74, 81, 88, 93 on four tests. What score on the fifth gives a mean of 85?", o: ["85", "87", "89", "91"], c: 2, e: "Target sum = 425. Current = 336. Fifth = 89." },
+        { q: "A ladder 10 feet long leans against a wall. The base is 6 feet away. How high does it reach?", o: ["6 feet", "7 feet", "8 feet", "9 feet"], c: 2, e: "6² + h² = 10². 36+h²=100. h²=64. h=8. (6-8-10 triple)" }
+      ]
+    }
+  }
+};
+
 const QUIZ_DATA = {
   vocab: [
 {
@@ -5352,12 +5562,16 @@ function renderHomeScreen() {
 //  MODULE & LESSON NAVIGATION
 // ════════════════════════════════════
 function openModule(modKey) {
+  if (modKey === 'practice') {
+    openExamSelection();
+    return;
+  }
   currentModule = modKey;
   const mod = MODULES[modKey];
   if (!mod) return;
 
   // Lock modules not yet built
-  const lockedModules = ['practice'];
+  const lockedModules = [];
   if (lockedModules.includes(modKey)) {
     document.getElementById('moduleHeroArea').innerHTML = `
       <div style="text-align:center;padding:2rem 1rem;">
@@ -6301,6 +6515,296 @@ function updateKeyBar() {
   bar.style.display = hasKey ? 'flex' : 'none';
 }
 
+
+// ════════════════════════════════════
+//  PRACTICE EXAM SYSTEM
+// ════════════════════════════════════
+let activeExam = null;
+let examState = {
+  examId: null,
+  sectionKey: null,
+  sectionOrder: ['rw1','rw2','math1','math2'],
+  currentSection: 0,
+  currentQ: 0,
+  answers: {},
+  timerInterval: null,
+  timeLeft: 0,
+  totalScore: 0
+};
+
+function openExamSelection() {
+  buildExamCards();
+  showPage('examPage', null, true);
+  document.getElementById('topbarTitle').innerHTML = '<span style="color:var(--yellow)">&#127919;</span> Practice Exams';
+}
+
+function buildExamCards() {
+  const area = document.getElementById('examCardsArea');
+  const exams = [
+    { data: typeof EXAM_A !== 'undefined' ? EXAM_A : null, icon: '&#127775;', cls: 'icon-exam-a', btnCls: 'btn-exam-a', key: 'examA' },
+    { data: typeof EXAM_B !== 'undefined' ? EXAM_B : null, icon: '&#128218;', cls: 'icon-exam-b', btnCls: 'btn-exam-b', key: 'examB' }
+  ];
+  area.innerHTML = '';
+  exams.forEach(ex => {
+    const savedScore = currentProfile && currentProfile.examScores && currentProfile.examScores[ex.key];
+    const available = ex.data !== null;
+    const card = document.createElement('div');
+    card.className = 'exam-card';
+    card.innerHTML =
+      '<div class="exam-card-header">' +
+        '<div class="exam-card-icon ' + ex.cls + '">' + ex.icon + '</div>' +
+        '<div>' +
+          '<div class="exam-card-title">' + (available ? (ex.data.title || 'Practice Exam') : (ex.key === 'examB' ? 'Practice Exam B' : 'Practice Exam')) + '</div>' +
+          '<div class="exam-card-sub">' + (available ? (ex.data.theme || '') : 'Coming in Session 8') + '</div>' +
+        '</div>' +
+        (savedScore ? '<div class="exam-card-score">' + savedScore + '</div>' : '') +
+      '</div>' +
+      '<div class="exam-card-details">' +
+        '<div class="exam-detail"><div class="exam-detail-val">98</div><div class="exam-detail-lbl">Questions</div></div>' +
+        '<div class="exam-detail"><div class="exam-detail-val">3hr 15m</div><div class="exam-detail-lbl">Total Time</div></div>' +
+        '<div class="exam-detail"><div class="exam-detail-val">400-1600</div><div class="exam-detail-lbl">Score Scale</div></div>' +
+      '</div>' +
+      '<button class="exam-start-btn ' + ex.btnCls + '" ' + (available ? 'onclick="startExam('' + ex.key + '')"' : 'disabled style="opacity:0.5;cursor:not-allowed"') + '>' +
+        (available ? (savedScore ? 'Retake Exam &#8594;' : 'Start Exam &#8594;') : 'Available Tomorrow') +
+      '</button>';
+    area.appendChild(card);
+  });
+}
+
+function startExam(examId) {
+  activeExam = examId === 'examA' ? EXAM_A : (typeof EXAM_B !== 'undefined' ? EXAM_B : null);
+  if (!activeExam) return;
+  examState = {
+    examId: examId,
+    sectionOrder: ['rw1','rw2','math1','math2'],
+    currentSection: 0,
+    currentQ: 0,
+    answers: { rw1: {}, rw2: {}, math1: {}, math2: {} },
+    timerInterval: null,
+    timeLeft: 0
+  };
+  startExamSection('rw1');
+}
+
+function startExamSection(sectionKey) {
+  examState.sectionKey = sectionKey;
+  examState.currentQ = 0;
+  const isRW = sectionKey.startsWith('rw');
+  examState.timeLeft = isRW ? activeExam.rw_time : activeExam.math_time;
+  showPage('examRunnerPage', null, true);
+  renderExamQuestion();
+  startExamTimer();
+}
+
+function startExamTimer() {
+  if (examState.timerInterval) clearInterval(examState.timerInterval);
+  updateTimerDisplay();
+  examState.timerInterval = setInterval(function() {
+    examState.timeLeft--;
+    updateTimerDisplay();
+    if (examState.timeLeft <= 0) {
+      clearInterval(examState.timerInterval);
+      advanceExamSection();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(examState.timeLeft / 60);
+  const s = examState.timeLeft % 60;
+  const display = m + ':' + (s < 10 ? '0' : '') + s;
+  const el = document.getElementById('examTimer');
+  if (el) {
+    el.textContent = display;
+    el.className = 'exam-timer' + (examState.timeLeft < 120 ? ' urgent' : '');
+  }
+}
+
+function renderExamQuestion() {
+  const section = activeExam.sections[examState.sectionKey];
+  const qs = section.qs;
+  const qi = examState.currentQ;
+  const q = qs[qi];
+  const total = qs.length;
+  const sectionIdx = examState.sectionOrder.indexOf(examState.sectionKey);
+
+  document.getElementById('examSectionLabel').textContent = section.label;
+  document.getElementById('examQCounter').textContent = (qi + 1) + ' / ' + total;
+  const pct = ((qi + 1) / total * 100).toFixed(0);
+  document.getElementById('examProgFill').style.width = pct + '%';
+
+  const saved = examState.answers[examState.sectionKey][qi];
+  const letters = ['A','B','C','D'];
+
+  let html = '<div class="exam-q-num">Question ' + (qi + 1) + ' of ' + total + '</div>';
+  if (q.p) html += '<div class="exam-passage">' + q.p.replace(/\n/g, '<br><br>') + '</div>';
+  html += '<div class="exam-question">' + q.q + '</div>';
+  html += '<div class="exam-options">';
+  q.o.forEach(function(opt, i) {
+    const sel = saved === i ? ' selected' : '';
+    html += '<div class="exam-option' + sel + '" onclick="examSelectOption(' + i + ')">' +
+      '<div class="exam-opt-letter">' + letters[i] + '</div>' +
+      '<div>' + opt + '</div>' +
+      '</div>';
+  });
+  html += '</div>';
+
+  document.getElementById('examQBody').innerHTML = html;
+  document.getElementById('examQBody').scrollTop = 0;
+
+  const nextBtn = document.getElementById('btnExamNext');
+  const isLast = qi === total - 1;
+  if (isLast) {
+    const isLastSection = sectionIdx === 3;
+    nextBtn.textContent = isLastSection ? 'Finish Exam' : 'End Section';
+  } else {
+    nextBtn.textContent = 'Next →';
+  }
+}
+
+function examSelectOption(idx) {
+  examState.answers[examState.sectionKey][examState.currentQ] = idx;
+  document.querySelectorAll('.exam-option').forEach(function(el, i) {
+    el.className = 'exam-option' + (i === idx ? ' selected' : '');
+  });
+}
+
+function examNav(dir) {
+  const section = activeExam.sections[examState.sectionKey];
+  const total = section.qs.length;
+  const newQ = examState.currentQ + dir;
+
+  if (dir === 1 && examState.currentQ === total - 1) {
+    advanceExamSection();
+    return;
+  }
+
+  if (newQ >= 0 && newQ < total) {
+    examState.currentQ = newQ;
+    renderExamQuestion();
+    document.getElementById('examQBody').scrollTop = 0;
+  }
+}
+
+function advanceExamSection() {
+  clearInterval(examState.timerInterval);
+  const sectionIdx = examState.sectionOrder.indexOf(examState.sectionKey);
+
+  if (sectionIdx === 1) {
+    showPage('examBreakPage', null, true);
+    return;
+  }
+
+  if (sectionIdx === 3) {
+    showExamScore();
+    return;
+  }
+
+  const nextSection = examState.sectionOrder[sectionIdx + 1];
+  if (nextSection === 'math1') {
+    showPage('examBreakPage', null, true);
+    return;
+  }
+
+  examState.sectionKey = nextSection;
+  examState.currentSection = sectionIdx + 1;
+  startExamSection(nextSection);
+}
+
+function showExamScore() {
+  clearInterval(examState.timerInterval);
+  let rwCorrect = 0, mathCorrect = 0;
+  let rwTotal = 0, mathTotal = 0;
+  const missedItems = [];
+
+  ['rw1','rw2'].forEach(function(sk) {
+    const qs = activeExam.sections[sk].qs;
+    rwTotal += qs.length;
+    qs.forEach(function(q, i) {
+      const ans = examState.answers[sk][i];
+      if (ans === q.c) {
+        rwCorrect++;
+      } else {
+        missedItems.push({ section: activeExam.sections[sk].label, q: q.q, yourAns: ans !== undefined ? q.o[ans] : 'Not answered', correctAns: q.o[q.c], explain: q.e });
+      }
+    });
+  });
+
+  ['math1','math2'].forEach(function(sk) {
+    const qs = activeExam.sections[sk].qs;
+    mathTotal += qs.length;
+    qs.forEach(function(q, i) {
+      const ans = examState.answers[sk][i];
+      if (ans === q.c) {
+        mathCorrect++;
+      } else {
+        missedItems.push({ section: activeExam.sections[sk].label, q: q.q, yourAns: ans !== undefined ? q.o[ans] : 'Not answered', correctAns: q.o[q.c], explain: q.e });
+      }
+    });
+  });
+
+  const rwPct = rwCorrect / rwTotal;
+  const mathPct = mathCorrect / mathTotal;
+  const rwScaled = Math.round(200 + rwPct * 600);
+  const mathScaled = Math.round(200 + mathPct * 600);
+  const totalScore = rwScaled + mathScaled;
+
+  // Save score
+  if (currentProfile) {
+    if (!currentProfile.examScores) currentProfile.examScores = {};
+    currentProfile.examScores[examState.examId] = totalScore;
+    saveProfile();
+  }
+
+  let msg = '', sub = '';
+  if (totalScore >= 1400) { msg = 'Outstanding!'; sub = 'You are performing at an elite level. Keep this momentum going into test day.'; }
+  else if (totalScore >= 1200) { msg = 'Great Work!'; sub = 'You are well above average. Focus on your missed questions and you can push even higher.'; }
+  else if (totalScore >= 1000) { msg = 'Solid Effort!'; sub = 'You are in range of your target score. Review the missed questions carefully and practice those skills.'; }
+  else { msg = 'Keep Practicing!'; sub = 'Every missed question is a roadmap for improvement. Review each explanation below and revisit those lessons.'; }
+
+  let html =
+    '<div class="score-hero">' +
+      '<div class="score-total">' + totalScore + '</div>' +
+      '<div class="score-range">out of 1600</div>' +
+      '<div class="score-sections">' +
+        '<div class="score-sec-card"><div class="score-sec-val">' + rwScaled + '</div><div class="score-sec-lbl">Reading & Writing</div></div>' +
+        '<div class="score-sec-card"><div class="score-sec-val">' + mathScaled + '</div><div class="score-sec-lbl">Math</div></div>' +
+      '</div>' +
+      '<div class="score-msg">' + msg + '</div>' +
+      '<div class="score-sub">' + sub + '</div>' +
+    '</div>' +
+    '<div class="score-sections" style="margin-bottom:1rem;">' +
+      '<div class="score-sec-card"><div class="score-sec-val">' + rwCorrect + '/' + rwTotal + '</div><div class="score-sec-lbl">RW Correct</div></div>' +
+      '<div class="score-sec-card"><div class="score-sec-val">' + mathCorrect + '/' + mathTotal + '</div><div class="score-sec-lbl">Math Correct</div></div>' +
+    '</div>';
+
+  if (missedItems.length > 0) {
+    html += '<div class="missed-section"><div class="missed-title">&#128270; Review Missed Questions (' + missedItems.length + ')</div>';
+    missedItems.slice(0, 20).forEach(function(item) {
+      html += '<div class="missed-item">' +
+        '<div class="missed-q">' + item.q + '</div>' +
+        '<div class="missed-answers">' +
+          '<span class="missed-your">Your answer: ' + item.yourAns + '</span>' +
+          '<span class="missed-correct">Correct: ' + item.correctAns + '</span>' +
+        '</div>' +
+        '<div class="missed-explain">' + item.explain + '</div>' +
+        '</div>';
+    });
+    if (missedItems.length > 20) html += '<div style="text-align:center;font-size:0.8rem;color:var(--text3);padding:0.5rem;">+ ' + (missedItems.length-20) + ' more missed questions</div>';
+    html += '</div>';
+  }
+
+  html += '<div class="score-actions">' +
+    '<button class="btn-retake" onclick="startExam('' + examState.examId + '')">Retake Exam</button>' +
+    '<button class="btn-go-home" onclick="goHome()">Back to Home</button>' +
+    '</div>';
+
+  document.getElementById('examScoreContent').innerHTML = html;
+  showPage('examScorePage', null, true);
+  document.getElementById('examScoreContent').scrollTop = 0;
+  document.getElementById('topbarTitle').innerHTML = '<span style="color:var(--yellow)">&#127919;</span> Exam Results';
+}
+
 </script>
 
 <!-- Confirm Reset Modal -->
@@ -6341,6 +6845,45 @@ function updateKeyBar() {
     <textarea class="tutor-input" id="tutorInput" placeholder="Ask a follow-up question..." rows="1"></textarea>
     <button class="tutor-send-btn" id="tutorSendBtn" onclick="sendTutorMessage()">↑</button>
   </div>
+</div>
+
+
+<div class="page" id="examPage">
+  <div class="exam-hero">
+    <div style="font-size:2.5rem;margin-bottom:0.75rem;">🎯</div>
+    <div class="exam-hero-title">Full Practice Tests</div>
+    <div class="exam-hero-desc">Two complete timed SATs. Different passages, different questions, same 1600-point scale. Take both for maximum preparation.</div>
+  </div>
+  <div class="exam-cards" id="examCardsArea"></div>
+</div>
+
+<div class="page" id="examRunnerPage">
+  <div class="exam-topbar">
+    <div class="exam-section-label" id="examSectionLabel">Reading & Writing</div>
+    <div class="exam-q-counter" id="examQCounter">1 / 27</div>
+    <div class="exam-timer" id="examTimer">32:00</div>
+  </div>
+  <div class="exam-prog-bar">
+    <div class="exam-prog-fill" id="examProgFill" style="width:0%"></div>
+  </div>
+  <div class="exam-q-body" id="examQBody"></div>
+  <div class="exam-nav">
+    <button class="btn-exam-prev" onclick="examNav(-1)">&#8592; Prev</button>
+    <button class="btn-exam-next" id="btnExamNext" onclick="examNav(1)">Next &#8594;</button>
+  </div>
+</div>
+
+<div class="page" id="examBreakPage">
+  <div class="exam-break-page">
+    <div class="exam-break-icon">&#9749;</div>
+    <div class="exam-break-title">10-Minute Break</div>
+    <div class="exam-break-desc">Reading & Writing is complete. Take a break, stretch, drink some water. The Math section begins when you are ready.</div>
+    <button class="btn-continue-exam" onclick="startExamSection('math1')">Start Math Section &#8594;</button>
+  </div>
+</div>
+
+<div class="page" id="examScorePage">
+  <div class="score-report" id="examScoreContent"></div>
 </div>
 
 </body>
